@@ -642,6 +642,30 @@ deterministic launch/json/dir-listing proof. See
    this 5-pack.** P-ARCH-23/23G should be evaluated primarily for their
    performance effects (prefill speed), NOT claimed as quality improvements.
 
+## EXP-01 — SM120 async-route consolidation (2026-08-31) — PROMOTED
+
+Experiment 1 of the ESCHA-W2 PREFILL phase (branch `escha-w2-prefill`).
+Determined whether the SM120 async A-stage overlap can safely become the
+default Escha prefill route.
+
+- **Change:** `ggml/src/ggml-cuda/escha-moe.cu` — invert the SM120 default so
+  the double-buffered `cp.async` activation overlap is used unconditionally
+  (gated by architecture + Escha operator via `escha_version`); the synchronous
+  `uint4` fallback becomes an explicit opt-in via `ESCHA_MMA_SM120_SYNC_FALLBACK`.
+  Removes the `ESCHA_MMA_SM120_ASYNC_EXPERIMENT` compile-flag dispatch debt.
+- **Control (sync):** 1412.5 ms / 1449.9 tok/s matched-2k, CV 1.53%.
+- **Candidate (async):** 889.5 ms / 2302.4 tok/s, CV 0.72% — **+58.8% faster**.
+- **Consolidated default (no flag):** 887.9 ms / 2306.5 tok/s — matches candidate.
+- **Gates:** CV ≤2% ✓; decode no regression (25.03→25.45 tok/s, within noise) ✓;
+  P2/P7 100% both arms ✓; standard-GGUF output identical ✓; route=mma-fp16 ×800 ✓.
+- **Artifact:** `escha-w2-lowgpu-mono-parity.gguf` sha256
+  `e307007f4a7489777c70f724e14d807d403959b1dc1bf6857c44ca1b6954778d` (unchanged).
+- **Verdict:** PROMOTE. Implementation commit `215aa4ac3` (separate from
+  evidence/docs). Milestone certification required (first promoted prefill
+  optimization, >10% gain, routing change) — full medium 5-pack next.
+- Evidence: `escha-w2-lowgpu/evidence/EXP-01-sm120-async/2026-08-31/`
+  (external; `evidence-summary.json` in-repo binding).
+
 ## Durable evidence sources
 
 - GBrain: *Qwen3.5 hybrid prefill batching audit — rows 2-4 vs 512 (2026-08-29)*.

@@ -76,6 +76,15 @@ Judge evidence/DoD/verdict also in `~/.hermes/state/judge-escha-medium-20260831.
 6. **Next development objective:** full Escha W2 **prefill performance** inside
    BeeLlama (see Active next phase).
 
+### EXP-01 result (2026-08-31) — PROMOTED
+
+SM120 async A-stage overlap is now the default Escha prefill route
+(`escha-moe.cu`; sync fallback = `ESCHA_MMA_SM120_SYNC_FALLBACK` opt-in).
+Matched-2K prefill on the canonical full-Escha artifact:
+**1450 → 2302 tok/s (+58.8%)**, CV ≤2%, decode unchanged, P2/P7 100%,
+standard-GGUF identical. Implementation commit `215aa4ac3`. Milestone
+certification pending (full medium 5-pack next).
+
 ## Closed work
 
 - P-ARCH-22 (vocab representation): **CLOSED as size-capped** — do not reopen
