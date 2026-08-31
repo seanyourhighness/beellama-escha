@@ -9,6 +9,7 @@
 #include <cstdlib>
 #include <cstring>
 #include <ctime>
+#include <fstream>
 #include <iterator>
 #include <map>
 #include <numeric>
@@ -358,6 +359,7 @@ struct cmd_params {
     std::vector<std::string>         hf_file;
     std::string                      hf_token;
     bool                             offline;
+    std::string                      prompt_tokens_file;
     std::vector<int>                 n_prompt;
     std::vector<int>                 n_gen;
     std::vector<std::pair<int, int>> n_pg;
@@ -405,6 +407,7 @@ static const cmd_params cmd_params_defaults = {
     /* hf_file              */ {},
     /* hf_token             */ "",
     /* offline              */ false,
+    /* prompt_tokens_file   */ "",
     /* n_prompt             */ { 512 },
     /* n_gen                */ { 128 },
     /* n_pg                 */ {},
@@ -480,6 +483,7 @@ static void print_usage(int /* argc */, char ** argv) {
     printf("                                                    (default: value from HF_TOKEN environment variable)\n");
     printf("  --offline                                         Offline mode: forces use of cache, prevents network access\n");
     printf("                                                    (default: disabled)\n");
+    printf("  --prompt-tokens-file <path>                      exact whitespace-separated token IDs for prompt tests\n");
     printf("  -p, --n-prompt <n>                                (default: %s)\n", join(cmd_params_defaults.n_prompt, ",").c_str());
     printf("  -n, --n-gen <n>                                   (default: %s)\n", join(cmd_params_defaults.n_gen, ",").c_str());
     printf("  -pg <pp,tg>                                       (default: %s)\n", join(transform_to_str(cmd_params_defaults.n_pg, pair_str), ",").c_str());
@@ -725,6 +729,12 @@ static cmd_params parse_cmd_params(int argc, char ** argv) {
                 params.hf_token = argv[i];
             } else if (arg == "--offline") {
                 params.offline = true;
+            } else if (arg == "--prompt-tokens-file") {
+                if (++i >= argc) {
+                    invalid_param = true;
+                    break;
+                }
+                params.prompt_tokens_file = argv[i];
             } else if (arg == "-p" || arg == "--n-prompt") {
                 if (++i >= argc) {
                     invalid_param = true;
@@ -2501,12 +2511,22 @@ struct ctx_state {
     std::vector<uint8_t> buf; // the llama_context state buffer
 };
 
-static bool test_prompt(llama_context * ctx, int n_prompt, int n_batch, int n_threads) {
+static bool test_prompt(
+        llama_context * ctx,
+        int n_prompt,
+        int n_batch,
+        int n_threads,
+        const std::vector<llama_token> * exact_tokens = nullptr) {
     llama_set_n_threads(ctx, n_threads, n_threads);
 
     const llama_model * model   = llama_get_model(ctx);
     const llama_vocab * vocab   = llama_model_get_vocab(model);
     const int32_t       n_vocab = llama_vocab_n_tokens(vocab);
+
+    if (exact_tokens != nullptr && int(exact_tokens->size()) != n_prompt) {
+        fprintf(stderr, "%s: exact prompt has %zu IDs, expected %d\n", __func__, exact_tokens->size(), n_prompt);
+        return false;
+    }
 
     std::vector<llama_token> tokens(n_batch);
 
@@ -2514,9 +2534,20 @@ static bool test_prompt(llama_context * ctx, int n_prompt, int n_batch, int n_th
 
     while (n_processed < n_prompt) {
         int n_tokens = std::min(n_prompt - n_processed, n_batch);
-        tokens[0]    = n_processed == 0 && llama_vocab_get_add_bos(vocab) ? llama_vocab_bos(vocab) : std::rand() % n_vocab;
-        for (int i = 1; i < n_tokens; i++) {
-            tokens[i] = std::rand() % n_vocab;
+        if (exact_tokens != nullptr) {
+            for (int i = 0; i < n_tokens; i++) {
+                tokens[i] = (*exact_tokens)[n_processed + i];
+                if (tokens[i] < 0 || tokens[i] >= n_vocab) {
+                    fprintf(stderr, "%s: exact prompt ID %d at index %d is outside vocabulary [0, %d)\n",
+                            __func__, tokens[i], n_processed + i, n_vocab);
+                    return false;
+                }
+            }
+        } else {
+            tokens[0] = n_processed == 0 && llama_vocab_get_add_bos(vocab) ? llama_vocab_bos(vocab) : std::rand() % n_vocab;
+            for (int i = 1; i < n_tokens; i++) {
+                tokens[i] = std::rand() % n_vocab;
+            }
         }
         int res = llama_decode(ctx, llama_batch_get_one(tokens.data(), n_tokens));
         if (res != 0) {
@@ -2692,6 +2723,27 @@ int llama_bench(int argc, char ** argv) {
     ggml_backend_load_all();
 
     cmd_params params = parse_cmd_params(argc, argv);
+
+    std::vector<llama_token> exact_prompt_tokens;
+    if (!params.prompt_tokens_file.empty()) {
+        std::ifstream input(params.prompt_tokens_file);
+        if (!input) {
+            fprintf(stderr, "%s: error: cannot open prompt token file '%s'\n", __func__, params.prompt_tokens_file.c_str());
+            return 1;
+        }
+        long long token = 0;
+        while (input >> token) {
+            if (token < INT32_MIN || token > INT32_MAX) {
+                fprintf(stderr, "%s: error: token ID outside int32 range in '%s'\n", __func__, params.prompt_tokens_file.c_str());
+                return 1;
+            }
+            exact_prompt_tokens.push_back(static_cast<llama_token>(token));
+        }
+        if (!input.eof() || exact_prompt_tokens.empty()) {
+            fprintf(stderr, "%s: error: malformed or empty prompt token file '%s'\n", __func__, params.prompt_tokens_file.c_str());
+            return 1;
+        }
+    }
 
     auto * cpu_dev = ggml_backend_dev_by_type(GGML_BACKEND_DEVICE_TYPE_CPU);
     if (!cpu_dev) {
@@ -2939,7 +2991,8 @@ int llama_bench(int argc, char ** argv) {
                     fprintf(stderr, "llama-bench: benchmark %d/%zu: warmup prompt run\n", params_idx, params_count);
                 }
                 //test_prompt(ctx, std::min(t.n_batch, std::min(t.n_prompt, 32)), 0, t.n_batch, t.n_threads);
-                bool res = test_prompt(ctx, t.n_prompt, t.n_batch, t.n_threads);
+                bool res = test_prompt(ctx, t.n_prompt, t.n_batch, t.n_threads,
+                        exact_prompt_tokens.empty() ? nullptr : &exact_prompt_tokens);
                 if (!res) {
                     fprintf(stderr, "%s: error: failed to run prompt warmup\n", __func__);
                     llama_free(ctx);
@@ -3028,7 +3081,8 @@ int llama_bench(int argc, char ** argv) {
                     fprintf(stderr, "llama-bench: benchmark %d/%zu: prompt run %d/%d\n", params_idx, params_count,
                             i + 1, params.reps);
                 }
-                bool res = test_prompt(ctx, t.n_prompt, t.n_batch, t.n_threads);
+                bool res = test_prompt(ctx, t.n_prompt, t.n_batch, t.n_threads,
+                        exact_prompt_tokens.empty() ? nullptr : &exact_prompt_tokens);
                 if (!res) {
                     fprintf(stderr, "%s: error: failed to run prompt\n", __func__);
                     llama_free(ctx);

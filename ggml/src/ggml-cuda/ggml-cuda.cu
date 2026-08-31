@@ -62,6 +62,8 @@
 #include "ggml-cuda/gla.cuh"
 #include "ggml-cuda/gated_delta_net.cuh"
 #include "ggml-cuda/dsv4-hc.cuh"
+#include "ggml-cuda/escha-moe.cuh"
+#include "ggml-cuda/lowgpu.cuh"
 #include "ggml-cuda/set.cuh"
 #include "ggml-cuda/set-rows.cuh"
 #include "ggml-cuda/pad_reflect_1d.cuh"
@@ -2398,6 +2400,18 @@ static bool ggml_cuda_compute_forward(ggml_backend_cuda_context & ctx, struct gg
         case GGML_OP_GATED_DELTA_NET:
             ggml_cuda_op_gated_delta_net(ctx, dst);
             break;
+        case GGML_OP_ESCHA_MOE:
+            ggml_cuda_op_escha_moe(ctx, dst);
+            break;
+        case GGML_OP_ESCHA_MUL_MAT:
+            ggml_cuda_op_escha_mul_mat(ctx, dst);
+            break;
+        case GGML_OP_LOWGPU_GET_ROWS:
+            ggml_cuda_op_lowgpu_get_rows(ctx, dst);
+            break;
+        case GGML_OP_LOWGPU_MUL_MAT:
+            ggml_cuda_op_lowgpu_mul_mat(ctx, dst);
+            break;
         case GGML_OP_DSV4_HC_COMB:
             ggml_cuda_op_dsv4_hc_comb(ctx, dst);
             break;
@@ -2614,6 +2628,17 @@ static bool ggml_cuda_graph_check_compability(ggml_cgraph * cgraph) {
 
         if (ggml_cuda_is_view_or_noop(node)) {
             continue;
+        }
+
+        // The Escha dense path uses stable pool addresses after warmup.  Native
+        // parity and long-context tests cover graph replay, and the 400+ small
+        // projection launches per decode make capture material to serving speed.
+        // Keep an explicit kill-switch for a new driver or an unqualified shape.
+        if (node->op == GGML_OP_ESCHA_MOE || node->op == GGML_OP_ESCHA_MUL_MAT
+         || node->op == GGML_OP_LOWGPU_GET_ROWS || node->op == GGML_OP_LOWGPU_MUL_MAT) {
+            if (getenv("ESCHA_DISABLE_CUDA_GRAPHS") != nullptr) {
+                use_cuda_graph = false;
+            }
         }
 
         // [TAG_MUL_MAT_ID_CUDA_GRAPHS]
@@ -4028,7 +4053,8 @@ static int ggml_cuda_try_fuse(ggml_backend_cuda_context * cuda_ctx, ggml_cgraph 
         return 2;
     }
 
-    if (ggml_cuda_can_fuse(cgraph, i, { GGML_OP_RMS_NORM, GGML_OP_MUL }, {})) {
+    if (getenv("GGML_CUDA_DISABLE_RMS_MUL_FUSION") == nullptr &&
+            ggml_cuda_can_fuse(cgraph, i, { GGML_OP_RMS_NORM, GGML_OP_MUL }, {})) {
         ggml_cuda_op_rms_norm_fused(*cuda_ctx, node, cgraph->nodes[i + 1]);
         return 1;
     }
@@ -5422,6 +5448,9 @@ static bool ggml_backend_cuda_device_supports_op(ggml_backend_dev_t dev, const g
         case GGML_OP_NORM:
         case GGML_OP_RMS_NORM:
         case GGML_OP_L2_NORM:
+            if (op->op == GGML_OP_RMS_NORM && getenv("GGML_CUDA_DISABLE_RMS_NORM") != nullptr) {
+                return false;
+            }
             return ggml_is_contiguous_rows(op->src[0]);
         case GGML_OP_RMS_NORM_BACK:
             return ggml_is_contiguous(op->src[0]);
@@ -5522,7 +5551,21 @@ static bool ggml_backend_cuda_device_supports_op(ggml_backend_dev_t dev, const g
         case GGML_OP_GATED_LINEAR_ATTN:
         case GGML_OP_RWKV_WKV7:
             return true;
+        case GGML_OP_ESCHA_MOE:
+        case GGML_OP_ESCHA_MUL_MAT:
+            if (getenv("GGML_CUDA_DISABLE_ESCHA") != nullptr) {
+                return false;
+            }
+            return true;
+        case GGML_OP_LOWGPU_GET_ROWS:
+        case GGML_OP_LOWGPU_MUL_MAT:
+            return true;
         case GGML_OP_GATED_DELTA_NET:
+            // Diagnostic escape hatch: lets the CPU reference implementation
+            // validate a CUDA GDN failure without changing the normal backend.
+            if (getenv("GGML_CUDA_DISABLE_GDN") != nullptr) {
+                return false;
+            }
             //TODO: enable once MUSA compiler is solved https://github.com/ggml-org/llama.cpp/pull/19504#issuecomment-4018634327
 #ifdef GGML_USE_MUSA
             return false;

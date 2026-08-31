@@ -2112,6 +2112,22 @@ static void ggml_compute_forward(struct ggml_compute_params * params, struct ggm
             {
                 ggml_compute_forward_dsv4_hc_post(params, tensor);
             } break;
+        case GGML_OP_ESCHA_MOE:
+            {
+                ggml_compute_forward_escha_moe(params, tensor);
+            } break;
+        case GGML_OP_ESCHA_MUL_MAT:
+            {
+                ggml_compute_forward_escha_mul_mat(params, tensor);
+            } break;
+        case GGML_OP_LOWGPU_GET_ROWS:
+            {
+                ggml_compute_forward_lowgpu_get_rows(params, tensor);
+            } break;
+        case GGML_OP_LOWGPU_MUL_MAT:
+            {
+                ggml_compute_forward_lowgpu_mul_mat(params, tensor);
+            } break;
         case GGML_OP_KVARN_WHT:
             {
                 ggml_compute_forward_kvarn_wht(params, tensor);
@@ -2312,6 +2328,10 @@ static int ggml_get_n_tasks(struct ggml_tensor * node, int n_threads) {
         case GGML_OP_DSV4_HC_COMB:
         case GGML_OP_DSV4_HC_PRE:
         case GGML_OP_DSV4_HC_POST:
+        case GGML_OP_ESCHA_MOE:
+        case GGML_OP_ESCHA_MUL_MAT:
+        case GGML_OP_LOWGPU_GET_ROWS:
+        case GGML_OP_LOWGPU_MUL_MAT:
         case GGML_OP_KVARN_WHT:
         case GGML_OP_KVARN_MATERIALIZE:
             {
@@ -3047,6 +3067,20 @@ struct ggml_cplan ggml_graph_plan(
                         const int64_t K   = ggml_get_op_params_i32(node, 0);
                         const int64_t per_thread = S_v + (K > 1 ? S_v * S_v : 0);
                         cur = per_thread * sizeof(float) * n_tasks;
+                    } break;
+                case GGML_OP_ESCHA_MOE:
+                case GGML_OP_ESCHA_MUL_MAT:
+                    {
+                        // rotated input, accumulator, and one decoded 16x16 tile
+                        const int64_t IC = node->src[0]->ne[2]*16;
+                        const int64_t OC = node->src[0]->ne[1]*16;
+                        cur = (IC + OC + 256) * sizeof(float) * n_tasks;
+                    } break;
+                case GGML_OP_LOWGPU_GET_ROWS:
+                case GGML_OP_LOWGPU_MUL_MAT:
+                    {
+                        // the LowGPU ops decode into the destination / a heap cache
+                        cur = 0;
                     } break;
                 case GGML_OP_KVARN_WHT:
                 case GGML_OP_KVARN_STORE:

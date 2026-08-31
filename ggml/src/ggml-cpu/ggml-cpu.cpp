@@ -446,8 +446,9 @@ static bool ggml_backend_cpu_device_supports_op(ggml_backend_dev_t dev, const st
     }
 
     // check extra buffer types
-    // note: only the first sources are checked for extra buffer types to reduce overhead, increase if necessary
-    for (int i = 0; i < 4; i++) {
+    // note: all sources are checked -- ggml_escha_moe carries weights as far out as src[4],
+    // and missing one lets a repacking buffer type claim a tensor it cannot repack
+    for (int i = 0; i < GGML_MAX_SRC; i++) {
         if (op->src[i] && op->src[i]->buffer &&
             ggml_backend_cpu_is_extra_buffer_type(op->src[i]->buffer->buft)) {
             auto * buf_extra = (ggml::cpu::extra_buffer_type *) op->src[i]->buffer->buft->context;
@@ -468,6 +469,11 @@ static bool ggml_backend_cpu_device_supports_op(ggml_backend_dev_t dev, const st
                 op->type != GGML_TYPE_IQ1_M; // missing type_traits.from_float
         case GGML_OP_KVARN_STORE:
         case GGML_OP_KVARN_MATERIALIZE:
+            return true;
+        case GGML_OP_ESCHA_MOE:
+        case GGML_OP_ESCHA_MUL_MAT:
+        case GGML_OP_LOWGPU_GET_ROWS:
+        case GGML_OP_LOWGPU_MUL_MAT:
             return true;
         case GGML_OP_MUL_MAT:
             return src1->type == GGML_TYPE_F32 || src1->type == ggml_get_type_traits_cpu(src0->type)->vec_dot_type;

@@ -1,0 +1,93 @@
+{
+  "benchmark": "club-3090 quality medium 5-pack",
+  "date": "2026-08-31",
+  "packs": [
+    "toolcall-15",
+    "instructfollow-15",
+    "structoutput-15",
+    "dataextract-15",
+    "reasonmath-15"
+  ],
+  "scenarios": 75,
+  "thinking": "force-off",
+  "runtime": {
+    "binary": "build-cuda-qwen35-gated/bin/llama-server",
+    "commit": "0b035b3a2-dirty",
+    "change": "qwen35.cpp escha semantics gated on escha_version (decay + GDN head layout)"
+  },
+  "config": {
+    "kv": "f16",
+    "ctx": 32768,
+    "single_slot": true,
+    "flash_attn": true,
+    "jinja": true,
+    "thinking_off": true,
+    "chat_parsing_enabled": true,
+    "no_skip_chat_parsing": true
+  },
+  "results": [
+    {
+      "model": "original-lowgpu",
+      "passed": 66,
+      "total": 75,
+      "equiv150": 132,
+      "per_pack": {
+        "toolcall-15": 14,
+        "instructfollow-15": 13,
+        "structoutput-15": 15,
+        "dataextract-15": 12,
+        "reasonmath-15": 12
+      }
+    },
+    {
+      "model": "base-escha-w2",
+      "passed": 65,
+      "total": 75,
+      "equiv150": 130,
+      "per_pack": {
+        "toolcall-15": 14,
+        "instructfollow-15": 13,
+        "structoutput-15": 15,
+        "dataextract-15": 12,
+        "reasonmath-15": 11
+      }
+    },
+    {
+      "model": "p-arch-23",
+      "passed": 65,
+      "total": 75,
+      "equiv150": 130,
+      "per_pack": {
+        "toolcall-15": 15,
+        "instructfollow-15": 13,
+        "structoutput-15": 15,
+        "dataextract-15": 12,
+        "reasonmath-15": 10
+      }
+    },
+    {
+      "model": "p-arch-23g",
+      "passed": 65,
+      "total": 75,
+      "equiv150": 130,
+      "per_pack": {
+        "toolcall-15": 15,
+        "instructfollow-15": 13,
+        "structoutput-15": 15,
+        "dataextract-15": 12,
+        "reasonmath-15": 10
+      }
+    }
+  ],
+  "judge_verdict": "PASS (exit 0)",
+  "judge_attempts": {
+    "1": "ESCALATE-launch-lines",
+    "2": "ESCALATE-json-load",
+    "3": "ESCALATE-dir-listing",
+    "4": "PASS"
+  },
+  "raw_evidence_location": "NOT committed (large). See docs/escha-prefill-experiment-ledger.md CERTIFIED section for the path.",
+  "canonical_control_sha256": {
+    "base-escha-w2": "e307007f4a7489777c70f724e14d807d403959b1dc1bf6857c44ca1b6954778d"
+  }
+}

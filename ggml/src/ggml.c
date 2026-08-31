@@ -1131,6 +1131,10 @@ static const char * GGML_OP_NAME[GGML_OP_COUNT] = {
     "DSV4_HC_COMB",
     "DSV4_HC_PRE",
     "DSV4_HC_POST",
+    "ESCHA_MOE",
+    "ESCHA_MUL_MAT",
+    "LOWGPU_GET_ROWS",
+    "LOWGPU_MUL_MAT",
     "KVARN_WHT",
     "KVARN_STORE",
     "KVARN_VIEW",
@@ -1152,7 +1156,7 @@ static const char * GGML_OP_NAME[GGML_OP_COUNT] = {
     "GLU",
 };
 
-static_assert(GGML_OP_COUNT == 105, "GGML_OP_COUNT != 105");
+static_assert(GGML_OP_COUNT == 109, "GGML_OP_COUNT != 109");
 
 static const char * GGML_OP_SYMBOL[GGML_OP_COUNT] = {
     "none",
@@ -1250,6 +1254,10 @@ static const char * GGML_OP_SYMBOL[GGML_OP_COUNT] = {
     "dsv4_hc_comb(mixes, scale, base)",
     "dsv4_hc_pre(x, weights)",
     "dsv4_hc_post(x, residual, post, comb)",
+    "escha_moe(code, x, ids)",
+    "escha_mul_mat(code, x)",
+    "lowgpu_get_rows(code, scale, zp, ids)",
+    "lowgpu_mul_mat(code, scale, zp, x)",
     "kvarn_wht(x)",
     "kvarn_store(current, indices, stage, records)",
     "kvarn_view(records, stage, indices)",
@@ -1271,7 +1279,7 @@ static const char * GGML_OP_SYMBOL[GGML_OP_COUNT] = {
     "glu(x)",
 };
 
-static_assert(GGML_OP_COUNT == 105, "GGML_OP_COUNT != 105");
+static_assert(GGML_OP_COUNT == 109, "GGML_OP_COUNT != 109");
 
 static_assert(GGML_OP_POOL_COUNT == 2, "GGML_OP_POOL_COUNT != 2");
 
@@ -6643,6 +6651,212 @@ struct ggml_tensor * ggml_dsv4_hc_post(
     result->src[1] = residual;
     result->src[2] = post;
     result->src[3] = comb;
+
+    return result;
+}
+
+// ggml_escha_moe
+
+struct ggml_tensor * ggml_escha_moe(
+        struct ggml_context * ctx,
+        struct ggml_tensor  * code,
+        struct ggml_tensor  * rin,
+        struct ggml_tensor  * rout,
+        struct ggml_tensor  * lut,
+        struct ggml_tensor  * dep,
+        struct ggml_tensor  * x,
+        struct ggml_tensor  * ids) {
+    GGML_ASSERT(code->type == GGML_TYPE_I16);
+    GGML_ASSERT(rin ->type == GGML_TYPE_F16);
+    GGML_ASSERT(rout->type == GGML_TYPE_F16);
+    GGML_ASSERT(lut ->type == GGML_TYPE_F16);
+    GGML_ASSERT(dep ->type == GGML_TYPE_I16);
+    GGML_ASSERT(x   ->type == GGML_TYPE_F32);
+    GGML_ASSERT(ids ->type == GGML_TYPE_I32);
+
+    GGML_ASSERT(ggml_is_contiguous(code));
+    GGML_ASSERT(ggml_is_contiguous(rin));
+    GGML_ASSERT(ggml_is_contiguous(rout));
+    GGML_ASSERT(ggml_is_contiguous(lut));
+    GGML_ASSERT(ggml_is_contiguous(dep));
+    GGML_ASSERT(ggml_is_contiguous_rows(x));
+
+    GGML_ASSERT(code->ne[0] == 32 || code->ne[0] == 48); // 16*K, K = 2 or 3
+
+    const int64_t OC = code->ne[1]*16;
+    const int64_t IC = code->ne[2]*16;
+    const int64_t E  = code->ne[3];
+
+    // the rotations are applied per 128-block, so both axes must be a multiple of 128
+    GGML_ASSERT(IC % 128 == 0);
+    GGML_ASSERT(OC % 128 == 0);
+
+    GGML_ASSERT(rin ->ne[0] == IC && rin ->ne[1] == E);
+    GGML_ASSERT(rout->ne[0] == OC && rout->ne[1] == E);
+    GGML_ASSERT(lut ->ne[0] == 65536 && ggml_nelements(lut) == 65536);
+    GGML_ASSERT(dep ->ne[0] == 16 && dep->ne[1] == 256);
+
+    GGML_ASSERT(x  ->ne[0] == IC);
+    GGML_ASSERT(x  ->ne[3] == 1);
+    GGML_ASSERT(ids->ne[2] == 1 && ids->ne[3] == 1);
+    GGML_ASSERT(ids->ne[1] == x->ne[2]);        // one expert list per x row
+    GGML_ASSERT(ids->ne[0] % x->ne[1] == 0);    // can broadcast
+
+    const int64_t ne[4] = { OC, ids->ne[0], x->ne[2], 1 };
+    struct ggml_tensor * result = ggml_new_tensor(ctx, GGML_TYPE_F32, 4, ne);
+
+    result->op     = GGML_OP_ESCHA_MOE;
+    result->src[0] = code;
+    result->src[1] = rin;
+    result->src[2] = rout;
+    result->src[3] = lut;
+    result->src[4] = dep;
+    result->src[5] = x;
+    result->src[6] = ids;
+
+    return result;
+}
+
+// ggml_escha_mul_mat
+
+struct ggml_tensor * ggml_escha_mul_mat(
+        struct ggml_context * ctx,
+        struct ggml_tensor  * code,
+        struct ggml_tensor  * rin,
+        struct ggml_tensor  * rout,
+        struct ggml_tensor  * lut,
+        struct ggml_tensor  * dep,
+        struct ggml_tensor  * x) {
+    GGML_ASSERT(code->type == GGML_TYPE_I16);
+    GGML_ASSERT(rin ->type == GGML_TYPE_F16);
+    GGML_ASSERT(rout->type == GGML_TYPE_F16);
+    GGML_ASSERT(lut ->type == GGML_TYPE_F16);
+    GGML_ASSERT(dep ->type == GGML_TYPE_I16);
+    GGML_ASSERT(x   ->type == GGML_TYPE_F32);
+
+    GGML_ASSERT(ggml_is_contiguous(code));
+    GGML_ASSERT(ggml_is_contiguous(rin));
+    GGML_ASSERT(ggml_is_contiguous(rout));
+    GGML_ASSERT(ggml_is_contiguous(lut));
+    GGML_ASSERT(ggml_is_contiguous(dep));
+    GGML_ASSERT(ggml_is_contiguous_rows(x));
+
+    GGML_ASSERT(code->ne[0] == 32 || code->ne[0] == 48); // 16*K, K = 2 or 3
+    GGML_ASSERT(code->ne[3] == 1);                       // dense: no expert dimension
+
+    const int64_t OC = code->ne[1]*16;
+    const int64_t IC = code->ne[2]*16;
+
+    // the rotations are applied per 128-block, so both axes must be a multiple of 128
+    GGML_ASSERT(IC % 128 == 0);
+    GGML_ASSERT(OC % 128 == 0);
+
+    GGML_ASSERT(ggml_nelements(rin)  == IC);
+    GGML_ASSERT(ggml_nelements(rout) == OC);
+    GGML_ASSERT(lut->ne[0] == 65536 && ggml_nelements(lut) == 65536);
+    GGML_ASSERT(dep->ne[0] == 16 && dep->ne[1] == 256);
+
+    GGML_ASSERT(x->ne[0] == IC);
+    GGML_ASSERT(x->ne[3] == 1);
+
+    const int64_t ne[4] = { OC, x->ne[1], x->ne[2], 1 };
+    struct ggml_tensor * result = ggml_new_tensor(ctx, GGML_TYPE_F32, 4, ne);
+
+    result->op     = GGML_OP_ESCHA_MUL_MAT;
+    result->src[0] = code;
+    result->src[1] = rin;
+    result->src[2] = rout;
+    result->src[3] = lut;
+    result->src[4] = dep;
+    result->src[5] = x;
+
+    return result;
+}
+
+// ggml_lowgpu_get_rows
+
+struct ggml_tensor * ggml_lowgpu_get_rows(
+        struct ggml_context * ctx,
+        struct ggml_tensor  * code,
+        struct ggml_tensor  * scale,
+        struct ggml_tensor  * zp,
+        struct ggml_tensor  * ids) {
+    GGML_ASSERT(code ->type == GGML_TYPE_I8); // LowGPU codes are stored as signed bytes
+    GGML_ASSERT(scale->type == GGML_TYPE_F16);
+    GGML_ASSERT(zp   ->type == GGML_TYPE_I8);
+    GGML_ASSERT(ids  ->type == GGML_TYPE_I32);
+
+    GGML_ASSERT(ggml_is_contiguous(code));
+    GGML_ASSERT(ggml_is_contiguous(scale));
+    GGML_ASSERT(ggml_is_contiguous(zp));
+
+    // [KB, V], [G, V], [G, V]
+    const int64_t KB = code->ne[0];
+    const int64_t V  = code->ne[1];
+    const int64_t G  = scale->ne[0];
+
+    GGML_ASSERT(scale->ne[1] == V);
+    GGML_ASSERT(zp->ne[0] == G && zp->ne[1] == V);
+
+    const int64_t n_embd = KB*8/3;
+    GGML_ASSERT(n_embd % 8 == 0);
+    GGML_ASSERT(n_embd % 128 == 0);
+    GGML_ASSERT(G == n_embd/128);
+    GGML_ASSERT(ids->ne[1] == 1 && ids->ne[2] == 1 && ids->ne[3] == 1);
+
+    const int64_t ne[4] = { n_embd, ids->ne[0], 1, 1 };
+    struct ggml_tensor * result = ggml_new_tensor(ctx, GGML_TYPE_F32, 4, ne);
+
+    result->op     = GGML_OP_LOWGPU_GET_ROWS;
+    result->src[0] = code;
+    result->src[1] = scale;
+    result->src[2] = zp;
+    result->src[3] = ids;
+
+    return result;
+}
+
+// ggml_lowgpu_mul_mat
+
+struct ggml_tensor * ggml_lowgpu_mul_mat(
+        struct ggml_context * ctx,
+        struct ggml_tensor  * code,
+        struct ggml_tensor  * scale,
+        struct ggml_tensor  * zp,
+        struct ggml_tensor  * x) {
+    GGML_ASSERT(code ->type == GGML_TYPE_I8);
+    GGML_ASSERT(scale->type == GGML_TYPE_F16);
+    GGML_ASSERT(zp   ->type == GGML_TYPE_I8);
+    GGML_ASSERT(x    ->type == GGML_TYPE_F32);
+
+    GGML_ASSERT(ggml_is_contiguous(code));
+    GGML_ASSERT(ggml_is_contiguous(scale));
+    GGML_ASSERT(ggml_is_contiguous(zp));
+    GGML_ASSERT(ggml_is_contiguous_rows(x));
+
+    const int64_t KB = code->ne[0];
+    const int64_t V  = code->ne[1];
+    const int64_t G  = scale->ne[0];
+
+    GGML_ASSERT(scale->ne[1] == V);
+    GGML_ASSERT(zp->ne[0] == G && zp->ne[1] == V);
+
+    const int64_t n_embd = KB*8/3;
+    GGML_ASSERT(n_embd % 8 == 0);
+    GGML_ASSERT(n_embd % 128 == 0);
+    GGML_ASSERT(G == n_embd/128);
+
+    GGML_ASSERT(x->ne[0] == n_embd);
+    GGML_ASSERT(x->ne[3] == 1);
+
+    const int64_t ne[4] = { V, x->ne[1], x->ne[2], 1 };
+    struct ggml_tensor * result = ggml_new_tensor(ctx, GGML_TYPE_F32, 4, ne);
+
+    result->op     = GGML_OP_LOWGPU_MUL_MAT;
+    result->src[0] = code;
+    result->src[1] = scale;
+    result->src[2] = zp;
+    result->src[3] = x;
 
     return result;
 }

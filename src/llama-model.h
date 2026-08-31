@@ -329,6 +329,22 @@ struct llama_layer {
     struct ggml_tensor * ffn_up_exps_b     = nullptr;
     struct ggml_tensor * ffn_gate_up_exps_b = nullptr;
 
+    // experts (MoE) or plain ffn projections (dense) kept in the escha 2/3-bit code;
+    // replaces the *_exps weights above, or ffn_{gate,up,down} for a dense escha model
+    llm_escha_exps ffn_gate_escha;
+    llm_escha_exps ffn_up_escha;
+    llm_escha_exps ffn_down_escha;
+
+    // dense escha models keep attention and linear attention in the code too, so every
+    // projection in the block has a counterpart here (400 of them in Qwen3.8-27B-Escha-W2)
+    llm_escha_exps wq_escha;
+    llm_escha_exps wk_escha;
+    llm_escha_exps wv_escha;
+    llm_escha_exps wo_escha;
+    llm_escha_exps wqkv_escha;        // linear-attn in_proj_qkv
+    llm_escha_exps wqkv_gate_escha;   // linear-attn in_proj_z
+    llm_escha_exps ssm_out_escha;     // linear-attn out_proj
+
     // ff MoE per-expert scales (NVFP4 per-tensor scale2)
     struct ggml_tensor * ffn_gate_exps_s   = nullptr;
     struct ggml_tensor * ffn_down_exps_s   = nullptr;
@@ -596,6 +612,23 @@ struct llama_model {
     // NVFP4 per-tensor scale2, input_scale for LM head
     struct ggml_tensor * output_s    = nullptr;
     struct ggml_tensor * output_in_s = nullptr;
+
+    // escha codec tables, shared by every layer. non-zero version means the routed
+    // experts are stored as code and the dense *_exps tensors are absent
+    uint32_t escha_version = 0;
+    struct ggml_tensor * escha_lut    = nullptr;
+    struct ggml_tensor * escha_dep_k2 = nullptr;
+    struct ggml_tensor * escha_dep_k3 = nullptr;
+
+    // LowGPU v1 3-bit vocab. non-zero version means token_embd.weight and
+    // output.weight are absent and the embedding/head stay in packed codes
+    uint32_t lowgpu_version = 0;
+    struct ggml_tensor * tok_embd_lg_code  = nullptr;
+    struct ggml_tensor * tok_embd_lg_scale = nullptr;
+    struct ggml_tensor * tok_embd_lg_zp    = nullptr;
+    struct ggml_tensor * output_lg_code    = nullptr;
+    struct ggml_tensor * output_lg_scale   = nullptr;
+    struct ggml_tensor * output_lg_zp      = nullptr;
 
     // NextN/MTP model-level projections
     struct ggml_tensor * nextn_proj_pre  = nullptr;

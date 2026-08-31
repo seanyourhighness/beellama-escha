@@ -162,3 +162,39 @@ candidate. Record both values with every result.
   abstractions.
 - Do not treat old benchmark notes as current evidence without rerunning them.
 - Do not commit unless the user explicitly asks.
+
+
+## Escha Support Operating Rules
+
+This project extends BeeLlama with **first-class Escha support**. It is not a
+private artifact-specific runtime, and it must stay a general-purpose Qwen/GGUF
+engine.
+
+- **Preserve standard BeeLlama/Qwen behavior.** Standard Qwen3.x GGUFs must keep
+  original BeeLlama semantics exactly. Never let Escha-specific decoding leak
+  into standard models.
+- **All Escha-specific behavior must be narrowly metadata-gated.** Gate on
+  reliable Escha metadata such as `qwen35.escha.version` (i.e. `escha_version`),
+  never on filenames, model names, or content heuristics.
+- **No filename hacks.** **No artifact-name conditionals.**
+  **No benchmark-specific runtime behavior.** Runtime behavior must not change
+  based on which benchmark is being run or which artifact file is loaded.
+- **Use fresh builds after semantic/runtime changes.** Rebuild (ideally in a new
+  build dir) and re-verify before scoring; never reuse a stale binary for a
+  certified result.
+- **Separate semantic correctness gates from performance-development gates.**
+  A semantic/quality change must pass its correctness gate before being
+  evaluated for performance.
+- **Full 75-case certification is for milestones, not ordinary iterations.**
+  Use lightweight probes during iteration; run the full medium 5-pack (or full
+  8-pack) certification only at milestones.
+- **Record decisive experiments in the experiment ledger.**
+  (`docs/escha-prefill-experiment-ledger.md` — the canonical ledger; a GBrain
+  mirror is kept in sync.)
+- **Update `docs/current-state.md` whenever project state materially changes.**
+  Keep it concise and current, not a full history.
+- **Raw evidence should remain available and traceable.** Keep result JSONs,
+  hashes, runtime/commit identity, and launch config with every certified run.
+- **Parallel investigation:** DeepSeek V4 Flash workers via Hermes/Nous Portal
+  may be used for parallel investigation when useful. The primary agent must
+  verify decisive findings before integrating them.

@@ -1,0 +1,104 @@
+# BeeLlama Escha — Current State
+
+> Concise snapshot of what is true NOW (2026-08-31). See the experiment ledger
+> (`docs/escha-prefill-experiment-ledger.md`) for full history and evidence.
+
+## Mission
+
+Add first-class Escha support and optimized execution to BeeLlama while
+retaining compatibility with normal Qwen/GGUF models.
+
+## Runtime semantic invariant
+
+- **Standard Qwen / GGUF:** original BeeLlama semantics (unchanged).
+- **Escha artifacts:** Escha-specific semantics applied **exactly once**, gated
+  by metadata such as `qwen35.escha.version` (`escha_version`).
+- No filename/artifact-name conditionals, no benchmark-specific behavior.
+
+This invariant is enforced by the **`escha_version`-gated qwen35.cpp** changes
+(decay representation + GDN head layout). Ungated Escha semantics were
+corrupting standard GGUFs; the fix is a runtime/model-compatibility fix, not an
+artifact workaround.
+
+## Canonical artifacts
+
+- **Canonical full-Escha control:** `escha-w2-lowgpu-mono-parity.gguf`
+  sha256 `e307007f4a7489777c70f724e14d807d403959b1dc1bf6857c44ca1b6954778d`
+- **Standard LowGPU control:** `Qwen3.8-27B-LowGPU-NoMTP-IQ3XXXS.gguf`
+  (standard qwen35 GGUF, no escha markers)
+- **Current P-ARCH artifacts (performance experiments):**
+  - `...standard-ffn-gdn-q2k.gguf` (P-ARCH-23)
+  - `...standard-ffn-gdn-q2k-embedq4.gguf` (P-ARCH-23G)
+  - `...standard-ffn-gdn-q2k-embedq4-attn-linear.gguf` (P-ARCH-23I — prefill
+    speed parity leader, ~619-621 ms / ~3300 tok/s)
+- **Obsolete / broken:** `escha-w2-lowgpu-mono.gguf` — invalid conversion
+  (residual RMSNorm offset −1.0; incorrect `ssm_beta`/`ssm_alpha` ordering). Do
+  not use for scoring.
+
+## Certified benchmark result (2026-08-31)
+
+Club-3090 **medium** quality 5-pack (75 scenarios, no Docker), thinking
+force-off, on the gated `build-cuda-qwen35-gated` runtime. **Judge PASS (exit 0).**
+
+| Model | /75 | equiv/150 | reasonmath |
+| --- | --- | --- | --- |
+| **original-lowgpu** | **66** | **132** | **12/15** |
+| base-escha-w2 | 65 | 130 | 11/15 |
+| p-arch-23 | 65 | 130 | 10/15 |
+| p-arch-23g | 65 | 130 | 10/15 |
+
+Evidence: `escha-w2-lowgpu/evidence/club3090-medium/2026-08-31-gated/` (external).
+In-repo bindings: `docs/escha-benchmark-2026-08-31/benchmark-summary.json`,
+`raw-evidence-manifest.json` (SHA-256 of all raw result JSONs/logs/preflights),
+`judge-manifest.json`, `DOD.md`, `JUDGE-EVIDENCE.md`, `sha256sums.txt`.
+Judge evidence/DoD/verdict also in `~/.hermes/state/judge-escha-medium-20260831.json`.
+
+## Benchmark configuration (certified)
+
+- Runtime: `build-cuda-qwen35-gated/bin/llama-server`
+  (commit `0b035b3a2-dirty`, escha_version-gated qwen35.cpp)
+- F16 KV (`-ctk f16 -ctv f16`), 32K context (`-c 32768`), single slot (`-np 1`),
+  flash attention on, Jinja, **thinking force-off**, **chat parsing enabled**
+  (no `--skip-chat-parsing`).
+- Same binary for all four models (no cross-runtime comparison).
+
+## Current conclusions
+
+1. Old `escha-w2-lowgpu-mono.gguf` artifact was **invalid** (conversion
+   defects). Use the parity artifact as the full-Escha control.
+2. **`escha_version` gating is required** in qwen35.cpp; ungated Escha
+   semantics broke standard GGUFs (original-lowgpu recovered 5/75 → 66/75).
+3. **Standard LowGPU is healthy** after gating (66/75, leads ReasonMath).
+4. **Base Escha quality matches the P-ARCH substitutions** on the current
+   quality suite (65/75 each — effectively tied).
+5. **P-ARCH substitutions primarily represent performance experiments**, not
+   quality improvements.
+6. **Next development objective:** full Escha W2 **prefill performance** inside
+   BeeLlama (see Active next phase).
+
+## Closed work
+
+- P-ARCH-22 (vocab representation): **CLOSED as size-capped** — do not reopen
+  without new memory-tradeoff evidence.
+- Quality benchmarking of the four control models on the 5-pack medium suite:
+  **CERTIFIED** (this document). Do not re-run unless the runtime semantics
+  change.
+- The `escha_version` gating investigation: **RESOLVED** (root cause found,
+  fix verified, recovery measured).
+
+## Active next phase — ESCHA-W2 PREFILL
+
+**Goal:** improve prefill throughput of the canonical full Escha W2 model inside
+BeeLlama, preserving standard-Qwen compatibility and as much of the existing
+low-bit Escha body as practical.
+
+- Prefer runtime/kernel/layout/dispatch/fusion fixes over changing the model
+  artifact.
+- Avoid whole-model requantization/reconstruction drift unless measurements
+  prove it necessary.
+- Decode must not materially regress; quality/coherence must remain intact.
+- Do not optimize around the benchmark.
+- Reuse P-ARCH performance evidence without assuming their model substitutions
+  are the desired final architecture.
+- See `docs/escha-prefill-plan.md` (Codex/Sol-reviewed ESCHA-W2 PREFILL plan)
+  for the ranked bottlenecks and the next experiment.

@@ -1,0 +1,119 @@
+{
+  "schema": "escha-benchmark-raw-evidence-manifest/v1",
+  "date": "2026-08-31",
+  "raw_evidence_dir": "escha-w2-lowgpu/evidence/club3090-medium/2026-08-31-gated (EXTERNAL to this repo; not committed)",
+  "purpose": "Cryptographically bind the external raw evidence to this committed checkpoint.",
+  "files": {
+    "base-escha-w2.json": {
+      "size": 1168939,
+      "sha256": "abf729ecb303fc588dcb2a50d4a3ab1a4e0ed9ef2d9a0419d8e3adeda3df99c7"
+    },
+    "base-escha-w2.server.log": {
+      "size": 125909,
+      "sha256": "f742c943a95e550696b58c7fff1a97c94d998cbce2d641a0edb815173a7ca5d2"
+    },
+    "base-escha-w2.preflight.txt": {
+      "size": 851,
+      "sha256": "71b465ace8b9ce8f46aa966c5534412619be1a170b46aeab09fe0ed2662ca6c8"
+    },
+    "base-escha-w2.stderr.log": {
+      "size": 3589,
+      "sha256": "939494ed0d2f3474a9e43cd67245bf5cca7023aac0170a10d475469bd900e103"
+    },
+    "base-escha-w2.stdout.json": {
+      "size": 1168940,
+      "sha256": "01beafed4bfa85b8f37f0f8983a4fb7cfe25cc78932ff707be30ed55166cc2da"
+    },
+    "p-arch-23.json": {
+      "size": 1106602,
+      "sha256": "f30a9740484a64471c448bc4d85dba3d31e8a4443b752221a4235fdad7a3adcc"
+    },
+    "p-arch-23.server.log": {
+      "size": 119061,
+      "sha256": "5198ae7a612ae756b173d4dd7ade71b9cda7b29de8310b5e7c9e8d36f2de7c48"
+    },
+    "p-arch-23.preflight.txt": {
+      "size": 863,
+      "sha256": "a7bc88c50fa928fa13f901831fd559ccbf0ad1f72614f498313f77eba1c1d2d0"
+    },
+    "p-arch-23.stderr.log": {
+      "size": 3586,
+      "sha256": "11be5876dfc5ccd35612de7b5d3409b7b3b60612d1403ced3ee62f7768e7ea8a"
+    },
+    "p-arch-23.stdout.json": {
+      "size": 1106603,
+      "sha256": "1ea2adc45e38d21c3069e579d2e22088ca1437ad3534948cf458d13d23ddc8d0"
+    },
+    "p-arch-23g.json": {
+      "size": 1102672,
+      "sha256": "3f7591230fc79b314541e2eb425815e2de69c56fff15436d140791ae97e17523"
+    },
+    "p-arch-23g.server.log": {
+      "size": 118943,
+      "sha256": "b34426263429d02918b0bd85c952eac6957715770b1e4d676a6a42529f6b296b"
+    },
+    "p-arch-23g.preflight.txt": {
+      "size": 848,
+      "sha256": "8f7c0eaf7ba5fb5ca5fbdeb433328fa135ce8ea9864e6b9faa03696c76a40700"
+    },
+    "p-arch-23g.stderr.log": {
+      "size": 3586,
+      "sha256": "1afcfa0c29ecf9bda6d25bc674cbc09c0a4b780f0b024473c5c0aeb5a58c881e"
+    },
+    "p-arch-23g.stdout.json": {
+      "size": 1102673,
+      "sha256": "8ce60b66d90ad8880a47cc3ffe880eeeeb4c9cae86610552e7590000957a60f3"
+    },
+    "original-lowgpu.json": {
+      "size": 1149646,
+      "sha256": "8c05ff98c2ec00cec56effd8f60dd5e7cbdb5e3189de6ab16dc36af6cf70514a"
+    },
+    "original-lowgpu.server.log": {
+      "size": 115696,
+      "sha256": "d9beeb9be28cd1545d979bde24d439da05864b1041678377a70956f9414b414d"
+    },
+    "original-lowgpu.preflight.txt": {
+      "size": 824,
+      "sha256": "a385940125892c4f562e5eebc07f962f6e2fe75fc2c2e8c973ad8d804377c258"
+    },
+    "original-lowgpu.stderr.log": {
+      "size": 3580,
+      "sha256": "00c0da2db7a19e34bab49523131bbe5411e746c6f80ac164372a15676eb04fcd"
+    },
+    "original-lowgpu.stdout.json": {
+      "size": 1149647,
+      "sha256": "6ca5f2518268dbc2bbd25e8ccb70bed53534ae15c55d6090a9113c1a625db662"
+    },
+    "sha256sums.txt": {
+      "size": 1361,
+      "sha256": "67e72cea2de45b3543dd1b284093dc45c5d40558bbbd4adfe2eeac06a5cbb758"
+    },
+    "llama-server-version.txt": {
+      "size": 115,
+      "sha256": "d3793c9353973e3afebfb73923f8eee783ecfcb61f03d9a381592ea09ba80e2e"
+    },
+    "git-head.txt": {
+      "size": 173,
+      "sha256": "586b7695bdb3a8279a3f5a74bc5042c2412b5920d7ffd4799dcc2a1988730bf6"
+    },
+    "benchlocal-version.txt": {
+      "size": 135,
+      "sha256": "6337f0d467a0e5c6e55d3a0ea3ec39e060447424a090f7d701e07fe70d5723a0"
+    }
+  },
+  "server_launch_template": "systemd-run --user --unit=escha-gated-<model> --collect --property=Restart=no --working-directory=<REPO> --setenv=ESCHA_ALLOW_CUDA_GRAPHS=1 <REPO>/build-cuda-qwen35-gated/bin/llama-server -m <GGUF> --alias <model> --host 127.0.0.1 --port <PORT> -ngl all -c 32768 -np 1 -b 2048 -ub 512 -fa on -ctk f16 -ctv f16 --jinja --reasoning-budget 0 --chat-template-kwargs '{\"enable_thinking\":false}'",
+  "benchmark_command_template": "benchlocal-cli run --medium --endpoint http://127.0.0.1:<PORT>/v1 --model <model> --no-thinking --no-sandboxed-packs --output json --save-json <EVID>/<model>.json --progress --incremental",
+  "launch_config": {
+    "runtime_binary": "build-cuda-qwen35-gated/bin/llama-server",
+    "git_commit": "0b035b3a2-dirty (qwen35.cpp gated on escha_version)",
+    "kv_cache": "f16/f16",
+    "context": 32768,
+    "parallel_slots": 1,
+    "flash_attention": "on",
+    "jinja": true,
+    "thinking": "force-off (reasoning-budget 0)",
+    "chat_parsing": "enabled (no --skip-chat-parsing)",
+    "harness": "benchlocal-cli (club-3090)",
+    "pack_set": "medium (5 non-Docker packs)"
+  }
+}

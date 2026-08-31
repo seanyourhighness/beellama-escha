@@ -1305,7 +1305,22 @@ void ggml_backend_sched_split_graph(ggml_backend_sched_t sched, struct ggml_cgra
         for (int b = 0; b < sched->n_backends && *cur_backend_id == -1; b++) {
             ggml_backend_sched_set_if_supported(sched, node, b, cur_backend_id);
         }
-        GGML_ASSERT(*cur_backend_id != -1);
+        if (*cur_backend_id == -1) {
+            fprintf(stderr, "sched: no backend supports node op=%s (%s), n_backends=%zu\n",
+                    ggml_op_name(node->op), node->name, (size_t) sched->n_backends);
+            for (int j = 0; j < GGML_MAX_SRC; j++) {
+                if (node->src[j] != nullptr) {
+                    fprintf(stderr, "  src[%d] %s buft=%s buf=%p\n", j, node->src[j]->name,
+                            node->src[j]->buffer ? ggml_backend_buft_name(node->src[j]->buffer->buft) : "(none)",
+                            (void *) node->src[j]->buffer);
+                }
+            }
+            for (int b = 0; b < sched->n_backends; b++) {
+                fprintf(stderr, "  backend %d supports=%d\n", b,
+                        ggml_backend_supports_op(sched->backends[b], node));
+            }
+            GGML_ASSERT(false);
+        }
     }
 
     // pass 5: split graph, find tensors that need to be copied

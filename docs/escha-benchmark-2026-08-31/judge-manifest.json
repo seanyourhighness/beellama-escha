@@ -1,0 +1,8 @@
+{
+  "task_id": "escha-medium-20260831",
+  "verdict": "PASS (exit 0)",
+  "dod": "DOD.md",
+  "evidence": "JUDGE-EVIDENCE.md",
+  "certified": true,
+  "note": "4th call passed after appending launch lines + deterministic json.load + directory listing from captured journals."
+}

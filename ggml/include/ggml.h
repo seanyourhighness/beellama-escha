@@ -598,6 +598,10 @@ extern "C" {
         GGML_OP_DSV4_HC_COMB,
         GGML_OP_DSV4_HC_PRE,
         GGML_OP_DSV4_HC_POST,
+        GGML_OP_ESCHA_MOE,
+        GGML_OP_ESCHA_MUL_MAT,
+        GGML_OP_LOWGPU_GET_ROWS,
+        GGML_OP_LOWGPU_MUL_MAT,
 
         // KVarN record-oriented KV-cache operators.  They are not GGUF
         // tensor types and are never serialized in model weights.
@@ -2789,6 +2793,96 @@ extern "C" {
             struct ggml_tensor  * residual,
             struct ggml_tensor  * post,
             struct ggml_tensor  * comb);
+
+    // fused decode + routed matmul for Escha ESCHAM experts
+    //
+    // the weights stay in the 2/3-bit trellis code and are decoded on the fly. each 16x16 tile
+    // decodes independently: weight[p] = lut[sum_j bit(payload, dep[p][j]) << j]. the decoded
+    // matrix lives in a Hadamard-rotated basis, so the op also applies the two rotations that
+    // act on the activations:
+    //
+    //   y = T128((T128(x * rin) @ decode(code))) * rout
+    //
+    // with T128 a normalized Sylvester-Hadamard applied per 128-block along the rotated axis.
+    // rin/rout are per-expert, which is why this cannot be expressed as a ggml quant type.
+    //
+    //   code : [16*K, OC/16, IC/16, n_expert] i16, K = 2 or 3
+    //   rin  : [IC, n_expert]                 f16
+    //   rout : [OC, n_expert]                 f16
+    //   lut  : [65536]                        f16  trellis codebook, shared by all K
+    //   dep  : [16, 256]                      i16  payload bit index per code bit
+    //   x    : [IC, n_x, n_tokens]            f32, broadcast over slots when n_x < n_ids
+    //   ids  : [n_ids, n_tokens]              i32
+    //   res  : [OC, n_ids, n_tokens]          f32
+    GGML_API struct ggml_tensor * ggml_escha_moe(
+            struct ggml_context * ctx,
+            struct ggml_tensor  * code,
+            struct ggml_tensor  * rin,
+            struct ggml_tensor  * rout,
+            struct ggml_tensor  * lut,
+            struct ggml_tensor  * dep,
+            struct ggml_tensor  * x,
+            struct ggml_tensor  * ids);
+
+    // fused decode + matmul for a single Escha ESCHAM projection -- the dense sibling of
+    // ggml_escha_moe. same codec and same rotations, but there is no routing: every row of
+    // x goes through the one weight matrix, so there are no ids and no per-expert stride.
+    //
+    //   y = T128((T128(x * rin) @ decode(code))) * rout
+    //
+    // used by the dense escha checkpoints (Qwen3.8-27B-Escha-W2), where 400 projections --
+    // attention, linear attention and MLP alike -- are stored as code rather than weights.
+    //
+    //   code : [16*K, OC/16, IC/16]     i16, K = 2 or 3
+    //   rin  : [IC]                     f16
+    //   rout : [OC]                     f16
+    //   lut  : [65536]                  f16  trellis codebook, shared by all K
+    //   dep  : [16, 256]                i16  payload bit index per code bit
+    //   x    : [IC, n_tokens, n_batch]  f32
+    //   res  : [OC, n_tokens, n_batch]  f32
+    GGML_API struct ggml_tensor * ggml_escha_mul_mat(
+            struct ggml_context * ctx,
+            struct ggml_tensor  * code,
+            struct ggml_tensor  * rin,
+            struct ggml_tensor  * rout,
+            struct ggml_tensor  * lut,
+            struct ggml_tensor  * dep,
+            struct ggml_tensor  * x);
+
+    // LowGPU v1 3-bit vocab helpers: the token embedding and the LM head stay in
+    // their native packed 3-bit codes and are dequantized on the fly.
+    //
+    // LowGPU v1 layout (see source/lowgpu/format.py):
+    //   * 3 bits/code, 8 levels, group size 128 along the hidden dim;
+    //   * x_hat = (q - zp) * scale, q = 3-bit code, fp16 result;
+    //   * codes packed 8-per-3-bytes, little-endian bit order.
+    //
+    //   code  : [KB, V] u8, KB = n_embd*3/8 packed bytes per row
+    //   scale : [G, V] f16, G = n_embd/128 groups per row
+    //   zp    : [G, V] u8, zero point per group (0..7)
+    //   ids   : [n] i32
+    //   res   : [n_embd, n] f32 (values are fp16-rounded, like the reference gather)
+    GGML_API struct ggml_tensor * ggml_lowgpu_get_rows(
+            struct ggml_context * ctx,
+            struct ggml_tensor  * code,
+            struct ggml_tensor  * scale,
+            struct ggml_tensor  * zp,
+            struct ggml_tensor  * ids);
+
+    // fused dequant + matmul for the LowGPU LM head (dense sibling of the above,
+    // no routing): every row of x is projected by the dequantized vocab matrix.
+    //
+    //   code  : [KB, V] u8
+    //   scale : [G, V] f16
+    //   zp    : [G, V] u8
+    //   x     : [n_embd, n_tokens] f32
+    //   res   : [V, n_tokens] f32
+    GGML_API struct ggml_tensor * ggml_lowgpu_mul_mat(
+            struct ggml_context * ctx,
+            struct ggml_tensor  * code,
+            struct ggml_tensor  * scale,
+            struct ggml_tensor  * zp,
+            struct ggml_tensor  * x);
 
     // custom operators
 

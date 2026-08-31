@@ -381,6 +381,11 @@ static const std::map<llm_kv, const char *> LLM_KV_NAMES = {
     { LLM_KV_XIELU_BETA,            "xielu.beta"            },
     { LLM_KV_XIELU_EPS,             "xielu.eps"             },
 
+    // routed experts stay in the ESCHAM 2/3-bit code; present only in escha models
+    { LLM_KV_ESCHA_VERSION,         "%s.escha.version"      },
+    // LowGPU v1 3-bit vocab sidecars; present only in lowgpu models
+    { LLM_KV_LOWGPU_VERSION,        "%s.lowgpu.version"     },
+
     // deprecated
     { LLM_KV_TOKENIZER_PREFIX_ID, "tokenizer.ggml.prefix_token_id" },
     { LLM_KV_TOKENIZER_SUFFIX_ID, "tokenizer.ggml.suffix_token_id" },
@@ -389,6 +394,12 @@ static const std::map<llm_kv, const char *> LLM_KV_NAMES = {
 
 static const std::map<llm_tensor, const char *> LLM_TENSOR_NAMES = {
     { LLM_TENSOR_TOKEN_EMBD,                             "token_embd" },
+    { LLM_TENSOR_TOKEN_EMBD_LOWGPU_CODE,                 "token_embd.lowgpu_codes" },
+    { LLM_TENSOR_TOKEN_EMBD_LOWGPU_SCALE,                "token_embd.lowgpu_scales" },
+    { LLM_TENSOR_TOKEN_EMBD_LOWGPU_ZP,                   "token_embd.lowgpu_zps" },
+    { LLM_TENSOR_OUTPUT_LOWGPU_CODE,                     "output.lowgpu_codes" },
+    { LLM_TENSOR_OUTPUT_LOWGPU_SCALE,                    "output.lowgpu_scales" },
+    { LLM_TENSOR_OUTPUT_LOWGPU_ZP,                       "output.lowgpu_zps" },
     { LLM_TENSOR_OUTPUT_NORM,                            "output_norm" },
     { LLM_TENSOR_OUTPUT_NORM_LFM2,                       "token_embd_norm" }, // fix for wrong tensor name
     { LLM_TENSOR_OUTPUT,                                 "output" },
@@ -518,6 +529,9 @@ static const std::map<llm_tensor, const char *> LLM_TENSOR_NAMES = {
     { LLM_TENSOR_NEXTN_SHARED_HEAD_NORM,                 "blk.%d.nextn.shared_head_norm" },
     { LLM_TENSOR_ATTN_SUB_NORM,                          "blk.%d.attn_sub_norm" },
     { LLM_TENSOR_FFN_SUB_NORM,                           "blk.%d.ffn_sub_norm" },
+    { LLM_TENSOR_ESCHA_LUT,                              "escha_lut" },
+    { LLM_TENSOR_ESCHA_DEP_K2,                           "escha_dep_k2" },
+    { LLM_TENSOR_ESCHA_DEP_K3,                           "escha_dep_k3" },
     { LLM_TENSOR_DEC_OUTPUT_NORM,                        "dec.output_norm" },
     { LLM_TENSOR_DEC_ATTN_NORM,                          "dec.blk.%d.attn_norm" },
     { LLM_TENSOR_DEC_ATTN_Q,                             "dec.blk.%d.attn_q" },
@@ -642,6 +656,12 @@ static const std::map<llm_tensor, const char *> LLM_TENSOR_NAMES = {
 //
 static const std::map<llm_tensor, llm_tensor_info> LLM_TENSOR_INFOS = {
     {LLM_TENSOR_TOKEN_EMBD,                 {LLM_TENSOR_LAYER_INPUT,     GGML_OP_GET_ROWS}},
+    {LLM_TENSOR_TOKEN_EMBD_LOWGPU_CODE,     {LLM_TENSOR_LAYER_INPUT,     GGML_OP_LOWGPU_GET_ROWS}},
+    {LLM_TENSOR_TOKEN_EMBD_LOWGPU_SCALE,    {LLM_TENSOR_LAYER_INPUT,     GGML_OP_LOWGPU_GET_ROWS}},
+    {LLM_TENSOR_TOKEN_EMBD_LOWGPU_ZP,       {LLM_TENSOR_LAYER_INPUT,     GGML_OP_LOWGPU_GET_ROWS}},
+    {LLM_TENSOR_OUTPUT_LOWGPU_CODE,         {LLM_TENSOR_LAYER_OUTPUT,    GGML_OP_LOWGPU_MUL_MAT}},
+    {LLM_TENSOR_OUTPUT_LOWGPU_SCALE,        {LLM_TENSOR_LAYER_OUTPUT,    GGML_OP_LOWGPU_MUL_MAT}},
+    {LLM_TENSOR_OUTPUT_LOWGPU_ZP,           {LLM_TENSOR_LAYER_OUTPUT,    GGML_OP_LOWGPU_MUL_MAT}},
     {LLM_TENSOR_POS_EMBD,                   {LLM_TENSOR_LAYER_INPUT,     GGML_OP_GET_ROWS}},
     {LLM_TENSOR_TOKEN_TYPES,                {LLM_TENSOR_LAYER_INPUT,     GGML_OP_GET_ROWS}},
     {LLM_TENSOR_TOKEN_EMBD_NORM,            {LLM_TENSOR_LAYER_REPEATING, GGML_OP_MUL}},  // do the norms on the first layer (not the input layer)
@@ -807,6 +827,10 @@ static const std::map<llm_tensor, llm_tensor_info> LLM_TENSOR_INFOS = {
     {LLM_TENSOR_FFN_GATE_CHEXPS,            {LLM_TENSOR_LAYER_REPEATING, GGML_OP_MUL_MAT_ID}},
     {LLM_TENSOR_FFN_UP_CHEXPS,              {LLM_TENSOR_LAYER_REPEATING, GGML_OP_MUL_MAT_ID}},
     {LLM_TENSOR_FFN_EXP_PROBS_B,            {LLM_TENSOR_LAYER_REPEATING, GGML_OP_ADD}},
+    // codec tables are layer-independent, but must land wherever the escha op runs
+    {LLM_TENSOR_ESCHA_LUT,                  {LLM_TENSOR_LAYER_INPUT,     GGML_OP_ESCHA_MOE}},
+    {LLM_TENSOR_ESCHA_DEP_K2,               {LLM_TENSOR_LAYER_INPUT,     GGML_OP_ESCHA_MOE}},
+    {LLM_TENSOR_ESCHA_DEP_K3,               {LLM_TENSOR_LAYER_INPUT,     GGML_OP_ESCHA_MOE}},
     // altup / laurel (gemma 3n)
     {LLM_TENSOR_PER_LAYER_TOKEN_EMBD,       {LLM_TENSOR_LAYER_INPUT,     GGML_OP_GET_ROWS}},
     {LLM_TENSOR_PER_LAYER_MODEL_PROJ,       {LLM_TENSOR_LAYER_REPEATING, GGML_OP_MUL_MAT}},

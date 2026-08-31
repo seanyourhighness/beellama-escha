@@ -409,6 +409,7 @@ llama_build_and_test(test-perplexity-plumbing.cpp ARGS ${PROJECT_SOURCE_DIR})
 llama_build_and_test(test-cuda-fattn-route-policy.cpp ARGS ${PROJECT_SOURCE_DIR})
 llama_build_and_test(test-cuda-fattn-vec-policy.cpp ARGS ${PROJECT_SOURCE_DIR})
 llama_build_and_test(test-cuda-zero-dim-gemm.cpp ARGS ${PROJECT_SOURCE_DIR}/ggml/src/ggml-cuda/ggml-cuda.cu)
+llama_build_and_test(test-lowgpu-prefill.cpp)
 llama_build_and_test(test-cpu-out-prod.cpp)
 llama_build_and_test(test-cpu-fattn-support.cpp)
 

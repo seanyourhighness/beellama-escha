@@ -19,6 +19,39 @@ struct ggml_tensor;
 struct llama_cparams;
 struct llama_layer;
 
+// one projection left in the escha 2/3-bit code; see ggml_escha_moe / ggml_escha_mul_mat.
+// serves both shapes: the MoE code is 4-D with a trailing expert dim and rin/rout are 2-D,
+// the dense code is 3-D with 1-D rotations. bias is dense-only -- the dense export carries a
+// quantization bias-correction term the unquantized model does not have.
+struct llm_escha_exps {
+    struct ggml_tensor * code = nullptr;
+    struct ggml_tensor * rin  = nullptr;
+    struct ggml_tensor * rout = nullptr;
+    struct ggml_tensor * bias = nullptr;
+
+    bool active() const { return code != nullptr; }
+};
+
+// the codec tables, shared by every layer and both op flavours
+struct llm_escha_tables {
+    struct ggml_tensor * lut    = nullptr;
+    struct ggml_tensor * dep_k2 = nullptr;
+    struct ggml_tensor * dep_k3 = nullptr;
+};
+
+// the escha side of one MoE block: the shared codec tables plus the three projections
+struct llm_escha_moe {
+    struct ggml_tensor * lut    = nullptr;
+    struct ggml_tensor * dep_k2 = nullptr;
+    struct ggml_tensor * dep_k3 = nullptr;
+
+    llm_escha_exps gate;
+    llm_escha_exps up;
+    llm_escha_exps down;
+
+    bool active() const { return down.active(); }
+};
+
 enum llama_kv_tail_route : int;
 
 struct llama_memory_context_i;
@@ -1108,6 +1141,20 @@ struct llm_graph_context {
               ggml_tensor * ids,
               ggml_tensor * w_s = nullptr) const;
 
+    // routed matmul for experts still in the escha code -- stands in for build_lora_mm_id
+    ggml_tensor * build_escha_mm_id(
+       const llm_escha_moe & escha,
+      const llm_escha_exps & w,
+              ggml_tensor * cur,
+              ggml_tensor * ids) const;
+
+    // dense matmul for a projection still in the escha code -- stands in for build_lora_mm.
+    // applies the bias-correction term too, so callers must not add it themselves.
+    ggml_tensor * build_escha_mm(
+    const llm_escha_tables & tab,
+      const llm_escha_exps & w,
+              ggml_tensor * cur) const;
+
     ggml_tensor * build_norm(
              ggml_tensor * cur,
              ggml_tensor * mw,
@@ -1194,7 +1241,11 @@ struct llm_graph_context {
     // inputs
     //
 
-    ggml_tensor * build_inp_embd(ggml_tensor * tok_embd) const;
+    ggml_tensor * build_inp_embd(
+             ggml_tensor * tok_embd,
+             ggml_tensor * lg_code  = nullptr,
+             ggml_tensor * lg_scale = nullptr,
+             ggml_tensor * lg_zp    = nullptr) const;
     ggml_tensor * build_inp_pos() const;
     ggml_tensor * build_inp_attn_scale() const;
     ggml_tensor * build_inp_out_ids() const;

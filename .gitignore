@@ -55,6 +55,7 @@
 /vulkan-shaders-gen
 /rpc-server
 /out/
+/scripts/escha-compare/out/
 /tmp/
 /autogen-*.md
 /common/build-info.cpp

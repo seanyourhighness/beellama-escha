@@ -1944,6 +1944,53 @@ ggml_tensor * llm_graph_context::build_lora_mm_id(
     return res;
 }
 
+ggml_tensor * llm_graph_context::build_escha_mm_id(
+   const llm_escha_moe & escha,
+  const llm_escha_exps & w,
+          ggml_tensor * cur,
+          ggml_tensor * ids) const {
+    // bit width is a property of the projection, not of the model: gate/up are K=2 and
+    // down is K=3, and each K has its own bit-dependency table
+    const int64_t K = w.code->ne[0]/16;
+    ggml_tensor * dep = K == 2 ? escha.dep_k2 : escha.dep_k3;
+    GGML_ASSERT(dep != nullptr && "escha_dep table missing for this bit width");
+
+    // loras cannot apply here: there is no dense weight to add a low-rank update to
+    return ggml_escha_moe(ctx0, w.code, w.rin, w.rout, escha.lut, dep, cur, ids);
+}
+
+ggml_tensor * llm_graph_context::build_escha_mm(
+const llm_escha_tables & tab,
+  const llm_escha_exps & w,
+          ggml_tensor * cur) const {
+    // bit width is a property of the projection: the dense export uses K=3 for mlp.up and
+    // mlp.down and K=2 everywhere else, and each K has its own bit-dependency table
+    const int64_t K = w.code->ne[0]/16;
+    ggml_tensor * dep = K == 2 ? tab.dep_k2 : tab.dep_k3;
+    GGML_ASSERT(dep != nullptr && "escha_dep table missing for this bit width");
+
+    // loras cannot apply here: there is no dense weight to add a low-rank update to
+    ggml_tensor * out = ggml_escha_mul_mat(ctx0, w.code, w.rin, w.rout, tab.lut, dep, cur);
+
+    // Every coded projection ships an fp32 bias-correction vector, and the base model has
+    // none, so applying it looks obviously right. escha's own runtime does NOT apply it:
+    // "ignoring them is what reproduces the results published here" (model card, Format
+    // notes). Applying it is a measured wash on quality there (79.16 -> 79.15 commonsense),
+    // so we default to their behaviour and keep the tensors loaded, because matching the
+    // reference runtime is worth more than a change that is quality-neutral by their own
+    // measurement. Flip to 1 to A/B it against the oracle.
+#define ESCHA_APPLY_BIAS 0
+#if ESCHA_APPLY_BIAS
+    if (w.bias != nullptr) {
+        out = ggml_add(ctx0, out, w.bias);
+    }
+#else
+    GGML_UNUSED(w.bias);
+#endif
+
+    return out;
+}
+
 ggml_tensor * llm_graph_context::build_norm(
          ggml_tensor * cur,
          ggml_tensor * mw,
@@ -2655,7 +2702,11 @@ ggml_tensor * llm_graph_context::build_moe_ffn(
 }
 
 // input embeddings with optional lora
-ggml_tensor * llm_graph_context::build_inp_embd(ggml_tensor * tok_embd) const {
+ggml_tensor * llm_graph_context::build_inp_embd(
+        ggml_tensor * tok_embd,
+        ggml_tensor * lg_code,
+        ggml_tensor * lg_scale,
+        ggml_tensor * lg_zp) const {
     const int64_t n_embd_inp = hparams.n_embd_inp();
     const int64_t n_embd     = hparams.n_embd;
 
@@ -2680,24 +2731,31 @@ ggml_tensor * llm_graph_context::build_inp_embd(ggml_tensor * tok_embd) const {
     {
         auto & cur = inps[0];
 
-        cur = ggml_get_rows(ctx0, tok_embd, inp->tokens);
+        if (tok_embd != nullptr) {
+            cur = ggml_get_rows(ctx0, tok_embd, inp->tokens);
+        } else {
+            GGML_ASSERT(lg_code != nullptr && lg_scale != nullptr && lg_zp != nullptr);
+            cur = ggml_lowgpu_get_rows(ctx0, lg_code, lg_scale, lg_zp, inp->tokens);
+        }
 
         // apply lora for embedding tokens if needed
-        for (const auto & lora : *loras) {
-            llama_adapter_lora_weight * lw = lora.first->get_weight(tok_embd);
-            if (lw == nullptr) {
-                continue;
+        if (tok_embd != nullptr) {
+            for (const auto & lora : *loras) {
+                llama_adapter_lora_weight * lw = lora.first->get_weight(tok_embd);
+                if (lw == nullptr) {
+                    continue;
+                }
+
+                const float adapter_scale = lora.second;
+                const float scale = lw->get_scale(lora.first->alpha, adapter_scale);
+
+                ggml_tensor * inpL_delta = ggml_scale(ctx0, ggml_mul_mat(
+                            ctx0, lw->b, // non-transposed lora_b
+                            ggml_get_rows(ctx0, lw->a, inp->tokens)
+                            ), scale);
+
+                cur = ggml_add(ctx0, cur, inpL_delta);
             }
-
-            const float adapter_scale = lora.second;
-            const float scale = lw->get_scale(lora.first->alpha, adapter_scale);
-
-            ggml_tensor * inpL_delta = ggml_scale(ctx0, ggml_mul_mat(
-                        ctx0, lw->b, // non-transposed lora_b
-                        ggml_get_rows(ctx0, lw->a, inp->tokens)
-                        ), scale);
-
-            cur = ggml_add(ctx0, cur, inpL_delta);
         }
 
         if (n_embd_inp != n_embd) {

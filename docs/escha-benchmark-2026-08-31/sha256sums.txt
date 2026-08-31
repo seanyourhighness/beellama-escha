@@ -1,0 +1,9 @@
+5ed4b155fb19ab51350342cb25eb357fd6b36832405acedfda28665bbbe8664c  /mnt/d/CODEX WORKSPACE/beellama-escha/build-cuda-qwen35-gated/bin/llama-server
+8e7ba2d0ff857aea9f4cdb422a0f7dcffe35feb21e8ecd28d486cf83d48cfb8a  /mnt/d/CODEX WORKSPACE/beellama-escha/build-cuda-qwen35-gated/bin/libllama.so
+22991d73ce3db09fa66dcb54cb6fe38ca9051eccff6fe6273a89c5c38e09fa67  /mnt/d/CODEX WORKSPACE/beellama-escha/build-cuda-qwen35-gated/bin/libggml-cuda.so
+12c990791a9b6bd24fb224eb0fbf77240aaeb936897db4b57806933d7472df73  /mnt/d/CODEX WORKSPACE/beellama-escha/build-cuda-qwen35-gated/bin/libllama-server-impl.so
+ac154baf36a40d3e4996453bf273da8ae64cce1c2a44a607626dc7d1e27ff14d  /mnt/d/CODEX WORKSPACE/beellama-escha/convert_escha_to_gguf.py
+e307007f4a7489777c70f724e14d807d403959b1dc1bf6857c44ca1b6954778d  /mnt/d/CODEX WORKSPACE/escha-w2-lowgpu/weights/escha-w2-lowgpu-mono-parity.gguf
+2e61882d27f8828ce19d45d3eb33e6a4cd09802d2c84a19fa0636e8f8cf518fa  /mnt/d/CODEX WORKSPACE/escha-w2-lowgpu/weights/escha-w2-lowgpu-mono-parity-standard-ffn-gdn-q2k.gguf
+c9196385b007222acebf839e93fb25fea92d45ae82f7a8fa3257b1598e4ebe4c  /mnt/d/CODEX WORKSPACE/escha-w2-lowgpu/weights/escha-w2-lowgpu-mono-parity-standard-ffn-gdn-q2k-embedq4.gguf
+ad85e40a28aafd907eebb6ff6b21786b897dd750b0918427f1243d6d84ebcc72  /mnt/d/CODEX WORKSPACE/beellama-release/models/Qwen3.8-27B-LowGPU-NoMTP-IQ3XXXS.gguf

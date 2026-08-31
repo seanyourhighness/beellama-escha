@@ -1,6 +1,15 @@
 #include "gated_delta_net.cuh"
 #include "ggml-cuda/common.cuh"
 
+#include <cstdio>
+
+static __global__ void gdn_debug_find_nonfinite(const float * data, int64_t n, int * result) {
+    const int64_t i = (int64_t) blockIdx.x*blockDim.x + threadIdx.x;
+    if (i < n && !isfinite(data[i])) {
+        atomicCAS(result, -1, (int) i);
+    }
+}
+
 template <int S_v, bool KDA, bool keep_rs_t>
 __global__ void __launch_bounds__((ggml_cuda_get_physical_warp_size() < S_v ? ggml_cuda_get_physical_warp_size() : S_v) * 4, 2)
 gated_delta_net_cuda(const float * q,
@@ -314,6 +323,39 @@ static void ggml_cuda_op_gated_delta_net_impl(
                 S_v, H, n_tokens, n_seqs, sq1, sq2, sq3, sv1, sv2, sv3,
                 sb1, sb2, sb3, neqk1, rq3, scale, state_slot_stride, K, stream);
         }
+    }
+
+    if (getenv("GDN_DEBUG_NAN") != nullptr) {
+        static int call = 0;
+        // Only the leading attention tensor is consumed by the following gated
+        // normalization.  The remaining allocation is recurrent-state storage.
+        const int64_t n = S_v*H*n_tokens*n_seqs;
+        const int64_t state_n = S_v*S_v*H*n_seqs;
+        const size_t g_n = ggml_nelements(src_g);
+        int * dev_bad = nullptr;
+        int host_bad = -1;
+        int state_bad = -1;
+        std::vector<float> host_g(g_n);
+        CUDA_CHECK(cudaMalloc(&dev_bad, sizeof(*dev_bad)));
+        CUDA_CHECK(cudaMemcpyAsync(dev_bad, &host_bad, sizeof(host_bad), cudaMemcpyHostToDevice, stream));
+        gdn_debug_find_nonfinite<<<(unsigned) ((n + 255)/256), 256, 0, stream>>>(dst_d, n, dev_bad);
+        CUDA_CHECK(cudaGetLastError());
+        CUDA_CHECK(cudaMemcpyAsync(&host_bad, dev_bad, sizeof(host_bad), cudaMemcpyDeviceToHost, stream));
+        CUDA_CHECK(cudaMemcpyAsync(dev_bad, &state_bad, sizeof(state_bad), cudaMemcpyHostToDevice, stream));
+        gdn_debug_find_nonfinite<<<(unsigned) ((state_n + 255)/256), 256, 0, stream>>>(s_d, state_n, dev_bad);
+        CUDA_CHECK(cudaGetLastError());
+        CUDA_CHECK(cudaMemcpyAsync(&state_bad, dev_bad, sizeof(state_bad), cudaMemcpyDeviceToHost, stream));
+        CUDA_CHECK(cudaMemcpyAsync(host_g.data(), g_d, g_n*sizeof(float), cudaMemcpyDeviceToHost, stream));
+        CUDA_CHECK(cudaStreamSynchronize(stream));
+        CUDA_CHECK(cudaFree(dev_bad));
+        float g_min = INFINITY;
+        float g_max = -INFINITY;
+        for (float v : host_g) {
+            g_min = fminf(g_min, v);
+            g_max = fmaxf(g_max, v);
+        }
+        fprintf(stderr, "GDN_DEBUG_NAN call=%d S=%lld H=%lld rows=%lld gate=[%g,%g] state_bad=%d attn_bad=%d\n",
+                call++, (long long) S_v, (long long) H, (long long) n_tokens, g_min, g_max, state_bad, host_bad);
     }
 }
 
