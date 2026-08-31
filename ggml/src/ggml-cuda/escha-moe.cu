@@ -1042,15 +1042,16 @@ static __global__ void __launch_bounds__(256, 1) escha_matmul_dense_tiled_mma(
         ppre = ((const uint32_t *)(code + (int64_t)(lo*nct + oc0/ESCHA_TILE + pt)*(16*K)))[pw];
     }
 
-    // Activations for tile lo into buffer 0.  Blackwell's WSL driver can leave
-    // the legacy HMMA kernel pending when its cp.async/LDGSTS pipeline is used
-    // (the same HMMA sequence itself is otherwise valid).  Its synchronous
-    // vector-copy fallback keeps the exact layout and tensor-core math while
-    // avoiding that driver path.  Older architectures retain the overlap.
+    // Activations for tile lo into buffer 0.  SM120/Blackwell uses the
+    // double-buffered cp.async/LDGSTS A-stage overlap by default (proven safe
+    // and ~58% faster at matched 2k; see EXP-01).  A synchronous vector-copy
+    // fallback remains available for WSL driver edge cases where cp.async can
+    // leave a legacy HMMA kernel pending: define ESCHA_MMA_SM120_SYNC_FALLBACK
+    // to select it.  Older architectures always use the overlap.
     if (lo < hi) {
         {
             const int row = row0 + cp_m;
-#if defined(BLACKWELL_MMA_AVAILABLE) && !defined(ESCHA_MMA_SM120_ASYNC_EXPERIMENT)
+#if defined(BLACKWELL_MMA_AVAILABLE) && defined(ESCHA_MMA_SM120_SYNC_FALLBACK)
             const uint4 v = row < n_rows
                 ? *(const uint4 *) (u + (int64_t) row*IC + lo*ESCHA_TILE + cp_h)
                 : make_uint4(0, 0, 0, 0);
@@ -1062,7 +1063,7 @@ static __global__ void __launch_bounds__(256, 1) escha_matmul_dense_tiled_mma(
                                     CPB, row < n_rows ? 0 : CPB);
 #endif
         }
-#if !defined(BLACKWELL_MMA_AVAILABLE) || defined(ESCHA_MMA_SM120_ASYNC_EXPERIMENT)
+#if !defined(BLACKWELL_MMA_AVAILABLE) || !defined(ESCHA_MMA_SM120_SYNC_FALLBACK)
         __pipeline_commit();
 #endif
     }
@@ -1081,12 +1082,12 @@ static __global__ void __launch_bounds__(256, 1) escha_matmul_dense_tiled_mma(
         }
         // The copy for THIS tile was committed last round; drain it before the barrier
         // that publishes s_pay, so su_cur is visible to every warp below.
-#if !defined(BLACKWELL_MMA_AVAILABLE) || defined(ESCHA_MMA_SM120_ASYNC_EXPERIMENT)
+#if !defined(BLACKWELL_MMA_AVAILABLE) || !defined(ESCHA_MMA_SM120_SYNC_FALLBACK)
         __pipeline_wait_prior(0);
 #endif
         __syncthreads();
 
-#if !defined(BLACKWELL_MMA_AVAILABLE) || defined(ESCHA_MMA_SM120_ASYNC_EXPERIMENT)
+#if !defined(BLACKWELL_MMA_AVAILABLE) || !defined(ESCHA_MMA_SM120_SYNC_FALLBACK)
         if (ti + 1 < hi) {
             const int row = row0 + cp_m;
             const int src_row = row < n_rows ? row : 0;
@@ -1136,7 +1137,7 @@ static __global__ void __launch_bounds__(256, 1) escha_matmul_dense_tiled_mma(
         }
         __syncthreads();
 
-#if defined(BLACKWELL_MMA_AVAILABLE) && !defined(ESCHA_MMA_SM120_ASYNC_EXPERIMENT)
+#if defined(BLACKWELL_MMA_AVAILABLE) && defined(ESCHA_MMA_SM120_SYNC_FALLBACK)
         // Publish the following input tile after all warps have finished reading
         // su_cur.  The top-of-loop barrier publishes this synchronous copy.
         if (ti + 1 < hi) {
@@ -1270,11 +1271,12 @@ static __global__ void __launch_bounds__(256, 1) escha_matmul_dense_tiled_mma_ff
     }
 
     // Activations for tile lo into buffer 0 (same overlap policy as the
-    // non-fused kernel; the experimental build uses the cp.async path).
+    // non-fused kernel: SM120 defaults to the cp.async path; the synchronous
+    // fallback is selected only by ESCHA_MMA_SM120_SYNC_FALLBACK).
     if (lo < hi) {
         {
             const int row = row0 + cp_m;
-#if defined(BLACKWELL_MMA_AVAILABLE) && !defined(ESCHA_MMA_SM120_ASYNC_EXPERIMENT)
+#if defined(BLACKWELL_MMA_AVAILABLE) && defined(ESCHA_MMA_SM120_SYNC_FALLBACK)
             const uint4 v = row < n_rows
                 ? *(const uint4 *) (u + (int64_t) row*IC + lo*ESCHA_TILE + cp_h)
                 : make_uint4(0, 0, 0, 0);
@@ -1286,7 +1288,7 @@ static __global__ void __launch_bounds__(256, 1) escha_matmul_dense_tiled_mma_ff
                                     CPB, row < n_rows ? 0 : CPB);
 #endif
         }
-#if !defined(BLACKWELL_MMA_AVAILABLE) || defined(ESCHA_MMA_SM120_ASYNC_EXPERIMENT)
+#if !defined(BLACKWELL_MMA_AVAILABLE) || !defined(ESCHA_MMA_SM120_SYNC_FALLBACK)
         __pipeline_commit();
 #endif
     }
@@ -1305,12 +1307,12 @@ static __global__ void __launch_bounds__(256, 1) escha_matmul_dense_tiled_mma_ff
         }
         // The copy for THIS tile was committed last round; drain it before the barrier
         // that publishes s_pay, so su_cur is visible to every warp below.
-#if !defined(BLACKWELL_MMA_AVAILABLE) || defined(ESCHA_MMA_SM120_ASYNC_EXPERIMENT)
+#if !defined(BLACKWELL_MMA_AVAILABLE) || !defined(ESCHA_MMA_SM120_SYNC_FALLBACK)
         __pipeline_wait_prior(0);
 #endif
         __syncthreads();
 
-#if !defined(BLACKWELL_MMA_AVAILABLE) || defined(ESCHA_MMA_SM120_ASYNC_EXPERIMENT)
+#if !defined(BLACKWELL_MMA_AVAILABLE) || !defined(ESCHA_MMA_SM120_SYNC_FALLBACK)
         if (ti + 1 < hi) {
             const int row = row0 + cp_m;
             const int src_row = row < n_rows ? row : 0;
@@ -1356,7 +1358,7 @@ static __global__ void __launch_bounds__(256, 1) escha_matmul_dense_tiled_mma_ff
         }
         __syncthreads();
 
-#if defined(BLACKWELL_MMA_AVAILABLE) && !defined(ESCHA_MMA_SM120_ASYNC_EXPERIMENT)
+#if defined(BLACKWELL_MMA_AVAILABLE) && defined(ESCHA_MMA_SM120_SYNC_FALLBACK)
         // Publish the following input tile after all warps have finished reading
         // su_cur.  The top-of-loop barrier publishes this synchronous copy.
         if (ti + 1 < hi) {
