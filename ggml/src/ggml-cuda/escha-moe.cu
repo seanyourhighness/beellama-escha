@@ -1916,12 +1916,6 @@ void ggml_cuda_op_escha_mul_mat(ggml_backend_cuda_context & ctx, ggml_tensor * d
                       && OC % ESCHA_MMA_BN == 0
                       && getenv("ESCHA_NO_MMA") == nullptr;
 
-#ifdef ESCHA_MMA_BOUNDEDK_FP16ACC_EXPERIMENT
-    // EXP-04 Stage 3 target: the single IC>6144 prefill family.  Used for the
-    // route tag, the n_slices override, and the K3 FP16 launch below.
-    const bool boundedk_family = !gen && use_mma && K == 3 && IC == 17408 && OC == 5120;
-#endif
-
     if (gen) {
         profile_route = getenv("ESCHA_WARP_GEMV") != nullptr ? "warp-gemv-fp32" : "gen-splitk-fp32";
     } else if (use_cublas) {
@@ -1931,11 +1925,6 @@ void ggml_cuda_op_escha_mul_mat(ggml_backend_cuda_context & ctx, ggml_tensor * d
     } else if (use_wmma_bw) {
         profile_route = "wmma-bw-fp16";
     } else if (use_mma) {
-#ifdef ESCHA_MMA_BOUNDEDK_FP16ACC_EXPERIMENT
-        if (boundedk_family) {
-            profile_route = "mma-fp16-boundedk";
-        } else
-#endif
         // PROMOTED default (EXP-04 Stage 2): mixed accumulator policy (native
         // Escha mixed policy: fp16 MMA acc for IC <= 6144, fp32 above), applied
         // per projection across every K2/K3 prefill family.  The acc sidecar in
@@ -2002,24 +1991,6 @@ void ggml_cuda_op_escha_mul_mat(ggml_backend_cuda_context & ctx, ggml_tensor * d
             n_slices = 64;
         }
     }
-
-#ifdef ESCHA_MMA_BOUNDEDK_FP16ACC_EXPERIMENT
-    // EXP-04 Stage 3: bounded-K FP16 accumulation for the 17408->5120 family.
-    // Stage 2 proved FP16 MMA accumulation safe up to 384 HMMA steps (IC=6144).
-    // This family's IC=17408 gives 1088 tiles in one slice (2.83x deeper than
-    // the proven-safe depth).  Force 4 equal slices of 272 tiles (IC=4352 each)
-    // so the FP16 accumulation depth within every slice is BELOW the Stage 2
-    // proven-safe 384.  Each slice still writes an FP32 partial and the existing
-    // escha_finalize_dense sums the fixed slice order in FP32.  Grid becomes
-    // 16*40*4 = 2560 CTAs (from 640); partial buffer grows to 160 MiB
-    // (+120 MiB, 0.37% of the 32 GiB VRAM budget).
-    // One variable only: the slice count + accumulator type for THIS family.
-    // Stage 2 IC<=6144 dispatch is unchanged; no global threshold raise.
-    if (boundedk_family) {
-        GGML_ASSERT(nit % 4 == 0 && "escha: bounded-K requires nit divisible by 4");
-        n_slices = 4;
-    }
-#endif
 
     ggml_cuda_pool_alloc<float> p_buf(ctx.pool(), (size_t) n_slices*n_rows*OC);
 
@@ -2176,16 +2147,6 @@ void ggml_cuda_op_escha_mul_mat(ggml_backend_cuda_context & ctx, ggml_tensor * d
 #endif // ESCHA_MMA_SM120_K2_BN64_EXPERIMENT
             }
             case 3: {
-#ifdef ESCHA_MMA_BOUNDEDK_FP16ACC_EXPERIMENT
-                if (boundedk_family) {
-                    // EXP-04 Stage 3: bounded-K FP16 accumulation.  Same kernel,
-                    // same geometry; the n_slices=4 override bounds the FP16
-                    // accumulation depth to 272 tiles/slice (< the Stage 2-safe
-                    // 384).  FP32 partials per slice; finalize unchanged.
-                    launch((escha_matmul_dense_tiled_mma<3, ESCHA_MMA_BM, ESCHA_MMA_BN, true>));
-                    break;
-                }
-#endif
                 // PROMOTED default (EXP-04 Stage 2): mixed accumulator policy
                 // (native Escha mixed policy: fp16 MMA acc for IC <= 6144, fp32
                 // above), applied per projection across every K3 prefill family
