@@ -792,7 +792,12 @@ Architecture audit before further kernel tuning. Classification:
   positive (≥5% gate).
 - Raw artifacts: `evidence/EXP-04-stage1/2026-09-01/` (stage1-profile.*,
   stage1-bench.*, stage1-decode.*, STAGE1-REPORT.md, provenance.manifest).
-- Decision: Stage 1 COMPLETE (pending Sol/Codex review gate before Stage 2).
+- Sol/Codex review (2026-09-01): **VERDICT = CONFIRM** — CHECK 1..6 PASS,
+  Stage 1 gate PASS (`/tmp/escha-exp04-stage1-review2.md`; first round
+  REVISE for CV-≤2% overclaim + incomplete fingerprint contract, both fixed
+  in commit `8ebcbdde5`).
+- Decision: **Stage 1 COMPLETE + Sol-verified.** Proceeding to Stage 2
+  (ONE structural variable, SASS/profiler proof + quality gate).
 
 ## Durable evidence sources
 
