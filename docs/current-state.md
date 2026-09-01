@@ -118,6 +118,19 @@ the fuseable bound first; do not reduce to an accumulator toggle; the >20%
 gain is hypothesis, not yet evidenced). Full audit:
 `docs/escha-w2-architecture-provenance-audit.md`.
 
+### EXP-04 Stage 1 (2026-09-01) — COMPLETE (measurement only)
+
+Fuseable rotate/GEMM/finalize bound measured on the current default route
+(`mma-fp16`, HEAD `4501b3ee1` = EXP-01 kernel), canonical artifact, 2k gate,
+`ESCHA_PROFILE` 800/800 `route=mma-fp16`. Steady-state attribution:
+**rotate 4.6% · matmul 88.6% · epilogue 6.7%**. The packed-GEMM body is the
+wall in every family; the fuseable launch bound is ≈11.3% best case, so
+launch fusion alone cannot reach the ≥20% breakthrough gate — Stage 2 must
+target the GEMM body (structural mixed accumulator or B-decode/launch
+structure with SASS proof). Timed control reproduced the banked baseline
+(median 2284.7 tok/s, CV ≤2%, decode unchanged). Evidence:
+`evidence/EXP-04-stage1/2026-09-01/`. Pending Sol/Codex review before Stage 2.
+
 ## Closed work
 
 - P-ARCH-22 (vocab representation): **CLOSED as size-capped** — do not reopen

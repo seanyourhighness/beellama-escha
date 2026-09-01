@@ -1,0 +1,10 @@
+# EXP-04 Stage 1 provenance (2026-09-01) — measurement only, no code changes
+git_head: 4501b3ee10dfce3451df7442c7baa2b03021a105
+escha-moe.cu sha256: bfe0e43d135220cc2d62033c12ac4b43896cf07b4ae5dcbf81bc98dc215b43c2
+model sha256: e307007f4a7489777c70f724e14d807d403959b1dc1bf6857c44ca1b6954778d
+binaries:
+bb174036b76a91aa457cb6ac32b6c41db33a8ef29a86135ce80ebe9dfe908bf1  build-cuda-exp04-stage1/bin/llama-bench
+15f41fd706242c79ca3ccdc4a3211217af5b0811cf03654011320f3398bbde27  build-cuda-exp04-stage1/bin/llama-server
+29cdcc2e367148678049b0adfd200bdba936cd6c2537af3fe4414747e6dcf52d  build-cuda-exp04-stage1/bin/libggml-cuda.so.0.19.0
+gpu: RTX 5090 (SM120) driver 610.88
+contract: llama-bench -p 2048 -n 0 -ngl 99 -b 2048 -ub 2048 -ctk f16 -ctv f16 -fa on, shared-2048.ids

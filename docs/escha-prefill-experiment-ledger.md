@@ -755,6 +755,43 @@ Architecture audit before further kernel tuning. Classification:
 - Worker note: 4× DeepSeek V4 Flash (Nous Portal) failed at dispatch with
   HTTP 401; the primary agent performed the full audit directly.
 
+### EXP-04 Stage 1 — fuseable rotate/GEMM/finalize bound (attribution) — COMPLETE
+
+- Date: 2026-09-01. Measurement-only (no code changes). Branch
+  `escha-w2-prefill`, HEAD `4501b3ee1` (ARCH-01; `escha-moe.cu` byte-identical
+  to EXP-01 promotion `215aa4ac3`, sha256
+  `bfe0e43d135220cc2d62033c12ac4b43896cf07b4ae5dcbf81bc98dc215b43c2`).
+- Fresh build `build-cuda-exp04-stage1` (cmake+ninja, Release, arch 120,
+  `GGML_CUDA=ON GGML_CUDA_FA=ON GGML_NATIVE=OFF GGML_CUDA_GRAPHS=ON`).
+  Binary hashes in `evidence/EXP-04-stage1/2026-09-01/provenance.manifest`.
+- Contract: canonical `escha-w2-lowgpu-mono-parity.gguf` (sha256
+  `e307007f…4778d`), `llama-bench -p 2048 -n 0 -ngl 99 -b 2048 -ub 2048
+  -ctk f16 -ctv f16 -fa on` with fixed shared-2048 IDs, RTX 5090 (SM120,
+  driver 610.88).
+- Attribution run: `ESCHA_PROFILE=1 GGML_CUDA_DISABLE_GRAPHS=1`.
+  800/800 lines report `route=mma-fp16 rows=2048 gen=0` — no fallback.
+- Timed control (graphs on, no profile): median 2284.7 tok/s (2193.6 /
+  2333.3 / 2284.7) — reproduces banked EXP-01 2k (~2302 tok/s) within CV.
+  Decode 64: 39.26 / 44.23 / 40.56 tok/s — no regression.
+- Steady-state attribution (792 calls, first cold call per family excluded):
+  **rotate 4.6% · matmul 88.6% · epilogue 6.7%** (61.9 / 1186.1 / 90.2 ms of
+  1338.3 ms measured projection time). Matmul ≥73% in every family
+  (5120→1024 family is the exception at 73.2% with rotate 21.8%, but only
+  63 calls × 0.256 ms — immaterial).
+- Cold first-call artifacts are large but non-recurring (e.g. 5120→10240
+  first call rotate 3.40 / epilogue 8.47 ms vs 0.059 / 0.129 steady state) —
+  warmup/allocator, excluded from attribution.
+- **Conclusion:** fuseable launch bound ≈ 11.3% (rotate 4.6% + epilogue
+  6.7%) best case; realistic recoverable less (P-ARCH-14 fused finalize
+  neutral). A launch-fusion candidate cannot plausibly reach the ≥20%
+  breakthrough gate; Stage 2 should target the packed-GEMM body (structural
+  mixed accumulator or B-decode/launch structure with SASS proof), not
+  rotate/finalize fusion — unless a fusion candidate is run only as a small
+  positive (≥5% gate).
+- Raw artifacts: `evidence/EXP-04-stage1/2026-09-01/` (stage1-profile.*,
+  stage1-bench.*, stage1-decode.*, STAGE1-REPORT.md, provenance.manifest).
+- Decision: Stage 1 COMPLETE (pending Sol/Codex review gate before Stage 2).
+
 ## Durable evidence sources
 
 - GBrain: *Qwen3.5 hybrid prefill batching audit — rows 2-4 vs 512 (2026-08-29)*.
