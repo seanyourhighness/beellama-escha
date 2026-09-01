@@ -134,6 +134,19 @@ candidate gate; decode unchanged). Evidence:
 (2026-09-01, all checks PASS; first round REVISE for CV overclaim + fingerprint
 contract, fixed in `8ebcbdde5`). Stage 2 in progress.
 
+### EXP-04 Stage 2 (2026-09-01) — RESULTS: SMALLER POSITIVE +10% median
+
+Structurally-gated mixed accumulator (fp16 MMA acc for IC≤6144, fp32 above —
+native Escha mixed policy), ONE variable under `ESCHA_MMA_MIXEDACC_EXPERIMENT`,
+commit `7b1880f41`, Sol implementation review CONFIRM. SASS proof: fp16 kernels
+only `HMMA.16816.F16` (97 regs, no spills), fp32 twins only `.F32` (128 regs);
+route proof 800/800, 0 predicate mismatches. Matched 2k: **+10.0/+10.9/+10.5%
+median over 3 runs** (2496–2508 vs 2251–2281 tok/s), decode no regression,
+P2/P7 16/16, no family regressions (fp16 families −17.6 to −26% matmul).
+**Classified SMALLER POSITIVE (≥5%, <20%).** CV 3.1–6.3% per arm (host noise,
+flagged) exceeds the ≤2% letter — pending Sol VERIFY before promotion.
+Evidence: `evidence/EXP-04-stage2/2026-09-01/`.
+
 ## Closed work
 
 - P-ARCH-22 (vocab representation): **CLOSED as size-capped** — do not reopen

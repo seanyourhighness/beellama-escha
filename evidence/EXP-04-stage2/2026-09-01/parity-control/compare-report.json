@@ -1,0 +1,68 @@
+{
+  "method": "Beellama native escha port vs reference SGLang e3 outputs; raw rendered prompts, temp 0, seed 42, token-level prefix agreement",
+  "model": "/mnt/d/CODEX WORKSPACE/escha-w2-lowgpu/weights/escha-w2-lowgpu-mono-parity.gguf",
+  "prompts": [
+    {
+      "id": "P2-factual",
+      "category": "factual response",
+      "got": "The capital of Australia is Canberra, a purpose-built city designed to serve as the",
+      "reference": "The capital of Australia is Canberra, a purpose-built city designed to serve as the nation's administrative center. It is renowned for its well-planned layout, significant government institutions, and cultural landmarks such as the Australian War Memorial and the National Gallery.",
+      "token_agreement": {
+        "ref_tokens": 49,
+        "got_tokens": 16,
+        "compared_tokens": 16,
+        "prefix_agree_tokens": 16,
+        "prefix_agree_rate": 0.32653061224489793,
+        "compared_agree_rate": 1.0,
+        "exact_token_match": false
+      },
+      "timings": {
+        "cache_n": 0,
+        "cache_lcp_n": 0,
+        "cache_planned_n": 0,
+        "cache_reprocessed_n": 33,
+        "cache_source": "none",
+        "cache_reason": "disabled",
+        "prompt_n": 33,
+        "prompt_ms": 337.233,
+        "prompt_per_token_ms": 10.219181818181818,
+        "prompt_per_second": 97.85519210753397,
+        "predicted_n": 16,
+        "predicted_ms": 423.983,
+        "predicted_per_token_ms": 26.4989375,
+        "predicted_per_second": 37.737362111216726
+      }
+    },
+    {
+      "id": "P7-tool-call",
+      "category": "tool-call syntax",
+      "got": "<function=get_weather><parameter=city>Tokyo</parameter><parameter=",
+      "reference": "<function=get_weather><parameter=city>Tokyo</parameter><parameter=unit>C</parameter></function>",
+      "token_agreement": {
+        "ref_tokens": 23,
+        "got_tokens": 16,
+        "compared_tokens": 16,
+        "prefix_agree_tokens": 16,
+        "prefix_agree_rate": 0.6956521739130435,
+        "compared_agree_rate": 1.0,
+        "exact_token_match": false
+      },
+      "timings": {
+        "cache_n": 0,
+        "cache_lcp_n": 0,
+        "cache_planned_n": 0,
+        "cache_reprocessed_n": 74,
+        "cache_source": "none",
+        "cache_reason": "disabled",
+        "prompt_n": 74,
+        "prompt_ms": 2838.545,
+        "prompt_per_token_ms": 38.358716216216216,
+        "prompt_per_second": 26.06969415668943,
+        "predicted_n": 16,
+        "predicted_ms": 352.531,
+        "predicted_per_token_ms": 22.0331875,
+        "predicted_per_second": 45.38607952208458
+      }
+    }
+  ]
+}

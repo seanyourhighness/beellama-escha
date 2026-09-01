@@ -1,0 +1,53 @@
+# EXP-04 Stage 2 provenance (2026-09-01)
+implementation_commit: 7b1880f41 (escha-w2-prefill; base b00263ba1 = Stage 1)
+gate: ESCHA_MMA_MIXEDACC_EXPERIMENT=1 (candidate); absent (control)
+model sha256: e307007f4a7489777c70f724e14d807d403959b1dc1bf6857c44ca1b6954778d
+gpu: RTX 5090 SM120 (cc 12.0) driver 610.88, 32,606 MiB
+
+# Source
+git_head: 7b1880f4171b2a6bfa3bbca28b05cccb78f16526
+escha-moe.cu sha256 (head): 1ecbcabc69478f9e...
+
+# Binaries (sha256, first 16 chars)
+control llama-bench:      34df37036f2ca1fe
+control llama-server:     5dae9cf0e8ed12e7
+control libggml-cuda.so:  5bea9eb9d9f36254
+mixedacc llama-bench:     570bcc57695989fe
+mixedacc llama-server:    e5a8ad5155871e7f
+mixedacc libggml-cuda.so: 4f575fba83aff444
+
+# Full commands and environment
+# 1. Route proof (attribution only; profile forces per-op sync, graphs off):
+#    ESCHA_PROFILE=1 GGML_CUDA_DISABLE_GRAPHS=1 \
+#      ./build-cuda-exp04-stage2-mixedacc/bin/llama-bench \
+#      -m /mnt/d/CODEX\ WORKSPACE/escha-w2-lowgpu/weights/escha-w2-lowgpu-mono-parity.gguf \
+#      --prompt-tokens-file /mnt/d/CODEX\ WORKSPACE/escha-w2-lowgpu/evidence/P-ARCH-05/2026-08-29/escha-controlled-server-002/shared-2048.ids \
+#      -p 2048 -n 0 -ngl 99 -b 2048 -ub 2048 -ctk f16 -ctv f16 -fa on -r 1 -o json -oe json
+#    exit=0 → mixedacc-profile.{json,stderr} (800 lines)
+# 2. Matched 2k (graphs on, no profile; r3 A/B, r3 B/A, r5):
+#    ./build-cuda-exp04-stage2-{mixedacc,control}/bin/llama-bench <same flags> -r {3,5}
+#    exit=0 → mixedacc/control-bench.json(-r2/-r5)
+# 3. Decode guardrail (graphs on):
+#    ./build-cuda-exp04-stage2-{mixedacc,control}/bin/llama-bench -m <model> \
+#      -p 0 -n 64 -ngl 99 -b 2048 -ub 2048 -ctk f16 -ctv f16 -fa on -r 5
+#    exit=0 → mixedacc/control-decode-r5.json
+# 4. Parity:
+#    ESCHA_SERVER_BIN=$PWD/build-cuda-exp04-stage2-{mixedacc,control}/bin/llama-server \
+#      .escha-venv/bin/python scripts/escha-compare/run_compare.py \
+#      --model <model> --only P2-factual,P7-tool-call --max-new-tokens 16 --ctx-size 4096 \
+#      --outdir evidence/EXP-04-stage2/2026-09-01/parity-{mixedacc,control}
+#    exit=0 → parity-*/compare-report.json
+# 5. SASS/resource:
+#    cuobjdump --dump-sass --dump-resource-usage <libggml-cuda.so.0.19.0> → {control,mixedacc}-sass.txt
+#    cuobjdump --dump-sass --dump-resource-usage -fun <symbol> <lib> → per-symbol REG/STACK/LOCAL/SHARED
+
+# Note: ESCHA_ALLOW_CUDA_GRAPHS is the historical ledger name; current source
+# uses ESCHA_DISABLE_CUDA_GRAPHS to opt OUT (graphs on by default for Escha).
+# Timed runs had graphs active. -ub 2048 matches EXP-01 consolidated evidence
+# and the plan's primary contract (ledger table lists -b 2048 -ub 512 as
+# historical; plan doc section 4 keeps -ub 2048 primary).
+
+# Tooling added this session (side artifacts, review before committing):
+# - .escha-venv/ (transformers+jinja2 for run_compare.py)
+# - weights/escha -> /mnt/d/CODEX WORKSPACE/escha-w2-lowgpu/weights/escha (symlink)
+# - results/prompts.json -> /mnt/d/CODEX WORKSPACE/escha-w2-lowgpu/results/prompts.json (symlink)

@@ -799,6 +799,39 @@ Architecture audit before further kernel tuning. Classification:
 - Decision: **Stage 1 COMPLETE + Sol-verified.** Proceeding to Stage 2
   (ONE structural variable, SASS/profiler proof + quality gate).
 
+### EXP-04 Stage 2 — structurally-gated mixed accumulator — RESULTS (2026-09-01)
+
+- Date: 2026-09-01. ONE structural variable under compile gate
+  `ESCHA_MMA_MIXEDACC_EXPERIMENT=1`: per-projection `IC<=6144 → FP16_ACC=true`,
+  else fp32, applied across K2/K3 prefill families (native Escha mixed policy;
+  NOT the rejected P-ARCH-20 single-shape toggle). Geometry/grid/smem/decode/
+  A-stage/partial/finalize unchanged; partial buffer stays float.
+- Implementation commit `7b1880f41`. Sol implementation review: round 1 REVISE
+  (fp16 store OOB: `tile_ah` ne=2 but loop used tile_c ne=4, dropped `.y`
+  lanes) → fixed → round 2 **CONFIRM**.
+- SASS proof (cuobjdump per-symbol): fp16 K2/K3 symbols contain only
+  `HMMA.16816.F16` (16×, 0 F32); fp32 twins + control contain only `.F32`
+  (32×, 0 F16). Registers: fp16 97, fp32 128 — all ≤128, STACK/LOCAL 0, no
+  spills, SHARED 1024 identical.
+- Route proof: 800/800 tagged, **0 predicate mismatches** (672
+  `mma-fp16-mixedacc` IC≤6144, 128 `mma-fp32-mixedacc` IC>6144).
+- Performance (matched control/candidate, graphs on, 2k, canonical model):
+  r3 A/B 2508.1 vs 2281.0; r3 B/A 2496.0 vs 2251.2; r5 2496.9 vs 2258.9 →
+  **median gain +10.0 / +10.9 / +10.5%, stable**. CV 3.1–6.3% per arm on this
+  WSL host — above the plan's ≤2% letter (same host noise as Stage 1 control
+  3.12% and banked EXP-01 samples); flagged for Sol verify.
+- Decode guardrail r5: candidate 44.55 vs control 42.69 → no regression.
+- Parity: P2-factual + P7-tool-call, greedy seed 42, 16 tokens — candidate
+  16/16 and control 16/16 (100%).
+- Family regressions: **none** — all 7 fp16-acc families improved matmul
+  17.6–26.0% (e.g. 5120→17408 2.095→1.688 ms); fp32-side family flat (−0.5%).
+- **Classification: SMALLER POSITIVE (≥5%, <20%): +10% full-2K median.**
+  Not a ≥20% breakthrough. All hard gates except the host-noise CV letter
+  pass (route, SASS, ≤128 regs no spills, decode, P2/P7, family).
+- Evidence: `evidence/EXP-04-stage2/2026-09-01/` (STAGE2-REPORT.md,
+  provenance.manifest, profile/bench/decode/parity artifacts, per-symbol SASS).
+- Pending Sol VERIFY gate before final promotion/rollback decision.
+
 ## Durable evidence sources
 
 - GBrain: *Qwen3.5 hybrid prefill batching audit — rows 2-4 vs 512 (2026-08-29)*.
