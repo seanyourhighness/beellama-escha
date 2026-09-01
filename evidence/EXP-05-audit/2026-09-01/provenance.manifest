@@ -1,0 +1,36 @@
+# EXP-05 Phase 2 audit — provenance (2026-09-01)
+
+## Artifacts
+- Wheel: `/mnt/d/CODEX WORKSPACE/escha-w2-lowgpu/runtime/sglang/escha-1.2.0+qwen3dense-cp312-cp312-manylinux_2_28_x86_64.whl`
+  sha256 `735f4b7ae5c03ac11c754b2a6a4e44326a1d175139f4e87fd82b2e0f4e27c22e`
+- Extracted `escha/_C.cpython-312-x86_64-linux-gnu.so` sha256 `2c55cf7c…` (at /tmp/escha-wheel/escha)
+- Runtime venv: `/home/sean/escha-venv` (python 3.12, escha + sglang 0.5.15.post1)
+- Model: `/mnt/d/CODEX WORKSPACE/escha-w2-lowgpu/weights/escha-w2-lowgpu-mono` (safetensors, sha re-verified in P-ARCH-19 metadata)
+- BeeLlama control lib: `build-cuda-exp04-stage3-control/bin/libggml-cuda.so.0.19.0` (promoted Stage 2, commit ace024e72 kernel)
+
+## Environment/launch (official runtime reproduction)
+- Launch: `MODEL=…/escha-w2-lowgpu-mono VENV=/home/sean/escha-venv PORT=30021 ATTN_BACKEND=triton THINK=1 GRAPHS=1 CUDA_GRAPH_BS='1 2 4 8' CHUNK=2048 RADIX=0 MEM=0.72 CTXLEN=65536 ESCHA_PREFILL=fused ESCHA_PREFILL_ACC=mixed bash serve.sh`
+- Required PATH fix: `/usr/lib/wsl/lib` prepended (nvidia-smi for get_nvgpu_memory_capacity)
+- THINK=1 used because THINK=0's template-patch heredoc fails on the current chat_template.jinja (verified: exact enable_thinking block not found) — thinking state does not affect GEMM kernels.
+- 2048-token prefill via `/generate` with `input_ids` from shared-2048.ids: TTFT 623.8 ms steady (3029 tok/s).
+
+## Per-symbol SASS / resource extraction
+- `cuobjdump --dump-sass --dump-resource-usage -arch sm_120 -fun <symbol> <lib>`
+- Full 56-symbol resource table: /tmp/escha-wheel/code_gemm_resources.txt
+- SASS profiles: /tmp/escha-wheel/{hot-k2-sass,off-down-fp32-sass,bee-k2-fp32-sass,bee-k2-fp16-sass,bee-k3-fp32-sass}.txt
+- Direct-op kernel/grid/block/duration: /tmp/escha-wheel/per_family_gridblock.json,
+  /tmp/escha-wheel/direct_gemm_results.json, /tmp/escha-wheel/trace-*.json
+- One-factor sweeps: /tmp/escha-wheel/sweep_one.py (gate/up/down families),
+  ESCHAM_GEMM_BM/BK/FEPI/WIDE_HAD in fresh processes (results inline in AUDIT.md §4)
+
+## Tooling
+- torch.profiler chrome-trace export for grid/block/registers/smem/duration.
+- nsys: 0-byte traces in this WSL background environment (collector cannot
+  attach to the server process); direct-process trace finalized but lacked CUDA
+  events. ncu: ERR_NVGPUCTRPERM (documented host limitation). torch.profiler
+  was the reliable kernel-capture path.
+
+## Limitations
+- Direct-op per-call times use random packed-code tensors (data-independent
+  instruction counts; absolute times not identical to real-weight decode).
+- No ncu occupancy counters (ERR_NVGPUCTRPERM); grid/block from torch.profiler.
