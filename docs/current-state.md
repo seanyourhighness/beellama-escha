@@ -104,6 +104,20 @@ spills, P2/P7 100%. Tile aspect does not move prefill. Combined with EXP-02,
 B-decode amortization and fragment/tile layout are NOT the bottleneck — the
 packed K2 matmul body is the wall. Reverted; tree matches `215aa4ac3`.
 
+### ARCH-01 (2026-08-31) — DENSE-CORRECT / PERF-ARCH-MISMATCH
+
+Architecture audit: the model is semantically dense (qwen35, n_expert==0,
+GGML_OP_ESCHA_MUL_MAT, no MoE routing reaches execution) and the filename
+`escha-moe.cu` is historical. BUT the hot prefill kernel does not reproduce
+the official qwen3dense fused architecture (separate rotate/GEMM/finalize,
+fp32 MMA acc vs official fused `escham_code_gemm` with mixed fp16 policy;
+P-ARCH-19: 1.888× mixed-vs-fp32; P-ARCH-20: BeeLlama fp16 toggle alone loses
+44% — consistent with a structural difference, not an accumulator-only
+toggle). Next: EXP-04 dense fused-prefill parity — **staged attribution** (measure
+the fuseable bound first; do not reduce to an accumulator toggle; the >20%
+gain is hypothesis, not yet evidenced). Full audit:
+`docs/escha-w2-architecture-provenance-audit.md`.
+
 ## Closed work
 
 - P-ARCH-22 (vocab representation): **CLOSED as size-capped** — do not reopen

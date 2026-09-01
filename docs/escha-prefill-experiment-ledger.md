@@ -721,6 +721,40 @@ warp-local duplicate decode.
 - Evidence: `escha-w2-lowgpu/evidence/EXP-03-bm256bn64/2026-08-31/`
   (external; evidence-summary.json records REJECT).
 
+## ARCH-01 — Dense-vs-MoE architecture audit (2026-08-31) — DENSE-CORRECT / PERF-ARCH-MISMATCH
+
+Architecture audit before further kernel tuning. Classification:
+**DENSE-CORRECT / PERF-ARCH-MISMATCH**.
+
+- **Dense semantics proven:** canonical artifact is `qwen35` (64 layers, hidden
+  5120, intermediate 17408, n_expert absent, zero expert/moe tensors, 400
+  `escha_code` tensors with no expert dimension). Loader forces
+  `GGML_OP_ESCHA_MUL_MAT` when `n_expert==0` (llama-model-loader.cpp:1224-1230);
+  CUDA maps it to `ggml_cuda_op_escha_mul_mat`; dense op reads 6 srcs (no
+  `ids`); runtime 800/800 `mma-fp16` with zero moe/expert/topk records.
+- **Filename is historical, not a correctness defect:** the dense tensor-core
+  prefill kernel `escha_matmul_dense_tiled_mma<K,128,128>` is a genuinely
+  dense 2D-tiled GEMM (CTA tile grid, split-K, CTA B-decode, ldmatrix+HMMA,
+  async A); it shares only the ESCHA codec decoder with the MoE path.
+- **Performance-architecture mismatch:** BeeLlama keeps separate
+  rotate → packed-GEMM → finalize kernels with fp32 MMA accumulate; the
+  official `escha-runtime-qwen3dense` fused `escham_code_gemm` uses a mixed
+  fp16 accumulator policy (P-ARCH-19: official mixed 623.380 ms / 3285.31
+  tok/s vs fp32 1176.882 ms / 1740.19 tok/s = 1.888×). P-ARCH-20 showed the
+  BeeLlama fp16 toggle alone is −44.22% — consistent with a structural
+  difference and ruling out an accumulator-only toggle (causal mechanism to
+  be isolated by staged attribution).
+- **Decision:** EXP-04 = dense fused-prefill parity, **staged attribution**
+  (measure the fuseable rotate/GEMM/finalize bound first, then ONE structural
+  candidate with SASS/profiler proof and a quality gate). P-ARCH-19/20 prove
+  divergence and rule out an accumulator toggle, but do NOT isolate which
+  mechanism carries the official gain; the fused-parity gain is hypothesis,
+  not yet evidenced.
+- Evidence: `docs/escha-w2-architecture-provenance-audit.md`;
+  `escha-w2-lowgpu/evidence/ARCH-01-architecture-audit/2026-08-31/`.
+- Worker note: 4× DeepSeek V4 Flash (Nous Portal) failed at dispatch with
+  HTTP 401; the primary agent performed the full audit directly.
+
 ## Durable evidence sources
 
 - GBrain: *Qwen3.5 hybrid prefill batching audit — rows 2-4 vs 512 (2026-08-29)*.
