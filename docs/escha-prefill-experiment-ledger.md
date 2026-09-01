@@ -884,9 +884,16 @@ Architecture audit before further kernel tuning. Classification:
   (`ESCHA_CAPTURE_DST_DIR`, off in timed runs).
 - Evidence: `evidence/EXP-04-stage3/2026-09-01/` (STAGE3-REPORT.md,
   ATTRIBUTION.md, route proofs, noise-run, numerical captures, parity).
+- **Sol VERIFY (2026-09-01): VERDICT=CONFIRM, Stage 3 gate PASS
+  (reject+revert)** — all 7 checks PASS; REJECT classification confirmed
+  (G=1.0272 <1.05), revert integrity verified, no correctness regression,
+  Stage 2 retained as promoted control (`/tmp/escha-exp04-stage3-verify.md`).
 - **Next structural variable (per Stage 1 profile rotate 4.6% / matmul 88.6% /
   epilogue 6.7%): fuse output rotation/scale into the GEMM epilogue (finalize
   is the largest fuseable bound, 6.7%) — pending a Sol PLAN gate.**
+  NOTE: P-ARCH-14 (fused finalize, pre-Stage-2 baseline) was measured neutral;
+  the new candidate differs by building on the promoted Stage 2 mixed-acc
+  default and must be gated on the current control.
 
 ## Durable evidence sources
 
