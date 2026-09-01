@@ -698,6 +698,29 @@ route tag `mma-directfrag-fp32`).
 - Next: per Sol review — reduce register pressure or move to the next-ranked
   runtime opportunity; do not combine with another optimization in one diff.
 
+### EXP-03 — shared-B 256x64 balanced K2 tile (2026-08-31) — REJECTED (neutral)
+
+Experiment 3 of the ESCHA-W2 PREFILL phase (Sol next-plan #1). Hypothesis:
+keep the proven shared-B/`ldmatrix`/FP32-HMMA + async-A path but change the K2
+prefill tile 128x128 → 256x64 (same area/CTA count/threads; half B-decode per
+CTA, reuse across 2× M rows) to amortize codebook work without EXP-02's
+warp-local duplicate decode.
+
+- **Result:** neutral — control (128x128) 889.0 ms / 2303.7 tok/s vs exp3
+  (256x64) 892.7 ms / 2294.1 tok/s (**−0.42% tok/s**), 1/5 samples beat
+  control median. Fails the ≥5% full-2K gain gate.
+- **Resources:** 128 regs/thread, no spills (cuobjdump); route proof
+  128× `mma-bm256-bn64` + 672× `mma-fp16`; per-projection K2 5120→17408
+  matmul median 2.098 ms (unchanged vs ~2.0 ms async baseline).
+- **Gates:** decode PASS (+0.76%), P2/P7 100% both.
+- **Verdict: REJECT.** Kernel edits reverted; implementation tree matches
+  promoted EXP-01 (`215aa4ac3`). Certified checkpoint untouched.
+- **Conclusion:** tile aspect does not move prefill. Combined with EXP-02,
+  B-decode amortization and fragment/tile layout are NOT the bottleneck —
+  the packed K2 matmul body itself is the wall.
+- Evidence: `escha-w2-lowgpu/evidence/EXP-03-bm256bn64/2026-08-31/`
+  (external; evidence-summary.json records REJECT).
+
 ## Durable evidence sources
 
 - GBrain: *Qwen3.5 hybrid prefill batching audit — rows 2-4 vs 512 (2026-08-29)*.

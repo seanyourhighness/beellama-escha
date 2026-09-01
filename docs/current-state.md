@@ -97,6 +97,13 @@ Direct-fragment packed K2 GEMM made prefill slower (2327→2236 tok/s, −3.9%);
 176 regs/thread hurt occupancy. Isolated + reverted; implementation tree
 matches promoted EXP-01 (`215aa4ac3`). See ledger for details.
 
+### EXP-03 (2026-08-31) — REJECTED (neutral)
+
+Shared-B 256x64 balanced K2 tile: 2304→2294 tok/s (−0.42%), 128 regs no
+spills, P2/P7 100%. Tile aspect does not move prefill. Combined with EXP-02,
+B-decode amortization and fragment/tile layout are NOT the bottleneck — the
+packed K2 matmul body is the wall. Reverted; tree matches `215aa4ac3`.
+
 ## Closed work
 
 - P-ARCH-22 (vocab representation): **CLOSED as size-capped** — do not reopen
