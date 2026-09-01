@@ -829,8 +829,16 @@ Architecture audit before further kernel tuning. Classification:
   Not a ≥20% breakthrough. All hard gates except the host-noise CV letter
   pass (route, SASS, ≤128 regs no spills, decode, P2/P7, family).
 - Evidence: `evidence/EXP-04-stage2/2026-09-01/` (STAGE2-REPORT.md,
-  provenance.manifest, profile/bench/decode/parity artifacts, per-symbol SASS).
-- Pending Sol VERIFY gate before final promotion/rollback decision.
+  provenance.manifest, profile/bench/decode/parity artifacts, per-symbol SASS,
+  resource-usage.txt).
+- Sol VERIFY (2026-09-01): round 1 REVISE (raw resource-usage evidence not
+  committed; CV wording inconsistency) → both fixed (`ba4e93851`) → round 2
+  **VERDICT=CONFIRM**, Stage 2 gate CONDITIONAL (CV ≤2% letter not met on this
+  WSL host; disclosed, no overclaim), all 8 checks PASS.
+- **FINAL: EXP-04 Stage 2 = SMALLER POSITIVE (≥5%, <20%): +10% full-2K median,
+  Sol-verified. NOT promoted to default in this session; promotion would
+  require the ledger's full milestone certification (5-pack quality, depth
+  matrix) per plan section 4.**
 
 ## Durable evidence sources
 

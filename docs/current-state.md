@@ -144,8 +144,11 @@ route proof 800/800, 0 predicate mismatches. Matched 2k: **+10.0/+10.9/+10.5%
 median over 3 runs** (2496–2508 vs 2251–2281 tok/s), decode no regression,
 P2/P7 16/16, no family regressions (fp16 families −17.6 to −26% matmul).
 **Classified SMALLER POSITIVE (≥5%, <20%).** CV 3.1–6.3% per arm (host noise,
-flagged) exceeds the ≤2% letter — pending Sol VERIFY before promotion.
-Evidence: `evidence/EXP-04-stage2/2026-09-01/`.
+flagged) exceeds the ≤2% letter — **Sol VERIFY VERDICT=CONFIRM** (round 1
+REVISE on raw resource evidence + CV wording, both fixed in `ba4e93851`; all
+8 checks PASS, gate CONDITIONAL on CV). NOT promoted to default; promotion
+requires full milestone certification. Evidence:
+`evidence/EXP-04-stage2/2026-09-01/`.
 
 ## Closed work
 
