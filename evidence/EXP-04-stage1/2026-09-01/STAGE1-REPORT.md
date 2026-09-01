@@ -34,9 +34,14 @@ changes. Per audit: `ESCHA_PROFILE` per-stage ms per projection.
 - Attribution run: `ESCHA_PROFILE=1 GGML_CUDA_DISABLE_GRAPHS=1` (profile forces
   per-op sync, so graphs disabled — attribution only, not a timed score).
 - Timed control (graphs on, no profile): median 2284.7 tok/s
-  (samples 2193.6 / 2333.3 / 2284.7; avg 2270.5 ± 70.9) — reproduces the banked
-  EXP-01 2k baseline (~2302 tok/s) within CV. Decode 64: samples 39.3 / 44.2 /
-  40.6 tok/s (median 40.6) — no regression vs EXP-01 decode guardrail.
+  (samples 2193.6 / 2333.3 / 2284.7; avg 2270.5, stddev 70.9, **CV 3.12%**).
+  Median is 0.75% below the banked EXP-01 2k baseline (~2302 tok/s) — no
+  material regression, but note the 3-sample spread does NOT meet the ≤2% CV
+  claim that applies to candidate-vs-control comparisons; this run is a
+  control confirmation, not a candidate gate. Decode 64: samples 39.3 / 44.2 /
+  40.6 tok/s (median 40.6) — consistent with EXP-01 decode guardrail
+  (44.9 production graph-mode median; the 39.3 low sample is within run
+  variance).
 
 ## Route proof
 

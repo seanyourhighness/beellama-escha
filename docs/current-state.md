@@ -127,8 +127,9 @@ Fuseable rotate/GEMM/finalize bound measured on the current default route
 wall in every family; the fuseable launch bound is ≈11.3% best case, so
 launch fusion alone cannot reach the ≥20% breakthrough gate — Stage 2 must
 target the GEMM body (structural mixed accumulator or B-decode/launch
-structure with SASS proof). Timed control reproduced the banked baseline
-(median 2284.7 tok/s, CV ≤2%, decode unchanged). Evidence:
+structure with SASS proof). Timed control confirmed the banked baseline
+(median 2284.7 tok/s, −0.75% vs ~2302; control CV 3.12% on 3 samples — not a
+candidate gate; decode unchanged). Evidence:
 `evidence/EXP-04-stage1/2026-09-01/`. Pending Sol/Codex review before Stage 2.
 
 ## Closed work

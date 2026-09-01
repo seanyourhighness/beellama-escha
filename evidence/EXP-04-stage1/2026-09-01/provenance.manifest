@@ -6,5 +6,53 @@ binaries:
 bb174036b76a91aa457cb6ac32b6c41db33a8ef29a86135ce80ebe9dfe908bf1  build-cuda-exp04-stage1/bin/llama-bench
 15f41fd706242c79ca3ccdc4a3211217af5b0811cf03654011320f3398bbde27  build-cuda-exp04-stage1/bin/llama-server
 29cdcc2e367148678049b0adfd200bdba936cd6c2537af3fe4414747e6dcf52d  build-cuda-exp04-stage1/bin/libggml-cuda.so.0.19.0
-gpu: RTX 5090 (SM120) driver 610.88
-contract: llama-bench -p 2048 -n 0 -ngl 99 -b 2048 -ub 2048 -ctk f16 -ctv f16 -fa on, shared-2048.ids
+gpu: RTX 5090 (SM120, cc 12.0) driver 610.88, 32,606 MiB visible
+
+## Full commands and environment (recorded verbatim)
+
+1. Attribution run (profile mode; per-op sync so graphs disabled):
+   ```
+   cd /mnt/d/CODEX\ WORKSPACE/beellama-escha
+   ESCHA_PROFILE=1 GGML_CUDA_DISABLE_GRAPHS=1 \
+     ./build-cuda-exp04-stage1/bin/llama-bench \
+     -m /mnt/d/CODEX\ WORKSPACE/escha-w2-lowgpu/weights/escha-w2-lowgpu-mono-parity.gguf \
+     --prompt-tokens-file /mnt/d/CODEX\ WORKSPACE/escha-w2-lowgpu/evidence/P-ARCH-05/2026-08-29/escha-controlled-server-002/shared-2048.ids \
+     -p 2048 -n 0 -ngl 99 -b 2048 -ub 2048 -ctk f16 -ctv f16 -fa on \
+     -r 1 -o json -oe json
+   ```
+   exit=0. stderr: stage1-profile.stderr (800 ESCHA_PROFILE lines).
+
+2. Timed control (graphs on, production gate; graphs are compiled in via
+   GGML_CUDA_GRAPHS=ON and active by default for Escha ops unless
+   ESCHA_DISABLE_CUDA_GRAPHS is set):
+   ```
+   ESCHA_ALLOW_CUDA_GRAPHS=1 \
+     ./build-cuda-exp04-stage1/bin/llama-bench \
+     -m /mnt/d/CODEX\ WORKSPACE/escha-w2-lowgpu/weights/escha-w2-lowgpu-mono-parity.gguf \
+     --prompt-tokens-file /mnt/d/CODEX\ WORKSPACE/escha-w2-lowgpu/evidence/P-ARCH-05/2026-08-29/escha-controlled-server-002/shared-2048.ids \
+     -p 2048 -n 0 -ngl 99 -b 2048 -ub 2048 -ctk f16 -ctv f16 -fa on \
+     -r 3 -o json -oe json
+   ```
+   exit=0. JSON: stage1-bench.json; stderr: stage1-bench.stderr.
+
+3. Decode guardrail (graphs on):
+   ```
+   ESCHA_ALLOW_CUDA_GRAPHS=1 \
+     ./build-cuda-exp04-stage1/bin/llama-bench \
+     -m /mnt/d/CODEX\ WORKSPACE/escha-w2-lowgpu/weights/escha-w2-lowgpu-mono-parity.gguf \
+     -p 0 -n 64 -ngl 99 -b 2048 -ub 2048 -ctk f16 -ctv f16 -fa on \
+     -r 3 -o json -oe json
+   ```
+   exit=0. JSON: stage1-decode.json; stderr: stage1-decode.stderr.
+
+Note: ESCHA_ALLOW_CUDA_GRAPHS is the historical ledger name; the current
+source uses ESCHA_DISABLE_CUDA_GRAPHS to opt OUT (graphs on by default for
+Escha ops). Timed runs therefore had graphs active.
+
+## Raw artifacts (relative to this directory)
+
+- stage1-profile.json / stage1-profile.stderr — attribution run
+- stage1-bench.json / stage1-bench.stderr — timed control
+- stage1-decode.json / stage1-decode.stderr — decode guardrail
+- STAGE1-REPORT.md — findings
+- provenance.manifest — this file

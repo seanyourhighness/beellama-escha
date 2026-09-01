@@ -771,8 +771,10 @@ Architecture audit before further kernel tuning. Classification:
 - Attribution run: `ESCHA_PROFILE=1 GGML_CUDA_DISABLE_GRAPHS=1`.
   800/800 lines report `route=mma-fp16 rows=2048 gen=0` — no fallback.
 - Timed control (graphs on, no profile): median 2284.7 tok/s (2193.6 /
-  2333.3 / 2284.7) — reproduces banked EXP-01 2k (~2302 tok/s) within CV.
-  Decode 64: 39.26 / 44.23 / 40.56 tok/s — no regression.
+  2333.3 / 2284.7; avg 2270.5, stddev 70.9, CV 3.12%) — median 0.75% below
+  the banked EXP-01 2k (~2302 tok/s); control confirmation, NOT a ≤2% CV
+  candidate claim (spread 3.12% on 3 samples).
+  Decode 64: 39.26 / 44.23 / 40.56 tok/s — consistent with EXP-01 guardrail.
 - Steady-state attribution (792 calls, first cold call per family excluded):
   **rotate 4.6% · matmul 88.6% · epilogue 6.7%** (61.9 / 1186.1 / 90.2 ms of
   1338.3 ms measured projection time). Matmul ≥73% in every family
