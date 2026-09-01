@@ -1915,9 +1915,6 @@ void ggml_cuda_op_escha_mul_mat(ggml_backend_cuda_context & ctx, ggml_tensor * d
                       && mma_arch_ok
                       && OC % ESCHA_MMA_BN == 0
                       && getenv("ESCHA_NO_MMA") == nullptr;
-#ifdef ESCHA_MMA_FUSED_FINALIZE_EXPERIMENT
-    bool fuse_finalize = false;
-#endif
 
     if (gen) {
         profile_route = getenv("ESCHA_WARP_GEMV") != nullptr ? "warp-gemv-fp32" : "gen-splitk-fp32";
@@ -1928,15 +1925,11 @@ void ggml_cuda_op_escha_mul_mat(ggml_backend_cuda_context & ctx, ggml_tensor * d
     } else if (use_wmma_bw) {
         profile_route = "wmma-bw-fp16";
     } else if (use_mma) {
-#ifdef ESCHA_MMA_MIXEDACC_EXPERIMENT
-        // EXP-04 Stage 2: structurally-gated mixed accumulator policy (native
+        // PROMOTED default (EXP-04 Stage 2): mixed accumulator policy (native
         // Escha mixed policy: fp16 MMA acc for IC <= 6144, fp32 above), applied
         // per projection across every K2/K3 prefill family.  The acc sidecar in
         // the tag makes the route proof per-family unambiguous.
         profile_route = IC <= 6144 ? "mma-fp16-mixedacc" : "mma-fp32-mixedacc";
-#else
-        profile_route = "mma-fp16";
-#endif
     } else {
         profile_route = "tiled-fma-fp32";
     }
@@ -2119,13 +2112,6 @@ void ggml_cuda_op_escha_mul_mat(ggml_backend_cuda_context & ctx, ggml_tensor * d
                 (const int16_t *) code->data, (const half *) lut->data, (const int16_t *) dep->data,
                 (const half *) u_buf.get(), p_buf.get(), IC, OC, n_rows, n_slices);
         };
-#ifdef ESCHA_MMA_FUSED_FINALIZE_EXPERIMENT
-        // P-ARCH-14: when split-K is a no-op (n_slices == 1), the fused
-        // finalize kernel absorbs the Hadamard-128 + rout epilogue and writes
-        // dst directly, eliminating the fp32 partial write+read round trip.
-        // The partial/finalize path remains byte-for-byte unchanged otherwise.
-        fuse_finalize = n_slices == 1;
-#endif
         switch (K) {
             case 2: {
 #ifdef ESCHA_MMA_SM120_K2_BN64_EXPERIMENT
@@ -2145,8 +2131,7 @@ void ggml_cuda_op_escha_mul_mat(ggml_backend_cuda_context & ctx, ggml_tensor * d
                         (const half *) u_buf.get(), p_buf.get(), IC, OC, n_rows, n_slices);
                 break;
 #else
-#ifdef ESCHA_MMA_MIXEDACC_EXPERIMENT
-                // EXP-04 Stage 2: structurally-gated mixed accumulator policy
+                // PROMOTED default (EXP-04 Stage 2): mixed accumulator policy
                 // (native Escha mixed policy: fp16 MMA acc for IC <= 6144, fp32
                 // above), applied per projection across every K2 prefill family
                 // by IC alone — NOT the rejected P-ARCH-20 single-shape toggle.
@@ -2159,36 +2144,10 @@ void ggml_cuda_op_escha_mul_mat(ggml_backend_cuda_context & ctx, ggml_tensor * d
                     launch((escha_matmul_dense_tiled_mma<2, ESCHA_MMA_BM, ESCHA_MMA_BN, false>));
                 }
                 break;
-#else
-#ifdef ESCHA_MMA_FP16ACC_EXPERIMENT
-                // P-ARCH-20: fp16 MMA accumulator on the dominant 5120->17408 K2
-                // projection (native Escha's mixed policy: fp16 acc for IC <= 6144).
-                // Mirrors the fp32 geometry exactly; only the accumulator type changes.
-                if (n_rows == 2048 && IC == 5120 && OC == 17408) {
-                    launch((escha_matmul_dense_tiled_mma<2, ESCHA_MMA_BM, ESCHA_MMA_BN, true>));
-                    break;
-                }
-#endif
-#ifdef ESCHA_MMA_FUSED_FINALIZE_EXPERIMENT
-                if (fuse_finalize) {
-                    const size_t smem_ff = smem + (size_t) 16*ESCHA_MMA_BN*sizeof(float);
-                    escha_matmul_dense_tiled_mma_ff<2, ESCHA_MMA_BM, ESCHA_MMA_BN>
-                        <<<dim3(n_tb_mma, n_cb_mma, 1), dim3(32, 256/32), smem_ff, stream>>>(
-                            (const int16_t *) code->data, (const half *) lut->data,
-                            (const int16_t *) dep->data, (const half *) u_buf.get(), p_buf.get(),
-                            (const half *) rout->data, (float *) dst->data,
-                            IC, OC, n_rows, 1, (int) x->ne[1], dst->nb[1], dst->nb[2]);
-                    break;
-                }
-#endif
-                launch((escha_matmul_dense_tiled_mma<2, ESCHA_MMA_BM, ESCHA_MMA_BN>));
-                break;
-#endif // ESCHA_MMA_MIXEDACC_EXPERIMENT
 #endif // ESCHA_MMA_SM120_K2_BN64_EXPERIMENT
             }
             case 3: {
-#ifdef ESCHA_MMA_MIXEDACC_EXPERIMENT
-                // EXP-04 Stage 2: structurally-gated mixed accumulator policy
+                // PROMOTED default (EXP-04 Stage 2): mixed accumulator policy
                 // (native Escha mixed policy: fp16 MMA acc for IC <= 6144, fp32
                 // above), applied per projection across every K3 prefill family
                 // by IC alone — NOT the rejected P-ARCH-20 single-shape toggle.
@@ -2201,22 +2160,6 @@ void ggml_cuda_op_escha_mul_mat(ggml_backend_cuda_context & ctx, ggml_tensor * d
                     launch((escha_matmul_dense_tiled_mma<3, ESCHA_MMA_BM, ESCHA_MMA_BN, false>));
                 }
                 break;
-#else
-#ifdef ESCHA_MMA_FUSED_FINALIZE_EXPERIMENT
-                if (fuse_finalize) {
-                    const size_t smem_ff = smem + (size_t) 16*ESCHA_MMA_BN*sizeof(float);
-                    escha_matmul_dense_tiled_mma_ff<3, ESCHA_MMA_BM, ESCHA_MMA_BN>
-                        <<<dim3(n_tb_mma, n_cb_mma, 1), dim3(32, 256/32), smem_ff, stream>>>(
-                            (const int16_t *) code->data, (const half *) lut->data,
-                            (const int16_t *) dep->data, (const half *) u_buf.get(), p_buf.get(),
-                            (const half *) rout->data, (float *) dst->data,
-                            IC, OC, n_rows, 1, (int) x->ne[1], dst->nb[1], dst->nb[2]);
-                    break;
-                }
-#endif
-                launch((escha_matmul_dense_tiled_mma<3, ESCHA_MMA_BM, ESCHA_MMA_BN>));
-                break;
-#endif // ESCHA_MMA_MIXEDACC_EXPERIMENT
             }
             default: GGML_ABORT("escha: unsupported K=%d", K);
         }
@@ -2242,9 +2185,6 @@ void ggml_cuda_op_escha_mul_mat(ggml_backend_cuda_context & ctx, ggml_tensor * d
         CUDA_CHECK(cudaEventRecord(profile_matmul_stop, stream));
     }
 
-#ifdef ESCHA_MMA_FUSED_FINALIZE_EXPERIMENT
-    if (!fuse_finalize)
-#endif
     {
         escha_finalize_dense<<<dim3(n_rows, n_ocb), ESCHA_NT, 0, stream>>>(
             (const half *) rout->data, p_buf.get(), (float *) dst->data,
