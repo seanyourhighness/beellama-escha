@@ -894,6 +894,15 @@ Architecture audit before further kernel tuning. Classification:
   NOTE: P-ARCH-14 (fused finalize, pre-Stage-2 baseline) was measured neutral;
   the new candidate differs by building on the promoted Stage 2 mixed-acc
   default and must be gated on the current control.
+- **Sol PLAN READY (2026-09-01): fuse finalize into the GEMM epilogue** — a
+  warp-owned `escha_matmul_dense_tiled_mma_fusedfin<K,BM,BN,FP16_ACC>` for
+  n_slices==1 (preserve butterfly len=1..64 + rsqrtf(128) + rout order, repair
+  the FP16 tile_ah seam, skip p_buf write/separate finalize; split-K keeps the
+  Stage 2 separate-finalize path). Tags `mma-fp16-fusedfin` / `mma-fp32-fusedfin`;
+  +8 KiB fused staging (22,016 B/CTA); gates reuse the pre-approved 9-pair
+  noise protocol; Sol code review required before benchmarking. Evidence:
+  `evidence/EXP-04-nextvar/2026-09-01/NEXTVAR-PLAN.md`. Implementation pending
+  (not started; Sol review gate first).
 
 ## Durable evidence sources
 
