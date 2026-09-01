@@ -904,6 +904,40 @@ Architecture audit before further kernel tuning. Classification:
   `evidence/EXP-04-nextvar/2026-09-01/NEXTVAR-PLAN.md`. Implementation pending
   (not started; Sol review gate first).
 
+### EXP-05 Phase 2 — reference GEMM mainloop audit (2026-09-01) — NO-GO
+
+- Read-only audit of official `escham_code_gemm` (wheel sha `735f4b7a…`
+  verified; runtime reproduced at M=2048: TTFT 623.8 ms / 3029 tok/s vs
+  Bee-Stage2 ~817–870 ms → official ~25% faster wall).
+- Template space mapped: `escham_code_gemm_kernel<A,K,BM,BN,BK,FP16ACC,FEPI>`
+  (56 sm_120 symbols); param 6 = fp16-acc, param 7 = FEPI (both proven by
+  acc-mode/env flips); ESCHAM_GEMM_BM/BK/FEPI/WIDE_HAD mapped.
+- Default kernels + grid/block per family captured (hot short-IC =
+  `<1,K,128,64,2,true,true>`, grid [OC/128, M/128], block [256] = two 64-col
+  bands, 80 regs, 45 KiB smem, fp16 acc; down_proj = `<1,3,128,64,2,false,
+  true>`, fp32, 122 regs).
+- One-factor env sweeps (fresh processes): gate default 1.34 ms best;
+  **down_proj default 3.96 ms is ~2× slower than BM=64 (1.99), BK=32 (2.26),
+  FEPI=0 (2.06)** — official's own default is poor on the long-IC family.
+- SASS: official = 64 HMMA, 0 STS.U16 (warp-local decoded-B, no shared-B round
+  trip), 80 SHFL.BFLY (in-kernel Hadamard), 40+40 WARPSYNC/ENDCOLLECTIVE;
+  Bee = 32 HMMA, 16 STS.U16 + 16 LDSM (shared-B), no butterflies/collectives.
+- Attribution: official faster short-IC (gate 0.78×, qkv 0.80×, up 0.90×),
+  slower down_proj (1.78×); wall win from short-IC mainloop + fused epilogue
+  + graphs, not down_proj.
+- **Sol review (2026-09-01): VERDICT=REVISE on raw-trace provenance, then
+  Phase 3 gate NO-GO** — measured short-IC coverage = 91.1 ms = **10.96%** of
+  aggregate matmul (<15% bar); EXP-05 closes as **negative evidence**, no
+  speculative two-band implementation.
+- Next targets ranked: (1) fuse output rotation/scale into GEMM epilogue
+  (finalize 6.7%, Sol PLAN READY), (2) official-style down_proj BM=64-style
+  tile sweep (separate variable), (3) fuse input rotation (4.6%), (4) MLP
+  up+gate activation sharing only if fresh ≥5% bound.
+- History corrections appended (P-ARCH-09 short-IC = FP16 acc not FP32;
+  `-ub 2048` supersedes `-ub 512`). Evidence:
+  `evidence/EXP-05-audit/2026-09-01/` (AUDIT.md, provenance.manifest,
+  per_family_gridblock.json, SASS files, raw-sweeps/).
+
 ## Durable evidence sources
 
 - GBrain: *Qwen3.5 hybrid prefill batching audit — rows 2-4 vs 512 (2026-08-29)*.

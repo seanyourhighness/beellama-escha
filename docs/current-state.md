@@ -176,6 +176,21 @@ Next variable per Stage 1 profile: fuse output rotation/scale into the GEMM
 epilogue (finalize = largest fuseable bound, 6.7%), pending Sol PLAN gate.
 Evidence: `evidence/EXP-04-stage3/2026-09-01/`.
 
+### EXP-05 Phase 2 — reference mainloop audit: NO-GO (2026-09-01)
+
+Read-only audit of official `escham_code_gemm` (wheel sha `735f4b7a…`,
+runtime 623.8 ms vs Bee-Stage2 ~817–870 ms). Template `<A,K,BM,BN,BK,
+FP16ACC,FEPI>` mapped (56 sm_120 symbols); default hot kernel `<1,K,128,64,2,
+true,true>` = two 64-col bands, 80 regs, 45 KiB smem, fp16 acc. Official
+faster on short-IC (gate 0.78×) but 1.78× slower on down_proj (its default
+BM=128/BK=2 is a trap; BM=64 → 1.99 ms). **Sol Phase 3 gate NO-GO: measured
+short-IC coverage = 10.96% aggregate matmul < 15% bar → EXP-05 closes as
+negative evidence, no speculative two-band implementation.** Next targets
+ranked: (1) fuse finalize into GEMM epilogue (6.7%, Sol PLAN READY), (2)
+down_proj BM=64-style tile sweep (separate variable), (3) fuse input rotation
+(4.6%). History corrected append-only (P-ARCH-09 short-IC = FP16 acc;
+`-ub 2048` supersedes `-ub 512`). Evidence: `evidence/EXP-05-audit/2026-09-01/`.
+
 ## Closed work
 
 - P-ARCH-22 (vocab representation): **CLOSED as size-capped** — do not reopen
