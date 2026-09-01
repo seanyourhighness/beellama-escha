@@ -1,0 +1,5 @@
+render P2-factual: 33 prompt tokens (ref 33)
+render P7-tool-call: 74 prompt tokens (ref 74)
+P2-factual: 100.0% agreement over generated prefix (16/16; reference length 49)
+P7-tool-call: 100.0% agreement over generated prefix (16/16; reference length 23)
+report: evidence/EXP-04-phase2/2026-09-01/parity-control-phase2/compare-report.json
