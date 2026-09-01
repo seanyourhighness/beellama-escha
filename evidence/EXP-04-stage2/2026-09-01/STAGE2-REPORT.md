@@ -66,9 +66,9 @@ F16 KV, FA on, r3/r5, full CUDA offload:
 | r5 | 2496.9 | 2258.9 | **+10.5%** |
 
 - Median gain stable across 3 matched runs: **+10.0 / +10.9 / +10.5%**.
-- CV: 3.1–4.4% per arm on this WSL/610.88 host (candidate 4.1–6.3%, control
-  3.1–4.2%) — above the plan's ≤2% letter; the gain is consistent, but the
-  host's timing noise (same as Stage 1 control 3.12% and banked EXP-01
+- CV: 3.1–6.3% per arm on this WSL/610.88 host (candidate samples 4.1/4.4/6.3%;
+  control 3.7/4.2/3.1%) — above the plan's ≤2% letter; the gain is consistent,
+  but the host's timing noise (same as Stage 1 control 3.12% and banked EXP-01
   samples) prevents a ≤2% formal CV pass. Flagged for Sol verify.
 
 ## Decode guardrail
