@@ -150,6 +150,32 @@ REVISE on raw resource evidence + CV wording, both fixed in `ba4e93851`; all
 requires full milestone certification. Evidence:
 `evidence/EXP-04-stage2/2026-09-01/`.
 
+### EXP-04 Phase 2 — Stage 2 PROMOTED (2026-09-01)
+
+Noise-resolution run with a Sol-pre-authorized protocol (9 matched ABBA pairs,
+frozen binaries): paired-log **G=1.0973, 95% CI [1.0774, 1.1175], 9/9 →
+PASS**; median **+9.31%** (2355.9 vs 2155.2 tok/s); primary per-arm CV≤2% not
+met on this WSL host (control 3.24%, candidate 2.15%) so the pre-authorized
+fallback decided. Same-session reconfirms: route 800/800 0-mismatch, SASS
+.F16/.F32 split + REG 97/128 no spills, P2/P7 16/16, decode +1.63% (≤2%),
+no family regressions, binaries unchanged since `7b1880f41`.
+**Sol VERIFY VERDICT=CONFIRM, Stage 2 gate PASS, classification SMALLER
+POSITIVE. Stage 2 is now the promoted prefill control.** Evidence:
+`evidence/EXP-04-phase2/2026-09-01/`.
+
+### EXP-04 Stage 3 — REJECTED (2026-09-01)
+
+Bounded-K FP16 for the 17408→5120 family (n_slices=4, 272 tiles/slice < safe
+384): Sol-planned and Sol code-reviewed; route 800/800 0-mismatch, SASS fp16
+REG 97 no spills, rel-RMS 1.08e-3 vs FP32 twin (benign), P2/P7 16/16, decode
+−1.31%. **Matched noise-protocol run: median +2.76%, paired-log G=1.0272
+[1.0005,1.0546] → below the ≥5% gate → REJECT.** Split-K/finalize overhead
+(−4% on the FP32 twin) eats most of the FP16 benefit (+8.7%). Guarded operator
+**reverted**; promoted Stage 2 retained as the default prefill control.
+Next variable per Stage 1 profile: fuse output rotation/scale into the GEMM
+epilogue (finalize = largest fuseable bound, 6.7%), pending Sol PLAN gate.
+Evidence: `evidence/EXP-04-stage3/2026-09-01/`.
+
 ## Closed work
 
 - P-ARCH-22 (vocab representation): **CLOSED as size-capped** — do not reopen

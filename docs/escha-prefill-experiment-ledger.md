@@ -840,6 +840,54 @@ Architecture audit before further kernel tuning. Classification:
   require the ledger's full milestone certification (5-pack quality, depth
   matrix) per plan section 4.**
 
+### EXP-04 Phase 2 — Stage 2 formal closure (noise resolution + CONFIRM)
+
+- Date: 2026-09-01. Per the phase goal, a noise-resolution protocol was
+  **pre-authorized by Sol before data collection** (`/tmp/exp04-noise-protocol.md`,
+  PROTOCOL=APPROVED): 9 adjacent matched A/B pairs (AB BA BA AB AB BA BA AB AB,
+  frozen binaries, graphs ON, profile OFF, warmups unscored), primary per-arm
+  CV≤2%, fallback paired-log rule (G≥1.05, 95% t-CI lower >1.0, ≥8/9 sign).
+- **Noise run (18 trials, GPU clock 2887 MHz constant, temp 46 °C, all
+  exit=0):** control mean 2136.7 CV 3.24%; candidate mean 2343.8 CV 2.15%.
+  Primary CV≤2% not met on this host (pre-authorized fallback decides).
+  **Paired-log: m=0.09282, G=1.0973, 95% CI [1.0774, 1.1175], candidate
+  faster 9/9 → FALLBACK PASS.** Median control 2155.2 / candidate 2355.9 →
+  **+9.31%**.
+- Same-session reconfirms (frozen binaries): route proof 800/800, 0 predicate
+  mismatches; SASS .F16/.F32 split + resource proof (REG 97/128, no spills,
+  smem unchanged); P2/P7 16/16 both arms; decode +1.63% (≤2%); family
+  regressions none; binaries unchanged since `7b1880f41`
+  (`git diff 7b1880f41..ac1975237 -- ggml src common tools include` empty).
+- **Sol VERIFY (2026-09-01): VERDICT=CONFIRM, Stage 2 gate PASS, classification
+  SMALLER POSITIVE** (all 9 checks PASS; `/tmp/escha-exp04-phase2-verify.md`).
+- **Action per goal: Stage 2 PROMOTED as the new prefill control.** Evidence:
+  `evidence/EXP-04-phase2/2026-09-01/` (NOISE-RESOLUTION-REPORT.md,
+  noise-run/trial-*.json, run.log, routeproof, decode, parity, RESOURCE-PROOF.md).
+
+### EXP-04 Stage 3 — bounded-K FP16 for 17408→5120 — REJECTED (2026-09-01)
+
+- Hypothesis: the only IC>6144 family (k3 17408→5120, 23.3% of matmul, ~209 ms
+  wall) could gain ~18-26% via FP16 accumulation if the depth were bounded.
+  Sol-approved plan (`/tmp/exp04-stage3-plan.md`): n_slices=4 (272 tiles/slice
+  < the Stage-2-proven-safe 384), FP16 within slice, FP32 partials + finalize.
+- Implementation `03f648a3b`+`12110c78a` (FP32 twin toggle); Sol code review
+  CONFIRM. Route proof 800/800 0-mismatch (128 `mma-fp16-boundedk`); SASS
+  fp16-only (REG 97, no spills); numerical: rel-RMS 1.08e-3 vs 4-slice FP32
+  twin (benign, finite, no NaN/Inf); P2/P7 16/16; decode −1.31% (≤2%).
+- **Performance (pre-approved noise protocol, frozen binaries): median +2.76%
+  (2418.5 vs 2353.6), paired-log G=1.0272, CI [1.0005,1.0546], 8/9 → below
+  the ≥5% gate → REJECT.** 4-slice FP32 twin was −4% (split-K + 4× partial/
+  finalize traffic); FP16 recovered +8.7% at the same topology; net <5%.
+- **Reverted the guarded Stage 3 operator** (reverts `03f648a3b`,
+  `12110c78a`); retained promoted Stage 2 as the default prefill control.
+  Source diff vs `ace024e72` = only the env-gated debug dst-capture helper
+  (`ESCHA_CAPTURE_DST_DIR`, off in timed runs).
+- Evidence: `evidence/EXP-04-stage3/2026-09-01/` (STAGE3-REPORT.md,
+  ATTRIBUTION.md, route proofs, noise-run, numerical captures, parity).
+- **Next structural variable (per Stage 1 profile rotate 4.6% / matmul 88.6% /
+  epilogue 6.7%): fuse output rotation/scale into the GEMM epilogue (finalize
+  is the largest fuseable bound, 6.7%) — pending a Sol PLAN gate.**
+
 ## Durable evidence sources
 
 - GBrain: *Qwen3.5 hybrid prefill batching audit — rows 2-4 vs 512 (2026-08-29)*.
