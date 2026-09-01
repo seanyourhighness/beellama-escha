@@ -113,6 +113,19 @@ Model instantiation (src/llama-model.cpp): `qwen35` → `llama_model_qwen35`
   accumulate; the official fused `escham_code_gemm` path fuses rotations and
   the mixed policy inside a single operator. This is a structural
   (launch/fusion) difference, not an accumulator toggle.
+
+  **CORRECTION (2026-09-01, EXP-04 Phase 1 contamination audit):** The
+  P-ARCH-20 fp16-accumulator result is **contaminated** by an fp16 fragment
+  store bug (OOB read of `tile_ah` beyond its 2 half2 elements and dropped
+  `.y` lanes; fixed in EXP-04 Stage 2, `7b1880f41`). The measured fp16 route
+  executed the faulty store, and P-ARCH-20 produced no valid correctness
+  evidence (parity runs errored). The −44.22% number must NOT be used as
+  evidence that fp16 MMA accumulation is intrinsically slow in BeeLlama and
+  must NOT be used to rule out an accumulator-only toggle. EXP-04 Stage 2's
+  structurally-gated mixed accumulator (IC≤6144 → fp16 acc, FP32 partials)
+  measured +10% full-2K median with a correct store, 16/16 P2/P7, and no
+  regressions. Full table:
+  `evidence/EXP-04-phase1/2026-09-01/CONTAMINATION-AUDIT.md`.
 - Comparison summary (matched 2K, RTX 5090):
   | path | ms | tok/s |
   |---|---|---|
