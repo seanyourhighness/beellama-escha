@@ -1,0 +1,114 @@
+[
+ {
+  "name": "qkv",
+  "K": 2,
+  "IC": 5120,
+  "OC": 10240,
+  "acc_mode": 1,
+  "kernel": "escha_escham::escham_had_in_wide_kernel(__half*, __half const*, __half const*, float const*, int, int)",
+  "cuda_time_ms": 0.016163999999999987,
+  "calls": 1,
+  "out_shape": [
+   2048,
+   10240
+  ]
+ },
+ {
+  "name": "in_proj_z",
+  "K": 2,
+  "IC": 5120,
+  "OC": 6144,
+  "acc_mode": 1,
+  "kernel": "escha_escham::escham_had_in_wide_kernel(__half*, __half const*, __half const*, float const*, int, int)",
+  "cuda_time_ms": 0.017609999999999987,
+  "calls": 1,
+  "out_shape": [
+   2048,
+   6144
+  ]
+ },
+ {
+  "name": "out_proj",
+  "K": 2,
+  "IC": 6144,
+  "OC": 5120,
+  "acc_mode": 1,
+  "kernel": "escha_escham::escham_had_in_wide_kernel(__half*, __half const*, __half const*, float const*, int, int)",
+  "cuda_time_ms": 0.021768999999999976,
+  "calls": 1,
+  "out_shape": [
+   2048,
+   5120
+  ]
+ },
+ {
+  "name": "gate_proj",
+  "K": 2,
+  "IC": 5120,
+  "OC": 17408,
+  "acc_mode": 1,
+  "kernel": "escha_escham::escham_had_in_wide_kernel(__half*, __half const*, __half const*, float const*, int, int)",
+  "cuda_time_ms": 0.019008999999999988,
+  "calls": 1,
+  "out_shape": [
+   2048,
+   17408
+  ]
+ },
+ {
+  "name": "up_proj",
+  "K": 3,
+  "IC": 5120,
+  "OC": 17408,
+  "acc_mode": 1,
+  "kernel": "escha_escham::escham_had_in_wide_kernel(__half*, __half const*, __half const*, float const*, int, int)",
+  "cuda_time_ms": 0.018551999999999992,
+  "calls": 1,
+  "out_shape": [
+   2048,
+   17408
+  ]
+ },
+ {
+  "name": "down_proj",
+  "K": 3,
+  "IC": 17408,
+  "OC": 5120,
+  "acc_mode": 0,
+  "kernel": "escha_escham::escham_had_in_wide_kernel(__half*, __half const*, __half const*, float const*, int, int)",
+  "cuda_time_ms": 0.07085199999999997,
+  "calls": 1,
+  "out_shape": [
+   2048,
+   5120
+  ]
+ },
+ {
+  "name": "q_proj",
+  "K": 2,
+  "IC": 5120,
+  "OC": 12288,
+  "acc_mode": 1,
+  "kernel": "escha_escham::escham_had_in_wide_kernel(__half*, __half const*, __half const*, float const*, int, int)",
+  "cuda_time_ms": 0.01819300000000004,
+  "calls": 1,
+  "out_shape": [
+   2048,
+   12288
+  ]
+ },
+ {
+  "name": "k_proj",
+  "K": 2,
+  "IC": 5120,
+  "OC": 1024,
+  "acc_mode": 1,
+  "kernel": "escha_escham::escham_had_in_wide_kernel(__half*, __half const*, __half const*, float const*, int, int)",
+  "cuda_time_ms": 0.017269999999999983,
+  "calls": 1,
+  "out_shape": [
+   2048,
+   1024
+  ]
+ }
+]
