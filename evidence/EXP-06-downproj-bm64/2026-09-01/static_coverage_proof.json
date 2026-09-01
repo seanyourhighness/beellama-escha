@@ -1,0 +1,37 @@
+{
+  "a_stage_BM128": {
+    "BM": 128,
+    "CPB": 16,
+    "elements": 2048,
+    "expected": 2048,
+    "max_writes": 1,
+    "min_writes": 1,
+    "missing": 0,
+    "out_of_range": 0
+  },
+  "a_stage_BM64": {
+    "BM": 64,
+    "CPB": 8,
+    "elements": 1024,
+    "expected": 1024,
+    "max_writes": 1,
+    "min_writes": 1,
+    "missing": 0,
+    "out_of_range": 0
+  },
+  "fp32_fragment_store_BM64": {
+    "BM": 64,
+    "BN": 128,
+    "MT": 1,
+    "NTT": 8,
+    "WM": 4,
+    "WN": 2,
+    "elements": 8192,
+    "expected": 8192,
+    "max_writes": 1,
+    "min_writes": 1,
+    "missing": 0,
+    "out_of_range": 0,
+    "tile_c_ne": 4
+  }
+}
