@@ -1,0 +1,12 @@
+{
+  "shape": [
+    2048,
+    5120
+  ],
+  "relative_rms": 0.0,
+  "max_abs": 0.0,
+  "cosine": 1.0004810094833374,
+  "nan_inf_control": 0,
+  "nan_inf_bm64": 0,
+  "exact_equal": true
+}
