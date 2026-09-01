@@ -1154,13 +1154,38 @@ static __global__ void __launch_bounds__(256, 1) escha_matmul_dense_tiled_mma(
     for (int i = 0; i < MT; ++i) {
 #pragma unroll
         for (int j = 0; j < NTT; ++j) {
+            if constexpr (FP16_ACC) {
+                // tile_ah is tile<16,4,half2>: 2 half2 registers per thread (ne=2),
+                // NOT tile_c::ne=4 floats.  The m16n8k16.f16 D fragment packs two
+                // f16 lanes per 32-bit register: x[l].x is the even column and
+                // x[l].y the odd column of the same row; row offset +8 applies to
+                // x[1].  Map to the fp32 fragment coordinates: x[0].x <-> l=0,
+                // x[0].y <-> l=1, x[1].x <-> l=2, x[1].y <-> l=3.
 #pragma unroll
-            for (int l = 0; l < tile_c::ne; ++l) {
-                const int m   = wm*(16*MT) + i*16 + tile_c::get_i(l);
-                const int n   = wn*(8*NTT) + j*8  + tile_c::get_j(l);
-                const int row = row0 + m;
-                if (row < n_rows) {
-                    partial[((int64_t) sl*n_rows + row)*OC + oc0 + n] = FP16_ACC ? __half2float(acc16[i][j].x[l].x) : acc[i][j].x[l];
+                for (int l = 0; l < 2; ++l) {
+                    const half2 v = acc16[i][j].x[l];
+                    const int m0 = wm*(16*MT) + i*16 + tile_c::get_i(2*l + 0);
+                    const int n0 = wn*(8*NTT)  + j*8  + tile_c::get_j(2*l + 0);
+                    const int m1 = wm*(16*MT) + i*16 + tile_c::get_i(2*l + 1);
+                    const int n1 = wn*(8*NTT)  + j*8  + tile_c::get_j(2*l + 1);
+                    const int row_a = row0 + m0;
+                    const int row_b = row0 + m1;
+                    if (row_a < n_rows) {
+                        partial[((int64_t) sl*n_rows + row_a)*OC + oc0 + n0] = __half2float(v.x);
+                    }
+                    if (row_b < n_rows) {
+                        partial[((int64_t) sl*n_rows + row_b)*OC + oc0 + n1] = __half2float(v.y);
+                    }
+                }
+            } else {
+#pragma unroll
+                for (int l = 0; l < tile_c::ne; ++l) {
+                    const int m   = wm*(16*MT) + i*16 + tile_c::get_i(l);
+                    const int n   = wn*(8*NTT) + j*8  + tile_c::get_j(l);
+                    const int row = row0 + m;
+                    if (row < n_rows) {
+                        partial[((int64_t) sl*n_rows + row)*OC + oc0 + n] = acc[i][j].x[l];
+                    }
                 }
             }
         }
@@ -1903,7 +1928,15 @@ void ggml_cuda_op_escha_mul_mat(ggml_backend_cuda_context & ctx, ggml_tensor * d
     } else if (use_wmma_bw) {
         profile_route = "wmma-bw-fp16";
     } else if (use_mma) {
+#ifdef ESCHA_MMA_MIXEDACC_EXPERIMENT
+        // EXP-04 Stage 2: structurally-gated mixed accumulator policy (native
+        // Escha mixed policy: fp16 MMA acc for IC <= 6144, fp32 above), applied
+        // per projection across every K2/K3 prefill family.  The acc sidecar in
+        // the tag makes the route proof per-family unambiguous.
+        profile_route = IC <= 6144 ? "mma-fp16-mixedacc" : "mma-fp32-mixedacc";
+#else
         profile_route = "mma-fp16";
+#endif
     } else {
         profile_route = "tiled-fma-fp32";
     }
@@ -2112,6 +2145,21 @@ void ggml_cuda_op_escha_mul_mat(ggml_backend_cuda_context & ctx, ggml_tensor * d
                         (const half *) u_buf.get(), p_buf.get(), IC, OC, n_rows, n_slices);
                 break;
 #else
+#ifdef ESCHA_MMA_MIXEDACC_EXPERIMENT
+                // EXP-04 Stage 2: structurally-gated mixed accumulator policy
+                // (native Escha mixed policy: fp16 MMA acc for IC <= 6144, fp32
+                // above), applied per projection across every K2 prefill family
+                // by IC alone — NOT the rejected P-ARCH-20 single-shape toggle.
+                // Geometry, staging, decode, A-stage overlap, partial layout,
+                // and finalize are byte-for-byte unchanged; only the MMA
+                // accumulator type is selected by the threshold.
+                if (IC <= 6144) {
+                    launch((escha_matmul_dense_tiled_mma<2, ESCHA_MMA_BM, ESCHA_MMA_BN, true>));
+                } else {
+                    launch((escha_matmul_dense_tiled_mma<2, ESCHA_MMA_BM, ESCHA_MMA_BN, false>));
+                }
+                break;
+#else
 #ifdef ESCHA_MMA_FP16ACC_EXPERIMENT
                 // P-ARCH-20: fp16 MMA accumulator on the dominant 5120->17408 K2
                 // projection (native Escha's mixed policy: fp16 acc for IC <= 6144).
@@ -2135,9 +2183,25 @@ void ggml_cuda_op_escha_mul_mat(ggml_backend_cuda_context & ctx, ggml_tensor * d
 #endif
                 launch((escha_matmul_dense_tiled_mma<2, ESCHA_MMA_BM, ESCHA_MMA_BN>));
                 break;
-#endif
+#endif // ESCHA_MMA_MIXEDACC_EXPERIMENT
+#endif // ESCHA_MMA_SM120_K2_BN64_EXPERIMENT
             }
             case 3: {
+#ifdef ESCHA_MMA_MIXEDACC_EXPERIMENT
+                // EXP-04 Stage 2: structurally-gated mixed accumulator policy
+                // (native Escha mixed policy: fp16 MMA acc for IC <= 6144, fp32
+                // above), applied per projection across every K3 prefill family
+                // by IC alone — NOT the rejected P-ARCH-20 single-shape toggle.
+                // Geometry, staging, decode, A-stage overlap, partial layout,
+                // and finalize are byte-for-byte unchanged; only the MMA
+                // accumulator type is selected by the threshold.
+                if (IC <= 6144) {
+                    launch((escha_matmul_dense_tiled_mma<3, ESCHA_MMA_BM, ESCHA_MMA_BN, true>));
+                } else {
+                    launch((escha_matmul_dense_tiled_mma<3, ESCHA_MMA_BM, ESCHA_MMA_BN, false>));
+                }
+                break;
+#else
 #ifdef ESCHA_MMA_FUSED_FINALIZE_EXPERIMENT
                 if (fuse_finalize) {
                     const size_t smem_ff = smem + (size_t) 16*ESCHA_MMA_BN*sizeof(float);
@@ -2152,6 +2216,7 @@ void ggml_cuda_op_escha_mul_mat(ggml_backend_cuda_context & ctx, ggml_tensor * d
 #endif
                 launch((escha_matmul_dense_tiled_mma<3, ESCHA_MMA_BM, ESCHA_MMA_BN>));
                 break;
+#endif // ESCHA_MMA_MIXEDACC_EXPERIMENT
             }
             default: GGML_ABORT("escha: unsupported K=%d", K);
         }
