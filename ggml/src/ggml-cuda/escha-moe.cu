@@ -1933,7 +1933,8 @@ void ggml_cuda_op_escha_mul_mat(ggml_backend_cuda_context & ctx, ggml_tensor * d
     } else if (use_mma) {
 #ifdef ESCHA_MMA_BOUNDEDK_FP16ACC_EXPERIMENT
         if (boundedk_family) {
-            profile_route = "mma-fp16-boundedk";
+            profile_route = getenv("ESCHA_BOUNDEDK_FP32_TWIN") != nullptr
+                ? "mma-fp32-boundedk" : "mma-fp16-boundedk";
         } else
 #endif
         // PROMOTED default (EXP-04 Stage 2): mixed accumulator policy (native
@@ -2182,7 +2183,14 @@ void ggml_cuda_op_escha_mul_mat(ggml_backend_cuda_context & ctx, ggml_tensor * d
                     // same geometry; the n_slices=4 override bounds the FP16
                     // accumulation depth to 272 tiles/slice (< the Stage 2-safe
                     // 384).  FP32 partials per slice; finalize unchanged.
-                    launch((escha_matmul_dense_tiled_mma<3, ESCHA_MMA_BM, ESCHA_MMA_BN, true>));
+                    // ESCHA_BOUNDEDK_FP32_TWIN=1 selects the FP32-accumulator
+                    // topology twin (same 4-slice grid/partials/finalize) to
+                    // isolate FP32 reassociation + split cost from FP16 rounding.
+                    if (getenv("ESCHA_BOUNDEDK_FP32_TWIN") != nullptr) {
+                        launch((escha_matmul_dense_tiled_mma<3, ESCHA_MMA_BM, ESCHA_MMA_BN, false>));
+                    } else {
+                        launch((escha_matmul_dense_tiled_mma<3, ESCHA_MMA_BM, ESCHA_MMA_BN, true>));
+                    }
                     break;
                 }
 #endif
