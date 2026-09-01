@@ -2274,5 +2274,26 @@ void ggml_cuda_op_escha_mul_mat(ggml_backend_cuda_context & ctx, ggml_tensor * d
         fprintf(stderr, "ESCHA_DEBUG_NAN call=%d IC=%d OC=%d rows=%d x_nb1=%zu x_nb2=%zu input_bad=%d input_max=%g output_bad=%d\n",
                 debug_call, IC, OC, n_rows, x->nb[1], x->nb[2], input_bad, input_max, host_bad);
     }
+    if (const char * capture_dir = getenv("ESCHA_CAPTURE_DST_DIR")) {
+        // EXP-04 Stage 3 debug capture: dump the final fp32 output of the
+        // bounded-K target family for numerical comparison (rel-RMS/max-abs/
+        // cosine/NaN-Inf) across arms.  Env-gated, never in timed runs, and
+        // the capture itself adds no code to the hot kernel path.
+        if (!gen && use_mma && K == 3 && IC == 17408 && OC == 5120 && n_rows == 2048) {
+            static bool captured = false;
+            if (!captured) {
+                captured = true;
+                const int64_t n = ggml_nelements(dst);
+                std::vector<float> host_dst(n);
+                CUDA_CHECK(cudaMemcpyAsync(host_dst.data(), dst->data, n*sizeof(float),
+                                           cudaMemcpyDeviceToHost, stream));
+                CUDA_CHECK(cudaStreamSynchronize(stream));
+                escha_capture_parch01_blob(capture_dir, "dst.f32.bin", host_dst.data(),
+                                           host_dst.size()*sizeof(float));
+                fprintf(stderr, "ESCHA_CAPTURE_DST K=%d IC=%d OC=%d rows=%d n=%lld written=%s/dst.f32.bin\n",
+                        K, IC, OC, n_rows, (long long) n, capture_dir);
+            }
+        }
+    }
     finish_profile();
 }
