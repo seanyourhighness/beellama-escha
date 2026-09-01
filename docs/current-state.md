@@ -191,6 +191,22 @@ down_proj BM=64-style tile sweep (separate variable), (3) fuse input rotation
 (4.6%). History corrected append-only (P-ARCH-09 short-IC = FP16 acc;
 `-ub 2048` supersedes `-ub 512`). Evidence: `evidence/EXP-05-audit/2026-09-01/`.
 
+### EXP-06 Phase 1 — down-projection BM64-equivalent (2026-09-01; Sol PLAN pending)
+
+Token-accounting correction: the old `623.8 ms / 3029 tok/s` pairing mixed
+incompatible boundaries. Fresh official-server requests have 2048 logical/server
+prompt tokens; warm medians are **619.678 ms server-e2e / 634.9 ms client-wall**
+(3304.9 / 3225.7 tok/s under `2048 / seconds`). Scheduler throughput
+(3010–3023 tok/s) remains an internal unknown-boundary metric and is excluded
+from canonical comparisons. Five alternating fresh-process official direct-op
+pairs for down_proj (K3 17408→5120/M=2048) reproduce BM128 4.170747 ms vs BM64
+2.295105 ms (1.8183× paired geometric; exact output equality). BM controls CTA
+row coverage 128→64 (grid y 16→32), while output coverage remains 128 columns
+over two bands. Proposed Bee single variable: `ESCHA_MMA_BM` 128→64 only for
+K3 17408→5120 prefill MMA, retaining BN128/WN2, FP32, decode/transforms/finalize
+and split-K. **No kernel change yet; Sol Gate 1 PLAN pending.** Evidence:
+`evidence/EXP-06-downproj-bm64/2026-09-01/`.
+
 ## Closed work
 
 - P-ARCH-22 (vocab representation): **CLOSED as size-capped** — do not reopen

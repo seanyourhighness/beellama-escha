@@ -938,6 +938,33 @@ Architecture audit before further kernel tuning. Classification:
   `evidence/EXP-05-audit/2026-09-01/` (AUDIT.md, provenance.manifest,
   per_family_gridblock.json, SASS files, raw-sweeps/).
 
+### EXP-06 Phase 1 — down-projection BM64-equivalent audit (2026-09-01)
+
+- **Benchmark-contract correction (append-only):** the prior pairing of TTFT
+  `623.8 ms` with scheduler-reported `3029 tok/s` mixed incompatible boundaries.
+  Fresh official-server requests prove 2048 logical tokens and 2048 server
+  `prompt_tokens`; warm medians are 619.678 ms server e2e / 634.9 ms client
+  wall, or 3304.9 / 3225.7 tok/s respectively under the explicit formula
+  `2048 / seconds`. Scheduler `input throughput` (about 3010–3023 tok/s) is
+  retained as an internal unknown-boundary metric and is not used for canonical
+  comparisons. P-ARCH-19's 623.380 ms / 3285.31 tok/s is internally consistent
+  (`2048/0.623380`). Server-side profiler-covered prefill duration remains
+  unknown under WSL; observed scheduler records say `cuda graph: False` even
+  when graph configuration is requested.
+- **Official BM semantics + revalidation:** five alternating fresh-process
+  synthetic direct-op pairs for K3 17408→5120/M=2048, fixed BK/FEPI/WIDE_HAD
+  and FP32 acc: BM128 median 4.170747 ms (CV .189%; grid [40,16], 122 regs,
+  45,056 B smem) versus BM64 median 2.295105 ms (CV .178%; [40,32], 65 regs,
+  35,840 B), paired geometric 1.8183×, byte-identical output. BM changes the
+  logical CTA **row/M coverage** 128→64; output coverage stays 128 columns in
+  two 64-column bands. Bee equivalent proposed for Sol review is
+  `ESCHA_MMA_BM` 128→64 while retaining Bee BN=128/WN=2, K3 FP32, existing
+  decode/finalize/split-K. Official fifth template `2→3` is explicitly **not**
+  mapped or copied.
+- Evidence/raw trials: `evidence/EXP-06-downproj-bm64/2026-09-01/`
+  (`PHASE1-ACCOUNTING-AND-BM-MAPPING.md`, `official-revalidation/`,
+  `token-accounting/`). Sol Gate 1 pending; no Bee kernel source change.
+
 ## Durable evidence sources
 
 - GBrain: *Qwen3.5 hybrid prefill batching audit — rows 2-4 vs 512 (2026-08-29)*.
