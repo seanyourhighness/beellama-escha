@@ -1,0 +1,6 @@
+80f873fdba38676eabe458786e9cb1e77a2ff4a7e7ef371ef8fc8075479f5d7a  /tmp/beellama-exp06-control/build-cuda-exp06-control/bin/libggml-cuda.so.0.19.0
+c7effedeb09178d3e3e12ae0f79bb93735780fdbca6c2e5cec87b8e471a3aa12  /mnt/d/CODEX WORKSPACE/beellama-escha/build-cuda-exp06-candidate/bin/libggml-cuda.so.0.19.0
+d5f3a1c9803cf66ec0b8fc5c2f010fc7e4661984b99e4790cbc27f1393bcc2fa  /tmp/beellama-exp06-control/build-cuda-exp06-control/bin/llama-bench
+bdc2c3232c22678061808d74d305d70c7f291480c85edd6357905fea0678ed9a  /tmp/beellama-exp06-control/build-cuda-exp06-control/bin/llama-server
+c47c70e5fee00eac7a4c4c275001c314812a48032d203274d374ec98c63907bc  /mnt/d/CODEX WORKSPACE/beellama-escha/build-cuda-exp06-candidate/bin/llama-bench
+912acbb03aa649ddec118e5b2651332b47b55199b2c246aa0aaaffee937ad44b  /mnt/d/CODEX WORKSPACE/beellama-escha/build-cuda-exp06-candidate/bin/llama-server

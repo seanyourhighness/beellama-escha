@@ -1,0 +1,127 @@
+{
+  "candidate_completed_profiles": 400,
+  "caveat": "Both runs abort only after completing exactly 400 ESCHA_PROFILE calls; these per-call CUDA-event samples are diagnostic route/timing evidence, not a clean successful full-wall benchmark.",
+  "control_completed_profiles": 400,
+  "families": [
+    {
+      "candidate_matmul_median_ms": 1.0659,
+      "candidate_route": "mma-fp16-mixedacc",
+      "candidate_samples": 48,
+      "candidate_vs_control_pct": -0.5643919958953192,
+      "control_matmul_median_ms": 1.07195,
+      "control_route": "mma-fp16-mixedacc",
+      "control_samples": 48,
+      "shape": {
+        "IC": 5120,
+        "K": 2,
+        "M": 2048,
+        "OC": 10240
+      }
+    },
+    {
+      "candidate_matmul_median_ms": 0.7268,
+      "candidate_route": "mma-fp16-mixedacc",
+      "candidate_samples": 48,
+      "candidate_vs_control_pct": -2.2066738428417665,
+      "control_matmul_median_ms": 0.7432,
+      "control_route": "mma-fp16-mixedacc",
+      "control_samples": 48,
+      "shape": {
+        "IC": 5120,
+        "K": 2,
+        "M": 2048,
+        "OC": 6144
+      }
+    },
+    {
+      "candidate_matmul_median_ms": 0.6628499999999999,
+      "candidate_route": "mma-fp16-mixedacc",
+      "candidate_samples": 64,
+      "candidate_vs_control_pct": -3.3675923901159144,
+      "control_matmul_median_ms": 0.6859500000000001,
+      "control_route": "mma-fp16-mixedacc",
+      "control_samples": 64,
+      "shape": {
+        "IC": 6144,
+        "K": 2,
+        "M": 2048,
+        "OC": 5120
+      }
+    },
+    {
+      "candidate_matmul_median_ms": 1.7081,
+      "candidate_route": "mma-fp16-mixedacc",
+      "candidate_samples": 64,
+      "candidate_vs_control_pct": -0.5096543087631411,
+      "control_matmul_median_ms": 1.71685,
+      "control_route": "mma-fp16-mixedacc",
+      "control_samples": 64,
+      "shape": {
+        "IC": 5120,
+        "K": 2,
+        "M": 2048,
+        "OC": 17408
+      }
+    },
+    {
+      "candidate_matmul_median_ms": 1.7685,
+      "candidate_route": "mma-fp16-mixedacc",
+      "candidate_samples": 64,
+      "candidate_vs_control_pct": -0.542698872423597,
+      "control_matmul_median_ms": 1.7781500000000001,
+      "control_route": "mma-fp16-mixedacc",
+      "control_samples": 64,
+      "shape": {
+        "IC": 5120,
+        "K": 3,
+        "M": 2048,
+        "OC": 17408
+      }
+    },
+    {
+      "candidate_matmul_median_ms": 3.3080999999999996,
+      "candidate_route": "mma-down-bm64-exp",
+      "candidate_samples": 64,
+      "candidate_vs_control_pct": 46.94503053858967,
+      "control_matmul_median_ms": 2.2512499999999998,
+      "control_route": "mma-fp32-mixedacc",
+      "control_samples": 64,
+      "shape": {
+        "IC": 17408,
+        "K": 3,
+        "M": 2048,
+        "OC": 5120
+      }
+    },
+    {
+      "candidate_matmul_median_ms": 1.3083,
+      "candidate_route": "mma-fp16-mixedacc",
+      "candidate_samples": 16,
+      "candidate_vs_control_pct": -0.6492766829935159,
+      "control_matmul_median_ms": 1.31685,
+      "control_route": "mma-fp16-mixedacc",
+      "control_samples": 16,
+      "shape": {
+        "IC": 5120,
+        "K": 2,
+        "M": 2048,
+        "OC": 12288
+      }
+    },
+    {
+      "candidate_matmul_median_ms": 0.18164999999999998,
+      "candidate_route": "mma-fp16-mixedacc",
+      "candidate_samples": 32,
+      "candidate_vs_control_pct": -4.745673833245934,
+      "control_matmul_median_ms": 0.19069999999999998,
+      "control_route": "mma-fp16-mixedacc",
+      "control_samples": 32,
+      "shape": {
+        "IC": 5120,
+        "K": 2,
+        "M": 2048,
+        "OC": 1024
+      }
+    }
+  ]
+}

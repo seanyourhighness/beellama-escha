@@ -207,6 +207,20 @@ K3 17408→5120 prefill MMA, retaining BN128/WN2, FP32, decode/transforms/finali
 and split-K. **No kernel change yet; Sol Gate 1 PLAN pending.** Evidence:
 `evidence/EXP-06-downproj-bm64/2026-09-01/`.
 
+### EXP-06 result — REJECTED + REVERTED (2026-09-01)
+
+The isolated K3 17408→5120/M=2048 BM64-equivalent candidate passed Sol PLAN
+and implementation review plus compile/resource/static-store proofs, but fails
+the decisive target-family gate: **3.30810 ms candidate vs 2.25125 ms control
+(+46.95% slower; 64 completed profile calls each)**. A successful non-profile
+smoke agrees (2275.93 vs 2457.93 tok/s, −7.40%). Candidate source is reverted
+and `escha-moe.cu` matches promoted Stage 2 at `4bc1afc1d`; no promotion,
+ABBA/depth/P2/P7/decode/quality campaign was run after the fail-fast gate. The
+profile harness's final post-400-call CUDA abort affects both control and
+candidate and is documented as inherited diagnostic-harness failure. Next
+independent target remains Sol-planned output-finalize fusion. Evidence:
+`evidence/EXP-06-downproj-bm64/2026-09-01/REJECTION-REPORT.md`.
+
 ## Closed work
 
 - P-ARCH-22 (vocab representation): **CLOSED as size-capped** — do not reopen

@@ -1,0 +1,53 @@
+{
+  "candidate-bm64": {
+    "bar_sync": 6,
+    "focused_sha256": "a4e17ce72273428b4bcbdb9cd56ede46345a5028321de2fe829d599ad1f4d4c3",
+    "global_load": 12,
+    "global_store": 32,
+    "hmma_f16": 0,
+    "hmma_f32": 16,
+    "lds": 43,
+    "ldsm": 18,
+    "lop3": 59,
+    "resource": "Function _Z28escha_matmul_dense_tiled_mmaILi3ELi64ELi128ELb0EEvPKsPK6__halfS1_S4_Pfiiii:\n  REG:92 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:952 TEXTURE:0 SURFACE:0 SAMPLER:0",
+    "sass_instruction_lines": 640,
+    "shf": 37,
+    "shfl": 0,
+    "stl": 0,
+    "sts": 26
+  },
+  "candidate-off-bm128": {
+    "bar_sync": 6,
+    "focused_sha256": "ed103498824d174d9f5360581af0e49289c95ec02ac41ccb2479bc9225b66e4d",
+    "global_load": 12,
+    "global_store": 64,
+    "hmma_f16": 0,
+    "hmma_f32": 32,
+    "lds": 45,
+    "ldsm": 20,
+    "lop3": 59,
+    "resource": "Function _Z28escha_matmul_dense_tiled_mmaILi3ELi128ELi128ELb0EEvPKsPK6__halfS1_S4_Pfiiii:\n  REG:128 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:952 TEXTURE:0 SURFACE:0 SAMPLER:0",
+    "sass_instruction_lines": 744,
+    "shf": 39,
+    "shfl": 0,
+    "stl": 0,
+    "sts": 26
+  },
+  "control-bm128": {
+    "bar_sync": 6,
+    "focused_sha256": "ed103498824d174d9f5360581af0e49289c95ec02ac41ccb2479bc9225b66e4d",
+    "global_load": 12,
+    "global_store": 64,
+    "hmma_f16": 0,
+    "hmma_f32": 32,
+    "lds": 45,
+    "ldsm": 20,
+    "lop3": 59,
+    "resource": "Function _Z28escha_matmul_dense_tiled_mmaILi3ELi128ELi128ELb0EEvPKsPK6__halfS1_S4_Pfiiii:\n  REG:128 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:952 TEXTURE:0 SURFACE:0 SAMPLER:0",
+    "sass_instruction_lines": 744,
+    "shf": 39,
+    "shfl": 0,
+    "stl": 0,
+    "sts": 26
+  }
+}

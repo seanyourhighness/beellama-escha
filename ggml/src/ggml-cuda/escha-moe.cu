@@ -1005,13 +1005,10 @@ static __global__ void __launch_bounds__(256, 1) escha_matmul_dense_tiled_mma(
     static_assert((ESCHA_TILE*BN) % NT == 0,   "escha: ragged decode assignment");
     static_assert(NT/ESCHA_TILE <= ESCHA_TILE, "escha: ccl would not be thread-invariant");
 
-    // A-stage copies exactly partition [BM][16] fp16 values across 256 threads:
-    // BM128 uses one 16-byte copy/thread; the EXP-06 BM64 candidate one 8-byte
-    // copy/thread. This changes only the row-tile geometry/lifetime.
-    constexpr int CPB = (BM*ESCHA_TILE*sizeof(half))/NT;
-    static_assert(CPB == 8 || CPB == 16, "escha: unsupported MMA A-stage copy width");
-    static_assert(BM*ESCHA_TILE*sizeof(half) == NT*CPB,
-                  "escha: activation copy must cover A tile exactly once");
+    // cp.async moves 16 bytes = 8 halves per thread; BM*ESCHA_TILE halves is exactly
+    // NT*8 at BM=128/NT=256, so every thread issues one copy and none loops.
+    constexpr int CPB = 16;                              // bytes per thread per tile
+    static_assert(BM*ESCHA_TILE*sizeof(half) == NT*CPB,  "escha: activation copy is ragged");
     const int cp_m  = tid / (ESCHA_TILE*sizeof(half)/CPB);   // row this thread copies into
     const int cp_h  = (tid % (ESCHA_TILE*sizeof(half)/CPB))*(CPB/sizeof(half));
 
@@ -1055,17 +1052,10 @@ static __global__ void __launch_bounds__(256, 1) escha_matmul_dense_tiled_mma(
         {
             const int row = row0 + cp_m;
 #if defined(BLACKWELL_MMA_AVAILABLE) && defined(ESCHA_MMA_SM120_SYNC_FALLBACK)
-            if constexpr (CPB == 16) {
-                const uint4 v = row < n_rows
-                    ? *(const uint4 *) (u + (int64_t) row*IC + lo*ESCHA_TILE + cp_h)
-                    : make_uint4(0, 0, 0, 0);
-                *(uint4 *) (s_u + cp_m*ESCHA_TILE + cp_h) = v;
-            } else {
-                const uint2 v = row < n_rows
-                    ? *(const uint2 *) (u + (int64_t) row*IC + lo*ESCHA_TILE + cp_h)
-                    : make_uint2(0, 0);
-                *(uint2 *) (s_u + cp_m*ESCHA_TILE + cp_h) = v;
-            }
+            const uint4 v = row < n_rows
+                ? *(const uint4 *) (u + (int64_t) row*IC + lo*ESCHA_TILE + cp_h)
+                : make_uint4(0, 0, 0, 0);
+            *(uint4 *) (s_u + cp_m*ESCHA_TILE + cp_h) = v;
 #else
             const int src_row = row < n_rows ? row : 0;
             __pipeline_memcpy_async(s_u + cp_m*ESCHA_TILE + cp_h,
@@ -1152,17 +1142,10 @@ static __global__ void __launch_bounds__(256, 1) escha_matmul_dense_tiled_mma(
         // su_cur.  The top-of-loop barrier publishes this synchronous copy.
         if (ti + 1 < hi) {
             const int row = row0 + cp_m;
-            if constexpr (CPB == 16) {
-                const uint4 v = row < n_rows
-                    ? *(const uint4 *) (u + (int64_t) row*IC + (ti + 1)*ESCHA_TILE + cp_h)
-                    : make_uint4(0, 0, 0, 0);
-                *(uint4 *) (su_nxt + cp_m*ESCHA_TILE + cp_h) = v;
-            } else {
-                const uint2 v = row < n_rows
-                    ? *(const uint2 *) (u + (int64_t) row*IC + (ti + 1)*ESCHA_TILE + cp_h)
-                    : make_uint2(0, 0);
-                *(uint2 *) (su_nxt + cp_m*ESCHA_TILE + cp_h) = v;
-            }
+            const uint4 v = row < n_rows
+                ? *(const uint4 *) (u + (int64_t) row*IC + (ti + 1)*ESCHA_TILE + cp_h)
+                : make_uint4(0, 0, 0, 0);
+            *(uint4 *) (su_nxt + cp_m*ESCHA_TILE + cp_h) = v;
         }
 #endif
     }
@@ -1932,16 +1915,6 @@ void ggml_cuda_op_escha_mul_mat(ggml_backend_cuda_context & ctx, ggml_tensor * d
                       && mma_arch_ok
                       && OC % ESCHA_MMA_BN == 0
                       && getenv("ESCHA_NO_MMA") == nullptr;
-#ifdef ESCHA_MMA_DOWN_BM64_EXPERIMENT
-    // EXP-06: gated, one-variable BM64-equivalent row geometry.  Exact M=2048
-    // is the only row count supported by its Sol-approved plan; all other calls
-    // remain byte-for-byte on the promoted Stage 2 dispatch below.
-    const bool use_mma_down_bm64_exp = use_mma
-                                    && K == 3 && IC == 17408 && OC == 5120
-                                    && n_rows == 2048;
-#else
-    const bool use_mma_down_bm64_exp = false;
-#endif
 
     if (gen) {
         profile_route = getenv("ESCHA_WARP_GEMV") != nullptr ? "warp-gemv-fp32" : "gen-splitk-fp32";
@@ -1956,8 +1929,7 @@ void ggml_cuda_op_escha_mul_mat(ggml_backend_cuda_context & ctx, ggml_tensor * d
         // Escha mixed policy: fp16 MMA acc for IC <= 6144, fp32 above), applied
         // per projection across every K2/K3 prefill family.  The acc sidecar in
         // the tag makes the route proof per-family unambiguous.
-        profile_route = use_mma_down_bm64_exp ? "mma-down-bm64-exp"
-                      : IC <= 6144 ? "mma-fp16-mixedacc" : "mma-fp32-mixedacc";
+        profile_route = IC <= 6144 ? "mma-fp16-mixedacc" : "mma-fp32-mixedacc";
     } else {
         profile_route = "tiled-fma-fp32";
     }
@@ -2175,27 +2147,6 @@ void ggml_cuda_op_escha_mul_mat(ggml_backend_cuda_context & ctx, ggml_tensor * d
 #endif // ESCHA_MMA_SM120_K2_BN64_EXPERIMENT
             }
             case 3: {
-#ifdef ESCHA_MMA_DOWN_BM64_EXPERIMENT
-                if (use_mma_down_bm64_exp) {
-                    // EXP-06: official BM64-equivalent M coverage only. Keep
-                    // total N coverage 128/WN=2, FP32 accumulators, code/decode,
-                    // split-K and separate finalize unchanged. Exact M=2048
-                    // retains the existing n_slices==1 choice.
-                    constexpr int EXP_BM = 64;
-                    constexpr int EXP_NTJ = ESCHA_MMA_BN/ESCHA_TILE;
-                    const size_t exp_smem = EXP_NTJ*ESCHA_MAX_W*sizeof(uint2)
-                                          + (size_t) 2*EXP_BM*ESCHA_TILE*sizeof(half)
-                                          + (size_t) ESCHA_MMA_BN*ESCHA_TILE*sizeof(half);
-                    GGML_ASSERT(n_slices == 1);
-                    escha_matmul_dense_tiled_mma<3, EXP_BM, ESCHA_MMA_BN, false>
-                        <<<dim3((n_rows + EXP_BM - 1)/EXP_BM, n_cb_mma, n_slices),
-                           dim3(32, 256/32), exp_smem, stream>>>(
-                            (const int16_t *) code->data, (const half *) lut->data,
-                            (const int16_t *) dep->data, (const half *) u_buf.get(),
-                            p_buf.get(), IC, OC, n_rows, n_slices);
-                    break;
-                }
-#endif
                 // PROMOTED default (EXP-04 Stage 2): mixed accumulator policy
                 // (native Escha mixed policy: fp16 MMA acc for IC <= 6144, fp32
                 // above), applied per projection across every K3 prefill family

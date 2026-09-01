@@ -965,6 +965,32 @@ Architecture audit before further kernel tuning. Classification:
   (`PHASE1-ACCOUNTING-AND-BM-MAPPING.md`, `official-revalidation/`,
   `token-accounting/`). Sol Gate 1 pending; no Bee kernel source change.
 
+### EXP-06 Phase 2–4 — BM64-equivalent candidate REJECTED + REVERTED (2026-09-01)
+
+- Sol Gate 1 `PLAN=READY` and Gate 2 implementation `VERDICT=CONFIRM` approved
+  a single guarded target: K3 17408→5120, M=2048, FP32 MMA,
+  `escha_matmul_dense_tiled_mma<3,64,128,false>` / route `mma-down-bm64-exp`.
+- Compiled proof: candidate 92 regs, STACK=0, LOCAL=0, static smem 1024 B and
+  dynamic smem 9728 B; grid [32,40,1] vs control [16,40,1]. Macro-off BM128
+  SASS was byte-identical to frozen control (focused SHA `ed103498…`). Static
+  A-stage and FP32 output-store maps were exhaustive (no missing/duplicate/OOB).
+- **Decisive target-family failure:** 64 completed diagnostic profile calls per
+  arm: control 2.25125 ms median matmul vs candidate 3.30810 ms = **candidate
+  +46.95% slower**, failing the required ≥15% gain. A successful non-profile
+  smoke agrees: 2275.93 vs 2457.93 tok/s (−7.40%).
+- `ESCHA_PROFILE` itself aborts after exactly 400 calls in *both* frozen control
+  and candidate (shared inherited harness issue); its complete per-call samples
+  remain route/timing diagnostic evidence, not full-wall evidence. No ABBA,
+  depth, parity/decode/quality certification, or promotion run after target
+  failure per fail-fast protocol.
+- Guarded implementation reverted; source is proven identical to promoted
+  control: `git diff 4bc1afc1d -- ggml/src/ggml-cuda/escha-moe.cu` empty.
+  Stage 2 mixed accumulator remains default. Next independent target: output
+  finalize fusion (existing Sol PLAN READY); do not combine with BM64.
+- Evidence: `evidence/EXP-06-downproj-bm64/2026-09-01/REJECTION-REPORT.md`,
+  `compiled-proof/`, `route-proof/`, binary hashes, raw full cuobjdump retained
+  outside git at `/tmp/escha-wheel/exp06-full-cuobjdump`.
+
 ## Durable evidence sources
 
 - GBrain: *Qwen3.5 hybrid prefill batching audit — rows 2-4 vs 512 (2026-08-29)*.
