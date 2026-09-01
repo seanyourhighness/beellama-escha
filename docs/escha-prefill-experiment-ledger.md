@@ -666,6 +666,38 @@ default Escha prefill route.
 - Evidence: `escha-w2-lowgpu/evidence/EXP-01-sm120-async/2026-08-31/`
   (external; `evidence-summary.json` in-repo binding).
 
+### Milestone certification (2026-08-31) — PASS, no quality regression
+
+Full club-3090 medium 5-pack on the promoted consolidated (async-default)
+build with the canonical full-Escha artifact: **65/75 (130/150 equiv)** —
+identical to the certified base-escha-w2 baseline. Per-pack:
+toolcall 14/15, instructfollow 13/15, structoutput 15/15, dataextract 12/15,
+reasonmath 11/15. Evidence:
+`evidence/EXP-01-sm120-async/2026-08-31/milestone-cert/` (milestone-summary.json).
+
+### EXP-02 — direct-fragment packed K2 GEMM (2026-08-31) — REJECTED
+
+Experiment 2 of the ESCHA-W2 PREFILL phase. Hypothesis: decode packed K2 codes
+directly into warp-owned MMA B fragments (removing shared-B stores/barrier and
+B ldmatrix reloads) for the target K2 shape (IC=5120, OC=17408, M≥2048).
+Implemented behind `ESCHA_MMA_DIRECTFRAG_EXPERIMENT` (isolated, NOT default;
+route tag `mma-directfrag-fp32`).
+
+- **Result:** matched-2K prefill got **slower**: control (async default)
+  880.1 ms / 2327.0 tok/s vs exp2 916.0 ms / 2235.7 tok/s (**−3.9% tok/s**).
+  Fails the ≥5% full-2K gain gate (and ≥10% matmul gate).
+- **Route proof:** 128× `mma-directfrag-fp32` (target K2 shapes) + 672×
+  `mma-fp16`; per-projection matmul ~2.5 ms vs ~2.0 ms async baseline.
+- **Likely cause:** 176 regs/thread vs the plan's <128 target (occupancy hit);
+  warp-local decode duplicates codebook work across M-warps.
+- **Verdict: REJECT.** Isolated (flag-gated, default path unchanged), then the
+  kernel edits were **reverted** so the implementation tree matches the
+  promoted EXP-01 state (`215aa4ac3`). Certified checkpoint untouched.
+- Evidence: `escha-w2-lowgpu/evidence/EXP-02-directfrag/2026-08-31/`
+  (external; evidence-summary.json records REJECT).
+- Next: per Sol review — reduce register pressure or move to the next-ranked
+  runtime opportunity; do not combine with another optimization in one diff.
+
 ## Durable evidence sources
 
 - GBrain: *Qwen3.5 hybrid prefill batching audit — rows 2-4 vs 512 (2026-08-29)*.

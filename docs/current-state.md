@@ -85,6 +85,18 @@ Matched-2K prefill on the canonical full-Escha artifact:
 standard-GGUF identical. Implementation commit `215aa4ac3`. Milestone
 certification pending (full medium 5-pack next).
 
+### Milestone certification (2026-08-31) — PASS
+
+Full club-3090 medium 5-pack on the async-default consolidated build:
+**65/75 (130/150 equiv)** — identical to certified baseline, **no quality
+regression**. Evidence: `evidence/EXP-01-sm120-async/2026-08-31/milestone-cert/`.
+
+### EXP-02 (2026-08-31) — REJECTED
+
+Direct-fragment packed K2 GEMM made prefill slower (2327→2236 tok/s, −3.9%);
+176 regs/thread hurt occupancy. Isolated + reverted; implementation tree
+matches promoted EXP-01 (`215aa4ac3`). See ledger for details.
+
 ## Closed work
 
 - P-ARCH-22 (vocab representation): **CLOSED as size-capped** — do not reopen
