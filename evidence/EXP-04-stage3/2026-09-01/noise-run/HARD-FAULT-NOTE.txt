@@ -1,0 +1,1 @@
+cleared failed run (quoting hard fault, exit 126, all 18 trials invalid — rerun required per protocol)
