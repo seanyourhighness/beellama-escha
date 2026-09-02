@@ -266,17 +266,36 @@ shared-B, cross-warp staging, or changing the experiment). Source reverted;
 `escha-moe.cu` matches HEAD `1c193ad4c`. Evidence:
 `evidence/EXP-09-mainloop-rewrite/2026-09-02/`.
 
-### Series status (2026-09-02)
+### EXP-10 result — REJECTED + REVERTED (2026-09-02)
 
-T1 (register-B mainloop), T2 (finalize fusion), and T3-mainloop-rewrite
-(EXP-09 warp-local two-band) are all negative at this geometry; every removal
-of Bee's shared-B round trip costs more registers than it saves (EXP-07
-124–154, EXP-09 145–176 vs the 97/128 shared-B control). Promoted Stage 2
-remains the default control. Sol's highest-value remaining runtime lever: T4
-shape-specific ffn_down decode structure; T3 fused input rotation (~4.6%)
-remains below the standalone gate. Artifact-side P-ARCH-23I (~3300 tok/s)
-remains the only demonstrated prefill-parity path outside the runtime-only
-plan.
+Cooperative BK32 double-buffered-B temporal pipeline (Decision B — the single
+authorized packed-runtime kernel experiment): decode B[n+1] into a second
+shared slot while MMA consumes B[n], even/odd warp symmetric phasing, two
+full-CTA P/D barriers per 16-wide K tile (vs control's three), cp.async A
+retained, 17,920 B smem. Sol Gate 1 PLAN=READY; Terra math audit CONFIRMED
+(BK32 choice, P/D barrier schedule, A/B ring hazard proofs, register
+forecast); Sol code review CONFIRM (no defects); both builds clean. **Failed
+the pre-timing resource gate: STACK fp16 128 / fp32 256 (control 0) with real
+LDL/STL spill traffic** (~12 in main loop, ~36 in epilogue, both parity
+paths) even though REG was excellent (64 fp16 / 82 fp32 vs 97/128). Sol
+diagnosis: ptxas homes the full accumulator arrays to stack (128 B = 2×8×2×4,
+256 B = 2×8×4×4) because `acc[i][j]` is runtime-indexed under the unroll-1
+helpers. Sol FINAL GATE=CONFIRM-REJECT — no bounded fix provable within the
+frozen contract. **Packed-runtime incremental kernel program STOPPED per
+Decision B.** Source reverted; `escha-moe.cu` matches HEAD `969db62df`.
+Evidence: `evidence/EXP-10-coop-bk32/2026-09-02/`.
+
+### Series status (2026-09-02, post-EXP-10)
+
+T1 (register-B), T2 (finalize fusion), the EXP-09 warp-local two-band rewrite,
+and the cooperative BK32 pipeline are all negative. Every packed-runtime
+kernel attempt at BM128×BN128/M2048 on SM120 fails either the register ceiling
+(EXP-07/09: 124–176 regs) or the no-spill resource gate (EXP-10: accumulator
+homing). Promoted Stage 2 remains the default control. Remaining paths:
+**Decision A (certify P-ARCH-23I, ~3300 tok/s demonstrated)**; load-time
+transcode cache; or a new sidecar representation/kernel project. The
+exact-packed-execution question is a funding/architecture decision, not an
+incremental-kernel decision.
 
 ## Closed work
 
