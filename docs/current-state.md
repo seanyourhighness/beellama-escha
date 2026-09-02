@@ -221,6 +221,19 @@ candidate and is documented as inherited diagnostic-harness failure. Next
 independent target remains Sol-planned output-finalize fusion. Evidence:
 `evidence/EXP-06-downproj-bm64/2026-09-01/REJECTION-REPORT.md`.
 
+### EXP-07b result — REJECTED + REVERTED (2026-09-02)
+
+The register-B revision resolved the invalid `MT=4/NTT=2` proposal correctly:
+two row-warps sharing a 16-column band would duplicate B decode, so the tested
+layout gave every warp a unique 8-column fragment and all 128 rows
+(`MT=8/NTT=1`), using two sequential column passes to retain the full BN128
+tile. It compiled and eliminated shared-B `STS.U16`, with no stack/local or
+spills, but failed the pre-timing gate: **REG 125/141 vs control ceilings
+97/128 (fp16/fp32)**. SASS also showed fp16 16 HMMA / 4 barriers vs control
+16/3, and fp32 24 HMMA / 6 barriers vs control 32/6. No benchmark or correctness
+campaign was run; candidate source was reverted and no WIP commit was created.
+Evidence: `evidence/EXP-07-mainloop-coopdecode/2026-09-01/EXP-07B-MECHANISM-GATE-REJECTION.md`.
+
 ## Closed work
 
 - P-ARCH-22 (vocab representation): **CLOSED as size-capped** — do not reopen
