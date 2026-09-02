@@ -3,7 +3,7 @@
 Evidence root: `evidence/BASE-01-escha-vs-iq3xxxs/2026-09-01/`
 
 ## Repository state
-- HEAD local == remote: 257c310720794219109ad31df7ec369866c42150 (BASE-01 evidence + Gate 3 housekeeping; prior 2026-09-01 state was be6bf478d)
+- Evidence committed on `escha-w2-prefill` (chain): 1541ee91c → 257c31072 → 45d4bc516. Closure verified: local HEAD == remote HEAD; worktree clean except documented local aids.
 - Working tree: only documented local aids untracked (`results/`, `weights/`); production source matches be6bf478d (profiling-only GGML_OP_PROFILE hook was reverted after evidence collection; canonical build-cuda-base01 binaries unchanged)
 
 ## Frozen binary
