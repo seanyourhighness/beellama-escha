@@ -1,0 +1,46 @@
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function 'slice1_v3_descriptor_fp32' for 'sm_120a'
+ptxas info    : Function properties for slice1_v3_descriptor_fp32
+    32 bytes stack frame, 48 bytes spill stores, 68 bytes spill loads
+ptxas info    : Used 128 registers, used 1 barriers, 32 bytes cumulative stack size
+ptxas info    : Compile time = 58.239 ms
+ptxas info    : Compiling entry function 'slice1_v3_descriptor_fp16' for 'sm_120a'
+ptxas info    : Function properties for slice1_v3_descriptor_fp16
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 128 registers, used 1 barriers
+ptxas info    : Compile time = 48.785 ms
+ptxas info    : Compiling entry function 'slice1_v3_fp32' for 'sm_120a'
+ptxas info    : Function properties for slice1_v3_fp32
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 127 registers, used 1 barriers
+ptxas info    : Compile time = 51.821 ms
+ptxas info    : Compiling entry function 'slice1_v3_fp16' for 'sm_120a'
+ptxas info    : Function properties for slice1_v3_fp16
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 94 registers, used 1 barriers
+ptxas info    : Compile time = 32.757 ms
+ptxas info    : Compiling entry function '_Z12compare_bitsPKjS0_mPy' for 'sm_120a'
+ptxas info    : Function properties for _Z12compare_bitsPKjS0_mPy
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 8 registers, used 0 barriers
+ptxas info    : Compile time = 1.329 ms
+ptxas info    : Compiling entry function 'slice1_sidecar_fp32' for 'sm_120a'
+ptxas info    : Function properties for slice1_sidecar_fp32
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 168 registers, used 1 barriers
+ptxas info    : Compile time = 19.742 ms
+ptxas info    : Compiling entry function 'slice1_sidecar_fp16' for 'sm_120a'
+ptxas info    : Function properties for slice1_sidecar_fp16
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 140 registers, used 1 barriers
+ptxas info    : Compile time = 18.512 ms
+ptxas info    : Compiling entry function 'slice1_control_fp32' for 'sm_120a'
+ptxas info    : Function properties for slice1_control_fp32
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 116 registers, used 1 barriers
+ptxas info    : Compile time = 10.355 ms
+ptxas info    : Compiling entry function 'slice1_control_fp16' for 'sm_120a'
+ptxas info    : Function properties for slice1_control_fp16
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 85 registers, used 1 barriers
+ptxas info    : Compile time = 10.922 ms

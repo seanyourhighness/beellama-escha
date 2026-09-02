@@ -1,0 +1,62 @@
+
+Fatbin elf code:
+================
+arch = sm_120a
+code version = [1,8]
+host = linux
+compile_size = 64bit
+identifier = /mnt/d/CODEX WORKSPACE/beellama-escha/tools/escha-mma-sidecar/slice1_v3_harness.cu 
+
+Resource usage:
+ Common:
+  GLOBAL:0
+
+Fatbin ptx code:
+================
+arch = sm_120
+code version = [9,0]
+host = linux
+compile_size = 64bit
+compressed
+identifier = /mnt/d/CODEX WORKSPACE/beellama-escha/tools/escha-mma-sidecar/slice1_v3_harness.cu
+ptxasOptions = -v  --generate-line-info 
+
+Fatbin elf code:
+================
+arch = sm_120a
+code version = [1,8]
+host = linux
+compile_size = 64bit
+identifier = /mnt/d/CODEX WORKSPACE/beellama-escha/tools/escha-mma-sidecar/slice1_v3_harness.cu
+
+Resource usage:
+ Common:
+  GLOBAL:0 CONSTANT[3]:2048
+ Function slice1_v3_descriptor_fp32:
+  REG:128 STACK:32 SHARED:1024 LOCAL:0 CONSTANT[0]:920 TEXTURE:0 SURFACE:0 SAMPLER:0
+ Function slice1_v3_descriptor_fp16:
+  REG:128 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:920 TEXTURE:0 SURFACE:0 SAMPLER:0
+ Function slice1_v3_fp32:
+  REG:127 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:920 TEXTURE:0 SURFACE:0 SAMPLER:0
+ Function slice1_v3_fp16:
+  REG:94 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:920 TEXTURE:0 SURFACE:0 SAMPLER:0
+ Function _Z12compare_bitsPKjS0_mPy:
+  REG:8 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:928 TEXTURE:0 SURFACE:0 SAMPLER:0
+ Function slice1_sidecar_fp32:
+  REG:168 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:928 TEXTURE:0 SURFACE:0 SAMPLER:0
+ Function slice1_sidecar_fp16:
+  REG:140 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:928 TEXTURE:0 SURFACE:0 SAMPLER:0
+ Function slice1_control_fp32:
+  REG:116 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:928 TEXTURE:0 SURFACE:0 SAMPLER:0
+ Function slice1_control_fp16:
+  REG:85 STACK:0 SHARED:1024 LOCAL:0 CONSTANT[0]:928 TEXTURE:0 SURFACE:0 SAMPLER:0
+
+Fatbin ptx code:
+================
+arch = sm_120a
+code version = [9,0]
+host = linux
+compile_size = 64bit
+compressed
+identifier = /mnt/d/CODEX WORKSPACE/beellama-escha/tools/escha-mma-sidecar/slice1_v3_harness.cu
+ptxasOptions = -v  --generate-line-info 
