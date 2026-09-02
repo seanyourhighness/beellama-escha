@@ -994,6 +994,37 @@ Architecture audit before further kernel tuning. Classification:
   `compiled-proof/`, `route-proof/`, binary hashes, raw full cuobjdump retained
   outside git at `/tmp/escha-wheel/exp06-full-cuobjdump`.
 
+### EXP-11 Attempt 1 Slice 1 — NumPy oracle/cache probe (2026-09-02)
+
+- Scope was PROGRAM-PLAN §12 steps 1–3 only: shared Python oracle, frozen v1
+  schema/manifest contract, and a layer-0 `ffn_gate/up/down` Q2_K overlay.
+  No loader, C++, build, llama binary, benchmark, or commit work was performed.
+- Converter regression: the actual layer-0
+  `--standard-gdn-gate-quant q2_k` output remained byte-identical before/after
+  refactor: 10,321,920 bytes, SHA-256 `03cc407c…ffa7a4`. Synthetic Q2_K/Q4_K/
+  Q6_K goldens and independent K2/K3 CPU reconstruction comparisons also pass
+  bitwise.
+- Canonical source SHA-256 revalidated as `e307007f…54778d`. Each cached tensor
+  is 29,245,440 bytes. Dequantized MAE: gate `0.00223399447`, up
+  `0.00217443926`, down `0.00233486231`; each payload is byte-equal to a fresh
+  shared-oracle result.
+- Determinism: independent run-a/run-b whole overlays both SHA-256
+  `f3911881…52847b`; all three entry hashes match. Deep validation passed. An
+  isolated one-byte payload corruption was rejected by whole-overlay,
+  `overlay.sha256`, and per-entry hashes. Publication left a zero-byte
+  `complete` marker and no temporary files.
+- `/usr/bin/time -v` one-layer run-a: **169.48 s wall**, **2,786,504 KiB
+  (2.657 GiB) max RSS**. Phase projection is **6,662.68 s / 111.04 min** for
+  all 64 layers at the same one-worker RSS. The 120 s wall and 2.5 GiB target
+  miss; the 3 GiB hard RSS gate holds. **Decision: semantic prototype PASS;
+  documented Attempt-2 operational trigger FIRES.** Do not launch the full
+  192-tensor Attempt-1 cache or loader slice under this design before the
+  required program revision/gate.
+- Evidence: `evidence/EXP-11-transcode-cache/2026-09-02/attempt-1/` including
+  `probe-report.json`, both prepare reports/time logs, `determinism.json`,
+  `cache-verify.json`, `oracle-equality.json`, and
+  `corruption-rejection.json`.
+
 ## Durable evidence sources
 
 - GBrain: *Qwen3.5 hybrid prefill batching audit — rows 2-4 vs 512 (2026-08-29)*.

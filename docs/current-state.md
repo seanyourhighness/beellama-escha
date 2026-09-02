@@ -1,6 +1,6 @@
 # BeeLlama Escha — Current State
 
-> Concise snapshot of what is true NOW (2026-08-31). See the experiment ledger
+> Concise snapshot of what is true NOW (2026-09-02). See the experiment ledger
 > (`docs/escha-prefill-experiment-ledger.md`) for full history and evidence.
 
 ## Mission
@@ -296,6 +296,25 @@ homing). Promoted Stage 2 remains the default control. Remaining paths:
 transcode cache; or a new sidecar representation/kernel project. The
 exact-packed-execution question is a funding/architecture decision, not an
 incremental-kernel decision.
+
+### EXP-11 Attempt 1 Slice 1 — SEMANTICS PASS / ATTEMPT-2 TRIGGER (2026-09-02)
+
+The shared NumPy reconstruction/K-quant oracle, frozen v1 cache schema, and
+one-layer three-FFN atomic overlay generator are implemented without loader or
+C++ changes. Converter golden output is byte-identical; K2/K3 match the
+independent CPU reference; two prepares produced identical overlay and entry
+SHA-256 values; deep oracle validation and corruption rejection passed. The
+timed layer-0 prepare was **169.48 s / 2.657 GiB RSS** and projects to
+**6,662.7 s (111.0 min) / 2.657 GiB** for 64 layers. This misses the 120 s wall
+target and 2.5 GiB RSS target (but remains under the 3 GiB hard RSS gate), so
+the PROGRAM-PLAN's documented **Attempt-2 operational trigger fires**. No full
+cache or loader work was started. Evidence:
+`evidence/EXP-11-transcode-cache/2026-09-02/attempt-1/probe-report.json`.
+Sol's required written revision now consumes Attempt 1 and authorizes Attempt 2
+Slice 1 as a compiled, fixed-window, layer-sharded native transcoder. The
+all-Q2_K FFN recipe and byte-equality contract remain frozen; Attempt 3 remains
+reserved. Revision:
+`evidence/EXP-11-transcode-cache/2026-09-02/attempt-2/REVISION-AND-SLICE1-PLAN.md`.
 
 ## Closed work
 
