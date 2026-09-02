@@ -1197,27 +1197,25 @@ static __global__ void __launch_bounds__(256, 1) escha_matmul_dense_tiled_mma(
 }
 
 #ifdef ESCHA_MMA_FUSED_FINALIZE_EXPERIMENT
-// P-ARCH-14: fused-finalize variant of the tiled MMA kernel.  Compiled only
-// with ESCHA_MMA_FUSED_FINALIZE_EXPERIMENT=1 and launched only for n_slices==1
-// (no split-K reduction), where the separate finalize kernel's Hadamard-128 +
-// rout epilogue can consume the CTA tile directly, removing the fp32 partial
-// write+read round trip.  Decode, A-stage overlap, shared-B materialization,
-// ldmatrix, HMMA, rotation, and geometry are byte-for-byte unchanged; the
-// output transform runs the same stage order as escha_finalize_dense, so the
-// numerics are bit-identical to the partial + finalize path.
-template <int K, int BM, int BN>
-static __global__ void __launch_bounds__(256, 1) escha_matmul_dense_tiled_mma_ff(
+// EXP-08: single-slice fused-finalize specialization derived from the promoted
+// Stage 2 mixed-accumulator kernel above.  Each warp owns 64 output columns.
+// The first six Hadamard stages stay in the owning warp's registers; only the
+// len=64 exchange crosses the two warps in a row-owner pair.  Four disjoint
+// 4x128 slabs let all four pairs use pair-scoped barriers concurrently while
+// holding the exchange staging to exactly 16*BN floats.
+template <int K, int BM, int BN, bool FP16_ACC = false>
+static __global__ void __launch_bounds__(256, 1) escha_matmul_dense_tiled_mma_fusedfin(
         const int16_t * __restrict__ code,
         const half    * __restrict__ lut,
         const int16_t * __restrict__ dep,
         const half    * __restrict__ u,
-        float         * __restrict__ partial,   // unused; kept for a faithful copy
         const half    * __restrict__ rout,
         float         * __restrict__ dst,
-        const int IC, const int OC, const int n_rows, const int n_slices,
+        const int IC, const int OC, const int n_rows,
         const int ne1, const int64_t nb_d1, const int64_t nb_d2) {
 #ifdef TURING_MMA_AVAILABLE
     static_assert(BN == 128, "escha: fused finalize assumes the 128-column Hadamard block");
+    static_assert(BM == 128, "escha: fused finalize pair staging assumes BM=128");
 
     constexpr int NT   = 256;
     constexpr int NW   = NT/32;          // warps
@@ -1231,11 +1229,10 @@ static __global__ void __launch_bounds__(256, 1) escha_matmul_dense_tiled_mma_ff
     uint2    * s_pay = (uint2 *) s_raw;                               // [NTJ][ESCHA_MAX_W] pairs
     half     * s_u   = (half *)(s_pay + NTJ*ESCHA_MAX_W);             // [2][BM][16]
     half     * s_w   = s_u + 2*BM*ESCHA_TILE;                         // [BN][16]
-    float (*s_fuse)[BN] = (float (*)[BN])(s_w + BN*ESCHA_TILE);       // [16][BN] fused epilogue
+    float (*s_fuse)[4][BN] = (float (*)[4][BN])(s_w + BN*ESCHA_TILE);// [WM][4][BN] len=64 exchange
 
     GGML_UNUSED(lut);
     GGML_UNUSED(dep);
-    GGML_UNUSED(partial);
 
     const int NWD = 8*K;
     const int NB  = 32*NWD;
@@ -1250,9 +1247,8 @@ static __global__ void __launch_bounds__(256, 1) escha_matmul_dense_tiled_mma_ff
     const int row0 = blockIdx.x*BM;
     const int oc0  = blockIdx.y*BN;
 
-    const int sl = blockIdx.z;
-    const int lo = (int) (((int64_t) nit*sl)/n_slices);
-    const int hi = (int) (((int64_t) nit*(sl + 1))/n_slices);
+    const int lo = 0;
+    const int hi = nit;
 
     const int wm   = warp / WN;
     const int wn   = warp % WN;
@@ -1283,8 +1279,10 @@ static __global__ void __launch_bounds__(256, 1) escha_matmul_dense_tiled_mma_ff
     typedef ggml_cuda_mma::tile<16, 8, float> tile_c;
     typedef ggml_cuda_mma::tile<16, 8, half2> tile_a;
     typedef ggml_cuda_mma::tile<8,  8, half2> tile_b;
+    typedef ggml_cuda_mma::tile<16, 4, half2> tile_ah;
 
     tile_c acc[MT][NTT];
+    tile_ah acc16[MT][NTT];
 
     // one payload word per thread, held a tile ahead
     static_assert(NTJ*((16*K)/2) <= NT, "escha: payload needs more than one word per thread");
@@ -1377,7 +1375,11 @@ static __global__ void __launch_bounds__(256, 1) escha_matmul_dense_tiled_mma_ff
             for (int i = 0; i < MT; ++i) {
 #pragma unroll
                 for (int j = 0; j < NTT; ++j) {
-                    ggml_cuda_mma::mma(acc[i][j], A[i], B[j]);
+                    if constexpr (FP16_ACC) {
+                        ggml_cuda_mma::mma(acc16[i][j], A[i], B[j]);
+                    } else {
+                        ggml_cuda_mma::mma(acc[i][j], A[i], B[j]);
+                    }
                 }
             }
         }
@@ -1396,60 +1398,133 @@ static __global__ void __launch_bounds__(256, 1) escha_matmul_dense_tiled_mma_ff
 #endif
     }
 
-    // Fused single-slice epilogue: for each 16-row chunk owned by one warp
-    // pair, stage the row's BN columns, run the normalized Sylvester-Hadamard
-    // with the same stage order as escha_hadamard_128 (len = 1..64), scale by
-    // 1/sqrt(128) and rout, then store to dst with the finalize addressing.
+    // A lane subgroup of four owns one row.  The native MMA fragments give
+    // each lane columns 8*j + 2*lane_col + {0,1}; transpose that ownership so
+    // v[q] is column 4*q + lane_col (q=0..15).  Then len=1,2 shuffle inside
+    // the subgroup, while len=4,8,16,32 pair registers in increasing order.
+    // Process four rows per warp pair at a time so four independent pair slabs
+    // consume exactly 16*BN floats.  The two-half2 FP16 mapping below is the
+    // corrected Stage 2 partial-store seam: x[0].{x,y} maps to tile_c l={0,1}
+    // and x[1].{x,y} to l={2,3}; tile_c::ne never indexes tile_ah.
     const float HAD_SCALE = rsqrtf(128.0f);
-    for (int c = 0; c < BM/16; ++c) {
-        const int r0 = c*16;
-        if (wm == c/2) {
+    const int lane_row = lane/4;
+    const int lane_col = lane%4;
 #pragma unroll
-            for (int i = 0; i < MT; ++i) {
+    for (int batch = 0; batch < 8; ++batch) {
+        const int local_row0 = 4*batch;
+        const int fi = local_row0/16;
+        const int row_in_frag = local_row0 % 16;
+        const int rh = row_in_frag/8;
+        const int group0 = row_in_frag % 8;
+        const bool owns_row = lane_row >= group0 && lane_row < group0 + 4;
+        const unsigned row_mask = group0 == 0 ? 0x0000ffffu : 0xffff0000u;
+
+        float v[16];
+        if (owns_row) {
 #pragma unroll
-                for (int j = 0; j < NTT; ++j) {
+            for (int q = 0; q < 16; ++q) {
+                const int j = q/2;
+                const int src_lane_col = 2*(q % 2) + lane_col/2;
+                float seam0;
+                float seam1;
+                if constexpr (FP16_ACC) {
+                    const half2 h = acc16[fi][j].x[rh];
+                    seam0 = __half2float(h.x); // tile_c l=2*rh + 0
+                    seam1 = __half2float(h.y); // tile_c l=2*rh + 1
+                } else {
+                    seam0 = acc[fi][j].x[2*rh + 0];
+                    seam1 = acc[fi][j].x[2*rh + 1];
+                }
+                const float col0 = __shfl_sync(row_mask, seam0, src_lane_col, 4);
+                const float col1 = __shfl_sync(row_mask, seam1, src_lane_col, 4);
+                v[q] = lane_col % 2 == 0 ? col0 : col1;
+            }
+
+            // len=1, then len=2: exact a0+a1 / a0-a1 order across lanes.
 #pragma unroll
-                    for (int l = 0; l < tile_c::ne; ++l) {
-                        const int m = wm*(16*MT) + i*16 + tile_c::get_i(l);
-                        const int n = wn*(8*NTT) + j*8  + tile_c::get_j(l);
-                        if (m >= r0 && m < r0 + 16) {
-                            s_fuse[m - r0][n] = acc[i][j].x[l];
-                        }
-                    }
+            for (int q = 0; q < 16; ++q) {
+                const float a = v[q];
+                const float b = __shfl_xor_sync(row_mask, a, 1, 4);
+                v[q] = (lane_col & 1) == 0 ? a + b : b - a;
+            }
+#pragma unroll
+            for (int q = 0; q < 16; ++q) {
+                const float a = v[q];
+                const float b = __shfl_xor_sync(row_mask, a, 2, 4);
+                v[q] = (lane_col & 2) == 0 ? a + b : b - a;
+            }
+
+            // len=4,8,16,32: exact register-local butterflies.
+#pragma unroll
+            for (int q = 0; q < 16; q += 2) {
+                const float a0 = v[q];
+                const float a1 = v[q + 1];
+                v[q] = a0 + a1;
+                v[q + 1] = a0 - a1;
+            }
+#pragma unroll
+            for (int q = 0; q < 16; q += 4) {
+#pragma unroll
+                for (int o = 0; o < 2; ++o) {
+                    const float a0 = v[q + o];
+                    const float a1 = v[q + o + 2];
+                    v[q + o] = a0 + a1;
+                    v[q + o + 2] = a0 - a1;
                 }
             }
-        }
-        __syncthreads();
-
-        for (int len = 1; len < BN; len <<= 1) {
-            for (int idx = tid; idx < 16*(BN/2); idx += NT) {
-                const int r = idx / (BN/2);
-                const int j = idx % (BN/2);
-                const int i = (j / len)*(2*len) + (j % len);
-                float * b = s_fuse[r] + i;
-                const float a0 = b[0];
-                const float a1 = b[len];
-                b[0] = a0 + a1;
-                b[len] = a0 - a1;
+#pragma unroll
+            for (int q = 0; q < 16; q += 8) {
+#pragma unroll
+                for (int o = 0; o < 4; ++o) {
+                    const float a0 = v[q + o];
+                    const float a1 = v[q + o + 4];
+                    v[q + o] = a0 + a1;
+                    v[q + o + 4] = a0 - a1;
+                }
             }
-            __syncthreads();
+#pragma unroll
+            for (int o = 0; o < 8; ++o) {
+                const float a0 = v[o];
+                const float a1 = v[o + 8];
+                v[o] = a0 + a1;
+                v[o + 8] = a0 - a1;
+            }
+
+#pragma unroll
+            for (int q = 0; q < 16; ++q) {
+                const int n = wn*64 + 4*q + lane_col;
+                s_fuse[wm][lane_row - group0][n] = v[q];
+            }
         }
 
-        for (int idx = tid; idx < 16*BN; idx += NT) {
-            const int r = idx / BN;
-            const int n = idx % BN;
-            const int row = row0 + r0 + r;
+        // Pair-scoped barrier: exactly the two 64-column owner warps publish
+        // their halves; the other three pairs use disjoint slabs/barrier IDs.
+        __barrier_sync_count(wm + 1, 64);
+
+        if (owns_row) {
+            const int row = row0 + wm*(16*MT) + local_row0 + (lane_row - group0);
             if (row < n_rows) {
                 float * dst_row = (float *)((char *) dst + (int64_t)(row % ne1)*nb_d1
                                                            + (int64_t)(row / ne1)*nb_d2);
-                dst_row[oc0 + n] = s_fuse[r][n]*HAD_SCALE*__half2float(rout[oc0 + n]);
+#pragma unroll
+                for (int q = 0; q < 16; ++q) {
+                    const int rel = 4*q + lane_col;
+                    const float a0 = s_fuse[wm][lane_row - group0][rel];
+                    const float a1 = s_fuse[wm][lane_row - group0][64 + rel];
+                    const float h = wn == 0 ? a0 + a1 : a0 - a1; // len=64
+                    const float normalized = h*HAD_SCALE;
+                    const int n = wn*64 + rel;
+                    dst_row[oc0 + n] = normalized*__half2float(rout[oc0 + n]);
+                }
             }
         }
-        __syncthreads();
+
+        // Do not let either owner overwrite this pair's slab for the next four
+        // rows until both warps have consumed the cross-half values.
+        __barrier_sync_count(wm + 1, 64);
     }
 #else
-    GGML_UNUSED_VARS(code, lut, dep, u, partial, rout, dst, IC, OC, n_rows, n_slices,
-                     ne1, nb_d1, nb_d2);
+    GGML_UNUSED_VARS(code, lut, dep, u, rout, dst, IC, OC, n_rows, ne1, nb_d1, nb_d2);
     NO_DEVICE_CODE;
 #endif // TURING_MMA_AVAILABLE
 }
@@ -1992,7 +2067,25 @@ void ggml_cuda_op_escha_mul_mat(ggml_backend_cuda_context & ctx, ggml_tensor * d
         }
     }
 
+#ifdef ESCHA_MMA_FUSED_FINALIZE_EXPERIMENT
+    // EXP-08 is exactly the ordinary Escha MMA prefill route with a one-slice
+    // reduction.  Split-K, generation, fallback, and the independent BN64
+    // geometry experiment retain the promoted partial + finalize path.
+    bool use_mma_fusedfin = use_mma && n_slices == 1;
+#ifdef ESCHA_MMA_SM120_K2_BN64_EXPERIMENT
+    use_mma_fusedfin = use_mma_fusedfin && K != 2;
+#endif
+    if (use_mma_fusedfin) {
+        profile_route = IC <= 6144 ? "mma-fp16-fusedfin" : "mma-fp32-fusedfin";
+    }
+
+    ggml_cuda_pool_alloc<float> p_buf(ctx.pool());
+    if (!use_mma_fusedfin) {
+        p_buf.alloc((size_t) n_slices*n_rows*OC);
+    }
+#else
     ggml_cuda_pool_alloc<float> p_buf(ctx.pool(), (size_t) n_slices*n_rows*OC);
+#endif
 
     if (gen && getenv("ESCHA_WARP_GEMV") != nullptr) {
         // Experimental Blackwell decode path.  It writes the identical split-K
@@ -2107,6 +2200,36 @@ void ggml_cuda_op_escha_mul_mat(ggml_backend_cuda_context & ctx, ggml_tensor * d
                           + (size_t) ESCHA_MMA_BN*ESCHA_TILE*sizeof(half);
         const int n_tb_mma = (n_rows + ESCHA_MMA_BM - 1)/ESCHA_MMA_BM;
         const int n_cb_mma = OC/ESCHA_MMA_BN;
+#ifdef ESCHA_MMA_FUSED_FINALIZE_EXPERIMENT
+        if (use_mma_fusedfin) {
+            const size_t fused_smem = smem + (size_t) 16*ESCHA_MMA_BN*sizeof(float);
+            GGML_ASSERT(fused_smem <= 22016 && "escha: EXP-08 fused-finalize shared-memory bound exceeded");
+            auto launch_fusedfin = [&](auto kernel) {
+                kernel<<<dim3(n_tb_mma, n_cb_mma, 1), dim3(32, 256/32), fused_smem, stream>>>(
+                    (const int16_t *) code->data, (const half *) lut->data, (const int16_t *) dep->data,
+                    (const half *) u_buf.get(), (const half *) rout->data, (float *) dst->data,
+                    IC, OC, n_rows, (int) x->ne[1], dst->nb[1], dst->nb[2]);
+            };
+            switch (K) {
+                case 2:
+                    if (IC <= 6144) {
+                        launch_fusedfin((escha_matmul_dense_tiled_mma_fusedfin<2, ESCHA_MMA_BM, ESCHA_MMA_BN, true>));
+                    } else {
+                        launch_fusedfin((escha_matmul_dense_tiled_mma_fusedfin<2, ESCHA_MMA_BM, ESCHA_MMA_BN, false>));
+                    }
+                    break;
+                case 3:
+                    if (IC <= 6144) {
+                        launch_fusedfin((escha_matmul_dense_tiled_mma_fusedfin<3, ESCHA_MMA_BM, ESCHA_MMA_BN, true>));
+                    } else {
+                        launch_fusedfin((escha_matmul_dense_tiled_mma_fusedfin<3, ESCHA_MMA_BM, ESCHA_MMA_BN, false>));
+                    }
+                    break;
+                default: GGML_ABORT("escha: unsupported K=%d", K);
+            }
+        } else
+#endif
+        {
         auto launch = [&](auto kernel) {
             kernel<<<dim3(n_tb_mma, n_cb_mma, n_slices), dim3(32, 256/32), smem, stream>>>(
                 (const int16_t *) code->data, (const half *) lut->data, (const int16_t *) dep->data,
@@ -2163,6 +2286,7 @@ void ggml_cuda_op_escha_mul_mat(ggml_backend_cuda_context & ctx, ggml_tensor * d
             }
             default: GGML_ABORT("escha: unsupported K=%d", K);
         }
+        }
     } else {
         constexpr int NT  = (ESCHA_BM/ESCHA_TM)*(ESCHA_BN/ESCHA_TN);
         constexpr int NTJ = ESCHA_BN/ESCHA_TILE;
@@ -2186,10 +2310,16 @@ void ggml_cuda_op_escha_mul_mat(ggml_backend_cuda_context & ctx, ggml_tensor * d
     }
 
     {
+#ifdef ESCHA_MMA_FUSED_FINALIZE_EXPERIMENT
+        if (!use_mma_fusedfin) {
+#endif
         escha_finalize_dense<<<dim3(n_rows, n_ocb), ESCHA_NT, 0, stream>>>(
             (const half *) rout->data, p_buf.get(), (float *) dst->data,
             OC, (int) x->ne[1], n_rows, n_slices, dst->nb[1], dst->nb[2]);
         CUDA_CHECK(cudaGetLastError());
+#ifdef ESCHA_MMA_FUSED_FINALIZE_EXPERIMENT
+        }
+#endif
     }
 
     if (getenv("ESCHA_DEBUG_NAN") != nullptr) {
