@@ -141,12 +141,16 @@ not credible without either a new ESCHA mainloop or artifact substitution.
 
 - Sol Gate 1: **PLAN=READY** (4 REVISE rounds resolved; verdict file SOL-GATE1-VERDICT.md).
 - Instrumentation review: **INSTRUMENTATION=CONFIRM** (GGML_OP_PROFILE hook).
-- Sol Gate 2 / Gate 3: pending in this report cycle (evidence submitted below).
+- Sol Gate 2: **VERDICT=CONFIRM** (1 REVISE round on the executed-line count, fixed).
+- Sol Gate 3: **VERIFY=CONFIRM** (housekeeping revisions applied in this commit).
 
-## 10. Required closure items
+## 10. Closure status
 
-- Instrumentation source (GGML_OP_PROFILE hook) is in the isolated profile build
-  only; production `ggml-cuda.cu` at HEAD unchanged (hook added only in the
-  profile build dir's working tree; canonical `build-cuda-base01` binaries
-  unchanged). Revert working-tree source to be6bf478d before commit.
-- Evidence manifest and commits pending (see closure section).
+- Sol Gate 1 PLAN=READY (4 rounds), INSTRUMENTATION=CONFIRM, Gate 2 VERDICT=CONFIRM,
+  Gate 3 VERIFY=CONFIRM (after housekeeping revisions).
+- Profiling-only `GGML_OP_PROFILE` hook was reverted after evidence collection;
+  production source matches be6bf478d (git diff empty) and the canonical
+  `build-cuda-base01` binaries are unchanged (llama-bench 76485e11…, lib 5bea9eb9-class).
+- Evidence committed in `1541ee91c`; local HEAD == remote HEAD; worktree clean
+  except documented local aids (`results/`, `weights/`). No optimization
+  implementation was started, per mission scope.

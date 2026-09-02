@@ -3,10 +3,8 @@
 Evidence root: `evidence/BASE-01-escha-vs-iq3xxxs/2026-09-01/`
 
 ## Repository state
-- HEAD local == remote: be6bf478dd6f2e63bea81a646bc8b613dbca9935
-- Working tree: only `ggml-cuda.cu` modified (profiling-only GGML_OP_PROFILE hook,
-  Sol INSTRUMENTATION=CONFIRM; isolated in build-cuda-base01-profile); canonical
-  build-cuda-base01 binaries unchanged. Reverted before commit.
+- HEAD local == remote: 1541ee91c0ba0b52a67a2cd4a5f47a5ce220e827 (BASE-01 evidence commit; prior 2026-09-01 state was be6bf478d)
+- Working tree: only documented local aids untracked (`results/`, `weights/`); production source matches be6bf478d (profiling-only GGML_OP_PROFILE hook was reverted after evidence collection; canonical build-cuda-base01 binaries unchanged)
 
 ## Frozen binary
 - build-cuda-base01 (HEAD be6bf478d): llama-bench sha 76485e115bc7c9212966c577906b8bbe7cfcb1cf39db44dbf5a48a80f7a6d82f, libggml-cuda sha d18663888721680a403ef063a7cc1c051b35f4d1ff7e6d4db4c293d1dc6f8534
