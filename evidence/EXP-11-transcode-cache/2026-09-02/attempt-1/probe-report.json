@@ -1,0 +1,103 @@
+{
+  "experiment": "EXP-11 ATTEMPT-1 SLICE 1",
+  "source": {
+    "bytes": 8619127360,
+    "path": "/mnt/d/CODEX WORKSPACE/escha-w2-lowgpu/weights/escha-w2-lowgpu-mono-parity.gguf",
+    "sha256": "e307007f4a7489777c70f724e14d807d403959b1dc1bf6857c44ca1b6954778d"
+  },
+  "probe": {
+    "jobs": 1,
+    "layers": "0..0",
+    "quant": "ffn_gate=q2_k,ffn_up=q2_k,ffn_down=q2_k",
+    "scope": "ffn",
+    "usr_bin_time_v": {
+      "elapsed_seconds": 169.48,
+      "elapsed_text": "2:49.48",
+      "maximum_resident_set_kib": 2786504,
+      "maximum_resident_set_gib": 2.6574172973632812
+    },
+    "internal_wall_seconds": 168.89079553098418,
+    "overlay_bytes": 87736576,
+    "overlay_sha256": "f3911881dc4c9ec971eef00a3a2c33f52f64c0c252602c0b324ebd72dc52847b",
+    "phase_seconds": {
+      "source_hash": 58.159460332011804,
+      "gguf_reader": 6.03110934299184,
+      "reconstruction": 15.744264763023239,
+      "quantization": 84.02264863700839,
+      "dequant_validation": 1.8793533709831536,
+      "overlay_write_hash_validate": 1.4551841719658114
+    },
+    "tensors": [
+      {
+        "name": "blk.0.ffn_gate.weight",
+        "logical_shape_oc_ic": [17408, 5120],
+        "source_fp32_bytes": 356515840,
+        "payload_bytes": 29245440,
+        "payload_sha256": "ea4cb733b800d50e7be74a2ff84f22fa8eed79b32631ee73d0117213d2305a40",
+        "dequantized_mae": 0.0022339944737484177,
+        "oracle_payload_byte_equal": true
+      },
+      {
+        "name": "blk.0.ffn_up.weight",
+        "logical_shape_oc_ic": [17408, 5120],
+        "source_fp32_bytes": 356515840,
+        "payload_bytes": 29245440,
+        "payload_sha256": "041c0045017d17bdfb04698a36a5311032e04e309e8a95872fbadcc691b6a713",
+        "dequantized_mae": 0.0021744392599965735,
+        "oracle_payload_byte_equal": true
+      },
+      {
+        "name": "blk.0.ffn_down.weight",
+        "logical_shape_oc_ic": [5120, 17408],
+        "source_fp32_bytes": 356515840,
+        "payload_bytes": 29245440,
+        "payload_sha256": "e5a94a62c8c4e9f9a7450007ab0fb5b5070540a63a939285b4450f2dd40d28b7",
+        "dequantized_mae": 0.0023348623070785415,
+        "oracle_payload_byte_equal": true
+      }
+    ]
+  },
+  "determinism": {
+    "prepare_a_overlay_sha256": "f3911881dc4c9ec971eef00a3a2c33f52f64c0c252602c0b324ebd72dc52847b",
+    "prepare_b_overlay_sha256": "f3911881dc4c9ec971eef00a3a2c33f52f64c0c252602c0b324ebd72dc52847b",
+    "overlay_sha_equal": true,
+    "all_entry_sha_equal": true,
+    "prepare_b_usr_bin_time_v": {
+      "elapsed_seconds": 150.66,
+      "maximum_resident_set_kib": 2785928
+    }
+  },
+  "converter_regression": {
+    "case": "layer-0 --standard-gdn-gate-quant q2_k",
+    "before_payload_sha256": "03cc407c46fee4561aff978a8b505afc1ec2d003abb2fbe4d57ec0c13fffa7a4",
+    "after_payload_sha256": "03cc407c46fee4561aff978a8b505afc1ec2d003abb2fbe4d57ec0c13fffa7a4",
+    "payload_bytes": 10321920,
+    "byte_identical": true
+  },
+  "validation": {
+    "deep_verify_status": "ok",
+    "golden_oracle_status": "ok",
+    "k2_reference_bitwise_equal": true,
+    "k3_reference_bitwise_equal": true,
+    "q2_k_golden_byte_equal": true,
+    "q4_k_golden_byte_equal": true,
+    "q6_k_golden_byte_equal": true,
+    "corrupt_payload_rejected": true,
+    "atomic_complete_marker_zero_bytes": true,
+    "temporary_files_after_publication": 0
+  },
+  "projection": {
+    "method": "source hash + GGUF reader once + (reconstruct + quantize + dequant validation + overlay write/hash/validate) times 64",
+    "all_64_wall_seconds": 6662.6834300257615,
+    "all_64_wall_minutes": 111.04472383376269,
+    "all_64_max_rss_kib": 2786504,
+    "all_64_max_rss_gib": 2.6574172973632812,
+    "attempt_1_wall_budget_seconds": 120.0,
+    "attempt_1_rss_target_gib": 2.5,
+    "attempt_1_rss_hard_gate_gib": 3.0,
+    "wall_budget_holds": false,
+    "rss_target_holds": false,
+    "rss_hard_gate_holds": true,
+    "documented_attempt_2_trigger_fires": true
+  }
+}

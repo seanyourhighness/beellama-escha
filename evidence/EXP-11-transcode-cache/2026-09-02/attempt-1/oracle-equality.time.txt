@@ -1,0 +1,23 @@
+	Command being timed: "python3 tests/test-escha-transcode-oracle.py --source /mnt/d/CODEX WORKSPACE/escha-w2-lowgpu/weights/escha-w2-lowgpu-mono-parity.gguf --cache-dir evidence/EXP-11-transcode-cache/2026-09-02/attempt-1/cache/run-a --scope ffn --quant q2_k --require-bitwise --report evidence/EXP-11-transcode-cache/2026-09-02/attempt-1/oracle-equality.json"
+	User time (seconds): 125.72
+	System time (seconds): 6.90
+	Percent of CPU this job got: 109%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 2:01.39
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 2837044
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 3188
+	Minor (reclaiming a frame) page faults: 421119
+	Voluntary context switches: 4977
+	Involuntary context switches: 641
+	Swaps: 0
+	File system inputs: 382216
+	File system outputs: 0
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

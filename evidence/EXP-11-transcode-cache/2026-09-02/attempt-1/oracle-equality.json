@@ -1,0 +1,74 @@
+{
+  "cache_tensors": [
+    {
+      "dequantized_mae": 0.0022339944737484177,
+      "expected_payload_sha256": "ea4cb733b800d50e7be74a2ff84f22fa8eed79b32631ee73d0117213d2305a40",
+      "mae_equal_to_manifest": true,
+      "manifest_mae": 0.0022339944737484177,
+      "name": "blk.0.ffn_gate.weight",
+      "payload_bitwise_equal": true,
+      "payload_sha256": "ea4cb733b800d50e7be74a2ff84f22fa8eed79b32631ee73d0117213d2305a40"
+    },
+    {
+      "dequantized_mae": 0.0021744392599965735,
+      "expected_payload_sha256": "041c0045017d17bdfb04698a36a5311032e04e309e8a95872fbadcc691b6a713",
+      "mae_equal_to_manifest": true,
+      "manifest_mae": 0.0021744392599965735,
+      "name": "blk.0.ffn_up.weight",
+      "payload_bitwise_equal": true,
+      "payload_sha256": "041c0045017d17bdfb04698a36a5311032e04e309e8a95872fbadcc691b6a713"
+    },
+    {
+      "dequantized_mae": 0.0023348623070785415,
+      "expected_payload_sha256": "e5a94a62c8c4e9f9a7450007ab0fb5b5070540a63a939285b4450f2dd40d28b7",
+      "mae_equal_to_manifest": true,
+      "manifest_mae": 0.0023348623070785415,
+      "name": "blk.0.ffn_down.weight",
+      "payload_bitwise_equal": true,
+      "payload_sha256": "e5a94a62c8c4e9f9a7450007ab0fb5b5070540a63a939285b4450f2dd40d28b7"
+    }
+  ],
+  "converter_regression": {
+    "byte_equal": true,
+    "case": "layer-0 --standard-gdn-gate-quant q2_k",
+    "expected_payload_bytes": 10321920,
+    "expected_payload_sha256": "03cc407c46fee4561aff978a8b505afc1ec2d003abb2fbe4d57ec0c13fffa7a4",
+    "expected_source_sha256": "ac01fe3fd9c098e90eb9c4ac8524911ae5bd27ebb215259d6bd84143aafe61ac",
+    "function_identity_shared": true,
+    "payload_bytes": 10321920,
+    "payload_sha256": "03cc407c46fee4561aff978a8b505afc1ec2d003abb2fbe4d57ec0c13fffa7a4",
+    "source_sha256": "ac01fe3fd9c098e90eb9c4ac8524911ae5bd27ebb215259d6bd84143aafe61ac"
+  },
+  "failures": [],
+  "numpy_version": "2.5.1",
+  "quantizer_golden": {
+    "q2_k": {
+      "byte_equal": true,
+      "expected_sha256": "b34768a5c2d06eadd84bd962b0b4705f76ed02e4ec9bfba11fc7308a5511d7ed",
+      "sha256": "b34768a5c2d06eadd84bd962b0b4705f76ed02e4ec9bfba11fc7308a5511d7ed"
+    },
+    "q4_k": {
+      "byte_equal": true,
+      "expected_sha256": "5f9804b208bfa404edc8755b44cbf4d430d28ae0d95e0478f9daacadcd96050f",
+      "sha256": "5f9804b208bfa404edc8755b44cbf4d430d28ae0d95e0478f9daacadcd96050f"
+    },
+    "q6_k": {
+      "byte_equal": true,
+      "expected_sha256": "5c8734e412edc2370bd460454e0f1e8ba0e2c11aa0402a4de26bc902919ee3d0",
+      "sha256": "5c8734e412edc2370bd460454e0f1e8ba0e2c11aa0402a4de26bc902919ee3d0"
+    }
+  },
+  "reconstruction_reference": {
+    "k2": {
+      "bitwise_equal": true,
+      "reference_sha256": "84817c3cbad3787be1f49a53a1826c3b9503d6c879e8bfd0dbb4a230afa4e1b0",
+      "shared_sha256": "84817c3cbad3787be1f49a53a1826c3b9503d6c879e8bfd0dbb4a230afa4e1b0"
+    },
+    "k3": {
+      "bitwise_equal": true,
+      "reference_sha256": "3700a61b31e9e6ae4e991e2093669b6292006ad3c0404bb7bb03949550a9ae09",
+      "shared_sha256": "3700a61b31e9e6ae4e991e2093669b6292006ad3c0404bb7bb03949550a9ae09"
+    }
+  },
+  "status": "ok"
+}

@@ -1,0 +1,19 @@
+{
+  "command": "compare",
+  "entry_sha_a": {
+    "blk.0.ffn_down.weight": "e5a94a62c8c4e9f9a7450007ab0fb5b5070540a63a939285b4450f2dd40d28b7",
+    "blk.0.ffn_gate.weight": "ea4cb733b800d50e7be74a2ff84f22fa8eed79b32631ee73d0117213d2305a40",
+    "blk.0.ffn_up.weight": "041c0045017d17bdfb04698a36a5311032e04e309e8a95872fbadcc691b6a713"
+  },
+  "entry_sha_b": {
+    "blk.0.ffn_down.weight": "e5a94a62c8c4e9f9a7450007ab0fb5b5070540a63a939285b4450f2dd40d28b7",
+    "blk.0.ffn_gate.weight": "ea4cb733b800d50e7be74a2ff84f22fa8eed79b32631ee73d0117213d2305a40",
+    "blk.0.ffn_up.weight": "041c0045017d17bdfb04698a36a5311032e04e309e8a95872fbadcc691b6a713"
+  },
+  "entry_sha_equal": true,
+  "errors": [],
+  "overlay_sha_a": "f3911881dc4c9ec971eef00a3a2c33f52f64c0c252602c0b324ebd72dc52847b",
+  "overlay_sha_b": "f3911881dc4c9ec971eef00a3a2c33f52f64c0c252602c0b324ebd72dc52847b",
+  "overlay_sha_equal": true,
+  "status": "ok"
+}
