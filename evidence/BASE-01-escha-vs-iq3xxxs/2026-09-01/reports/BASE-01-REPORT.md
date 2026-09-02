@@ -151,4 +151,7 @@ not credible without either a new ESCHA mainloop or artifact substitution.
 - Profiling-only `GGML_OP_PROFILE` hook was reverted after evidence collection;
   production source matches be6bf478d (git diff empty) and the canonical
   `build-cuda-base01` binaries are unchanged (llama-bench 76485e11…, lib 5bea9eb9-class).
-- Evidence committed on `escha-w2-prefill`: 1541ee91c (evidence+reports) → 257c31072 (Gate 3 housekeeping) → 45d4bc516 (HEAD references). Closure verified: **local HEAD == remote HEAD**, worktree clean except documented local aids.
+- Evidence committed on `escha-w2-prefill` as the chain starting at `1541ee91c`
+  (evidence+reports), followed by Gate 3 housekeeping commits (257c31072,
+  45d4bc516, b8412bfcf). Closure verified: **local HEAD == remote HEAD** (tip of
+  `1541ee91c..HEAD`), worktree clean except documented local aids.
