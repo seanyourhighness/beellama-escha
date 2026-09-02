@@ -151,6 +151,6 @@ not credible without either a new ESCHA mainloop or artifact substitution.
 - Profiling-only `GGML_OP_PROFILE` hook was reverted after evidence collection;
   production source matches be6bf478d (git diff empty) and the canonical
   `build-cuda-base01` binaries are unchanged (llama-bench 76485e11…, lib 5bea9eb9-class).
-- Evidence committed in `1541ee91c`; local HEAD == remote HEAD; worktree clean
+- Evidence committed in `257c31072` (BASE-01 evidence + Gate 3 housekeeping); local HEAD == remote HEAD; worktree clean
   except documented local aids (`results/`, `weights/`). No optimization
   implementation was started, per mission scope.
