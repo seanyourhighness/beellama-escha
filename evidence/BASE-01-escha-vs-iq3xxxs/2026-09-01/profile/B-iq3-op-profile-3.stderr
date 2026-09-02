@@ -1,0 +1,1105 @@
+ggml_cuda_init: found 1 CUDA devices (Total VRAM: 32606 MiB):
+  Device 0: NVIDIA GeForce RTX 5090, compute capability 12.0, VMM: yes, VRAM: 32606 MiB
+[
+GGML_OP_PROFILE op=mul_mat name=node_13 ne=10240x2048x1x1 type_src0=18 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=31.9290 host_ms=31.9560 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_34 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=13.5623 host_ms=13.7615 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_40 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.1942 host_ms=0.2647 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-0 ne=6144x2048x1x1 type_src0=18 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.4615 host_ms=2.0955 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-0 ne=5120x2048x1x1 type_src0=21 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=12.1107 host_ms=12.1948 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-0 ne=17408x2048x1x1 type_src0=19 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=13.2176 host_ms=13.2922 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-0 ne=17408x2048x1x1 type_src0=19 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.2097 host_ms=1.2491 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-0 ne=5120x2048x1x1 type_src0=29 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=64.1784 host_ms=64.4507 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_76 ne=10240x2048x1x1 type_src0=16 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=11.4063 host_ms=11.4618 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_97 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0676 host_ms=0.4093 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_103 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0573 host_ms=0.0758 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-1 ne=6144x2048x1x1 type_src0=22 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=11.7322 host_ms=13.3426 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-1 ne=5120x2048x1x1 type_src0=21 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.4453 host_ms=0.5299 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-1 ne=17408x2048x1x1 type_src0=19 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.1893 host_ms=1.2663 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-1 ne=17408x2048x1x1 type_src0=19 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.2134 host_ms=1.2514 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-1 ne=5120x2048x1x1 type_src0=22 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.6455 host_ms=1.9174 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_139 ne=10240x2048x1x1 type_src0=22 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.9459 host_ms=1.0143 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_160 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0676 host_ms=0.4234 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_166 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0583 host_ms=0.0763 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-2 ne=6144x2048x1x1 type_src0=22 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.8745 host_ms=2.6122 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-2 ne=5120x2048x1x1 type_src0=18 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.4330 host_ms=0.5235 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-2 ne=17408x2048x1x1 type_src0=16 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.0811 host_ms=1.1641 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-2 ne=17408x2048x1x1 type_src0=16 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.1072 host_ms=1.1430 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-2 ne=5120x2048x1x1 type_src0=10 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=15.4721 host_ms=15.7457 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Qcur_full-3 ne=12288x2048x1x1 type_src0=22 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.1487 host_ms=1.2347 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Vcur-3 ne=1024x2048x1x1 type_src0=23 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=11.2858 host_ms=11.3380 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Kcur-3 ne=1024x2048x1x1 type_src0=23 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.1420 host_ms=0.1830 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=attn_output-3 ne=5120x2048x1x1 type_src0=23 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.3958 host_ms=1.2874 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-3 ne=17408x2048x1x1 type_src0=16 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.0828 host_ms=1.1647 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-3 ne=17408x2048x1x1 type_src0=16 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.1177 host_ms=1.1557 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-3 ne=5120x2048x1x1 type_src0=22 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.6493 host_ms=1.9196 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_241 ne=10240x2048x1x1 type_src0=16 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.9549 host_ms=1.0274 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_262 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0676 host_ms=0.4203 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_268 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0642 host_ms=0.0805 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-4 ne=6144x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.7198 host_ms=2.3304 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-4 ne=5120x2048x1x1 type_src0=10 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.6787 host_ms=0.7590 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-4 ne=17408x2048x1x1 type_src0=16 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.0852 host_ms=1.1688 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-4 ne=17408x2048x1x1 type_src0=16 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.1088 host_ms=1.1455 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-4 ne=5120x2048x1x1 type_src0=16 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.1829 host_ms=1.4558 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_304 ne=10240x2048x1x1 type_src0=22 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.9518 host_ms=1.0235 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_325 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0676 host_ms=0.4246 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_331 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0602 host_ms=0.0766 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-5 ne=6144x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.7209 host_ms=2.5293 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-5 ne=5120x2048x1x1 type_src0=18 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.4338 host_ms=0.5394 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-5 ne=17408x2048x1x1 type_src0=16 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.2454 host_ms=1.3764 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-5 ne=17408x2048x1x1 type_src0=22 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.6095 host_ms=1.6467 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-5 ne=5120x2048x1x1 type_src0=16 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.1848 host_ms=1.4600 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_367 ne=10240x2048x1x1 type_src0=22 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.0043 host_ms=1.0676 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_388 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0676 host_ms=0.4173 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_394 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0484 host_ms=0.0790 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-6 ne=6144x2048x1x1 type_src0=22 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.6195 host_ms=2.2265 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-6 ne=5120x2048x1x1 type_src0=10 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.6832 host_ms=0.7627 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-6 ne=17408x2048x1x1 type_src0=16 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.0852 host_ms=1.1757 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-6 ne=17408x2048x1x1 type_src0=29 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=2.5224 host_ms=2.5650 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-6 ne=5120x2048x1x1 type_src0=16 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.1843 host_ms=1.4678 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Qcur_full-7 ne=12288x2048x1x1 type_src0=22 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.1508 host_ms=1.2436 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Vcur-7 ne=1024x2048x1x1 type_src0=23 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.1124 host_ms=0.2270 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Kcur-7 ne=1024x2048x1x1 type_src0=18 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.2014 host_ms=0.2397 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=attn_output-7 ne=5120x2048x1x1 type_src0=10 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.6779 host_ms=1.4988 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-7 ne=17408x2048x1x1 type_src0=16 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.0893 host_ms=1.1736 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-7 ne=17408x2048x1x1 type_src0=16 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.1115 host_ms=1.1497 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-7 ne=5120x2048x1x1 type_src0=17 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=14.0170 host_ms=14.2906 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_469 ne=10240x2048x1x1 type_src0=19 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.7479 host_ms=0.8134 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_490 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0676 host_ms=0.4178 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_496 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0673 host_ms=0.0842 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-8 ne=6144x2048x1x1 type_src0=22 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.6195 host_ms=2.2233 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-8 ne=5120x2048x1x1 type_src0=10 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.9777 host_ms=1.0558 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-8 ne=17408x2048x1x1 type_src0=16 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.2764 host_ms=1.3980 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-8 ne=17408x2048x1x1 type_src0=16 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.1404 host_ms=1.1800 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-8 ne=5120x2048x1x1 type_src0=19 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.3114 host_ms=1.5870 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_532 ne=10240x2048x1x1 type_src0=19 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.7757 host_ms=0.8470 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_553 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0676 host_ms=0.4299 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_559 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0640 host_ms=0.0813 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-9 ne=6144x2048x1x1 type_src0=16 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.4444 host_ms=2.0579 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-9 ne=5120x2048x1x1 type_src0=10 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.6849 host_ms=0.7713 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-9 ne=17408x2048x1x1 type_src0=29 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.5175 host_ms=1.6052 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-9 ne=17408x2048x1x1 type_src0=19 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.2708 host_ms=1.3123 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-9 ne=5120x2048x1x1 type_src0=29 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.3701 host_ms=1.9162 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_595 ne=10240x2048x1x1 type_src0=22 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.0068 host_ms=1.0813 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_616 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0676 host_ms=0.4279 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_622 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0833 host_ms=0.1001 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-10 ne=6144x2048x1x1 type_src0=16 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.4444 host_ms=2.0469 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-10 ne=5120x2048x1x1 type_src0=10 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.6827 host_ms=0.7638 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-10 ne=17408x2048x1x1 type_src0=29 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.5196 host_ms=1.6125 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-10 ne=17408x2048x1x1 type_src0=19 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.2345 host_ms=1.2708 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-10 ne=5120x2048x1x1 type_src0=29 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.3690 host_ms=1.6389 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Qcur_full-11 ne=12288x2048x1x1 type_src0=22 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.1545 host_ms=1.2359 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Vcur-11 ne=1024x2048x1x1 type_src0=23 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.1126 host_ms=0.2227 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Kcur-11 ne=1024x2048x1x1 type_src0=18 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.3525 host_ms=0.3890 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=attn_output-11 ne=5120x2048x1x1 type_src0=10 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.6779 host_ms=1.5318 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-11 ne=17408x2048x1x1 type_src0=19 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.1978 host_ms=1.2856 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-11 ne=17408x2048x1x1 type_src0=19 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.2586 host_ms=1.2989 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-11 ne=5120x2048x1x1 type_src0=19 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.3156 host_ms=1.5849 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_697 ne=10240x2048x1x1 type_src0=19 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.8036 host_ms=0.8860 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_718 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0676 host_ms=0.4233 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_724 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0565 host_ms=0.0803 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-12 ne=6144x2048x1x1 type_src0=22 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.6236 host_ms=2.2391 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-12 ne=5120x2048x1x1 type_src0=22 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.5805 host_ms=0.6592 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-12 ne=17408x2048x1x1 type_src0=29 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.8235 host_ms=1.9013 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-12 ne=17408x2048x1x1 type_src0=19 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.2218 host_ms=1.2671 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-12 ne=5120x2048x1x1 type_src0=19 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.3115 host_ms=1.5820 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_760 ne=10240x2048x1x1 type_src0=19 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.7492 host_ms=0.8160 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_781 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0676 host_ms=0.4169 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_787 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0704 host_ms=0.0895 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-13 ne=6144x2048x1x1 type_src0=16 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.4485 host_ms=2.0089 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-13 ne=5120x2048x1x1 type_src0=22 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.5849 host_ms=0.6719 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-13 ne=17408x2048x1x1 type_src0=19 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.2022 host_ms=1.2885 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-13 ne=17408x2048x1x1 type_src0=19 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.2292 host_ms=1.2682 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-13 ne=5120x2048x1x1 type_src0=19 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.3116 host_ms=1.5840 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_823 ne=10240x2048x1x1 type_src0=17 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.2590 host_ms=1.3369 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_844 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0676 host_ms=0.4340 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_850 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0565 host_ms=0.0740 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-14 ne=6144x2048x1x1 type_src0=19 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.4925 host_ms=2.1140 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-14 ne=5120x2048x1x1 type_src0=22 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.5855 host_ms=0.6726 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-14 ne=17408x2048x1x1 type_src0=19 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.2022 host_ms=1.2854 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-14 ne=17408x2048x1x1 type_src0=19 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.2282 host_ms=1.2738 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-14 ne=5120x2048x1x1 type_src0=19 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.3177 host_ms=1.5876 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Qcur_full-15 ne=12288x2048x1x1 type_src0=22 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.1651 host_ms=1.2528 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Vcur-15 ne=1024x2048x1x1 type_src0=23 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.1122 host_ms=0.2240 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Kcur-15 ne=1024x2048x1x1 type_src0=18 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.1451 host_ms=0.1876 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=attn_output-15 ne=5120x2048x1x1 type_src0=29 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.5202 host_ms=1.3892 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-15 ne=17408x2048x1x1 type_src0=19 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.4907 host_ms=1.5767 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-15 ne=17408x2048x1x1 type_src0=19 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.2210 host_ms=1.2668 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-15 ne=5120x2048x1x1 type_src0=19 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.3160 host_ms=1.5882 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_925 ne=10240x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.1784 host_ms=1.2532 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_946 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0676 host_ms=0.4286 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_952 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0868 host_ms=0.1053 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-16 ne=6144x2048x1x1 type_src0=16 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.4485 host_ms=2.0646 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-16 ne=5120x2048x1x1 type_src0=16 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.4166 host_ms=0.4959 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-16 ne=17408x2048x1x1 type_src0=19 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.2060 host_ms=1.2923 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-16 ne=17408x2048x1x1 type_src0=19 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.2651 host_ms=1.3023 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-16 ne=5120x2048x1x1 type_src0=29 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.5963 host_ms=1.8709 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_988 ne=10240x2048x1x1 type_src0=22 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.9602 host_ms=1.0361 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_1009 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0696 host_ms=0.4370 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_1015 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0483 host_ms=0.0716 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-17 ne=6144x2048x1x1 type_src0=29 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.6984 host_ms=2.2712 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-17 ne=5120x2048x1x1 type_src0=10 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.6903 host_ms=0.7733 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-17 ne=17408x2048x1x1 type_src0=19 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.2039 host_ms=1.2824 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-17 ne=17408x2048x1x1 type_src0=19 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.2665 host_ms=1.3073 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-17 ne=5120x2048x1x1 type_src0=19 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.3136 host_ms=1.5856 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_1051 ne=10240x2048x1x1 type_src0=17 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.9683 host_ms=1.0434 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_1072 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0696 host_ms=0.4249 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_1078 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.1100 host_ms=0.1348 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-18 ne=6144x2048x1x1 type_src0=17 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.6308 host_ms=2.6876 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-18 ne=5120x2048x1x1 type_src0=22 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.5846 host_ms=0.6706 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-18 ne=17408x2048x1x1 type_src0=19 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.2040 host_ms=1.2924 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-18 ne=17408x2048x1x1 type_src0=29 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.5277 host_ms=1.5742 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-18 ne=5120x2048x1x1 type_src0=16 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.1989 host_ms=1.4817 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Qcur_full-19 ne=12288x2048x1x1 type_src0=29 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.0910 host_ms=1.1708 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Vcur-19 ne=1024x2048x1x1 type_src0=23 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.1121 host_ms=0.2250 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Kcur-19 ne=1024x2048x1x1 type_src0=23 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0879 host_ms=0.1911 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=attn_output-19 ne=5120x2048x1x1 type_src0=18 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.4300 host_ms=1.2060 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-19 ne=17408x2048x1x1 type_src0=29 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.5219 host_ms=1.6134 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-19 ne=17408x2048x1x1 type_src0=19 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.2339 host_ms=1.2725 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-19 ne=5120x2048x1x1 type_src0=16 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.4795 host_ms=1.7481 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_1153 ne=10240x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.1161 host_ms=1.2093 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_1174 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0676 host_ms=0.4389 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_1180 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0842 host_ms=0.1024 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-20 ne=6144x2048x1x1 type_src0=22 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.6256 host_ms=2.2414 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-20 ne=5120x2048x1x1 type_src0=10 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.6890 host_ms=0.7710 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-20 ne=17408x2048x1x1 type_src0=22 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.5477 host_ms=1.6361 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-20 ne=17408x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.8448 host_ms=1.8842 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-20 ne=5120x2048x1x1 type_src0=10 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.9434 host_ms=2.2180 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_1216 ne=10240x2048x1x1 type_src0=22 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.9687 host_ms=1.0479 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_1237 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0676 host_ms=0.5352 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_1243 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0469 host_ms=0.0733 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-21 ne=6144x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.7301 host_ms=2.3714 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-21 ne=5120x2048x1x1 type_src0=10 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.6869 host_ms=0.7676 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-21 ne=17408x2048x1x1 type_src0=22 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.5564 host_ms=1.6449 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-21 ne=17408x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.8885 host_ms=1.9277 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-21 ne=5120x2048x1x1 type_src0=22 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.6720 host_ms=1.9457 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_1279 ne=10240x2048x1x1 type_src0=22 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.9605 host_ms=1.0410 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_1300 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0696 host_ms=0.4337 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_1306 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0843 host_ms=0.1014 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-22 ne=6144x2048x1x1 type_src0=22 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.6287 host_ms=2.6249 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-22 ne=5120x2048x1x1 type_src0=10 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.6916 host_ms=0.7756 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-22 ne=17408x2048x1x1 type_src0=22 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.6426 host_ms=1.7324 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-22 ne=17408x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.8222 host_ms=1.8617 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-22 ne=5120x2048x1x1 type_src0=10 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.9291 host_ms=2.1973 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Qcur_full-23 ne=12288x2048x1x1 type_src0=18 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.8620 host_ms=0.9539 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Vcur-23 ne=1024x2048x1x1 type_src0=12 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=13.5911 host_ms=13.7022 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Kcur-23 ne=1024x2048x1x1 type_src0=18 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.1614 host_ms=0.1964 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=attn_output-23 ne=5120x2048x1x1 type_src0=18 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.4321 host_ms=1.2235 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-23 ne=17408x2048x1x1 type_src0=22 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.5476 host_ms=1.6298 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-23 ne=17408x2048x1x1 type_src0=22 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.6175 host_ms=1.6541 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-23 ne=5120x2048x1x1 type_src0=10 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.9394 host_ms=2.2950 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_1381 ne=10240x2048x1x1 type_src0=22 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.9602 host_ms=1.0310 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_1402 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0676 host_ms=0.4270 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_1408 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0888 host_ms=0.1112 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-24 ne=6144x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.7260 host_ms=2.3366 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-24 ne=5120x2048x1x1 type_src0=22 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.5850 host_ms=0.6759 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-24 ne=17408x2048x1x1 type_src0=22 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.5421 host_ms=1.6284 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-24 ne=17408x2048x1x1 type_src0=22 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.6216 host_ms=1.6572 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-24 ne=5120x2048x1x1 type_src0=10 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.9311 host_ms=2.2062 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_1444 ne=10240x2048x1x1 type_src0=22 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.2659 host_ms=1.3444 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_1465 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0676 host_ms=0.5323 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_1471 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.1450 host_ms=0.1713 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-25 ne=6144x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.7260 host_ms=2.3450 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-25 ne=5120x2048x1x1 type_src0=18 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.4390 host_ms=0.5066 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-25 ne=17408x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.8301 host_ms=1.9065 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-25 ne=17408x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.8289 host_ms=1.8739 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-25 ne=5120x2048x1x1 type_src0=10 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.9289 host_ms=2.2052 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_1507 ne=10240x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.1161 host_ms=1.2022 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_1528 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0676 host_ms=0.4269 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_1534 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.1482 host_ms=0.1802 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-26 ne=6144x2048x1x1 type_src0=22 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.6267 host_ms=2.4862 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-26 ne=5120x2048x1x1 type_src0=10 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.6892 host_ms=0.7767 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-26 ne=17408x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.7981 host_ms=1.8857 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-26 ne=17408x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.8249 host_ms=1.8624 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-26 ne=5120x2048x1x1 type_src0=22 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.6656 host_ms=1.9379 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Qcur_full-27 ne=12288x2048x1x1 type_src0=18 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.8640 host_ms=0.9547 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Vcur-27 ne=1024x2048x1x1 type_src0=12 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.1206 host_ms=0.2306 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Kcur-27 ne=1024x2048x1x1 type_src0=21 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.1887 host_ms=0.2265 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=attn_output-27 ne=5120x2048x1x1 type_src0=21 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.4485 host_ms=1.2503 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-27 ne=17408x2048x1x1 type_src0=22 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.8268 host_ms=1.9149 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-27 ne=17408x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.8684 host_ms=1.9119 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-27 ne=5120x2048x1x1 type_src0=10 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.9330 host_ms=2.2096 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_1609 ne=10240x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.1222 host_ms=1.2009 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_1630 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0676 host_ms=0.3701 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_1636 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.1383 host_ms=0.1639 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-28 ne=6144x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.7260 host_ms=2.3157 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-28 ne=5120x2048x1x1 type_src0=10 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.6852 host_ms=0.7689 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-28 ne=17408x2048x1x1 type_src0=22 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.5701 host_ms=1.6465 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-28 ne=17408x2048x1x1 type_src0=22 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.6290 host_ms=1.6676 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-28 ne=5120x2048x1x1 type_src0=22 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.6670 host_ms=2.2225 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_1672 ne=10240x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.1202 host_ms=1.2016 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_1693 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0676 host_ms=0.4289 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_1699 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0745 host_ms=0.0880 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-29 ne=6144x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.7318 host_ms=2.3689 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-29 ne=5120x2048x1x1 type_src0=22 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.5907 host_ms=0.6705 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-29 ne=17408x2048x1x1 type_src0=22 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.5564 host_ms=1.6435 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-29 ne=17408x2048x1x1 type_src0=16 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.1747 host_ms=1.2123 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-29 ne=5120x2048x1x1 type_src0=22 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.6744 host_ms=1.9482 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_1735 ne=10240x2048x1x1 type_src0=22 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.2605 host_ms=1.3449 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_1756 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0676 host_ms=0.4254 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_1762 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0767 host_ms=0.0966 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-30 ne=6144x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.7342 host_ms=2.3703 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-30 ne=5120x2048x1x1 type_src0=10 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.6894 host_ms=0.7703 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-30 ne=17408x2048x1x1 type_src0=29 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.5299 host_ms=1.6220 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-30 ne=17408x2048x1x1 type_src0=22 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.6308 host_ms=1.6676 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-30 ne=5120x2048x1x1 type_src0=22 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.6765 host_ms=1.9495 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Qcur_full-31 ne=12288x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.3719 host_ms=1.4626 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Vcur-31 ne=1024x2048x1x1 type_src0=12 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.1229 host_ms=0.2363 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Kcur-31 ne=1024x2048x1x1 type_src0=23 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.1556 host_ms=0.1978 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=attn_output-31 ne=5120x2048x1x1 type_src0=21 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.4526 host_ms=1.5560 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-31 ne=17408x2048x1x1 type_src0=16 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.1156 host_ms=1.2069 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-31 ne=17408x2048x1x1 type_src0=22 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.5872 host_ms=1.6234 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-31 ne=5120x2048x1x1 type_src0=16 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.2133 host_ms=1.4818 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_1837 ne=10240x2048x1x1 type_src0=18 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.7247 host_ms=0.8012 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_1858 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0676 host_ms=0.4235 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_1864 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.1258 host_ms=0.1557 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-32 ne=6144x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.7321 host_ms=2.3738 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-32 ne=5120x2048x1x1 type_src0=18 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.4430 host_ms=0.5222 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-32 ne=17408x2048x1x1 type_src0=17 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.5767 host_ms=1.6636 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-32 ne=17408x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=2.1421 host_ms=2.1810 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-32 ne=5120x2048x1x1 type_src0=10 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.9493 host_ms=2.2219 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_1900 ne=10240x2048x1x1 type_src0=18 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.7270 host_ms=0.8111 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_1921 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0676 host_ms=0.4301 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_1927 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0538 host_ms=0.0843 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-33 ne=6144x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.7322 host_ms=2.3676 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-33 ne=5120x2048x1x1 type_src0=18 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.4433 host_ms=0.5243 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-33 ne=17408x2048x1x1 type_src0=17 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.5788 host_ms=1.6643 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-33 ne=17408x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.8499 host_ms=1.8877 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-33 ne=5120x2048x1x1 type_src0=17 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.7048 host_ms=1.9775 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_1963 ne=10240x2048x1x1 type_src0=18 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.0035 host_ms=1.0889 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_1984 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0676 host_ms=0.4185 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_1990 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0701 host_ms=0.1243 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-34 ne=6144x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.7322 host_ms=2.3231 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-34 ne=5120x2048x1x1 type_src0=18 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.4434 host_ms=0.5316 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-34 ne=17408x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=2.0887 host_ms=2.1751 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-34 ne=17408x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.8446 host_ms=1.8932 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-34 ne=5120x2048x1x1 type_src0=18 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.2727 host_ms=1.5478 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Qcur_full-35 ne=12288x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.3742 host_ms=1.4660 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Vcur-35 ne=1024x2048x1x1 type_src0=12 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.1243 host_ms=0.2379 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Kcur-35 ne=1024x2048x1x1 type_src0=23 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.1400 host_ms=0.1757 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=attn_output-35 ne=5120x2048x1x1 type_src0=21 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.7352 host_ms=1.5370 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-35 ne=17408x2048x1x1 type_src0=17 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.5767 host_ms=1.6747 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-35 ne=17408x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.8444 host_ms=1.8844 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-35 ne=5120x2048x1x1 type_src0=18 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.2706 host_ms=1.5447 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_2065 ne=10240x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.1264 host_ms=1.2032 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_2086 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0676 host_ms=0.4251 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_2092 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0566 host_ms=0.0755 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-36 ne=6144x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.7322 host_ms=2.3648 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-36 ne=5120x2048x1x1 type_src0=18 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.4431 host_ms=0.5272 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-36 ne=17408x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.8207 host_ms=1.9063 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-36 ne=17408x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=2.1300 host_ms=2.1710 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-36 ne=5120x2048x1x1 type_src0=18 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.2732 host_ms=1.5493 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_2128 ne=10240x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.1305 host_ms=1.2088 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_2149 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0696 host_ms=0.4381 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_2155 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0478 host_ms=0.0746 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-37 ne=6144x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.7322 host_ms=2.3659 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-37 ne=5120x2048x1x1 type_src0=18 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.4436 host_ms=0.5266 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-37 ne=17408x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.8186 host_ms=1.9066 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-37 ne=17408x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.8404 host_ms=1.8824 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-37 ne=5120x2048x1x1 type_src0=18 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.2755 host_ms=1.5565 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_2191 ne=10240x2048x1x1 type_src0=17 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.9769 host_ms=1.1348 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_2212 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0676 host_ms=0.4264 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_2218 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0947 host_ms=0.1199 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-38 ne=6144x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.7342 host_ms=2.3694 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-38 ne=5120x2048x1x1 type_src0=10 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.6908 host_ms=0.7712 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-38 ne=17408x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.8145 host_ms=1.9002 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-38 ne=17408x2048x1x1 type_src0=18 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.1978 host_ms=1.2549 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-38 ne=5120x2048x1x1 type_src0=18 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.2747 host_ms=1.5472 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Qcur_full-39 ne=12288x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.3742 host_ms=1.4634 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Vcur-39 ne=1024x2048x1x1 type_src0=23 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.1121 host_ms=0.2272 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Kcur-39 ne=1024x2048x1x1 type_src0=18 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.1527 host_ms=0.1910 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=attn_output-39 ne=5120x2048x1x1 type_src0=21 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.4547 host_ms=1.6007 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-39 ne=17408x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.8206 host_ms=1.9162 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-39 ne=17408x2048x1x1 type_src0=18 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.2003 host_ms=1.2408 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-39 ne=5120x2048x1x1 type_src0=18 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.2726 host_ms=1.5440 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_2293 ne=10240x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.1302 host_ms=1.2056 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_2314 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0676 host_ms=0.4244 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_2320 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0410 host_ms=0.1241 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-40 ne=6144x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.7342 host_ms=2.3696 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-40 ne=5120x2048x1x1 type_src0=18 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.4415 host_ms=0.5192 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-40 ne=17408x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=2.1100 host_ms=2.1975 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-40 ne=17408x2048x1x1 type_src0=18 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.2486 host_ms=1.2865 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-40 ne=5120x2048x1x1 type_src0=18 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.2708 host_ms=1.5459 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_2356 ne=10240x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.1305 host_ms=1.2094 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_2377 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0696 host_ms=0.4343 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_2383 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0441 host_ms=0.1023 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-41 ne=6144x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.7301 host_ms=2.3981 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-41 ne=5120x2048x1x1 type_src0=18 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.4412 host_ms=0.5295 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-41 ne=17408x2048x1x1 type_src0=18 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.1735 host_ms=1.2623 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-41 ne=17408x2048x1x1 type_src0=18 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.2327 host_ms=1.2756 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-41 ne=5120x2048x1x1 type_src0=18 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.2709 host_ms=1.5478 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_2419 ne=10240x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.1304 host_ms=1.2891 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_2440 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0696 host_ms=0.4245 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_2446 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0543 host_ms=0.0742 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-42 ne=6144x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.7322 host_ms=2.3699 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-42 ne=5120x2048x1x1 type_src0=18 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.4452 host_ms=0.5358 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-42 ne=17408x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.8204 host_ms=1.9057 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-42 ne=17408x2048x1x1 type_src0=18 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.2136 host_ms=1.2572 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-42 ne=5120x2048x1x1 type_src0=10 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.9598 host_ms=2.2382 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Qcur_full-43 ne=12288x2048x1x1 type_src0=18 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.8739 host_ms=0.9556 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Vcur-43 ne=1024x2048x1x1 type_src0=23 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.1154 host_ms=0.2129 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Kcur-43 ne=1024x2048x1x1 type_src0=23 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.1274 host_ms=0.1702 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=attn_output-43 ne=5120x2048x1x1 type_src0=23 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.6830 host_ms=1.4817 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-43 ne=17408x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.8207 host_ms=1.9071 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-43 ne=17408x2048x1x1 type_src0=18 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.1993 host_ms=1.2441 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-43 ne=5120x2048x1x1 type_src0=10 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.9555 host_ms=2.2297 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_2521 ne=10240x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.1282 host_ms=1.2032 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_2542 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0676 host_ms=0.7452 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_2548 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0583 host_ms=0.0777 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-44 ne=6144x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.7342 host_ms=2.3817 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-44 ne=5120x2048x1x1 type_src0=18 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.4432 host_ms=0.5284 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-44 ne=17408x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.8308 host_ms=1.9052 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-44 ne=17408x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.8410 host_ms=1.9643 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-44 ne=5120x2048x1x1 type_src0=10 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.9516 host_ms=2.2266 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_2584 ne=10240x2048x1x1 type_src0=18 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.7288 host_ms=0.8077 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_2605 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0676 host_ms=0.3687 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_2611 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.1611 host_ms=0.2044 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-45 ne=6144x2048x1x1 type_src0=17 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.6400 host_ms=2.2429 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-45 ne=5120x2048x1x1 type_src0=10 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.6948 host_ms=0.7764 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-45 ne=17408x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.8153 host_ms=1.8904 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-45 ne=17408x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=2.1553 host_ms=2.2077 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-45 ne=5120x2048x1x1 type_src0=10 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.9538 host_ms=2.3063 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_2647 ne=10240x2048x1x1 type_src0=18 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.7311 host_ms=0.7961 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_2668 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0696 host_ms=0.3718 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_2674 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0988 host_ms=0.1210 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-46 ne=6144x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.7321 host_ms=2.3343 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-46 ne=5120x2048x1x1 type_src0=18 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.4436 host_ms=0.5423 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-46 ne=17408x2048x1x1 type_src0=17 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.5766 host_ms=1.6529 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-46 ne=17408x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.8486 host_ms=1.8946 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-46 ne=5120x2048x1x1 type_src0=10 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.9499 host_ms=2.2268 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Qcur_full-47 ne=12288x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.6791 host_ms=1.7704 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Vcur-47 ne=1024x2048x1x1 type_src0=23 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.1140 host_ms=0.2344 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Kcur-47 ne=1024x2048x1x1 type_src0=23 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.1402 host_ms=0.1781 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=attn_output-47 ne=5120x2048x1x1 type_src0=18 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.4403 host_ms=1.2745 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-47 ne=17408x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.8184 host_ms=1.8995 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-47 ne=17408x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.8404 host_ms=1.8788 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-47 ne=5120x2048x1x1 type_src0=10 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.9513 host_ms=2.2327 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_2749 ne=10240x2048x1x1 type_src0=18 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.7270 host_ms=0.8094 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_2770 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0676 host_ms=0.4313 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_2776 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.1174 host_ms=0.1350 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-48 ne=6144x2048x1x1 type_src0=17 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.6380 host_ms=2.2768 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-48 ne=5120x2048x1x1 type_src0=18 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.4432 host_ms=0.5235 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-48 ne=17408x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.8206 host_ms=1.9074 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-48 ne=17408x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.8898 host_ms=1.9289 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-48 ne=5120x2048x1x1 type_src0=10 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.9519 host_ms=2.2308 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_2812 ne=10240x2048x1x1 type_src0=18 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.0220 host_ms=1.1110 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_2833 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0676 host_ms=0.4341 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_2839 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0898 host_ms=0.1106 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-49 ne=6144x2048x1x1 type_src0=22 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.6339 host_ms=2.2712 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-49 ne=5120x2048x1x1 type_src0=18 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.4432 host_ms=0.5260 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-49 ne=17408x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.8186 host_ms=1.9175 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-49 ne=17408x2048x1x1 type_src0=18 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.2007 host_ms=1.2417 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-49 ne=5120x2048x1x1 type_src0=18 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.2686 host_ms=1.5421 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_2875 ne=10240x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.1325 host_ms=1.2143 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_2896 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0696 host_ms=0.4365 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_2902 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0888 host_ms=0.1110 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-50 ne=6144x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.7318 host_ms=2.3663 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-50 ne=5120x2048x1x1 type_src0=21 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.4565 host_ms=0.5407 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-50 ne=17408x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.8204 host_ms=1.9085 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-50 ne=17408x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.8940 host_ms=1.9331 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-50 ne=5120x2048x1x1 type_src0=18 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.6700 host_ms=1.9455 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Qcur_full-51 ne=12288x2048x1x1 type_src0=18 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.8704 host_ms=0.9719 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Vcur-51 ne=1024x2048x1x1 type_src0=12 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.1209 host_ms=0.2447 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Kcur-51 ne=1024x2048x1x1 type_src0=23 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.1401 host_ms=0.1785 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=attn_output-51 ne=5120x2048x1x1 type_src0=21 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.4526 host_ms=1.3239 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-51 ne=17408x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.8184 host_ms=1.9046 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-51 ne=17408x2048x1x1 type_src0=18 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.2020 host_ms=1.2399 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-51 ne=5120x2048x1x1 type_src0=18 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.2772 host_ms=1.5530 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_2977 ne=10240x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.4019 host_ms=1.5163 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_2998 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0676 host_ms=0.4427 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_3004 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0843 host_ms=0.1057 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-52 ne=6144x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.7322 host_ms=2.3747 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-52 ne=5120x2048x1x1 type_src0=21 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.4576 host_ms=0.5385 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-52 ne=17408x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.8293 host_ms=1.8955 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-52 ne=17408x2048x1x1 type_src0=18 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.1933 host_ms=1.2352 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-52 ne=5120x2048x1x1 type_src0=18 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.2683 host_ms=1.5392 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_3040 ne=10240x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.1325 host_ms=1.2169 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_3061 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0696 host_ms=0.4254 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_3067 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0524 host_ms=0.0775 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-53 ne=6144x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.7322 host_ms=2.3703 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-53 ne=5120x2048x1x1 type_src0=21 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.4575 host_ms=0.5407 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-53 ne=17408x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.8184 host_ms=1.9081 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-53 ne=17408x2048x1x1 type_src0=18 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.4275 host_ms=1.4675 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-53 ne=5120x2048x1x1 type_src0=18 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.2710 host_ms=1.5481 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_3103 ne=10240x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.1305 host_ms=1.2135 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_3124 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0676 host_ms=0.4374 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_3130 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0714 host_ms=0.0908 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-54 ne=6144x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.7342 host_ms=2.3784 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-54 ne=5120x2048x1x1 type_src0=18 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.4412 host_ms=0.5193 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-54 ne=17408x2048x1x1 type_src0=18 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.1653 host_ms=1.2500 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-54 ne=17408x2048x1x1 type_src0=18 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.1917 host_ms=1.2336 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-54 ne=5120x2048x1x1 type_src0=21 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.3078 host_ms=1.5834 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Qcur_full-55 ne=12288x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.6671 host_ms=1.7607 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Vcur-55 ne=1024x2048x1x1 type_src0=23 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.1140 host_ms=0.2405 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Kcur-55 ne=1024x2048x1x1 type_src0=23 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.1149 host_ms=0.1589 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=attn_output-55 ne=5120x2048x1x1 type_src0=21 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.4526 host_ms=1.2670 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-55 ne=17408x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.8166 host_ms=1.9028 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-55 ne=17408x2048x1x1 type_src0=18 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.1939 host_ms=1.2356 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-55 ne=5120x2048x1x1 type_src0=21 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.3037 host_ms=1.5807 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_3205 ne=10240x2048x1x1 type_src0=21 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.7495 host_ms=0.8359 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_3226 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0696 host_ms=0.4373 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_3232 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0944 host_ms=0.1146 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-56 ne=6144x2048x1x1 type_src0=21 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.4925 host_ms=2.1238 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-56 ne=5120x2048x1x1 type_src0=23 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.4068 host_ms=0.4892 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-56 ne=17408x2048x1x1 type_src0=21 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.2054 host_ms=1.2977 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-56 ne=17408x2048x1x1 type_src0=23 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.0956 host_ms=1.2238 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-56 ne=5120x2048x1x1 type_src0=23 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.1713 host_ms=1.4455 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_3268 ne=10240x2048x1x1 type_src0=18 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.7229 host_ms=0.8061 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_3289 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0676 host_ms=0.4355 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_3295 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.1081 host_ms=0.1247 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-57 ne=6144x2048x1x1 type_src0=21 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.4925 host_ms=2.1307 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-57 ne=5120x2048x1x1 type_src0=23 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.4067 host_ms=0.4905 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-57 ne=17408x2048x1x1 type_src0=23 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.1390 host_ms=1.2217 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-57 ne=17408x2048x1x1 type_src0=23 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.1431 host_ms=1.1825 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-57 ne=5120x2048x1x1 type_src0=23 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.1723 host_ms=1.4436 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_3331 ne=10240x2048x1x1 type_src0=21 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.7475 host_ms=0.8335 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_3352 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0676 host_ms=0.7148 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_3358 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0760 host_ms=0.1449 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-58 ne=6144x2048x1x1 type_src0=21 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.4905 host_ms=2.1189 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-58 ne=5120x2048x1x1 type_src0=23 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.4063 host_ms=0.4837 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-58 ne=17408x2048x1x1 type_src0=23 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.0770 host_ms=1.1619 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-58 ne=17408x2048x1x1 type_src0=23 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.1035 host_ms=1.1529 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-58 ne=5120x2048x1x1 type_src0=23 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.1723 host_ms=1.4427 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Qcur_full-59 ne=12288x2048x1x1 type_src0=18 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.8678 host_ms=0.9488 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Vcur-59 ne=1024x2048x1x1 type_src0=13 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=12.9642 host_ms=13.0829 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Kcur-59 ne=1024x2048x1x1 type_src0=12 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.1279 host_ms=0.1699 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=attn_output-59 ne=5120x2048x1x1 type_src0=23 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.4014 host_ms=1.1628 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-59 ne=17408x2048x1x1 type_src0=23 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.0770 host_ms=1.1587 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-59 ne=17408x2048x1x1 type_src0=23 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.1355 host_ms=1.1697 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-59 ne=5120x2048x1x1 type_src0=23 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.1682 host_ms=1.4396 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_3433 ne=10240x2048x1x1 type_src0=21 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.0219 host_ms=1.1055 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_3454 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0676 host_ms=0.4385 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_3460 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.1869 host_ms=0.2722 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-60 ne=6144x2048x1x1 type_src0=21 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.4925 host_ms=2.1723 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-60 ne=5120x2048x1x1 type_src0=23 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.4044 host_ms=0.4861 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-60 ne=17408x2048x1x1 type_src0=23 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.0745 host_ms=1.1526 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-60 ne=17408x2048x1x1 type_src0=23 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.1730 host_ms=1.2614 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-60 ne=5120x2048x1x1 type_src0=23 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.1599 host_ms=1.4318 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_3496 ne=10240x2048x1x1 type_src0=21 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.7882 host_ms=0.8650 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_3517 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0696 host_ms=0.3335 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_3523 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.1946 host_ms=0.2143 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-61 ne=6144x2048x1x1 type_src0=21 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.7619 host_ms=2.3588 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-61 ne=5120x2048x1x1 type_src0=21 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.4512 host_ms=0.5408 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-61 ne=17408x2048x1x1 type_src0=23 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.0684 host_ms=1.1475 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-61 ne=17408x2048x1x1 type_src0=23 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.1550 host_ms=1.2002 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-61 ne=5120x2048x1x1 type_src0=23 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.1580 host_ms=1.4354 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_3559 ne=10240x2048x1x1 type_src0=21 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.8174 host_ms=0.8597 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_3580 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0676 host_ms=0.3746 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_3586 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.1318 host_ms=0.1979 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-62 ne=6144x2048x1x1 type_src0=18 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.4721 host_ms=2.0854 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-62 ne=5120x2048x1x1 type_src0=23 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.4046 host_ms=0.4856 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-62 ne=17408x2048x1x1 type_src0=23 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.0684 host_ms=1.1434 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-62 ne=17408x2048x1x1 type_src0=23 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.1659 host_ms=1.2904 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-62 ne=5120x2048x1x1 type_src0=21 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.5931 host_ms=1.8667 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Qcur_full-63 ne=12288x2048x1x1 type_src0=23 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.8097 host_ms=0.9265 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Vcur-63 ne=1024x2048x1x1 type_src0=13 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.1250 host_ms=0.2376 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Kcur-63 ne=1024x2048x1x1 type_src0=12 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.1207 host_ms=0.1593 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=attn_output-63 ne=5120x2048x1x1 type_src0=23 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.3993 host_ms=1.1348 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-63 ne=17408x2048x1x1 type_src0=23 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.0683 host_ms=1.1452 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-63 ne=17408x2048x1x1 type_src0=12 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.2244 host_ms=1.2677 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-63 ne=5120x2048x1x1 type_src0=12 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.2891 host_ms=1.6001 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=result_output ne=248320x1x1x1 type_src0=12 rows=1 cols=5120 stream=0x5eb326e4e1d0 total_ms=26.1712 host_ms=26.2573 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_13 ne=10240x2048x1x1 type_src0=18 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.7045 host_ms=0.8443 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_34 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0676 host_ms=0.4139 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_40 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0446 host_ms=0.1182 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-0 ne=6144x2048x1x1 type_src0=18 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.4608 host_ms=2.0780 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-0 ne=5120x2048x1x1 type_src0=21 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.5317 host_ms=0.6154 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-0 ne=17408x2048x1x1 type_src0=19 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.1899 host_ms=1.3221 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-0 ne=17408x2048x1x1 type_src0=19 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.5528 host_ms=1.5938 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-0 ne=5120x2048x1x1 type_src0=29 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.3654 host_ms=1.6431 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_76 ne=10240x2048x1x1 type_src0=16 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.6727 host_ms=0.7497 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_97 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0696 host_ms=0.4314 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_103 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.1067 host_ms=0.1289 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-1 ne=6144x2048x1x1 type_src0=22 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.6195 host_ms=2.2324 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-1 ne=5120x2048x1x1 type_src0=21 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.4476 host_ms=0.5330 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-1 ne=17408x2048x1x1 type_src0=19 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.1954 host_ms=1.2804 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-1 ne=17408x2048x1x1 type_src0=19 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.4772 host_ms=1.5182 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-1 ne=5120x2048x1x1 type_src0=22 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.6495 host_ms=1.9211 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_139 ne=10240x2048x1x1 type_src0=22 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.9502 host_ms=1.0419 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_160 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0676 host_ms=0.4373 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_166 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0410 host_ms=0.1469 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-2 ne=6144x2048x1x1 type_src0=22 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.6216 host_ms=2.1928 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-2 ne=5120x2048x1x1 type_src0=18 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.4352 host_ms=0.5138 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-2 ne=17408x2048x1x1 type_src0=16 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.0867 host_ms=1.1694 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-2 ne=17408x2048x1x1 type_src0=16 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.1548 host_ms=1.1879 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-2 ne=5120x2048x1x1 type_src0=10 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.9250 host_ms=2.2017 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Qcur_full-3 ne=12288x2048x1x1 type_src0=22 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.1571 host_ms=1.2459 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Vcur-3 ne=1024x2048x1x1 type_src0=23 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.1123 host_ms=0.2501 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Kcur-3 ne=1024x2048x1x1 type_src0=23 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.1574 host_ms=0.2333 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=attn_output-3 ne=5120x2048x1x1 type_src0=23 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.3953 host_ms=1.2596 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-3 ne=17408x2048x1x1 type_src0=16 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.0872 host_ms=1.1675 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-3 ne=17408x2048x1x1 type_src0=16 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.1377 host_ms=1.1801 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-3 ne=5120x2048x1x1 type_src0=22 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.6539 host_ms=1.9315 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_241 ne=10240x2048x1x1 type_src0=16 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.6758 host_ms=0.7570 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_262 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0676 host_ms=0.5038 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_268 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0634 host_ms=0.1559 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-4 ne=6144x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.7239 host_ms=2.3554 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-4 ne=5120x2048x1x1 type_src0=10 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.6808 host_ms=0.7619 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-4 ne=17408x2048x1x1 type_src0=16 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.0936 host_ms=1.1830 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-4 ne=17408x2048x1x1 type_src0=16 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.1231 host_ms=1.1570 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-4 ne=5120x2048x1x1 type_src0=16 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.1931 host_ms=1.4702 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_304 ne=10240x2048x1x1 type_src0=22 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.9523 host_ms=1.0629 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_325 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0676 host_ms=0.7968 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_331 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.2118 host_ms=0.2672 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-5 ne=6144x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.7239 host_ms=2.3555 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-5 ne=5120x2048x1x1 type_src0=18 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.4373 host_ms=0.5186 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-5 ne=17408x2048x1x1 type_src0=16 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.0889 host_ms=1.1614 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-5 ne=17408x2048x1x1 type_src0=22 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.5648 host_ms=1.6042 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-5 ne=5120x2048x1x1 type_src0=16 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.1928 host_ms=1.4623 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_367 ne=10240x2048x1x1 type_src0=22 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.9564 host_ms=1.0404 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_388 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0696 host_ms=0.4410 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_394 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.1028 host_ms=0.1253 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-6 ne=6144x2048x1x1 type_src0=22 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.6216 host_ms=2.3519 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-6 ne=5120x2048x1x1 type_src0=10 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.6881 host_ms=0.9693 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-6 ne=17408x2048x1x1 type_src0=16 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.1564 host_ms=1.2513 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-6 ne=17408x2048x1x1 type_src0=29 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.5281 host_ms=1.5674 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-6 ne=5120x2048x1x1 type_src0=16 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.1887 host_ms=1.4713 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Qcur_full-7 ne=12288x2048x1x1 type_src0=22 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.1592 host_ms=1.2507 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Vcur-7 ne=1024x2048x1x1 type_src0=23 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.1142 host_ms=0.2353 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Kcur-7 ne=1024x2048x1x1 type_src0=18 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.1680 host_ms=0.2430 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=attn_output-7 ne=5120x2048x1x1 type_src0=10 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.6799 host_ms=1.5327 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-7 ne=17408x2048x1x1 type_src0=16 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.0910 host_ms=1.1658 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-7 ne=17408x2048x1x1 type_src0=16 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.1516 host_ms=1.1857 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-7 ne=5120x2048x1x1 type_src0=17 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.9484 host_ms=2.2213 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_469 ne=10240x2048x1x1 type_src0=19 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.7452 host_ms=0.8345 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_490 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0676 host_ms=0.4060 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_496 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0920 host_ms=0.1145 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-8 ne=6144x2048x1x1 type_src0=22 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.6216 host_ms=2.2449 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-8 ne=5120x2048x1x1 type_src0=10 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.6850 host_ms=0.7752 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-8 ne=17408x2048x1x1 type_src0=16 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.0916 host_ms=1.1769 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-8 ne=17408x2048x1x1 type_src0=16 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.1780 host_ms=1.2158 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-8 ne=5120x2048x1x1 type_src0=19 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.3116 host_ms=1.5850 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_532 ne=10240x2048x1x1 type_src0=19 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.7475 host_ms=0.8313 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_553 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0676 host_ms=0.4454 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_559 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.1044 host_ms=0.1272 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-9 ne=6144x2048x1x1 type_src0=16 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.7239 host_ms=2.3454 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-9 ne=5120x2048x1x1 type_src0=10 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.6875 host_ms=0.7692 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-9 ne=17408x2048x1x1 type_src0=29 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.5276 host_ms=1.6208 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-9 ne=17408x2048x1x1 type_src0=19 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.2221 host_ms=1.2645 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-9 ne=5120x2048x1x1 type_src0=29 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.3751 host_ms=1.6490 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_595 ne=10240x2048x1x1 type_src0=22 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.9561 host_ms=1.0426 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_616 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0676 host_ms=0.4327 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_622 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0714 host_ms=0.0937 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-10 ne=6144x2048x1x1 type_src0=16 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.4464 host_ms=2.0671 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-10 ne=5120x2048x1x1 type_src0=10 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.6848 host_ms=0.7709 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-10 ne=17408x2048x1x1 type_src0=29 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.5214 host_ms=1.6062 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-10 ne=17408x2048x1x1 type_src0=19 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.5190 host_ms=1.5639 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-10 ne=5120x2048x1x1 type_src0=29 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.3816 host_ms=1.6598 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Qcur_full-11 ne=12288x2048x1x1 type_src0=22 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.1569 host_ms=1.2405 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Vcur-11 ne=1024x2048x1x1 type_src0=23 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.1127 host_ms=0.2335 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Kcur-11 ne=1024x2048x1x1 type_src0=18 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.1054 host_ms=0.1464 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=attn_output-11 ne=5120x2048x1x1 type_src0=10 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.6799 host_ms=1.4990 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-11 ne=17408x2048x1x1 type_src0=19 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.2063 host_ms=1.2952 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-11 ne=17408x2048x1x1 type_src0=19 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.2234 host_ms=1.2649 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-11 ne=5120x2048x1x1 type_src0=19 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.3157 host_ms=1.5890 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_697 ne=10240x2048x1x1 type_src0=19 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.7475 host_ms=0.8261 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_718 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0676 host_ms=0.4212 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_724 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0942 host_ms=0.1188 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-12 ne=6144x2048x1x1 type_src0=22 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.6234 host_ms=2.2358 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-12 ne=5120x2048x1x1 type_src0=22 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.5825 host_ms=0.6585 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-12 ne=17408x2048x1x1 type_src0=29 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.5337 host_ms=1.6187 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-12 ne=17408x2048x1x1 type_src0=19 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.2958 host_ms=1.3395 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-12 ne=5120x2048x1x1 type_src0=19 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.3242 host_ms=1.5977 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_760 ne=10240x2048x1x1 type_src0=19 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.8124 host_ms=0.8828 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_781 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0673 host_ms=0.4069 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_787 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0942 host_ms=0.1164 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-13 ne=6144x2048x1x1 type_src0=16 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.4516 host_ms=2.0854 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-13 ne=5120x2048x1x1 type_src0=22 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.5887 host_ms=0.6699 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-13 ne=17408x2048x1x1 type_src0=19 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.5030 host_ms=1.5918 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-13 ne=17408x2048x1x1 type_src0=19 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.2304 host_ms=1.2771 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-13 ne=5120x2048x1x1 type_src0=19 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.3283 host_ms=1.6021 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_823 ne=10240x2048x1x1 type_src0=17 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.9725 host_ms=1.0565 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_844 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0676 host_ms=0.4377 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_850 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0796 host_ms=0.1007 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-14 ne=6144x2048x1x1 type_src0=19 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.4966 host_ms=2.1385 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-14 ne=5120x2048x1x1 type_src0=22 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.5907 host_ms=0.6702 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-14 ne=17408x2048x1x1 type_src0=19 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.2122 host_ms=1.2977 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-14 ne=17408x2048x1x1 type_src0=19 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.2356 host_ms=1.2780 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-14 ne=5120x2048x1x1 type_src0=19 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.6128 host_ms=1.8967 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Qcur_full-15 ne=12288x2048x1x1 type_src0=22 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.1773 host_ms=1.2756 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Vcur-15 ne=1024x2048x1x1 type_src0=23 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.1147 host_ms=0.2350 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Kcur-15 ne=1024x2048x1x1 type_src0=18 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.1427 host_ms=0.1799 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=attn_output-15 ne=5120x2048x1x1 type_src0=29 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.5222 host_ms=1.3916 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-15 ne=17408x2048x1x1 type_src0=19 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.2161 host_ms=1.2972 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-15 ne=17408x2048x1x1 type_src0=19 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.2407 host_ms=1.2858 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-15 ne=5120x2048x1x1 type_src0=19 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.3300 host_ms=1.5998 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_925 ne=10240x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.1284 host_ms=1.2084 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_946 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0676 host_ms=0.4401 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_952 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0870 host_ms=0.1130 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-16 ne=6144x2048x1x1 type_src0=16 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.4516 host_ms=2.1037 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-16 ne=5120x2048x1x1 type_src0=16 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.4190 host_ms=0.5014 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-16 ne=17408x2048x1x1 type_src0=19 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.2124 host_ms=1.3707 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-16 ne=17408x2048x1x1 type_src0=19 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.2989 host_ms=1.3406 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-16 ne=5120x2048x1x1 type_src0=29 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.3833 host_ms=1.6663 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_988 ne=10240x2048x1x1 type_src0=22 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.9662 host_ms=1.0393 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_1009 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0676 host_ms=0.4191 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_1015 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0748 host_ms=0.1287 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-17 ne=6144x2048x1x1 type_src0=29 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.5868 host_ms=2.2211 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-17 ne=5120x2048x1x1 type_src0=10 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.6934 host_ms=0.7787 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-17 ne=17408x2048x1x1 type_src0=19 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.2122 host_ms=1.2990 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-17 ne=17408x2048x1x1 type_src0=19 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.2773 host_ms=1.3167 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-17 ne=5120x2048x1x1 type_src0=19 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.6216 host_ms=1.8957 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_1051 ne=10240x2048x1x1 type_src0=17 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.9789 host_ms=1.0645 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_1072 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0676 host_ms=0.3685 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_1078 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0522 host_ms=0.0746 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-18 ne=6144x2048x1x1 type_src0=17 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.6359 host_ms=2.2760 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-18 ne=5120x2048x1x1 type_src0=22 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.5907 host_ms=0.6778 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-18 ne=17408x2048x1x1 type_src0=19 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.2145 host_ms=1.3059 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-18 ne=17408x2048x1x1 type_src0=29 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.5405 host_ms=1.5835 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-18 ne=5120x2048x1x1 type_src0=16 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.2074 host_ms=1.5947 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Qcur_full-19 ne=12288x2048x1x1 type_src0=29 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.0936 host_ms=1.4864 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Vcur-19 ne=1024x2048x1x1 type_src0=23 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.1120 host_ms=0.2439 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Kcur-19 ne=1024x2048x1x1 type_src0=23 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.1271 host_ms=0.1752 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=attn_output-19 ne=5120x2048x1x1 type_src0=18 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.4362 host_ms=1.2519 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-19 ne=17408x2048x1x1 type_src0=29 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.5316 host_ms=1.6114 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-19 ne=17408x2048x1x1 type_src0=19 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.2804 host_ms=1.3200 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-19 ne=5120x2048x1x1 type_src0=16 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.2112 host_ms=1.4888 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_1153 ne=10240x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.1282 host_ms=1.2126 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_1174 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0676 host_ms=0.4139 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_1180 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0939 host_ms=0.1134 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-20 ne=6144x2048x1x1 type_src0=22 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.6318 host_ms=2.2306 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-20 ne=5120x2048x1x1 type_src0=10 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.6952 host_ms=0.7740 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-20 ne=17408x2048x1x1 type_src0=22 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.5598 host_ms=1.6359 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-20 ne=17408x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.8332 host_ms=1.9454 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-20 ne=5120x2048x1x1 type_src0=10 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.9476 host_ms=2.2274 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_1216 ne=10240x2048x1x1 type_src0=22 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.0652 host_ms=1.0975 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_1237 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0696 host_ms=0.4444 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_1243 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0621 host_ms=0.1417 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-21 ne=6144x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.7301 host_ms=2.3756 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-21 ne=5120x2048x1x1 type_src0=10 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.6862 host_ms=0.7732 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-21 ne=17408x2048x1x1 type_src0=22 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.5613 host_ms=1.6669 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-21 ne=17408x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.8682 host_ms=1.9080 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-21 ne=5120x2048x1x1 type_src0=22 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.8858 host_ms=2.1646 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_1279 ne=10240x2048x1x1 type_src0=22 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.9625 host_ms=1.0440 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_1300 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0676 host_ms=0.4412 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_1306 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0901 host_ms=0.1164 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-22 ne=6144x2048x1x1 type_src0=22 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.6298 host_ms=2.2809 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-22 ne=5120x2048x1x1 type_src0=10 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.6931 host_ms=0.7698 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-22 ne=17408x2048x1x1 type_src0=22 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.5582 host_ms=1.6217 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-22 ne=17408x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.8676 host_ms=1.9092 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-22 ne=5120x2048x1x1 type_src0=10 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.9454 host_ms=2.2192 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Qcur_full-23 ne=12288x2048x1x1 type_src0=18 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.8724 host_ms=1.0466 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Vcur-23 ne=1024x2048x1x1 type_src0=12 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.1208 host_ms=0.2468 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Kcur-23 ne=1024x2048x1x1 type_src0=18 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.1521 host_ms=0.1910 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=attn_output-23 ne=5120x2048x1x1 type_src0=18 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.4382 host_ms=1.2674 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-23 ne=17408x2048x1x1 type_src0=22 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.5636 host_ms=1.7689 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-23 ne=17408x2048x1x1 type_src0=22 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.6063 host_ms=1.6399 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-23 ne=5120x2048x1x1 type_src0=10 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.9539 host_ms=2.2312 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_1381 ne=10240x2048x1x1 type_src0=22 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.9708 host_ms=1.0563 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_1402 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0696 host_ms=0.3926 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_1408 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0706 host_ms=0.1485 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-24 ne=6144x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.0189 host_ms=2.6675 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-24 ne=5120x2048x1x1 type_src0=22 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.5933 host_ms=0.6840 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-24 ne=17408x2048x1x1 type_src0=22 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.5603 host_ms=1.6481 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-24 ne=17408x2048x1x1 type_src0=22 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.6620 host_ms=1.7057 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-24 ne=5120x2048x1x1 type_src0=10 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.9516 host_ms=2.2114 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_1444 ne=10240x2048x1x1 type_src0=22 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.9708 host_ms=1.0546 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_1465 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0676 host_ms=0.4391 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_1471 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0473 host_ms=0.1055 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-25 ne=6144x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.7322 host_ms=2.3277 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-25 ne=5120x2048x1x1 type_src0=18 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.4432 host_ms=0.5116 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-25 ne=17408x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=2.1166 host_ms=2.1922 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-25 ne=17408x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.8976 host_ms=1.9465 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-25 ne=5120x2048x1x1 type_src0=10 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.9495 host_ms=2.2623 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_1507 ne=10240x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.1970 host_ms=1.2545 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_1528 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0696 host_ms=0.4395 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_1534 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0614 host_ms=0.1169 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-26 ne=6144x2048x1x1 type_src0=22 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.6318 host_ms=2.1916 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-26 ne=5120x2048x1x1 type_src0=10 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.6949 host_ms=0.7864 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-26 ne=17408x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.8143 host_ms=1.9360 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-26 ne=17408x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.9077 host_ms=1.9526 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-26 ne=5120x2048x1x1 type_src0=22 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.6762 host_ms=1.9601 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Qcur_full-27 ne=12288x2048x1x1 type_src0=18 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.8704 host_ms=1.1635 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Vcur-27 ne=1024x2048x1x1 type_src0=12 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.1223 host_ms=0.2550 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Kcur-27 ne=1024x2048x1x1 type_src0=21 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.1855 host_ms=0.2729 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=attn_output-27 ne=5120x2048x1x1 type_src0=21 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.4526 host_ms=1.2000 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-27 ne=17408x2048x1x1 type_src0=22 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.5647 host_ms=1.6489 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-27 ne=17408x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.8819 host_ms=1.9186 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-27 ne=5120x2048x1x1 type_src0=10 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.9494 host_ms=2.2267 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_1609 ne=10240x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.2101 host_ms=1.3348 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_1630 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0676 host_ms=0.4089 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_1636 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0670 host_ms=0.0825 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-28 ne=6144x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.7342 host_ms=2.3864 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-28 ne=5120x2048x1x1 type_src0=10 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.6923 host_ms=0.8103 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-28 ne=17408x2048x1x1 type_src0=22 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.5688 host_ms=1.6538 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-28 ne=17408x2048x1x1 type_src0=22 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.6674 host_ms=1.7115 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-28 ne=5120x2048x1x1 type_src0=22 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.6761 host_ms=1.9530 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_1672 ne=10240x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.1346 host_ms=1.2127 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_1693 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0676 host_ms=0.4127 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_1699 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0887 host_ms=0.1276 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-29 ne=6144x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.7332 host_ms=2.4552 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-29 ne=5120x2048x1x1 type_src0=22 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.5924 host_ms=0.6820 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-29 ne=17408x2048x1x1 type_src0=22 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.5626 host_ms=1.6471 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-29 ne=17408x2048x1x1 type_src0=16 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.2060 host_ms=1.2738 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-29 ne=5120x2048x1x1 type_src0=22 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.6817 host_ms=1.9532 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_1735 ne=10240x2048x1x1 type_src0=22 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.0537 host_ms=1.1054 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_1756 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0676 host_ms=0.4319 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_1762 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0659 host_ms=0.0845 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-30 ne=6144x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.7322 host_ms=2.3757 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-30 ne=5120x2048x1x1 type_src0=10 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.6890 host_ms=0.7686 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-30 ne=17408x2048x1x1 type_src0=29 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.5357 host_ms=1.6234 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-30 ne=17408x2048x1x1 type_src0=22 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.6316 host_ms=1.6672 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-30 ne=5120x2048x1x1 type_src0=22 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.6823 host_ms=1.9578 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Qcur_full-31 ne=12288x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.3769 host_ms=1.5001 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Vcur-31 ne=1024x2048x1x1 type_src0=12 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.1231 host_ms=0.2559 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Kcur-31 ne=1024x2048x1x1 type_src0=23 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.1751 host_ms=0.2379 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=attn_output-31 ne=5120x2048x1x1 type_src0=21 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.4546 host_ms=1.2212 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-31 ne=17408x2048x1x1 type_src0=16 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.1169 host_ms=1.1923 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-31 ne=17408x2048x1x1 type_src0=22 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.6359 host_ms=1.6690 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-31 ne=5120x2048x1x1 type_src0=16 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.2218 host_ms=1.5000 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_1837 ne=10240x2048x1x1 type_src0=18 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.7250 host_ms=0.8517 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_1858 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0676 host_ms=0.4415 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_1864 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0634 host_ms=0.1232 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-32 ne=6144x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.7322 host_ms=2.3737 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-32 ne=5120x2048x1x1 type_src0=18 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.4453 host_ms=0.5270 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-32 ne=17408x2048x1x1 type_src0=17 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.5767 host_ms=1.6639 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-32 ne=17408x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.8453 host_ms=1.8899 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-32 ne=5120x2048x1x1 type_src0=10 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.9519 host_ms=2.2281 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_1900 ne=10240x2048x1x1 type_src0=18 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.7270 host_ms=0.8121 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_1921 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0676 host_ms=0.4400 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_1927 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.1786 host_ms=0.2012 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-33 ne=6144x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.7342 host_ms=2.6752 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-33 ne=5120x2048x1x1 type_src0=18 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.4436 host_ms=0.5338 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-33 ne=17408x2048x1x1 type_src0=17 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.5805 host_ms=1.6682 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-33 ne=17408x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.8973 host_ms=1.9332 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-33 ne=5120x2048x1x1 type_src0=17 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.7026 host_ms=1.9788 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_1963 ne=10240x2048x1x1 type_src0=18 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.7229 host_ms=0.8108 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_1984 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0676 host_ms=0.4358 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_1990 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0878 host_ms=0.1086 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-34 ne=6144x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.7342 host_ms=2.3849 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-34 ne=5120x2048x1x1 type_src0=18 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.7160 host_ms=0.8037 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-34 ne=17408x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.8227 host_ms=1.9060 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-34 ne=17408x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.8420 host_ms=1.8878 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-34 ne=5120x2048x1x1 type_src0=18 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.2730 host_ms=1.5502 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Qcur_full-35 ne=12288x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.3722 host_ms=1.4696 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Vcur-35 ne=1024x2048x1x1 type_src0=12 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.1209 host_ms=0.2413 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Kcur-35 ne=1024x2048x1x1 type_src0=23 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.1279 host_ms=0.1691 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=attn_output-35 ne=5120x2048x1x1 type_src0=21 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.4526 host_ms=1.5367 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-35 ne=17408x2048x1x1 type_src0=17 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.6284 host_ms=1.6979 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-35 ne=17408x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.8430 host_ms=1.8864 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-35 ne=5120x2048x1x1 type_src0=18 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.2738 host_ms=1.6248 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_2065 ne=10240x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.2178 host_ms=1.2619 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_2086 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0696 host_ms=0.4059 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_2092 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0501 host_ms=0.0720 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-36 ne=6144x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.7322 host_ms=2.4143 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-36 ne=5120x2048x1x1 type_src0=18 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.4432 host_ms=0.5275 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-36 ne=17408x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.8220 host_ms=1.9157 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-36 ne=17408x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.8390 host_ms=1.9211 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-36 ne=5120x2048x1x1 type_src0=18 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.2768 host_ms=1.5489 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_2128 ne=10240x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.4551 host_ms=1.5393 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_2149 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0696 host_ms=0.4450 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_2155 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.2086 host_ms=0.2709 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-37 ne=6144x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.7342 host_ms=2.3875 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-37 ne=5120x2048x1x1 type_src0=18 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.4434 host_ms=0.5233 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-37 ne=17408x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.8200 host_ms=1.8988 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-37 ne=17408x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.8735 host_ms=1.9149 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-37 ne=5120x2048x1x1 type_src0=18 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.2762 host_ms=1.5560 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_2191 ne=10240x2048x1x1 type_src0=17 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.9810 host_ms=1.0704 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_2212 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0676 host_ms=0.4462 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_2218 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0647 host_ms=0.1237 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-38 ne=6144x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.7332 host_ms=2.6257 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-38 ne=5120x2048x1x1 type_src0=10 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.6909 host_ms=0.8133 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-38 ne=17408x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.8145 host_ms=1.9010 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-38 ne=17408x2048x1x1 type_src0=18 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.1979 host_ms=1.2426 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-38 ne=5120x2048x1x1 type_src0=18 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.2746 host_ms=1.5426 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Qcur_full-39 ne=12288x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.3742 host_ms=1.4670 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Vcur-39 ne=1024x2048x1x1 type_src0=23 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.1126 host_ms=0.2299 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Kcur-39 ne=1024x2048x1x1 type_src0=18 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.1670 host_ms=0.2452 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=attn_output-39 ne=5120x2048x1x1 type_src0=21 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.4546 host_ms=1.1434 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-39 ne=17408x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.8207 host_ms=1.9035 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-39 ne=17408x2048x1x1 type_src0=18 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.4802 host_ms=1.5259 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-39 ne=5120x2048x1x1 type_src0=18 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.2752 host_ms=1.5585 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_2293 ne=10240x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.2098 host_ms=1.2732 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_2314 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0696 host_ms=0.4337 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_2320 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0471 host_ms=0.0723 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-40 ne=6144x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.7322 host_ms=2.3801 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-40 ne=5120x2048x1x1 type_src0=18 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.4432 host_ms=0.5252 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-40 ne=17408x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.8227 host_ms=1.9118 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-40 ne=17408x2048x1x1 type_src0=18 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.1981 host_ms=1.2454 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-40 ne=5120x2048x1x1 type_src0=18 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.2738 host_ms=6.9449 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_2356 ne=10240x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.1876 host_ms=1.2531 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_2377 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0676 host_ms=0.4393 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_2383 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0660 host_ms=0.0870 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-41 ne=6144x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.7322 host_ms=2.3817 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-41 ne=5120x2048x1x1 type_src0=18 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.4436 host_ms=0.5368 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-41 ne=17408x2048x1x1 type_src0=18 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.2226 host_ms=1.2739 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-41 ne=17408x2048x1x1 type_src0=18 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.2735 host_ms=1.3636 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-41 ne=5120x2048x1x1 type_src0=18 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.5272 host_ms=1.8068 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_2419 ne=10240x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.1301 host_ms=1.2248 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_2440 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0676 host_ms=1.4701 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_2446 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0593 host_ms=0.0811 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-42 ne=6144x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.7281 host_ms=2.3768 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-42 ne=5120x2048x1x1 type_src0=18 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.4411 host_ms=0.5666 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-42 ne=17408x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.8043 host_ms=1.8981 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-42 ne=17408x2048x1x1 type_src0=18 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.2390 host_ms=1.2750 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-42 ne=5120x2048x1x1 type_src0=10 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.9417 host_ms=2.2241 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Qcur_full-43 ne=12288x2048x1x1 type_src0=18 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.8656 host_ms=0.9457 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Vcur-43 ne=1024x2048x1x1 type_src0=23 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.4001 host_ms=0.5170 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Kcur-43 ne=1024x2048x1x1 type_src0=23 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.1023 host_ms=0.1530 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=attn_output-43 ne=5120x2048x1x1 type_src0=23 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.4014 host_ms=1.2587 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-43 ne=17408x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.8082 host_ms=1.8915 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-43 ne=17408x2048x1x1 type_src0=18 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.2706 host_ms=1.3508 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-43 ne=5120x2048x1x1 type_src0=10 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.9411 host_ms=2.2146 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_2521 ne=10240x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.1305 host_ms=1.2153 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_2542 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0676 host_ms=0.4342 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_2548 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0742 host_ms=0.0932 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-44 ne=6144x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.7342 host_ms=2.3785 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-44 ne=5120x2048x1x1 type_src0=18 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.4456 host_ms=0.5255 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-44 ne=17408x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=2.0981 host_ms=2.1934 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-44 ne=17408x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.8735 host_ms=1.9173 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-44 ne=5120x2048x1x1 type_src0=10 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.9495 host_ms=2.2227 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_2584 ne=10240x2048x1x1 type_src0=18 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.7267 host_ms=0.8076 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_2605 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0676 host_ms=0.4363 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_2611 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0610 host_ms=0.0868 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-45 ne=6144x2048x1x1 type_src0=17 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.6400 host_ms=2.2818 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-45 ne=5120x2048x1x1 type_src0=10 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.6972 host_ms=0.7832 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-45 ne=17408x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.8145 host_ms=1.8998 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-45 ne=17408x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=2.1756 host_ms=2.2159 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-45 ne=5120x2048x1x1 type_src0=10 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.9539 host_ms=2.2331 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_2647 ne=10240x2048x1x1 type_src0=18 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.7270 host_ms=0.8128 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_2668 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0676 host_ms=0.4267 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_2674 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0921 host_ms=0.1130 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-46 ne=6144x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.7342 host_ms=2.3731 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-46 ne=5120x2048x1x1 type_src0=18 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.4437 host_ms=0.5265 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-46 ne=17408x2048x1x1 type_src0=17 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.5784 host_ms=1.6657 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-46 ne=17408x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.8461 host_ms=1.8888 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-46 ne=5120x2048x1x1 type_src0=10 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=2.2465 host_ms=2.5590 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Qcur_full-47 ne=12288x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.4373 host_ms=1.5469 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Vcur-47 ne=1024x2048x1x1 type_src0=23 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.1933 host_ms=0.2961 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Kcur-47 ne=1024x2048x1x1 type_src0=23 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.1829 host_ms=0.2495 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=attn_output-47 ne=5120x2048x1x1 type_src0=18 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.4403 host_ms=1.3397 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-47 ne=17408x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.8245 host_ms=1.9088 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-47 ne=17408x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.9357 host_ms=2.0171 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-47 ne=5120x2048x1x1 type_src0=10 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.9516 host_ms=2.2750 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_2749 ne=10240x2048x1x1 type_src0=18 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.8089 host_ms=0.9056 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_2770 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0696 host_ms=0.7364 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_2776 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0760 host_ms=0.1049 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-48 ne=6144x2048x1x1 type_src0=17 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.6400 host_ms=2.2622 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-48 ne=5120x2048x1x1 type_src0=18 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.4433 host_ms=0.5310 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-48 ne=17408x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.8719 host_ms=1.9432 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-48 ne=17408x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.9089 host_ms=1.9948 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-48 ne=5120x2048x1x1 type_src0=10 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.9516 host_ms=2.2269 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_2812 ne=10240x2048x1x1 type_src0=18 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.7270 host_ms=0.8181 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_2833 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0696 host_ms=0.4331 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_2839 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.1199 host_ms=0.2136 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-49 ne=6144x2048x1x1 type_src0=22 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.6339 host_ms=2.2156 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-49 ne=5120x2048x1x1 type_src0=18 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.4432 host_ms=0.5472 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-49 ne=17408x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.8225 host_ms=1.9116 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-49 ne=17408x2048x1x1 type_src0=18 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.2414 host_ms=1.2813 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-49 ne=5120x2048x1x1 type_src0=18 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.2749 host_ms=1.5516 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_2875 ne=10240x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.1325 host_ms=1.2113 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_2896 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0676 host_ms=0.4329 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_2902 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0847 host_ms=0.1030 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-50 ne=6144x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.7342 host_ms=2.3721 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-50 ne=5120x2048x1x1 type_src0=21 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.4576 host_ms=0.5382 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-50 ne=17408x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=2.1637 host_ms=2.2521 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-50 ne=17408x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.8771 host_ms=1.9224 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-50 ne=5120x2048x1x1 type_src0=18 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.2730 host_ms=1.5505 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Qcur_full-51 ne=12288x2048x1x1 type_src0=18 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.8724 host_ms=0.9646 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Vcur-51 ne=1024x2048x1x1 type_src0=12 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.1229 host_ms=0.2375 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Kcur-51 ne=1024x2048x1x1 type_src0=23 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.1431 host_ms=0.1888 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=attn_output-51 ne=5120x2048x1x1 type_src0=21 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.4547 host_ms=1.3266 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-51 ne=17408x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.8202 host_ms=1.9062 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-51 ne=17408x2048x1x1 type_src0=18 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.2082 host_ms=1.2494 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-51 ne=5120x2048x1x1 type_src0=18 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.2727 host_ms=1.5432 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_2977 ne=10240x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.4203 host_ms=1.5457 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_2998 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0676 host_ms=0.4439 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_3004 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0765 host_ms=0.0947 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-52 ne=6144x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.7342 host_ms=2.3797 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-52 ne=5120x2048x1x1 type_src0=21 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.4576 host_ms=0.5434 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-52 ne=17408x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.8228 host_ms=1.9103 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-52 ne=17408x2048x1x1 type_src0=18 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.2359 host_ms=1.2723 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-52 ne=5120x2048x1x1 type_src0=18 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.2747 host_ms=1.5476 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_3040 ne=10240x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.1388 host_ms=1.2082 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_3061 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0696 host_ms=0.4438 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_3067 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0998 host_ms=0.1226 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-53 ne=6144x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.7322 host_ms=2.3695 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-53 ne=5120x2048x1x1 type_src0=21 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.4564 host_ms=0.5402 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-53 ne=17408x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.8201 host_ms=1.9084 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-53 ne=17408x2048x1x1 type_src0=18 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.2331 host_ms=1.2742 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-53 ne=5120x2048x1x1 type_src0=18 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.2726 host_ms=1.5448 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_3103 ne=10240x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.1284 host_ms=1.2142 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_3124 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0676 host_ms=0.4362 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_3130 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0827 host_ms=0.1010 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-54 ne=6144x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.7342 host_ms=2.3686 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-54 ne=5120x2048x1x1 type_src0=18 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.4432 host_ms=0.5205 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-54 ne=17408x2048x1x1 type_src0=18 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.1712 host_ms=1.2575 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-54 ne=17408x2048x1x1 type_src0=18 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.5652 host_ms=1.6043 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-54 ne=5120x2048x1x1 type_src0=21 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.3078 host_ms=1.5905 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Qcur_full-55 ne=12288x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.3681 host_ms=1.4583 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Vcur-55 ne=1024x2048x1x1 type_src0=23 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.1141 host_ms=0.2460 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Kcur-55 ne=1024x2048x1x1 type_src0=23 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.1017 host_ms=0.1389 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=attn_output-55 ne=5120x2048x1x1 type_src0=21 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.4485 host_ms=1.1987 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-55 ne=17408x2048x1x1 type_src0=10 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.8186 host_ms=1.9009 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-55 ne=17408x2048x1x1 type_src0=18 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.1985 host_ms=1.2431 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-55 ne=5120x2048x1x1 type_src0=21 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.3075 host_ms=1.5832 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_3205 ne=10240x2048x1x1 type_src0=21 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.7513 host_ms=0.8226 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_3226 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0676 host_ms=0.4024 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_3232 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0422 host_ms=0.1388 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-56 ne=6144x2048x1x1 type_src0=21 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.4905 host_ms=2.1285 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-56 ne=5120x2048x1x1 type_src0=23 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.4072 host_ms=0.4919 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-56 ne=17408x2048x1x1 type_src0=21 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.2142 host_ms=1.2958 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-56 ne=17408x2048x1x1 type_src0=23 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.1004 host_ms=1.1423 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-56 ne=5120x2048x1x1 type_src0=23 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.1724 host_ms=1.4435 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_3268 ne=10240x2048x1x1 type_src0=18 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.7209 host_ms=0.8113 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_3289 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0696 host_ms=0.4378 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_3295 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0502 host_ms=0.0862 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-57 ne=6144x2048x1x1 type_src0=21 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.4925 host_ms=2.1355 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-57 ne=5120x2048x1x1 type_src0=23 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.4068 host_ms=0.4880 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-57 ne=17408x2048x1x1 type_src0=23 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.0772 host_ms=1.1667 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-57 ne=17408x2048x1x1 type_src0=23 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.4045 host_ms=1.4450 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-57 ne=5120x2048x1x1 type_src0=23 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.1729 host_ms=1.4522 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_3331 ne=10240x2048x1x1 type_src0=21 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.7513 host_ms=0.8288 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_3352 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0676 host_ms=0.4355 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_3358 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0576 host_ms=0.0762 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-58 ne=6144x2048x1x1 type_src0=21 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.4966 host_ms=2.1474 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-58 ne=5120x2048x1x1 type_src0=23 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.4087 host_ms=0.4892 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-58 ne=17408x2048x1x1 type_src0=23 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.0773 host_ms=1.1640 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-58 ne=17408x2048x1x1 type_src0=23 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.1003 host_ms=1.1418 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-58 ne=5120x2048x1x1 type_src0=23 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.1723 host_ms=1.4454 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Qcur_full-59 ne=12288x2048x1x1 type_src0=18 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.8704 host_ms=0.9605 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Vcur-59 ne=1024x2048x1x1 type_src0=13 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.1250 host_ms=0.2406 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Kcur-59 ne=1024x2048x1x1 type_src0=12 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.1221 host_ms=0.1629 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=attn_output-59 ne=5120x2048x1x1 type_src0=23 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.4034 host_ms=1.2118 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-59 ne=17408x2048x1x1 type_src0=23 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.0791 host_ms=1.1686 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-59 ne=17408x2048x1x1 type_src0=23 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.1008 host_ms=1.1449 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-59 ne=5120x2048x1x1 type_src0=23 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.1719 host_ms=1.4871 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_3433 ne=10240x2048x1x1 type_src0=21 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.7516 host_ms=0.8310 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_3454 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0696 host_ms=0.3910 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_3460 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0621 host_ms=0.1172 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-60 ne=6144x2048x1x1 type_src0=21 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.4925 host_ms=2.0723 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-60 ne=5120x2048x1x1 type_src0=23 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.4061 host_ms=0.4871 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-60 ne=17408x2048x1x1 type_src0=23 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.0752 host_ms=1.1619 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-60 ne=17408x2048x1x1 type_src0=23 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.1011 host_ms=1.1439 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-60 ne=5120x2048x1x1 type_src0=23 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.1706 host_ms=1.4442 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_3496 ne=10240x2048x1x1 type_src0=21 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.7598 host_ms=0.8916 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_3517 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0676 host_ms=0.4901 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_3523 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0749 host_ms=0.1053 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-61 ne=6144x2048x1x1 type_src0=21 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.4925 host_ms=2.1282 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-61 ne=5120x2048x1x1 type_src0=21 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.4555 host_ms=0.5347 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-61 ne=17408x2048x1x1 type_src0=23 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.0772 host_ms=1.1632 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-61 ne=17408x2048x1x1 type_src0=23 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.0999 host_ms=1.1387 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-61 ne=5120x2048x1x1 type_src0=23 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.1681 host_ms=1.4203 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_3559 ne=10240x2048x1x1 type_src0=21 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.7516 host_ms=0.8355 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_3580 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0676 host_ms=0.4407 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=node_3586 ne=48x2048x1x1 type_src0=8 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.0586 host_ms=0.0773 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=z-62 ne=6144x2048x1x1 type_src0=18 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.4741 host_ms=2.1195 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=linear_attn_out-62 ne=5120x2048x1x1 type_src0=23 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.4064 host_ms=0.4857 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-62 ne=17408x2048x1x1 type_src0=23 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.3729 host_ms=1.4682 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-62 ne=17408x2048x1x1 type_src0=23 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.0974 host_ms=1.1481 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-62 ne=5120x2048x1x1 type_src0=21 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.3057 host_ms=1.5782 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Qcur_full-63 ne=12288x2048x1x1 type_src0=23 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.8169 host_ms=0.9021 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Vcur-63 ne=1024x2048x1x1 type_src0=13 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.1250 host_ms=0.2397 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=Kcur-63 ne=1024x2048x1x1 type_src0=12 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.1859 host_ms=0.2521 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=attn_output-63 ne=5120x2048x1x1 type_src0=23 rows=2048 cols=6144 stream=0x5eb326e4e1d0 total_ms=0.4014 host_ms=1.2363 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_gate-63 ne=17408x2048x1x1 type_src0=23 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.1637 host_ms=1.2292 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_up-63 ne=17408x2048x1x1 type_src0=12 rows=2048 cols=5120 stream=0x5eb326e4e1d0 total_ms=1.2370 host_ms=1.2786 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=ffn_out-63 ne=5120x2048x1x1 type_src0=12 rows=2048 cols=17408 stream=0x5eb326e4e1d0 total_ms=1.2993 host_ms=1.5789 err_el=0 err_q0=0 err_q1=0
+GGML_OP_PROFILE op=mul_mat name=result_output ne=248320x1x1x1 type_src0=12 rows=1 cols=5120 stream=0x5eb326e4e1d0 total_ms=0.5029 host_ms=0.5735 err_el=0 err_q0=0 err_q1=0
+  {
+    "build_commit": "be6bf478d",
+    "build_number": 11313,
+    "cpu_info": "AMD Ryzen 7 7800X3D 8-Core Processor",
+    "gpu_info": "NVIDIA GeForce RTX 5090",
+    "backends": "CUDA",
+    "model_filename": "/mnt/d/CODEX WORKSPACE/beellama-release/models/Qwen3.8-27B-LowGPU-NoMTP-IQ3XXXS.gguf",
+    "model_type": "qwen35 27B IQ1_S - 1.5625 bpw",
+    "model_size": 9559668736,
+    "model_n_params": 26895998464,
+    "n_batch": 2048,
+    "n_ubatch": 2048,
+    "n_threads": 8,
+    "cpu_mask": "0x0",
+    "cpu_strict": false,
+    "poll": 50,
+    "type_k": "f16",
+    "type_v": "f16",
+    "kv_tail_tokens": 0,
+    "kv_tail_tokens_effective": 0,
+    "kv_tail_type": "f16",
+    "kvarn_route_split": 0,
+    "kvarn_route_vector": 0,
+    "kvarn_route_generic": 0,
+    "kvarn_route_prefill": 0,
+    "kvarn_route_families": 15,
+    "kvarn_route_portable": 0,
+    "kvarn_route_amd_generic": 0,
+    "kvarn_route_amd_split": 0,
+    "kvarn_route_amd_vector": 0,
+    "kvarn_route_materialize": 0,
+    "kvarn_route_split_reduce": 0,
+    "kvarn_route_direct": 0,
+    "kvarn_route_compact_tail": 0,
+    "kvarn_route_generic_rejected": 0,
+    "kv_k_payload_bytes": 0,
+    "kv_v_payload_bytes": 0,
+    "kv_exact_tail_bytes": 0,
+    "kv_exact_history_bytes": 0,
+    "kv_exact_overlay_bytes": 0,
+    "kv_native_exact_bytes": 0,
+    "kv_rollback_reserve_bytes": 0,
+    "kv_transient_estimate_bytes": 0,
+    "kv_staging_bytes": 0,
+    "kv_metadata_bytes": 0,
+    "kv_padding_bytes": 0,
+    "kv_resident_bytes": 0,
+    "kv_global_resident_bytes": 0,
+    "kv_swa_resident_bytes": 0,
+    "kv_allocated_capacity_tokens": 0,
+    "kv_live_tokens": 0,
+    "kv_descriptor_bytes": 0,
+    "kv_tail_native_bodyless_layers": 0,
+    "kv_tail_native_mixed_layers": 0,
+    "kv_tail_device_fallback_layers": 0,
+    "kv_tail_cpu_layers": 0,
+    "kv_partial_output_bytes": 0,
+    "kv_partial_meta_bytes": 0,
+    "kv_tail_body_meta_bytes": 0,
+    "kv_tail_exact_meta_bytes": 0,
+    "kv_tail_pack_bytes": 0,
+    "kv_tail_body_output_bytes": 0,
+    "kv_tail_exact_output_bytes": 0,
+    "kv_tail_plan_input_bytes": 0,
+    "kv_transient_bytes": 0,
+    "kv_peak_bytes": 0,
+    "cuda_used_model_bytes": 0,
+    "cuda_used_context_bytes": 0,
+    "cuda_used_prefill_bytes": 0,
+    "cuda_used_peak_bytes": 0,
+    "cuda_used_after_context_bytes": 0,
+    "cuda_total_bytes": 0,
+    "cuda_context_buffer_bytes": 0,
+    "cuda_non_kv_context_buffer_bytes": 0,
+    "cuda_compute_buffer_bytes": 0,
+    "cuda_context_delta_bytes": 0,
+    "cuda_peak_delta_bytes": 0,
+    "cuda_reconciliation_delta_bytes": 0,
+    "cuda_runtime_overhead_bytes": 0,
+    "cuda_teardown_delta_bytes": 0,
+    "n_gpu_layers": 99,
+    "n_cpu_moe": 0,
+    "split_mode": "layer",
+    "main_gpu": 0,
+    "no_kv_offload": false,
+    "flash_attn": 1,
+    "devices": "auto",
+    "tensor_split": "0.00",
+    "tensor_buft_overrides": "none",
+    "load_mode": "auto",
+    "embeddings": false,
+    "no_op_offload": 0,
+    "no_host": false,
+    "fit_target": 0,
+    "fit_min_ctx": 0,
+    "n_prompt": 2048,
+    "n_gen": 0,
+    "n_depth": 0,
+    "test_time": "2026-09-02T02:35:00Z",
+    "avg_ns": 764951037,
+    "stddev_ns": 0,
+    "avg_ts": 2677.295540,
+    "stddev_ts": 0.000000,
+    "samples_ns": [ 764951037 ],
+    "planner_ns": [ 0 ],
+    "samples_ts": [ 2677.3 ]
+  }
+]

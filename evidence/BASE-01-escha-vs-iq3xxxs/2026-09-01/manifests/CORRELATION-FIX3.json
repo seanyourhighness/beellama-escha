@@ -1,0 +1,42 @@
+{
+  "ffn_gate": {
+    "code_data_shape": [
+      320,
+      1088,
+      32
+    ],
+    "code_attr_shape": [
+      32,
+      1088,
+      320
+    ],
+    "as_is": {
+      "error": "cannot reshape array of size 5570560 into shape (348160,24)"
+    },
+    "transposed": {
+      "error": "(32, 1088, 320)"
+    }
+  },
+  "attn_output": {
+    "code_data_shape": [
+      384,
+      320,
+      32
+    ],
+    "code_attr_shape": [
+      32,
+      320,
+      384
+    ],
+    "as_is": {
+      "corr": 0.9398,
+      "w_shape": [
+        6144,
+        5120
+      ]
+    },
+    "transposed": {
+      "error": "(32, 320, 384)"
+    }
+  }
+}

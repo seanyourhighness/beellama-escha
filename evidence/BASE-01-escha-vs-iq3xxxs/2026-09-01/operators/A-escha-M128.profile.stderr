@@ -1,0 +1,911 @@
+ggml_cuda_init: found 1 CUDA devices (Total VRAM: 32606 MiB):
+  Device 0: NVIDIA GeForce RTX 5090, compute capability 12.0, VMM: yes, VRAM: 32606 MiB
+[
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=6.1374 rotate_ms=4.5390 matmul_ms=1.4970 epilogue_ms=0.1014
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1187 rotate_ms=0.0474 matmul_ms=0.0619 epilogue_ms=0.0095
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1000 rotate_ms=0.0179 matmul_ms=0.0727 epilogue_ms=0.0094
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1881 rotate_ms=0.0194 matmul_ms=0.1546 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.3294 rotate_ms=0.0174 matmul_ms=0.2970 epilogue_ms=0.0151
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.9154 rotate_ms=0.0729 matmul_ms=0.8331 epilogue_ms=0.0094
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.3281 rotate_ms=0.0312 matmul_ms=0.2866 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0860 rotate_ms=0.0149 matmul_ms=0.0611 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0919 rotate_ms=0.0202 matmul_ms=0.0623 epilogue_ms=0.0094
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.2519 rotate_ms=0.0786 matmul_ms=0.1598 epilogue_ms=0.0135
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.2096 rotate_ms=0.0154 matmul_ms=0.1792 epilogue_ms=0.0150
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2232 rotate_ms=0.0459 matmul_ms=0.1674 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1725 rotate_ms=0.0703 matmul_ms=0.0911 epilogue_ms=0.0111
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0860 rotate_ms=0.0144 matmul_ms=0.0614 epilogue_ms=0.0103
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1400 rotate_ms=0.0180 matmul_ms=0.1127 epilogue_ms=0.0093
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.2380 rotate_ms=0.0419 matmul_ms=0.1812 epilogue_ms=0.0148
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1963 rotate_ms=0.0196 matmul_ms=0.1608 epilogue_ms=0.0158
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2187 rotate_ms=0.0432 matmul_ms=0.1658 epilogue_ms=0.0097
+ESCHA_PROFILE k=2 ic=5120 oc=12288 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1973 rotate_ms=0.0486 matmul_ms=0.1357 epilogue_ms=0.0130
+ESCHA_PROFILE k=2 ic=5120 oc=1024 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1523 rotate_ms=0.0509 matmul_ms=0.0559 epilogue_ms=0.0454
+ESCHA_PROFILE k=2 ic=5120 oc=1024 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1370 rotate_ms=0.0357 matmul_ms=0.0540 epilogue_ms=0.0473
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0971 rotate_ms=0.0257 matmul_ms=0.0619 epilogue_ms=0.0095
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1909 rotate_ms=0.0199 matmul_ms=0.1572 epilogue_ms=0.0137
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1912 rotate_ms=0.0157 matmul_ms=0.1614 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2209 rotate_ms=0.0435 matmul_ms=0.1671 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1235 rotate_ms=0.0211 matmul_ms=0.0907 epilogue_ms=0.0117
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0857 rotate_ms=0.0140 matmul_ms=0.0614 epilogue_ms=0.0103
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0949 rotate_ms=0.0237 matmul_ms=0.0612 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1859 rotate_ms=0.0158 matmul_ms=0.1561 epilogue_ms=0.0140
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1922 rotate_ms=0.0156 matmul_ms=0.1625 epilogue_ms=0.0140
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2188 rotate_ms=0.0437 matmul_ms=0.1648 epilogue_ms=0.0103
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1172 rotate_ms=0.0162 matmul_ms=0.0894 epilogue_ms=0.0116
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0860 rotate_ms=0.0143 matmul_ms=0.0614 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0949 rotate_ms=0.0236 matmul_ms=0.0614 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1848 rotate_ms=0.0161 matmul_ms=0.1551 epilogue_ms=0.0135
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1922 rotate_ms=0.0158 matmul_ms=0.1624 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2209 rotate_ms=0.0435 matmul_ms=0.1671 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1172 rotate_ms=0.0156 matmul_ms=0.0906 epilogue_ms=0.0109
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0860 rotate_ms=0.0144 matmul_ms=0.0614 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0929 rotate_ms=0.0219 matmul_ms=0.0610 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.4239 rotate_ms=0.0150 matmul_ms=0.3946 epilogue_ms=0.0143
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1956 rotate_ms=0.0188 matmul_ms=0.1627 epilogue_ms=0.0140
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2195 rotate_ms=0.0442 matmul_ms=0.1651 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=12288 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1317 rotate_ms=0.0161 matmul_ms=0.1040 epilogue_ms=0.0117
+ESCHA_PROFILE k=2 ic=5120 oc=1024 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0594 rotate_ms=0.0205 matmul_ms=0.0289 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=5120 oc=1024 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0593 rotate_ms=0.0237 matmul_ms=0.0276 epilogue_ms=0.0079
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0875 rotate_ms=0.0164 matmul_ms=0.0611 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1860 rotate_ms=0.0164 matmul_ms=0.1556 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1921 rotate_ms=0.0163 matmul_ms=0.1620 epilogue_ms=0.0137
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2265 rotate_ms=0.0497 matmul_ms=0.1666 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1174 rotate_ms=0.0166 matmul_ms=0.0892 epilogue_ms=0.0117
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0855 rotate_ms=0.0138 matmul_ms=0.0614 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0959 rotate_ms=0.0245 matmul_ms=0.0614 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1881 rotate_ms=0.0169 matmul_ms=0.1572 epilogue_ms=0.0140
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1978 rotate_ms=0.0210 matmul_ms=0.1628 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2198 rotate_ms=0.0425 matmul_ms=0.1671 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1205 rotate_ms=0.0195 matmul_ms=0.0901 epilogue_ms=0.0110
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0858 rotate_ms=0.0141 matmul_ms=0.0615 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0910 rotate_ms=0.0203 matmul_ms=0.0607 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1843 rotate_ms=0.0144 matmul_ms=0.1556 epilogue_ms=0.0143
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1922 rotate_ms=0.0167 matmul_ms=0.1615 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2291 rotate_ms=0.0524 matmul_ms=0.1664 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1215 rotate_ms=0.0202 matmul_ms=0.0901 epilogue_ms=0.0112
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0860 rotate_ms=0.0143 matmul_ms=0.0614 epilogue_ms=0.0103
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0967 rotate_ms=0.0246 matmul_ms=0.0625 epilogue_ms=0.0096
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1884 rotate_ms=0.0156 matmul_ms=0.1577 epilogue_ms=0.0151
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1967 rotate_ms=0.0198 matmul_ms=0.1628 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2219 rotate_ms=0.0451 matmul_ms=0.1666 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=12288 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1318 rotate_ms=0.0156 matmul_ms=0.1041 epilogue_ms=0.0120
+ESCHA_PROFILE k=2 ic=5120 oc=1024 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0527 rotate_ms=0.0161 matmul_ms=0.0286 epilogue_ms=0.0079
+ESCHA_PROFILE k=2 ic=5120 oc=1024 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0586 rotate_ms=0.0202 matmul_ms=0.0287 epilogue_ms=0.0097
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0971 rotate_ms=0.0248 matmul_ms=0.0623 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1859 rotate_ms=0.0155 matmul_ms=0.1563 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1919 rotate_ms=0.0161 matmul_ms=0.1617 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2209 rotate_ms=0.0434 matmul_ms=0.1673 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1190 rotate_ms=0.0162 matmul_ms=0.0908 epilogue_ms=0.0120
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0860 rotate_ms=0.0144 matmul_ms=0.0614 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0940 rotate_ms=0.0236 matmul_ms=0.0604 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1860 rotate_ms=0.0164 matmul_ms=0.1558 epilogue_ms=0.0139
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1932 rotate_ms=0.0169 matmul_ms=0.1626 epilogue_ms=0.0137
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2209 rotate_ms=0.0434 matmul_ms=0.1673 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1175 rotate_ms=0.0157 matmul_ms=0.0902 epilogue_ms=0.0116
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0860 rotate_ms=0.0143 matmul_ms=0.0614 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1175 rotate_ms=0.0454 matmul_ms=0.0625 epilogue_ms=0.0097
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1881 rotate_ms=0.0178 matmul_ms=0.1562 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1932 rotate_ms=0.0166 matmul_ms=0.1625 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2178 rotate_ms=0.0425 matmul_ms=0.1651 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1171 rotate_ms=0.0154 matmul_ms=0.0908 epilogue_ms=0.0109
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0857 rotate_ms=0.0140 matmul_ms=0.0614 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0929 rotate_ms=0.0215 matmul_ms=0.0614 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1880 rotate_ms=0.0167 matmul_ms=0.1555 epilogue_ms=0.0158
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1931 rotate_ms=0.0165 matmul_ms=0.1625 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2215 rotate_ms=0.0440 matmul_ms=0.1673 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=12288 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1318 rotate_ms=0.0156 matmul_ms=0.1041 epilogue_ms=0.0120
+ESCHA_PROFILE k=2 ic=5120 oc=1024 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0540 rotate_ms=0.0143 matmul_ms=0.0287 epilogue_ms=0.0110
+ESCHA_PROFILE k=2 ic=5120 oc=1024 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0584 rotate_ms=0.0229 matmul_ms=0.0276 epilogue_ms=0.0079
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0894 rotate_ms=0.0185 matmul_ms=0.0609 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1881 rotate_ms=0.0172 matmul_ms=0.1568 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1922 rotate_ms=0.0164 matmul_ms=0.1617 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2219 rotate_ms=0.0447 matmul_ms=0.1669 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1251 rotate_ms=0.0239 matmul_ms=0.0903 epilogue_ms=0.0109
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0877 rotate_ms=0.0161 matmul_ms=0.0614 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0921 rotate_ms=0.0218 matmul_ms=0.0604 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1864 rotate_ms=0.0164 matmul_ms=0.1556 epilogue_ms=0.0143
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.2001 rotate_ms=0.0233 matmul_ms=0.1618 epilogue_ms=0.0150
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2215 rotate_ms=0.0440 matmul_ms=0.1673 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1195 rotate_ms=0.0164 matmul_ms=0.0911 epilogue_ms=0.0120
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0860 rotate_ms=0.0143 matmul_ms=0.0614 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0944 rotate_ms=0.0227 matmul_ms=0.0617 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1870 rotate_ms=0.0166 matmul_ms=0.1564 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1919 rotate_ms=0.0154 matmul_ms=0.1625 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2199 rotate_ms=0.0425 matmul_ms=0.1671 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1180 rotate_ms=0.0175 matmul_ms=0.0889 epilogue_ms=0.0117
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0856 rotate_ms=0.0140 matmul_ms=0.0614 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0949 rotate_ms=0.0235 matmul_ms=0.0614 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1862 rotate_ms=0.0167 matmul_ms=0.1555 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1922 rotate_ms=0.0164 matmul_ms=0.1617 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2209 rotate_ms=0.0436 matmul_ms=0.1671 epilogue_ms=0.0103
+ESCHA_PROFILE k=2 ic=5120 oc=12288 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1367 rotate_ms=0.0213 matmul_ms=0.1034 epilogue_ms=0.0120
+ESCHA_PROFILE k=2 ic=5120 oc=1024 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0578 rotate_ms=0.0174 matmul_ms=0.0297 epilogue_ms=0.0107
+ESCHA_PROFILE k=2 ic=5120 oc=1024 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0608 rotate_ms=0.0231 matmul_ms=0.0298 epilogue_ms=0.0079
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0895 rotate_ms=0.0191 matmul_ms=0.0604 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1884 rotate_ms=0.0184 matmul_ms=0.1559 epilogue_ms=0.0140
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1929 rotate_ms=0.0161 matmul_ms=0.1631 epilogue_ms=0.0137
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2208 rotate_ms=0.0437 matmul_ms=0.1668 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1221 rotate_ms=0.0208 matmul_ms=0.0893 epilogue_ms=0.0120
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0855 rotate_ms=0.0139 matmul_ms=0.0614 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0948 rotate_ms=0.0235 matmul_ms=0.0614 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1883 rotate_ms=0.0176 matmul_ms=0.1567 epilogue_ms=0.0140
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1973 rotate_ms=0.0205 matmul_ms=0.1627 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2257 rotate_ms=0.0484 matmul_ms=0.1671 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1216 rotate_ms=0.0205 matmul_ms=0.0890 epilogue_ms=0.0121
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0860 rotate_ms=0.0143 matmul_ms=0.0614 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0959 rotate_ms=0.0236 matmul_ms=0.0624 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1880 rotate_ms=0.0173 matmul_ms=0.1571 epilogue_ms=0.0136
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1902 rotate_ms=0.0141 matmul_ms=0.1618 epilogue_ms=0.0143
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2245 rotate_ms=0.0484 matmul_ms=0.1658 epilogue_ms=0.0103
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1192 rotate_ms=0.0180 matmul_ms=0.0894 epilogue_ms=0.0119
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0860 rotate_ms=0.0143 matmul_ms=0.0614 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0938 rotate_ms=0.0229 matmul_ms=0.0609 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1896 rotate_ms=0.0203 matmul_ms=0.1551 epilogue_ms=0.0143
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1915 rotate_ms=0.0162 matmul_ms=0.1612 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2250 rotate_ms=0.0479 matmul_ms=0.1668 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=12288 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1359 rotate_ms=0.0182 matmul_ms=0.1042 epilogue_ms=0.0134
+ESCHA_PROFILE k=2 ic=5120 oc=1024 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0540 rotate_ms=0.0167 matmul_ms=0.0293 epilogue_ms=0.0079
+ESCHA_PROFILE k=2 ic=5120 oc=1024 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0601 rotate_ms=0.0204 matmul_ms=0.0300 epilogue_ms=0.0096
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0901 rotate_ms=0.0195 matmul_ms=0.0607 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1905 rotate_ms=0.0205 matmul_ms=0.1559 epilogue_ms=0.0140
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1934 rotate_ms=0.0165 matmul_ms=0.1628 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2485 rotate_ms=0.0713 matmul_ms=0.1669 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1195 rotate_ms=0.0187 matmul_ms=0.0898 epilogue_ms=0.0109
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0860 rotate_ms=0.0143 matmul_ms=0.0614 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0908 rotate_ms=0.0195 matmul_ms=0.0613 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1847 rotate_ms=0.0159 matmul_ms=0.1547 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1912 rotate_ms=0.0166 matmul_ms=0.1605 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2196 rotate_ms=0.0443 matmul_ms=0.1651 epilogue_ms=0.0103
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1241 rotate_ms=0.0202 matmul_ms=0.0891 epilogue_ms=0.0148
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0860 rotate_ms=0.0143 matmul_ms=0.0614 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0949 rotate_ms=0.0236 matmul_ms=0.0614 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1870 rotate_ms=0.0168 matmul_ms=0.1565 epilogue_ms=0.0137
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1939 rotate_ms=0.0181 matmul_ms=0.1620 epilogue_ms=0.0138
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2229 rotate_ms=0.0461 matmul_ms=0.1665 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1199 rotate_ms=0.0188 matmul_ms=0.0895 epilogue_ms=0.0116
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0860 rotate_ms=0.0143 matmul_ms=0.0614 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0948 rotate_ms=0.0233 matmul_ms=0.0615 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1848 rotate_ms=0.0161 matmul_ms=0.1549 epilogue_ms=0.0138
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1920 rotate_ms=0.0162 matmul_ms=0.1617 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2191 rotate_ms=0.0430 matmul_ms=0.1659 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=12288 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1334 rotate_ms=0.0173 matmul_ms=0.1045 epilogue_ms=0.0116
+ESCHA_PROFILE k=2 ic=5120 oc=1024 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0532 rotate_ms=0.0151 matmul_ms=0.0281 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=5120 oc=1024 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0599 rotate_ms=0.0224 matmul_ms=0.0279 epilogue_ms=0.0096
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1103 rotate_ms=0.0161 matmul_ms=0.0849 epilogue_ms=0.0093
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1870 rotate_ms=0.0168 matmul_ms=0.1561 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1919 rotate_ms=0.0161 matmul_ms=0.1618 epilogue_ms=0.0140
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2270 rotate_ms=0.0502 matmul_ms=0.1666 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1182 rotate_ms=0.0164 matmul_ms=0.0901 epilogue_ms=0.0117
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0856 rotate_ms=0.0140 matmul_ms=0.0614 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0943 rotate_ms=0.0219 matmul_ms=0.0624 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1860 rotate_ms=0.0164 matmul_ms=0.1562 epilogue_ms=0.0135
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1912 rotate_ms=0.0164 matmul_ms=0.1607 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2239 rotate_ms=0.0465 matmul_ms=0.1671 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1208 rotate_ms=0.0195 matmul_ms=0.0894 epilogue_ms=0.0120
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0860 rotate_ms=0.0144 matmul_ms=0.0614 epilogue_ms=0.0103
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0944 rotate_ms=0.0231 matmul_ms=0.0613 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1874 rotate_ms=0.0174 matmul_ms=0.1559 epilogue_ms=0.0140
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1934 rotate_ms=0.0167 matmul_ms=0.1626 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2229 rotate_ms=0.0476 matmul_ms=0.1651 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1323 rotate_ms=0.0312 matmul_ms=0.0903 epilogue_ms=0.0108
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0860 rotate_ms=0.0143 matmul_ms=0.0614 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0930 rotate_ms=0.0226 matmul_ms=0.0604 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1881 rotate_ms=0.0176 matmul_ms=0.1568 epilogue_ms=0.0137
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1905 rotate_ms=0.0164 matmul_ms=0.1597 epilogue_ms=0.0143
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2265 rotate_ms=0.0499 matmul_ms=0.1663 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=12288 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1338 rotate_ms=0.0177 matmul_ms=0.1041 epilogue_ms=0.0120
+ESCHA_PROFILE k=2 ic=5120 oc=1024 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0517 rotate_ms=0.0154 matmul_ms=0.0283 epilogue_ms=0.0079
+ESCHA_PROFILE k=2 ic=5120 oc=1024 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0584 rotate_ms=0.0194 matmul_ms=0.0293 epilogue_ms=0.0097
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0905 rotate_ms=0.0192 matmul_ms=0.0624 epilogue_ms=0.0089
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1850 rotate_ms=0.0162 matmul_ms=0.1551 epilogue_ms=0.0137
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1958 rotate_ms=0.0192 matmul_ms=0.1625 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2228 rotate_ms=0.0464 matmul_ms=0.1661 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1251 rotate_ms=0.0151 matmul_ms=0.0983 epilogue_ms=0.0117
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0860 rotate_ms=0.0144 matmul_ms=0.0614 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0929 rotate_ms=0.0206 matmul_ms=0.0622 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1880 rotate_ms=0.0179 matmul_ms=0.1560 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1942 rotate_ms=0.0166 matmul_ms=0.1636 epilogue_ms=0.0140
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2219 rotate_ms=0.0445 matmul_ms=0.1671 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1185 rotate_ms=0.0164 matmul_ms=0.0901 epilogue_ms=0.0120
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0857 rotate_ms=0.0140 matmul_ms=0.0614 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0928 rotate_ms=0.0214 matmul_ms=0.0617 epilogue_ms=0.0097
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1871 rotate_ms=0.0164 matmul_ms=0.1566 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1932 rotate_ms=0.0164 matmul_ms=0.1628 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2187 rotate_ms=0.0413 matmul_ms=0.1671 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1200 rotate_ms=0.0182 matmul_ms=0.0908 epilogue_ms=0.0109
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0860 rotate_ms=0.0143 matmul_ms=0.0614 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0942 rotate_ms=0.0230 matmul_ms=0.0612 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1915 rotate_ms=0.0205 matmul_ms=0.1570 epilogue_ms=0.0140
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1977 rotate_ms=0.0211 matmul_ms=0.1625 epilogue_ms=0.0140
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2197 rotate_ms=0.0423 matmul_ms=0.1671 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=12288 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1372 rotate_ms=0.0215 matmul_ms=0.1037 epilogue_ms=0.0120
+ESCHA_PROFILE k=2 ic=5120 oc=1024 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0591 rotate_ms=0.0215 matmul_ms=0.0279 epilogue_ms=0.0097
+ESCHA_PROFILE k=2 ic=5120 oc=1024 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0620 rotate_ms=0.0234 matmul_ms=0.0290 epilogue_ms=0.0097
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0894 rotate_ms=0.0180 matmul_ms=0.0612 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1884 rotate_ms=0.0175 matmul_ms=0.1569 epilogue_ms=0.0140
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1942 rotate_ms=0.0184 matmul_ms=0.1618 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2219 rotate_ms=0.0445 matmul_ms=0.1672 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1205 rotate_ms=0.0199 matmul_ms=0.0897 epilogue_ms=0.0109
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0860 rotate_ms=0.0143 matmul_ms=0.0614 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0939 rotate_ms=0.0236 matmul_ms=0.0603 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1823 rotate_ms=0.0144 matmul_ms=0.1536 epilogue_ms=0.0143
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1978 rotate_ms=0.0210 matmul_ms=0.1628 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2270 rotate_ms=0.0503 matmul_ms=0.1664 epilogue_ms=0.0103
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1213 rotate_ms=0.0203 matmul_ms=0.0896 epilogue_ms=0.0114
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0857 rotate_ms=0.0140 matmul_ms=0.0614 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.2676 rotate_ms=0.1094 matmul_ms=0.1468 epilogue_ms=0.0114
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1933 rotate_ms=0.0203 matmul_ms=0.1578 epilogue_ms=0.0153
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1968 rotate_ms=0.0201 matmul_ms=0.1627 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2198 rotate_ms=0.0425 matmul_ms=0.1671 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1210 rotate_ms=0.0197 matmul_ms=0.0893 epilogue_ms=0.0120
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0857 rotate_ms=0.0140 matmul_ms=0.0614 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0960 rotate_ms=0.0238 matmul_ms=0.0626 epilogue_ms=0.0096
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1912 rotate_ms=0.0189 matmul_ms=0.1565 epilogue_ms=0.0158
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1932 rotate_ms=0.0169 matmul_ms=0.1623 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2188 rotate_ms=0.0434 matmul_ms=0.1653 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=12288 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1312 rotate_ms=0.0158 matmul_ms=0.1034 epilogue_ms=0.0120
+ESCHA_PROFILE k=2 ic=5120 oc=1024 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0528 rotate_ms=0.0155 matmul_ms=0.0293 epilogue_ms=0.0079
+ESCHA_PROFILE k=2 ic=5120 oc=1024 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0565 rotate_ms=0.0189 matmul_ms=0.0279 epilogue_ms=0.0097
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0895 rotate_ms=0.0185 matmul_ms=0.0610 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1905 rotate_ms=0.0195 matmul_ms=0.1569 epilogue_ms=0.0140
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1936 rotate_ms=0.0183 matmul_ms=0.1612 epilogue_ms=0.0140
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2229 rotate_ms=0.0456 matmul_ms=0.1670 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1217 rotate_ms=0.0206 matmul_ms=0.0901 epilogue_ms=0.0109
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0856 rotate_ms=0.0140 matmul_ms=0.0614 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0927 rotate_ms=0.0214 matmul_ms=0.0617 epilogue_ms=0.0096
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1912 rotate_ms=0.0205 matmul_ms=0.1570 epilogue_ms=0.0137
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1932 rotate_ms=0.0169 matmul_ms=0.1622 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2236 rotate_ms=0.0462 matmul_ms=0.1672 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1226 rotate_ms=0.0217 matmul_ms=0.0892 epilogue_ms=0.0117
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0860 rotate_ms=0.0144 matmul_ms=0.0614 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0951 rotate_ms=0.0243 matmul_ms=0.0608 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1901 rotate_ms=0.0191 matmul_ms=0.1573 epilogue_ms=0.0137
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1968 rotate_ms=0.0220 matmul_ms=0.1607 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2208 rotate_ms=0.0437 matmul_ms=0.1669 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1169 rotate_ms=0.0156 matmul_ms=0.0897 epilogue_ms=0.0117
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0856 rotate_ms=0.0139 matmul_ms=0.0614 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0935 rotate_ms=0.0224 matmul_ms=0.0614 epilogue_ms=0.0097
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1881 rotate_ms=0.0172 matmul_ms=0.1569 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1942 rotate_ms=0.0175 matmul_ms=0.1627 epilogue_ms=0.0140
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2219 rotate_ms=0.0446 matmul_ms=0.1671 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=12288 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1305 rotate_ms=0.0154 matmul_ms=0.1034 epilogue_ms=0.0117
+ESCHA_PROFILE k=2 ic=5120 oc=1024 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0530 rotate_ms=0.0164 matmul_ms=0.0286 epilogue_ms=0.0079
+ESCHA_PROFILE k=2 ic=5120 oc=1024 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0599 rotate_ms=0.0235 matmul_ms=0.0285 epilogue_ms=0.0079
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0905 rotate_ms=0.0196 matmul_ms=0.0609 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1860 rotate_ms=0.0166 matmul_ms=0.1553 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1958 rotate_ms=0.0210 matmul_ms=0.1607 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2239 rotate_ms=0.0466 matmul_ms=0.1671 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1226 rotate_ms=0.0210 matmul_ms=0.0895 epilogue_ms=0.0121
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0860 rotate_ms=0.0144 matmul_ms=0.0614 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0960 rotate_ms=0.0233 matmul_ms=0.0628 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.2403 rotate_ms=0.0699 matmul_ms=0.1563 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1932 rotate_ms=0.0164 matmul_ms=0.1627 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2260 rotate_ms=0.0492 matmul_ms=0.1665 epilogue_ms=0.0103
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1482 rotate_ms=0.0492 matmul_ms=0.0890 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0856 rotate_ms=0.0140 matmul_ms=0.0614 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0964 rotate_ms=0.0240 matmul_ms=0.0624 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1901 rotate_ms=0.0208 matmul_ms=0.1556 epilogue_ms=0.0137
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1915 rotate_ms=0.0162 matmul_ms=0.1612 epilogue_ms=0.0140
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2192 rotate_ms=0.0430 matmul_ms=0.1659 epilogue_ms=0.0103
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1174 rotate_ms=0.0164 matmul_ms=0.0894 epilogue_ms=0.0117
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0860 rotate_ms=0.0143 matmul_ms=0.0614 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1062 rotate_ms=0.0300 matmul_ms=0.0662 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1880 rotate_ms=0.0184 matmul_ms=0.1559 epilogue_ms=0.0137
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1943 rotate_ms=0.0185 matmul_ms=0.1621 epilogue_ms=0.0137
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2219 rotate_ms=0.0448 matmul_ms=0.1668 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=12288 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1314 rotate_ms=0.0163 matmul_ms=0.1033 epilogue_ms=0.0118
+ESCHA_PROFILE k=2 ic=5120 oc=1024 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0553 rotate_ms=0.0163 matmul_ms=0.0291 epilogue_ms=0.0099
+ESCHA_PROFILE k=2 ic=5120 oc=1024 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0603 rotate_ms=0.0237 matmul_ms=0.0286 epilogue_ms=0.0079
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0932 rotate_ms=0.0222 matmul_ms=0.0620 epilogue_ms=0.0089
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1868 rotate_ms=0.0172 matmul_ms=0.1554 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1932 rotate_ms=0.0169 matmul_ms=0.1625 epilogue_ms=0.0138
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2209 rotate_ms=0.0437 matmul_ms=0.1669 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1195 rotate_ms=0.0166 matmul_ms=0.0909 epilogue_ms=0.0120
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0860 rotate_ms=0.0143 matmul_ms=0.0614 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0941 rotate_ms=0.0228 matmul_ms=0.0614 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1860 rotate_ms=0.0164 matmul_ms=0.1556 epilogue_ms=0.0140
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1922 rotate_ms=0.0164 matmul_ms=0.1618 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2197 rotate_ms=0.0425 matmul_ms=0.1670 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1229 rotate_ms=0.0208 matmul_ms=0.0904 epilogue_ms=0.0117
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0860 rotate_ms=0.0143 matmul_ms=0.0614 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0923 rotate_ms=0.0214 matmul_ms=0.0608 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1879 rotate_ms=0.0193 matmul_ms=0.1549 epilogue_ms=0.0138
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1963 rotate_ms=0.0207 matmul_ms=0.1615 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2276 rotate_ms=0.0513 matmul_ms=0.1660 epilogue_ms=0.0103
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1239 rotate_ms=0.0212 matmul_ms=0.0907 epilogue_ms=0.0121
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0856 rotate_ms=0.0140 matmul_ms=0.0614 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0954 rotate_ms=0.0241 matmul_ms=0.0613 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1905 rotate_ms=0.0193 matmul_ms=0.1571 epilogue_ms=0.0140
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1905 rotate_ms=0.0143 matmul_ms=0.1618 epilogue_ms=0.0143
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2239 rotate_ms=0.0477 matmul_ms=0.1659 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=12288 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1359 rotate_ms=0.0215 matmul_ms=0.1023 epilogue_ms=0.0121
+ESCHA_PROFILE k=2 ic=5120 oc=1024 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0540 rotate_ms=0.0165 matmul_ms=0.0295 epilogue_ms=0.0079
+ESCHA_PROFILE k=2 ic=5120 oc=1024 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0611 rotate_ms=0.0236 matmul_ms=0.0297 epilogue_ms=0.0078
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1246 rotate_ms=0.0218 matmul_ms=0.0934 epilogue_ms=0.0094
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1870 rotate_ms=0.0164 matmul_ms=0.1565 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1932 rotate_ms=0.0168 matmul_ms=0.1623 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2206 rotate_ms=0.0433 matmul_ms=0.1671 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1228 rotate_ms=0.0220 matmul_ms=0.0908 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0857 rotate_ms=0.0140 matmul_ms=0.0614 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0955 rotate_ms=0.0241 matmul_ms=0.0613 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1909 rotate_ms=0.0202 matmul_ms=0.1567 epilogue_ms=0.0140
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1962 rotate_ms=0.0204 matmul_ms=0.1618 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2260 rotate_ms=0.0486 matmul_ms=0.1671 epilogue_ms=0.0103
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1224 rotate_ms=0.0217 matmul_ms=0.0890 epilogue_ms=0.0117
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0857 rotate_ms=0.0140 matmul_ms=0.0614 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0955 rotate_ms=0.0232 matmul_ms=0.0623 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1912 rotate_ms=0.0187 matmul_ms=0.1576 epilogue_ms=0.0148
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1984 rotate_ms=0.0216 matmul_ms=0.1627 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2249 rotate_ms=0.0479 matmul_ms=0.1668 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1220 rotate_ms=0.0213 matmul_ms=0.0891 epilogue_ms=0.0117
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0855 rotate_ms=0.0138 matmul_ms=0.0614 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0948 rotate_ms=0.0234 matmul_ms=0.0614 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1879 rotate_ms=0.0172 matmul_ms=0.1570 epilogue_ms=0.0137
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1963 rotate_ms=0.0205 matmul_ms=0.1618 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2198 rotate_ms=0.0428 matmul_ms=0.1668 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=12288 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1348 rotate_ms=0.0204 matmul_ms=0.1024 epilogue_ms=0.0120
+ESCHA_PROFILE k=2 ic=5120 oc=1024 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0550 rotate_ms=0.0189 matmul_ms=0.0281 epilogue_ms=0.0079
+ESCHA_PROFILE k=2 ic=5120 oc=1024 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0593 rotate_ms=0.0210 matmul_ms=0.0287 epilogue_ms=0.0097
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0895 rotate_ms=0.0180 matmul_ms=0.0612 epilogue_ms=0.0103
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1864 rotate_ms=0.0164 matmul_ms=0.1556 epilogue_ms=0.0143
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1932 rotate_ms=0.0171 matmul_ms=0.1621 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2208 rotate_ms=0.0435 matmul_ms=0.1671 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1554 rotate_ms=0.0564 matmul_ms=0.0890 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0863 rotate_ms=0.0146 matmul_ms=0.0614 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0926 rotate_ms=0.0204 matmul_ms=0.0622 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1870 rotate_ms=0.0159 matmul_ms=0.1571 epilogue_ms=0.0140
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1922 rotate_ms=0.0169 matmul_ms=0.1612 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2209 rotate_ms=0.0437 matmul_ms=0.1669 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1244 rotate_ms=0.0242 matmul_ms=0.0901 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0859 rotate_ms=0.0143 matmul_ms=0.0614 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0980 rotate_ms=0.0268 matmul_ms=0.0613 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1909 rotate_ms=0.0182 matmul_ms=0.1570 epilogue_ms=0.0157
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1963 rotate_ms=0.0206 matmul_ms=0.1617 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2229 rotate_ms=0.0455 matmul_ms=0.1671 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1216 rotate_ms=0.0202 matmul_ms=0.0894 epilogue_ms=0.0120
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0877 rotate_ms=0.0161 matmul_ms=0.0614 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0942 rotate_ms=0.0239 matmul_ms=0.0604 epilogue_ms=0.0099
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1862 rotate_ms=0.0166 matmul_ms=0.1559 epilogue_ms=0.0137
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1932 rotate_ms=0.0164 matmul_ms=0.1628 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2239 rotate_ms=0.0479 matmul_ms=0.1658 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=12288 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1724 rotate_ms=0.0566 matmul_ms=0.1044 epilogue_ms=0.0115
+ESCHA_PROFILE k=2 ic=5120 oc=1024 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0517 rotate_ms=0.0162 matmul_ms=0.0276 epilogue_ms=0.0079
+ESCHA_PROFILE k=2 ic=5120 oc=1024 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0581 rotate_ms=0.0205 matmul_ms=0.0281 epilogue_ms=0.0094
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0894 rotate_ms=0.0178 matmul_ms=0.0622 epilogue_ms=0.0095
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1874 rotate_ms=0.0163 matmul_ms=0.1570 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1930 rotate_ms=0.0161 matmul_ms=0.1628 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2197 rotate_ms=0.0423 matmul_ms=0.1671 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1166 rotate_ms=0.0158 matmul_ms=0.0888 epilogue_ms=0.0121
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0860 rotate_ms=0.0143 matmul_ms=0.0614 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0950 rotate_ms=0.0226 matmul_ms=0.0624 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1869 rotate_ms=0.0163 matmul_ms=0.1568 epilogue_ms=0.0137
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1919 rotate_ms=0.0167 matmul_ms=0.1611 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2240 rotate_ms=0.0461 matmul_ms=0.1676 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1170 rotate_ms=0.0154 matmul_ms=0.0895 epilogue_ms=0.0120
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0857 rotate_ms=0.0140 matmul_ms=0.0614 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0939 rotate_ms=0.0225 matmul_ms=0.0614 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1868 rotate_ms=0.0161 matmul_ms=0.1567 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1923 rotate_ms=0.0164 matmul_ms=0.1618 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2209 rotate_ms=0.0436 matmul_ms=0.1670 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1180 rotate_ms=0.0166 matmul_ms=0.0893 epilogue_ms=0.0120
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0856 rotate_ms=0.0140 matmul_ms=0.0614 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0927 rotate_ms=0.0203 matmul_ms=0.0624 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1879 rotate_ms=0.0165 matmul_ms=0.1572 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1922 rotate_ms=0.0156 matmul_ms=0.1625 epilogue_ms=0.0140
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2219 rotate_ms=0.0446 matmul_ms=0.1671 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=12288 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1310 rotate_ms=0.0167 matmul_ms=0.1022 epilogue_ms=0.0120
+ESCHA_PROFILE k=2 ic=5120 oc=1024 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0519 rotate_ms=0.0165 matmul_ms=0.0275 epilogue_ms=0.0080
+ESCHA_PROFILE k=2 ic=5120 oc=1024 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0620 rotate_ms=0.0233 matmul_ms=0.0290 epilogue_ms=0.0097
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0892 rotate_ms=0.0178 matmul_ms=0.0612 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1891 rotate_ms=0.0187 matmul_ms=0.1563 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1949 rotate_ms=0.0174 matmul_ms=0.1635 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2178 rotate_ms=0.0425 matmul_ms=0.1651 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.2026 rotate_ms=0.0707 matmul_ms=0.1210 epilogue_ms=0.0110
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1504 rotate_ms=0.0516 matmul_ms=0.0897 epilogue_ms=0.0092
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1392 rotate_ms=0.0434 matmul_ms=0.0867 epilogue_ms=0.0092
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.2465 rotate_ms=0.0512 matmul_ms=0.1802 epilogue_ms=0.0150
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1905 rotate_ms=0.0143 matmul_ms=0.1618 epilogue_ms=0.0143
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2462 rotate_ms=0.0695 matmul_ms=0.1665 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1422 rotate_ms=0.0401 matmul_ms=0.0904 epilogue_ms=0.0117
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0858 rotate_ms=0.0147 matmul_ms=0.0614 epilogue_ms=0.0097
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0919 rotate_ms=0.0172 matmul_ms=0.0655 epilogue_ms=0.0092
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.2066 rotate_ms=0.0179 matmul_ms=0.1736 epilogue_ms=0.0151
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.2525 rotate_ms=0.0152 matmul_ms=0.2238 epilogue_ms=0.0135
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2680 rotate_ms=0.0906 matmul_ms=0.1672 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1226 rotate_ms=0.0213 matmul_ms=0.0903 epilogue_ms=0.0109
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0860 rotate_ms=0.0143 matmul_ms=0.0614 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1198 rotate_ms=0.0226 matmul_ms=0.0870 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1871 rotate_ms=0.0165 matmul_ms=0.1565 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.2547 rotate_ms=0.0470 matmul_ms=0.1925 epilogue_ms=0.0151
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2199 rotate_ms=0.0423 matmul_ms=0.1689 epilogue_ms=0.0087
+ESCHA_PROFILE k=2 ic=5120 oc=12288 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1733 rotate_ms=0.0508 matmul_ms=0.1096 epilogue_ms=0.0129
+ESCHA_PROFILE k=2 ic=5120 oc=1024 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1724 rotate_ms=0.0513 matmul_ms=0.0658 epilogue_ms=0.0553
+ESCHA_PROFILE k=2 ic=5120 oc=1024 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1106 rotate_ms=0.0213 matmul_ms=0.0497 epilogue_ms=0.0396
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1421 rotate_ms=0.0416 matmul_ms=0.0916 epilogue_ms=0.0089
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1877 rotate_ms=0.0170 matmul_ms=0.1566 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.2137 rotate_ms=0.0174 matmul_ms=0.1812 epilogue_ms=0.0151
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2854 rotate_ms=0.0676 matmul_ms=0.2083 epilogue_ms=0.0094
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1557 rotate_ms=0.0501 matmul_ms=0.0948 epilogue_ms=0.0109
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0858 rotate_ms=0.0147 matmul_ms=0.0614 epilogue_ms=0.0096
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0962 rotate_ms=0.0190 matmul_ms=0.0680 epilogue_ms=0.0092
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1875 rotate_ms=0.0178 matmul_ms=0.1556 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.2065 rotate_ms=0.0148 matmul_ms=0.1766 epilogue_ms=0.0151
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2222 rotate_ms=0.0445 matmul_ms=0.1680 epilogue_ms=0.0096
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1182 rotate_ms=0.0164 matmul_ms=0.0902 epilogue_ms=0.0116
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0857 rotate_ms=0.0140 matmul_ms=0.0614 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0942 rotate_ms=0.0239 matmul_ms=0.0604 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1892 rotate_ms=0.0183 matmul_ms=0.1572 epilogue_ms=0.0137
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1912 rotate_ms=0.0162 matmul_ms=0.1609 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2270 rotate_ms=0.0497 matmul_ms=0.1671 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1190 rotate_ms=0.0164 matmul_ms=0.0906 epilogue_ms=0.0120
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0860 rotate_ms=0.0143 matmul_ms=0.0614 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0939 rotate_ms=0.0217 matmul_ms=0.0623 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1881 rotate_ms=0.0166 matmul_ms=0.1557 epilogue_ms=0.0158
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1958 rotate_ms=0.0193 matmul_ms=0.1624 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2209 rotate_ms=0.0438 matmul_ms=0.1670 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=5120 oc=12288 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1321 rotate_ms=0.0164 matmul_ms=0.1037 epilogue_ms=0.0120
+ESCHA_PROFILE k=2 ic=5120 oc=1024 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0525 rotate_ms=0.0170 matmul_ms=0.0276 epilogue_ms=0.0079
+ESCHA_PROFILE k=2 ic=5120 oc=1024 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0589 rotate_ms=0.0236 matmul_ms=0.0274 epilogue_ms=0.0079
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0875 rotate_ms=0.0164 matmul_ms=0.0611 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1890 rotate_ms=0.0195 matmul_ms=0.1557 epilogue_ms=0.0137
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1932 rotate_ms=0.0164 matmul_ms=0.1628 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2229 rotate_ms=0.0465 matmul_ms=0.1662 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1206 rotate_ms=0.0195 matmul_ms=0.0891 epilogue_ms=0.0120
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0860 rotate_ms=0.0143 matmul_ms=0.0614 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0952 rotate_ms=0.0239 matmul_ms=0.0613 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1892 rotate_ms=0.0195 matmul_ms=0.1560 epilogue_ms=0.0137
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1953 rotate_ms=0.0187 matmul_ms=0.1625 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2265 rotate_ms=0.0497 matmul_ms=0.1666 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1253 rotate_ms=0.0239 matmul_ms=0.0894 epilogue_ms=0.0120
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0864 rotate_ms=0.0147 matmul_ms=0.0614 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0958 rotate_ms=0.0237 matmul_ms=0.0621 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.2116 rotate_ms=0.0140 matmul_ms=0.1841 epilogue_ms=0.0135
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1884 rotate_ms=0.0144 matmul_ms=0.1597 epilogue_ms=0.0143
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2208 rotate_ms=0.0438 matmul_ms=0.1668 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1174 rotate_ms=0.0163 matmul_ms=0.0895 epilogue_ms=0.0116
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0857 rotate_ms=0.0140 matmul_ms=0.0614 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0900 rotate_ms=0.0193 matmul_ms=0.0616 epilogue_ms=0.0092
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.2280 rotate_ms=0.0518 matmul_ms=0.1612 epilogue_ms=0.0150
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1970 rotate_ms=0.0150 matmul_ms=0.1670 epilogue_ms=0.0150
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2293 rotate_ms=0.0433 matmul_ms=0.1771 epilogue_ms=0.0089
+ESCHA_PROFILE k=2 ic=5120 oc=12288 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1327 rotate_ms=0.0173 matmul_ms=0.1034 epilogue_ms=0.0120
+ESCHA_PROFILE k=2 ic=5120 oc=1024 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0719 rotate_ms=0.0312 matmul_ms=0.0312 epilogue_ms=0.0094
+ESCHA_PROFILE k=2 ic=5120 oc=1024 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0577 rotate_ms=0.0196 matmul_ms=0.0292 epilogue_ms=0.0089
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1668 rotate_ms=0.0658 matmul_ms=0.0921 epilogue_ms=0.0089
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1882 rotate_ms=0.0157 matmul_ms=0.1584 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1980 rotate_ms=0.0150 matmul_ms=0.1690 epilogue_ms=0.0140
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2206 rotate_ms=0.0434 matmul_ms=0.1677 epilogue_ms=0.0096
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1224 rotate_ms=0.0216 matmul_ms=0.0899 epilogue_ms=0.0110
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0875 rotate_ms=0.0161 matmul_ms=0.0611 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0997 rotate_ms=0.0194 matmul_ms=0.0711 epilogue_ms=0.0092
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.2428 rotate_ms=0.0424 matmul_ms=0.1853 epilogue_ms=0.0151
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1993 rotate_ms=0.0140 matmul_ms=0.1704 epilogue_ms=0.0149
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2221 rotate_ms=0.0445 matmul_ms=0.1679 epilogue_ms=0.0097
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1560 rotate_ms=0.0502 matmul_ms=0.0948 epilogue_ms=0.0109
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0860 rotate_ms=0.0143 matmul_ms=0.0614 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0962 rotate_ms=0.0169 matmul_ms=0.0701 epilogue_ms=0.0092
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.2274 rotate_ms=0.0524 matmul_ms=0.1598 epilogue_ms=0.0151
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1950 rotate_ms=0.0151 matmul_ms=0.1649 epilogue_ms=0.0151
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2209 rotate_ms=0.0435 matmul_ms=0.1677 epilogue_ms=0.0096
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1545 rotate_ms=0.0519 matmul_ms=0.0921 epilogue_ms=0.0105
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0860 rotate_ms=0.0143 matmul_ms=0.0614 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0952 rotate_ms=0.0189 matmul_ms=0.0671 epilogue_ms=0.0092
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1901 rotate_ms=0.0204 matmul_ms=0.1560 epilogue_ms=0.0137
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1972 rotate_ms=0.0147 matmul_ms=0.1674 epilogue_ms=0.0151
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2209 rotate_ms=0.0433 matmul_ms=0.1687 epilogue_ms=0.0089
+ESCHA_PROFILE k=2 ic=5120 oc=12288 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1892 rotate_ms=0.0503 matmul_ms=0.1261 epilogue_ms=0.0128
+ESCHA_PROFILE k=2 ic=5120 oc=1024 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0595 rotate_ms=0.0231 matmul_ms=0.0285 epilogue_ms=0.0079
+ESCHA_PROFILE k=2 ic=5120 oc=1024 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0593 rotate_ms=0.0206 matmul_ms=0.0290 epilogue_ms=0.0096
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0900 rotate_ms=0.0179 matmul_ms=0.0621 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.3040 rotate_ms=0.0161 matmul_ms=0.1602 epilogue_ms=0.1277
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.2004 rotate_ms=0.0153 matmul_ms=0.1702 epilogue_ms=0.0149
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2217 rotate_ms=0.0441 matmul_ms=0.1679 epilogue_ms=0.0096
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1187 rotate_ms=0.0166 matmul_ms=0.0904 epilogue_ms=0.0117
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0875 rotate_ms=0.0165 matmul_ms=0.0609 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1126 rotate_ms=0.0213 matmul_ms=0.0820 epilogue_ms=0.0093
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.2252 rotate_ms=0.0490 matmul_ms=0.1611 epilogue_ms=0.0151
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1931 rotate_ms=0.0157 matmul_ms=0.1625 epilogue_ms=0.0149
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2219 rotate_ms=0.0443 matmul_ms=0.1679 epilogue_ms=0.0096
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1547 rotate_ms=0.0484 matmul_ms=0.0953 epilogue_ms=0.0110
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0857 rotate_ms=0.0143 matmul_ms=0.0612 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1516 rotate_ms=0.0523 matmul_ms=0.0889 epilogue_ms=0.0104
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.2362 rotate_ms=0.0451 matmul_ms=0.1761 epilogue_ms=0.0150
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1993 rotate_ms=0.0145 matmul_ms=0.1700 epilogue_ms=0.0148
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2188 rotate_ms=0.0418 matmul_ms=0.1681 epilogue_ms=0.0089
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1184 rotate_ms=0.0175 matmul_ms=0.0892 epilogue_ms=0.0117
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0857 rotate_ms=0.0143 matmul_ms=0.0622 epilogue_ms=0.0092
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.2219 rotate_ms=0.0221 matmul_ms=0.0629 epilogue_ms=0.1369
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1822 rotate_ms=0.0143 matmul_ms=0.1536 epilogue_ms=0.0143
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1952 rotate_ms=0.0197 matmul_ms=0.1613 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2219 rotate_ms=0.0428 matmul_ms=0.1708 epilogue_ms=0.0083
+ESCHA_PROFILE k=2 ic=5120 oc=12288 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1900 rotate_ms=0.0695 matmul_ms=0.1093 epilogue_ms=0.0111
+ESCHA_PROFILE k=2 ic=5120 oc=1024 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0810 rotate_ms=0.0445 matmul_ms=0.0285 epilogue_ms=0.0079
+ESCHA_PROFILE k=2 ic=5120 oc=1024 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1238 rotate_ms=0.0224 matmul_ms=0.0580 epilogue_ms=0.0434
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0885 rotate_ms=0.0176 matmul_ms=0.0609 epilogue_ms=0.0099
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1912 rotate_ms=0.0184 matmul_ms=0.1577 epilogue_ms=0.0150
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1946 rotate_ms=0.0144 matmul_ms=0.1652 epilogue_ms=0.0151
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2209 rotate_ms=0.0433 matmul_ms=0.1679 epilogue_ms=0.0096
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1190 rotate_ms=0.0169 matmul_ms=0.0901 epilogue_ms=0.0120
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0860 rotate_ms=0.0143 matmul_ms=0.0614 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1351 rotate_ms=0.0362 matmul_ms=0.0900 epilogue_ms=0.0089
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1852 rotate_ms=0.0158 matmul_ms=0.1553 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1994 rotate_ms=0.0159 matmul_ms=0.1696 epilogue_ms=0.0139
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2197 rotate_ms=0.0421 matmul_ms=0.1679 epilogue_ms=0.0096
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1773 rotate_ms=0.0507 matmul_ms=0.1159 epilogue_ms=0.0107
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0875 rotate_ms=0.0161 matmul_ms=0.0612 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0972 rotate_ms=0.0210 matmul_ms=0.0674 epilogue_ms=0.0088
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.2456 rotate_ms=0.0513 matmul_ms=0.1792 epilogue_ms=0.0151
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1983 rotate_ms=0.0158 matmul_ms=0.1674 epilogue_ms=0.0151
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2250 rotate_ms=0.0512 matmul_ms=0.1656 epilogue_ms=0.0082
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1185 rotate_ms=0.0167 matmul_ms=0.0901 epilogue_ms=0.0117
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0860 rotate_ms=0.0143 matmul_ms=0.0615 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1003 rotate_ms=0.0199 matmul_ms=0.0715 epilogue_ms=0.0089
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.2503 rotate_ms=0.0747 matmul_ms=0.1605 epilogue_ms=0.0151
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1983 rotate_ms=0.0153 matmul_ms=0.1681 epilogue_ms=0.0149
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2219 rotate_ms=0.0444 matmul_ms=0.1686 epilogue_ms=0.0089
+ESCHA_PROFILE k=2 ic=5120 oc=12288 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1358 rotate_ms=0.0208 matmul_ms=0.1033 epilogue_ms=0.0117
+ESCHA_PROFILE k=2 ic=5120 oc=1024 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0548 rotate_ms=0.0170 matmul_ms=0.0281 epilogue_ms=0.0097
+ESCHA_PROFILE k=2 ic=5120 oc=1024 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1058 rotate_ms=0.0194 matmul_ms=0.0425 epilogue_ms=0.0440
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1123 rotate_ms=0.0194 matmul_ms=0.0827 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.2513 rotate_ms=0.0784 matmul_ms=0.1594 epilogue_ms=0.0135
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1992 rotate_ms=0.0152 matmul_ms=0.1690 epilogue_ms=0.0151
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2196 rotate_ms=0.0420 matmul_ms=0.1687 epilogue_ms=0.0089
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1571 rotate_ms=0.0511 matmul_ms=0.0950 epilogue_ms=0.0110
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0875 rotate_ms=0.0160 matmul_ms=0.0618 epilogue_ms=0.0096
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1099 rotate_ms=0.0183 matmul_ms=0.0718 epilogue_ms=0.0198
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.2488 rotate_ms=0.0722 matmul_ms=0.1616 epilogue_ms=0.0151
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1963 rotate_ms=0.0152 matmul_ms=0.1660 epilogue_ms=0.0151
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2209 rotate_ms=0.0442 matmul_ms=0.1678 epilogue_ms=0.0089
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1356 rotate_ms=0.0294 matmul_ms=0.0960 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0856 rotate_ms=0.0148 matmul_ms=0.0609 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0988 rotate_ms=0.0195 matmul_ms=0.0702 epilogue_ms=0.0092
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.2520 rotate_ms=0.0513 matmul_ms=0.1860 epilogue_ms=0.0147
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1932 rotate_ms=0.0164 matmul_ms=0.1631 epilogue_ms=0.0137
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2224 rotate_ms=0.0456 matmul_ms=0.1666 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1829 rotate_ms=0.0519 matmul_ms=0.1200 epilogue_ms=0.0109
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0881 rotate_ms=0.0162 matmul_ms=0.0628 epilogue_ms=0.0092
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0955 rotate_ms=0.0240 matmul_ms=0.0616 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.2539 rotate_ms=0.0497 matmul_ms=0.1891 epilogue_ms=0.0151
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.2464 rotate_ms=0.0162 matmul_ms=0.2148 epilogue_ms=0.0153
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2219 rotate_ms=0.0461 matmul_ms=0.1669 epilogue_ms=0.0089
+ESCHA_PROFILE k=2 ic=5120 oc=12288 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1318 rotate_ms=0.0157 matmul_ms=0.1041 epilogue_ms=0.0120
+ESCHA_PROFILE k=2 ic=5120 oc=1024 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0595 rotate_ms=0.0222 matmul_ms=0.0294 epilogue_ms=0.0079
+ESCHA_PROFILE k=2 ic=5120 oc=1024 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1149 rotate_ms=0.0773 matmul_ms=0.0282 epilogue_ms=0.0094
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0884 rotate_ms=0.0167 matmul_ms=0.0615 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1921 rotate_ms=0.0198 matmul_ms=0.1565 epilogue_ms=0.0158
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1982 rotate_ms=0.0145 matmul_ms=0.1689 epilogue_ms=0.0148
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2196 rotate_ms=0.0422 matmul_ms=0.1678 epilogue_ms=0.0096
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1727 rotate_ms=0.0701 matmul_ms=0.0916 epilogue_ms=0.0109
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0858 rotate_ms=0.0147 matmul_ms=0.0611 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1000 rotate_ms=0.0176 matmul_ms=0.0732 epilogue_ms=0.0092
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.2552 rotate_ms=0.0509 matmul_ms=0.1894 epilogue_ms=0.0149
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.2401 rotate_ms=0.0142 matmul_ms=0.2124 epilogue_ms=0.0135
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2209 rotate_ms=0.0433 matmul_ms=0.1679 epilogue_ms=0.0096
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1476 rotate_ms=0.0467 matmul_ms=0.0889 epilogue_ms=0.0121
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0860 rotate_ms=0.0143 matmul_ms=0.0614 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0982 rotate_ms=0.0207 matmul_ms=0.0681 epilogue_ms=0.0094
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1894 rotate_ms=0.0194 matmul_ms=0.1560 epilogue_ms=0.0140
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1980 rotate_ms=0.0160 matmul_ms=0.1672 epilogue_ms=0.0148
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2532 rotate_ms=0.0722 matmul_ms=0.1721 epilogue_ms=0.0089
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1801 rotate_ms=0.0764 matmul_ms=0.0925 epilogue_ms=0.0111
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0877 rotate_ms=0.0146 matmul_ms=0.0631 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1065 rotate_ms=0.0187 matmul_ms=0.0777 epilogue_ms=0.0101
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.2485 rotate_ms=0.0455 matmul_ms=0.1880 epilogue_ms=0.0150
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1960 rotate_ms=0.0195 matmul_ms=0.1624 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2205 rotate_ms=0.0430 matmul_ms=0.1673 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=12288 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1328 rotate_ms=0.0154 matmul_ms=0.1045 epilogue_ms=0.0129
+ESCHA_PROFILE k=2 ic=5120 oc=1024 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0548 rotate_ms=0.0153 matmul_ms=0.0298 epilogue_ms=0.0097
+ESCHA_PROFILE k=2 ic=5120 oc=1024 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0587 rotate_ms=0.0211 matmul_ms=0.0280 epilogue_ms=0.0096
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0877 rotate_ms=0.0167 matmul_ms=0.0617 epilogue_ms=0.0093
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1901 rotate_ms=0.0171 matmul_ms=0.1572 epilogue_ms=0.0158
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1922 rotate_ms=0.0156 matmul_ms=0.1630 epilogue_ms=0.0135
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2207 rotate_ms=0.0433 matmul_ms=0.1672 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1179 rotate_ms=0.0162 matmul_ms=0.0900 epilogue_ms=0.0117
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0854 rotate_ms=0.0140 matmul_ms=0.0625 epilogue_ms=0.0089
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0939 rotate_ms=0.0225 matmul_ms=0.0617 epilogue_ms=0.0096
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1871 rotate_ms=0.0162 matmul_ms=0.1572 epilogue_ms=0.0138
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1929 rotate_ms=0.0156 matmul_ms=0.1636 epilogue_ms=0.0137
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2513 rotate_ms=0.0709 matmul_ms=0.1714 epilogue_ms=0.0089
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1316 rotate_ms=0.0295 matmul_ms=0.0903 epilogue_ms=0.0118
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0860 rotate_ms=0.0143 matmul_ms=0.0614 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0980 rotate_ms=0.0200 matmul_ms=0.0689 epilogue_ms=0.0091
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.2147 rotate_ms=0.0460 matmul_ms=0.1546 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.2044 rotate_ms=0.0259 matmul_ms=0.1637 epilogue_ms=0.0148
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2208 rotate_ms=0.0433 matmul_ms=0.1673 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1202 rotate_ms=0.0172 matmul_ms=0.0910 epilogue_ms=0.0121
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0860 rotate_ms=0.0143 matmul_ms=0.0614 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0968 rotate_ms=0.0247 matmul_ms=0.0621 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1850 rotate_ms=0.0165 matmul_ms=0.1548 epilogue_ms=0.0137
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1931 rotate_ms=0.0165 matmul_ms=0.1625 epilogue_ms=0.0140
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2209 rotate_ms=0.0438 matmul_ms=0.1668 epilogue_ms=0.0103
+ESCHA_PROFILE k=2 ic=5120 oc=12288 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1337 rotate_ms=0.0170 matmul_ms=0.1033 epilogue_ms=0.0135
+ESCHA_PROFILE k=2 ic=5120 oc=1024 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0526 rotate_ms=0.0174 matmul_ms=0.0274 epilogue_ms=0.0079
+ESCHA_PROFILE k=2 ic=5120 oc=1024 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0595 rotate_ms=0.0237 matmul_ms=0.0278 epilogue_ms=0.0079
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0875 rotate_ms=0.0164 matmul_ms=0.0611 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1871 rotate_ms=0.0166 matmul_ms=0.1568 epilogue_ms=0.0137
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1932 rotate_ms=0.0168 matmul_ms=0.1624 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2255 rotate_ms=0.0486 matmul_ms=0.1666 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1156 rotate_ms=0.0148 matmul_ms=0.0891 epilogue_ms=0.0117
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0860 rotate_ms=0.0143 matmul_ms=0.0614 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0914 rotate_ms=0.0194 matmul_ms=0.0624 epilogue_ms=0.0096
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1871 rotate_ms=0.0164 matmul_ms=0.1570 epilogue_ms=0.0137
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1923 rotate_ms=0.0147 matmul_ms=0.1618 epilogue_ms=0.0158
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2217 rotate_ms=0.0444 matmul_ms=0.1671 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1176 rotate_ms=0.0160 matmul_ms=0.0901 epilogue_ms=0.0115
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0860 rotate_ms=0.0143 matmul_ms=0.0614 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1554 rotate_ms=0.0840 matmul_ms=0.0614 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1837 rotate_ms=0.0153 matmul_ms=0.1543 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.2004 rotate_ms=0.0130 matmul_ms=0.1723 epilogue_ms=0.0150
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2209 rotate_ms=0.0434 matmul_ms=0.1673 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1175 rotate_ms=0.0164 matmul_ms=0.0890 epilogue_ms=0.0121
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0854 rotate_ms=0.0138 matmul_ms=0.0614 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0941 rotate_ms=0.0228 matmul_ms=0.0613 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1868 rotate_ms=0.0166 matmul_ms=0.1561 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1902 rotate_ms=0.0152 matmul_ms=0.1613 epilogue_ms=0.0137
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2608 rotate_ms=0.0835 matmul_ms=0.1671 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=12288 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1317 rotate_ms=0.0168 matmul_ms=0.1029 epilogue_ms=0.0120
+ESCHA_PROFILE k=2 ic=5120 oc=1024 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0704 rotate_ms=0.0195 matmul_ms=0.0415 epilogue_ms=0.0094
+ESCHA_PROFILE k=2 ic=5120 oc=1024 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0622 rotate_ms=0.0249 matmul_ms=0.0294 epilogue_ms=0.0079
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0881 rotate_ms=0.0167 matmul_ms=0.0625 epilogue_ms=0.0089
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1891 rotate_ms=0.0183 matmul_ms=0.1568 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1932 rotate_ms=0.0164 matmul_ms=0.1628 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2239 rotate_ms=0.0466 matmul_ms=0.1671 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1166 rotate_ms=0.0146 matmul_ms=0.0903 epilogue_ms=0.0117
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0857 rotate_ms=0.0140 matmul_ms=0.0614 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0958 rotate_ms=0.0235 matmul_ms=0.0624 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1881 rotate_ms=0.0151 matmul_ms=0.1579 epilogue_ms=0.0151
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1930 rotate_ms=0.0164 matmul_ms=0.1625 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2208 rotate_ms=0.0436 matmul_ms=0.1669 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1263 rotate_ms=0.0156 matmul_ms=0.0999 epilogue_ms=0.0109
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0860 rotate_ms=0.0143 matmul_ms=0.0614 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0927 rotate_ms=0.0213 matmul_ms=0.0614 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1843 rotate_ms=0.0144 matmul_ms=0.1556 epilogue_ms=0.0143
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1983 rotate_ms=0.0142 matmul_ms=0.1692 epilogue_ms=0.0149
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2209 rotate_ms=0.0436 matmul_ms=0.1677 epilogue_ms=0.0096
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1166 rotate_ms=0.0158 matmul_ms=0.0887 epilogue_ms=0.0121
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0860 rotate_ms=0.0149 matmul_ms=0.0615 epilogue_ms=0.0096
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1492 rotate_ms=0.0736 matmul_ms=0.0666 epilogue_ms=0.0089
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1911 rotate_ms=0.0205 matmul_ms=0.1569 epilogue_ms=0.0137
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.2022 rotate_ms=0.0169 matmul_ms=0.1702 epilogue_ms=0.0151
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2198 rotate_ms=0.0423 matmul_ms=0.1685 epilogue_ms=0.0090
+ESCHA_PROFILE k=2 ic=5120 oc=12288 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1338 rotate_ms=0.0182 matmul_ms=0.1039 epilogue_ms=0.0117
+ESCHA_PROFILE k=2 ic=5120 oc=1024 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0526 rotate_ms=0.0167 matmul_ms=0.0280 epilogue_ms=0.0079
+ESCHA_PROFILE k=2 ic=5120 oc=1024 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0599 rotate_ms=0.0234 matmul_ms=0.0285 epilogue_ms=0.0079
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0895 rotate_ms=0.0184 matmul_ms=0.0613 epilogue_ms=0.0098
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1869 rotate_ms=0.0162 matmul_ms=0.1566 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1991 rotate_ms=0.0206 matmul_ms=0.1633 epilogue_ms=0.0152
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2198 rotate_ms=0.0425 matmul_ms=0.1671 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1195 rotate_ms=0.0164 matmul_ms=0.0911 epilogue_ms=0.0120
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0857 rotate_ms=0.0140 matmul_ms=0.0614 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0917 rotate_ms=0.0206 matmul_ms=0.0612 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1860 rotate_ms=0.0164 matmul_ms=0.1556 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1932 rotate_ms=0.0164 matmul_ms=0.1629 epilogue_ms=0.0140
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2219 rotate_ms=0.0446 matmul_ms=0.1671 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1166 rotate_ms=0.0149 matmul_ms=0.0908 epilogue_ms=0.0109
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0860 rotate_ms=0.0144 matmul_ms=0.0614 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0939 rotate_ms=0.0230 matmul_ms=0.0609 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1874 rotate_ms=0.0185 matmul_ms=0.1549 epilogue_ms=0.0140
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1900 rotate_ms=0.0148 matmul_ms=0.1614 epilogue_ms=0.0137
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2244 rotate_ms=0.0476 matmul_ms=0.1665 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1226 rotate_ms=0.0216 matmul_ms=0.0893 epilogue_ms=0.0117
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0860 rotate_ms=0.0144 matmul_ms=0.0614 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0955 rotate_ms=0.0235 matmul_ms=0.0620 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1869 rotate_ms=0.0163 matmul_ms=0.1570 epilogue_ms=0.0137
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1932 rotate_ms=0.0165 matmul_ms=0.1627 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2198 rotate_ms=0.0425 matmul_ms=0.1671 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=12288 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1307 rotate_ms=0.0146 matmul_ms=0.1041 epilogue_ms=0.0120
+ESCHA_PROFILE k=2 ic=5120 oc=1024 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0542 rotate_ms=0.0151 matmul_ms=0.0292 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=5120 oc=1024 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0668 rotate_ms=0.0311 matmul_ms=0.0277 epilogue_ms=0.0079
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0893 rotate_ms=0.0186 matmul_ms=0.0608 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1856 rotate_ms=0.0152 matmul_ms=0.1566 epilogue_ms=0.0138
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1930 rotate_ms=0.0175 matmul_ms=0.1614 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2214 rotate_ms=0.0439 matmul_ms=0.1672 epilogue_ms=0.0103
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1195 rotate_ms=0.0171 matmul_ms=0.0907 epilogue_ms=0.0117
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0860 rotate_ms=0.0143 matmul_ms=0.0614 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0896 rotate_ms=0.0183 matmul_ms=0.0617 epilogue_ms=0.0096
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1868 rotate_ms=0.0157 matmul_ms=0.1572 epilogue_ms=0.0140
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1943 rotate_ms=0.0180 matmul_ms=0.1622 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2209 rotate_ms=0.0435 matmul_ms=0.1672 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1166 rotate_ms=0.0154 matmul_ms=0.0903 epilogue_ms=0.0109
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0856 rotate_ms=0.0139 matmul_ms=0.0614 epilogue_ms=0.0103
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0917 rotate_ms=0.0214 matmul_ms=0.0607 epilogue_ms=0.0096
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1849 rotate_ms=0.0155 matmul_ms=0.1553 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1922 rotate_ms=0.0164 matmul_ms=0.1617 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2208 rotate_ms=0.0435 matmul_ms=0.1671 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1171 rotate_ms=0.0162 matmul_ms=0.0892 epilogue_ms=0.0117
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0876 rotate_ms=0.0159 matmul_ms=0.0614 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0913 rotate_ms=0.0189 matmul_ms=0.0624 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1862 rotate_ms=0.0164 matmul_ms=0.1557 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1922 rotate_ms=0.0164 matmul_ms=0.1617 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2207 rotate_ms=0.0436 matmul_ms=0.1668 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=12288 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1307 rotate_ms=0.0160 matmul_ms=0.1024 epilogue_ms=0.0123
+ESCHA_PROFILE k=2 ic=5120 oc=1024 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0540 rotate_ms=0.0167 matmul_ms=0.0293 epilogue_ms=0.0079
+ESCHA_PROFILE k=2 ic=5120 oc=1024 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0588 rotate_ms=0.0234 matmul_ms=0.0275 epilogue_ms=0.0079
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0878 rotate_ms=0.0161 matmul_ms=0.0628 epilogue_ms=0.0089
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1880 rotate_ms=0.0177 matmul_ms=0.1562 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1932 rotate_ms=0.0164 matmul_ms=0.1628 epilogue_ms=0.0140
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2206 rotate_ms=0.0432 matmul_ms=0.1671 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1181 rotate_ms=0.0163 matmul_ms=0.0901 epilogue_ms=0.0117
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0860 rotate_ms=0.0143 matmul_ms=0.0614 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0941 rotate_ms=0.0238 matmul_ms=0.0603 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1858 rotate_ms=0.0160 matmul_ms=0.1561 epilogue_ms=0.0137
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1920 rotate_ms=0.0162 matmul_ms=0.1618 epilogue_ms=0.0140
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2198 rotate_ms=0.0425 matmul_ms=0.1671 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1178 rotate_ms=0.0162 matmul_ms=0.0895 epilogue_ms=0.0121
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0860 rotate_ms=0.0144 matmul_ms=0.0614 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0908 rotate_ms=0.0195 matmul_ms=0.0614 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1859 rotate_ms=0.0162 matmul_ms=0.1556 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1930 rotate_ms=0.0161 matmul_ms=0.1628 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2206 rotate_ms=0.0439 matmul_ms=0.1665 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1206 rotate_ms=0.0199 matmul_ms=0.0891 epilogue_ms=0.0116
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0860 rotate_ms=0.0144 matmul_ms=0.0614 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0960 rotate_ms=0.0246 matmul_ms=0.0614 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1872 rotate_ms=0.0164 matmul_ms=0.1568 epilogue_ms=0.0140
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1931 rotate_ms=0.0159 matmul_ms=0.1630 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2250 rotate_ms=0.0476 matmul_ms=0.1671 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=12288 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1328 rotate_ms=0.0176 matmul_ms=0.1032 epilogue_ms=0.0120
+ESCHA_PROFILE k=2 ic=5120 oc=1024 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0584 rotate_ms=0.0191 matmul_ms=0.0293 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=5120 oc=1024 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0598 rotate_ms=0.0217 matmul_ms=0.0284 epilogue_ms=0.0096
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0895 rotate_ms=0.0180 matmul_ms=0.0612 epilogue_ms=0.0103
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1904 rotate_ms=0.0207 matmul_ms=0.1557 epilogue_ms=0.0140
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1930 rotate_ms=0.0160 matmul_ms=0.1629 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2196 rotate_ms=0.0424 matmul_ms=0.1670 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1126 rotate_ms=0.0143 matmul_ms=0.0881 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0856 rotate_ms=0.0140 matmul_ms=0.0614 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0945 rotate_ms=0.0231 matmul_ms=0.0614 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1915 rotate_ms=0.0216 matmul_ms=0.1558 epilogue_ms=0.0140
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1958 rotate_ms=0.0211 matmul_ms=0.1607 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2214 rotate_ms=0.0447 matmul_ms=0.1664 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1215 rotate_ms=0.0205 matmul_ms=0.0901 epilogue_ms=0.0109
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0860 rotate_ms=0.0143 matmul_ms=0.0614 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0933 rotate_ms=0.0229 matmul_ms=0.0604 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1894 rotate_ms=0.0205 matmul_ms=0.1548 epilogue_ms=0.0140
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1968 rotate_ms=0.0202 matmul_ms=0.1625 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2197 rotate_ms=0.0424 matmul_ms=0.1671 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1205 rotate_ms=0.0194 matmul_ms=0.0894 epilogue_ms=0.0117
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0860 rotate_ms=0.0143 matmul_ms=0.0614 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0928 rotate_ms=0.0215 matmul_ms=0.0614 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1866 rotate_ms=0.0157 matmul_ms=0.1568 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1922 rotate_ms=0.0154 matmul_ms=0.1628 epilogue_ms=0.0140
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2196 rotate_ms=0.0423 matmul_ms=0.1671 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=12288 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1314 rotate_ms=0.0153 matmul_ms=0.1041 epilogue_ms=0.0120
+ESCHA_PROFILE k=2 ic=5120 oc=1024 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0518 rotate_ms=0.0163 matmul_ms=0.0276 epilogue_ms=0.0079
+ESCHA_PROFILE k=2 ic=5120 oc=1024 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0613 rotate_ms=0.0216 matmul_ms=0.0300 epilogue_ms=0.0096
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0892 rotate_ms=0.0177 matmul_ms=0.0612 epilogue_ms=0.0103
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1869 rotate_ms=0.0162 matmul_ms=0.1566 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1932 rotate_ms=0.0164 matmul_ms=0.1628 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2195 rotate_ms=0.0428 matmul_ms=0.1665 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1215 rotate_ms=0.0200 matmul_ms=0.0907 epilogue_ms=0.0109
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0857 rotate_ms=0.0140 matmul_ms=0.0614 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0980 rotate_ms=0.0277 matmul_ms=0.0604 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1878 rotate_ms=0.0170 matmul_ms=0.1558 epilogue_ms=0.0151
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1920 rotate_ms=0.0155 matmul_ms=0.1625 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2211 rotate_ms=0.0429 matmul_ms=0.1679 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1215 rotate_ms=0.0208 matmul_ms=0.0890 epilogue_ms=0.0117
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0860 rotate_ms=0.0143 matmul_ms=0.0614 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0937 rotate_ms=0.0224 matmul_ms=0.0614 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1858 rotate_ms=0.0161 matmul_ms=0.1556 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1922 rotate_ms=0.0164 matmul_ms=0.1621 epilogue_ms=0.0137
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2229 rotate_ms=0.0470 matmul_ms=0.1657 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=10240 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1300 rotate_ms=0.0269 matmul_ms=0.0921 epilogue_ms=0.0110
+ESCHA_PROFILE k=2 ic=5120 oc=6144 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0860 rotate_ms=0.0143 matmul_ms=0.0615 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0939 rotate_ms=0.0215 matmul_ms=0.0625 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1840 rotate_ms=0.0153 matmul_ms=0.1547 epilogue_ms=0.0140
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1922 rotate_ms=0.0164 matmul_ms=0.1620 epilogue_ms=0.0139
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2219 rotate_ms=0.0459 matmul_ms=0.1658 epilogue_ms=0.0102
+ESCHA_PROFILE k=2 ic=5120 oc=12288 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1334 rotate_ms=0.0173 matmul_ms=0.1045 epilogue_ms=0.0116
+ESCHA_PROFILE k=2 ic=5120 oc=1024 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0550 rotate_ms=0.0178 matmul_ms=0.0293 epilogue_ms=0.0079
+ESCHA_PROFILE k=2 ic=5120 oc=1024 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0588 rotate_ms=0.0211 matmul_ms=0.0282 epilogue_ms=0.0096
+ESCHA_PROFILE k=2 ic=6144 oc=5120 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.0894 rotate_ms=0.0184 matmul_ms=0.0611 epilogue_ms=0.0100
+ESCHA_PROFILE k=2 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.1881 rotate_ms=0.0173 matmul_ms=0.1570 epilogue_ms=0.0137
+ESCHA_PROFILE k=3 ic=5120 oc=17408 rows=128 gen=0 route=mma-fp16-mixedacc total_ms=0.2004 rotate_ms=0.0259 matmul_ms=0.1604 epilogue_ms=0.0141
+ESCHA_PROFILE k=3 ic=17408 oc=5120 rows=128 gen=0 route=mma-fp32-mixedacc total_ms=0.2199 rotate_ms=0.0425 matmul_ms=0.1671 epilogue_ms=0.0102
+  {
+    "build_commit": "be6bf478d",
+    "build_number": 11313,
+    "cpu_info": "AMD Ryzen 7 7800X3D 8-Core Processor",
+    "gpu_info": "NVIDIA GeForce RTX 5090",
+    "backends": "CUDA",
+    "model_filename": "/mnt/d/CODEX WORKSPACE/escha-w2-lowgpu/weights/escha-w2-lowgpu-mono-parity.gguf",
+    "model_type": "qwen35 27B F16",
+    "model_size": 8608061440,
+    "model_n_params": 4784193024,
+    "n_batch": 2048,
+    "n_ubatch": 2048,
+    "n_threads": 8,
+    "cpu_mask": "0x0",
+    "cpu_strict": false,
+    "poll": 50,
+    "type_k": "f16",
+    "type_v": "f16",
+    "kv_tail_tokens": 0,
+    "kv_tail_tokens_effective": 0,
+    "kv_tail_type": "f16",
+    "kvarn_route_split": 0,
+    "kvarn_route_vector": 0,
+    "kvarn_route_generic": 0,
+    "kvarn_route_prefill": 0,
+    "kvarn_route_families": 15,
+    "kvarn_route_portable": 0,
+    "kvarn_route_amd_generic": 0,
+    "kvarn_route_amd_split": 0,
+    "kvarn_route_amd_vector": 0,
+    "kvarn_route_materialize": 0,
+    "kvarn_route_split_reduce": 0,
+    "kvarn_route_direct": 0,
+    "kvarn_route_compact_tail": 0,
+    "kvarn_route_generic_rejected": 0,
+    "kv_k_payload_bytes": 0,
+    "kv_v_payload_bytes": 0,
+    "kv_exact_tail_bytes": 0,
+    "kv_exact_history_bytes": 0,
+    "kv_exact_overlay_bytes": 0,
+    "kv_native_exact_bytes": 0,
+    "kv_rollback_reserve_bytes": 0,
+    "kv_transient_estimate_bytes": 0,
+    "kv_staging_bytes": 0,
+    "kv_metadata_bytes": 0,
+    "kv_padding_bytes": 0,
+    "kv_resident_bytes": 0,
+    "kv_global_resident_bytes": 0,
+    "kv_swa_resident_bytes": 0,
+    "kv_allocated_capacity_tokens": 0,
+    "kv_live_tokens": 0,
+    "kv_descriptor_bytes": 0,
+    "kv_tail_native_bodyless_layers": 0,
+    "kv_tail_native_mixed_layers": 0,
+    "kv_tail_device_fallback_layers": 0,
+    "kv_tail_cpu_layers": 0,
+    "kv_partial_output_bytes": 0,
+    "kv_partial_meta_bytes": 0,
+    "kv_tail_body_meta_bytes": 0,
+    "kv_tail_exact_meta_bytes": 0,
+    "kv_tail_pack_bytes": 0,
+    "kv_tail_body_output_bytes": 0,
+    "kv_tail_exact_output_bytes": 0,
+    "kv_tail_plan_input_bytes": 0,
+    "kv_transient_bytes": 0,
+    "kv_peak_bytes": 0,
+    "cuda_used_model_bytes": 0,
+    "cuda_used_context_bytes": 0,
+    "cuda_used_prefill_bytes": 0,
+    "cuda_used_peak_bytes": 0,
+    "cuda_used_after_context_bytes": 0,
+    "cuda_total_bytes": 0,
+    "cuda_context_buffer_bytes": 0,
+    "cuda_non_kv_context_buffer_bytes": 0,
+    "cuda_compute_buffer_bytes": 0,
+    "cuda_context_delta_bytes": 0,
+    "cuda_peak_delta_bytes": 0,
+    "cuda_reconciliation_delta_bytes": 0,
+    "cuda_runtime_overhead_bytes": 0,
+    "cuda_teardown_delta_bytes": 0,
+    "n_gpu_layers": 99,
+    "n_cpu_moe": 0,
+    "split_mode": "layer",
+    "main_gpu": 0,
+    "no_kv_offload": false,
+    "flash_attn": 1,
+    "devices": "auto",
+    "tensor_split": "0.00",
+    "tensor_buft_overrides": "none",
+    "load_mode": "auto",
+    "embeddings": false,
+    "no_op_offload": 0,
+    "no_host": false,
+    "fit_target": 0,
+    "fit_min_ctx": 0,
+    "n_prompt": 128,
+    "n_gen": 0,
+    "n_depth": 0,
+    "test_time": "2026-09-02T03:45:12Z",
+    "avg_ns": 264386948,
+    "stddev_ns": 0,
+    "avg_ts": 484.138877,
+    "stddev_ts": 0.000000,
+    "samples_ns": [ 264386948 ],
+    "planner_ns": [ 0 ],
+    "samples_ts": [ 484.139 ]
+  }
+]

@@ -1,0 +1,10 @@
+{
+  "ffn_gate_as_is": 0.835,
+  "ffn_gate_transposed": {
+    "error": "(32, 1088, 320)"
+  },
+  "ffn_gate_l1_as_is": 0.8396,
+  "ffn_gate_l1_transposed": {
+    "error": "(32, 1088, 320)"
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "attn_gate": {
+    "calls": 288,
+    "total_ms": 230.56,
+    "matmul_ms": 197.59,
+    "rotate_ms": 16.36,
+    "epilogue_ms": 16.6,
+    "median_call_ms": 0.7841,
+    "median_matmul_ms": 0.6738,
+    "routes": {
+      "mma-fp16-mixedacc": 288
+    },
+    "shape": "5120x6144 k=2"
+  },
+  "attn_kv": {
+    "calls": 192,
+    "total_ms": 39.57,
+    "matmul_ms": 26.77,
+    "rotate_ms": 10.43,
+    "epilogue_ms": 2.38,
+    "median_call_ms": 0.2027,
+    "median_matmul_ms": 0.1382,
+    "routes": {
+      "mma-fp16-mixedacc": 192
+    },
+    "shape": "5120x1024 k=2"
+  },
+  "attn_q": {
+    "calls": 96,
+    "total_ms": 139.08,
+    "matmul_ms": 121.95,
+    "rotate_ms": 4.02,
+    "epilogue_ms": 13.11,
+    "median_call_ms": 1.4374,
+    "median_matmul_ms": 1.2624,
+    "routes": {
+      "mma-fp16-mixedacc": 96
+    },
+    "shape": "5120x12288 k=2"
+  },
+  "attn_qkv": {
+    "calls": 288,
+    "total_ms": 373.15,
+    "matmul_ms": 307.74,
+    "rotate_ms": 32.29,
+    "epilogue_ms": 33.11,
+    "median_call_ms": 1.1749,
+    "median_matmul_ms": 1.0241,
+    "routes": {
+      "mma-fp16-mixedacc": 288
+    },
+    "shape": "5120x10240 k=2"
+  },
+  "ffn_down": {
+    "calls": 384,
+    "total_ms": 936.48,
+    "matmul_ms": 850.16,
+    "rotate_ms": 67.11,
+    "epilogue_ms": 19.2,
+    "median_call_ms": 2.4022,
+    "median_matmul_ms": 2.1821,
+    "routes": {
+      "mma-fp32-mixedacc": 384
+    },
+    "shape": "17408x5120 k=3"
+  },
+  "ffn_gate": {
+    "calls": 384,
+    "total_ms": 742.35,
+    "matmul_ms": 651.75,
+    "rotate_ms": 16.57,
+    "epilogue_ms": 74.03,
+    "median_call_ms": 1.886,
+    "median_matmul_ms": 1.6568,
+    "routes": {
+      "mma-fp16-mixedacc": 384
+    },
+    "shape": "5120x17408 k=2"
+  },
+  "ffn_up": {
+    "calls": 384,
+    "total_ms": 769.03,
+    "matmul_ms": 672.96,
+    "rotate_ms": 22.8,
+    "epilogue_ms": 73.27,
+    "median_call_ms": 1.9555,
+    "median_matmul_ms": 1.708,
+    "routes": {
+      "mma-fp16-mixedacc": 384
+    },
+    "shape": "5120x17408 k=3"
+  },
+  "ssm_out_OR_attn_output": {
+    "calls": 384,
+    "total_ms": 279.45,
+    "matmul_ms": 242.01,
+    "rotate_ms": 20.12,
+    "epilogue_ms": 17.31,
+    "median_call_ms": 0.7139,
+    "median_matmul_ms": 0.6185,
+    "routes": {
+      "mma-fp16-mixedacc": 384
+    },
+    "shape": "6144x5120 k=2"
+  },
+  "_total_projection_ms": 3509.66
+}

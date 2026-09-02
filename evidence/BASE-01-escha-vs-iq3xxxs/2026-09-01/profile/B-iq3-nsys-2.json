@@ -1,0 +1,114 @@
+[
+  {
+    "build_commit": "be6bf478d",
+    "build_number": 11313,
+    "cpu_info": "AMD Ryzen 7 7800X3D 8-Core Processor",
+    "gpu_info": "NVIDIA GeForce RTX 5090",
+    "backends": "CUDA",
+    "model_filename": "/mnt/d/CODEX WORKSPACE/beellama-release/models/Qwen3.8-27B-LowGPU-NoMTP-IQ3XXXS.gguf",
+    "model_type": "qwen35 27B IQ1_S - 1.5625 bpw",
+    "model_size": 9559668736,
+    "model_n_params": 26895998464,
+    "n_batch": 2048,
+    "n_ubatch": 2048,
+    "n_threads": 8,
+    "cpu_mask": "0x0",
+    "cpu_strict": false,
+    "poll": 50,
+    "type_k": "f16",
+    "type_v": "f16",
+    "kv_tail_tokens": 0,
+    "kv_tail_tokens_effective": 0,
+    "kv_tail_type": "f16",
+    "kvarn_route_split": 0,
+    "kvarn_route_vector": 0,
+    "kvarn_route_generic": 0,
+    "kvarn_route_prefill": 0,
+    "kvarn_route_families": 15,
+    "kvarn_route_portable": 0,
+    "kvarn_route_amd_generic": 0,
+    "kvarn_route_amd_split": 0,
+    "kvarn_route_amd_vector": 0,
+    "kvarn_route_materialize": 0,
+    "kvarn_route_split_reduce": 0,
+    "kvarn_route_direct": 0,
+    "kvarn_route_compact_tail": 0,
+    "kvarn_route_generic_rejected": 0,
+    "kv_k_payload_bytes": 0,
+    "kv_v_payload_bytes": 0,
+    "kv_exact_tail_bytes": 0,
+    "kv_exact_history_bytes": 0,
+    "kv_exact_overlay_bytes": 0,
+    "kv_native_exact_bytes": 0,
+    "kv_rollback_reserve_bytes": 0,
+    "kv_transient_estimate_bytes": 0,
+    "kv_staging_bytes": 0,
+    "kv_metadata_bytes": 0,
+    "kv_padding_bytes": 0,
+    "kv_resident_bytes": 0,
+    "kv_global_resident_bytes": 0,
+    "kv_swa_resident_bytes": 0,
+    "kv_allocated_capacity_tokens": 0,
+    "kv_live_tokens": 0,
+    "kv_descriptor_bytes": 0,
+    "kv_tail_native_bodyless_layers": 0,
+    "kv_tail_native_mixed_layers": 0,
+    "kv_tail_device_fallback_layers": 0,
+    "kv_tail_cpu_layers": 0,
+    "kv_partial_output_bytes": 0,
+    "kv_partial_meta_bytes": 0,
+    "kv_tail_body_meta_bytes": 0,
+    "kv_tail_exact_meta_bytes": 0,
+    "kv_tail_pack_bytes": 0,
+    "kv_tail_body_output_bytes": 0,
+    "kv_tail_exact_output_bytes": 0,
+    "kv_tail_plan_input_bytes": 0,
+    "kv_transient_bytes": 0,
+    "kv_peak_bytes": 0,
+    "cuda_used_model_bytes": 0,
+    "cuda_used_context_bytes": 0,
+    "cuda_used_prefill_bytes": 0,
+    "cuda_used_peak_bytes": 0,
+    "cuda_used_after_context_bytes": 0,
+    "cuda_total_bytes": 0,
+    "cuda_context_buffer_bytes": 0,
+    "cuda_non_kv_context_buffer_bytes": 0,
+    "cuda_compute_buffer_bytes": 0,
+    "cuda_context_delta_bytes": 0,
+    "cuda_peak_delta_bytes": 0,
+    "cuda_reconciliation_delta_bytes": 0,
+    "cuda_runtime_overhead_bytes": 0,
+    "cuda_teardown_delta_bytes": 0,
+    "n_gpu_layers": 99,
+    "n_cpu_moe": 0,
+    "split_mode": "layer",
+    "main_gpu": 0,
+    "no_kv_offload": false,
+    "flash_attn": 1,
+    "devices": "auto",
+    "tensor_split": "0.00",
+    "tensor_buft_overrides": "none",
+    "load_mode": "auto",
+    "embeddings": false,
+    "no_op_offload": 0,
+    "no_host": false,
+    "fit_target": 0,
+    "fit_min_ctx": 0,
+    "n_prompt": 2048,
+    "n_gen": 0,
+    "n_depth": 0,
+    "test_time": "2026-09-02T01:22:02Z",
+    "avg_ns": 592600583,
+    "stddev_ns": 0,
+    "avg_ts": 3455.953401,
+    "stddev_ts": 0.000000,
+    "samples_ns": [ 592600583 ],
+    "planner_ns": [ 0 ],
+    "samples_ts": [ 3455.95 ]
+  }
+]
+Collecting data...
+Generating '/tmp/nsys-report-c649.qdstrm'
+[1/1] [0%                          ] B-iq3-nsys-2.nsys-rep[1/1] [0%                          ] B-iq3-nsys-2.nsys-rep[1/1] [0%                          ] B-iq3-nsys-2.nsys-rep[1/1] [=15%                        ] B-iq3-nsys-2.nsys-rep[1/1] [=====29%                    ] B-iq3-nsys-2.nsys-rep[1/1] [========40%                 ] B-iq3-nsys-2.nsys-rep[1/1] [=========46%                ] B-iq3-nsys-2.nsys-rep[1/1] [==========47%               ] B-iq3-nsys-2.nsys-rep[1/1] [==========48%               ] B-iq3-nsys-2.nsys-rep[1/1] [==========49%               ] B-iq3-nsys-2.nsys-rep[1/1] [===========50%              ] B-iq3-nsys-2.nsys-rep[1/1] [===========51%              ] B-iq3-nsys-2.nsys-rep[1/1] [===========52%              ] B-iq3-nsys-2.nsys-rep[1/1] [===========53%              ] B-iq3-nsys-2.nsys-rep[1/1] [============54%             ] B-iq3-nsys-2.nsys-rep[1/1] [============55%             ] B-iq3-nsys-2.nsys-rep[1/1] [============56%             ] B-iq3-nsys-2.nsys-rep[1/1] [============57%             ] B-iq3-nsys-2.nsys-rep[1/1] [=============58%            ] B-iq3-nsys-2.nsys-rep[1/1] [=============59%            ] B-iq3-nsys-2.nsys-rep[1/1] [=============60%            ] B-iq3-nsys-2.nsys-rep[1/1] [==============61%           ] B-iq3-nsys-2.nsys-rep[1/1] [==============62%           ] B-iq3-nsys-2.nsys-rep[1/1] [==============63%           ] B-iq3-nsys-2.nsys-rep[1/1] [==============64%           ] B-iq3-nsys-2.nsys-rep[1/1] [===============65%          ] B-iq3-nsys-2.nsys-rep[1/1] [===============66%          ] B-iq3-nsys-2.nsys-rep[1/1] [===============67%          ] B-iq3-nsys-2.nsys-rep[1/1] [================68%         ] B-iq3-nsys-2.nsys-rep[1/1] [================69%         ] B-iq3-nsys-2.nsys-rep[1/1] [================70%         ] B-iq3-nsys-2.nsys-rep[1/1] [================71%         ] B-iq3-nsys-2.nsys-rep[1/1] [=================72%        ] B-iq3-nsys-2.nsys-rep[1/1] [=================73%        ] B-iq3-nsys-2.nsys-rep[1/1] [=================74%        ] B-iq3-nsys-2.nsys-rep[1/1] [==================75%       ] B-iq3-nsys-2.nsys-rep[1/1] [==================76%       ] B-iq3-nsys-2.nsys-rep[1/1] [==================77%       ] B-iq3-nsys-2.nsys-rep[1/1] [==================78%       ] B-iq3-nsys-2.nsys-rep[1/1] [===================79%      ] B-iq3-nsys-2.nsys-rep[1/1] [===================80%      ] B-iq3-nsys-2.nsys-rep[1/1] [===================81%      ] B-iq3-nsys-2.nsys-rep[1/1] [===================82%      ] B-iq3-nsys-2.nsys-rep[1/1] [====================83%     ] B-iq3-nsys-2.nsys-rep[1/1] [====================84%     ] B-iq3-nsys-2.nsys-rep[1/1] [====================85%     ] B-iq3-nsys-2.nsys-rep[1/1] [=====================86%    ] B-iq3-nsys-2.nsys-rep[1/1] [=====================87%    ] B-iq3-nsys-2.nsys-rep[1/1] [=====================88%    ] B-iq3-nsys-2.nsys-rep[1/1] [=====================89%    ] B-iq3-nsys-2.nsys-rep[1/1] [======================90%   ] B-iq3-nsys-2.nsys-rep[1/1] [======================91%   ] B-iq3-nsys-2.nsys-rep[1/1] [======================92%   ] B-iq3-nsys-2.nsys-rep[1/1] [=======================93%  ] B-iq3-nsys-2.nsys-rep[1/1] [=======================94%  ] B-iq3-nsys-2.nsys-rep[1/1] [=======================96%  ] B-iq3-nsys-2.nsys-rep[1/1] [========================97% ] B-iq3-nsys-2.nsys-rep[1/1] [========================100%] B-iq3-nsys-2.nsys-rep[1/1] [========================100%] B-iq3-nsys-2.nsys-rep
+Generated:
+	/mnt/d/CODEX WORKSPACE/beellama-escha/evidence/BASE-01-escha-vs-iq3xxxs/2026-09-01/profile/B-iq3-nsys-2.nsys-rep

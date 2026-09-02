@@ -1,0 +1,36 @@
+{
+  "ffn_gate": {
+    "code_shape": [
+      320,
+      1088,
+      32
+    ],
+    "gguf_layout": {
+      "corr": null,
+      "ok": false,
+      "error": "cannot reshape array of size 5570560 into shape (348160,24)"
+    },
+    "transposed": {
+      "corr": null,
+      "ok": false,
+      "error": "(32, 1088, 320)"
+    }
+  },
+  "attn_output": {
+    "code_shape": [
+      384,
+      320,
+      32
+    ],
+    "gguf_layout": {
+      "corr": null,
+      "ok": false,
+      "error": "(384, 320, 32)"
+    },
+    "transposed": {
+      "corr": null,
+      "ok": false,
+      "error": "(32, 320, 384)"
+    }
+  }
+}

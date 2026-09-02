@@ -1,0 +1,16 @@
+{
+  "attn_qkv": {
+    "full_iq3": -0.0,
+    "ud": -0.0
+  },
+  "ssm_out": {
+    "escha_vs_iq3": -0.0,
+    "escha_vs_ud": -0.0,
+    "iq3_vs_ud": 0.9855
+  },
+  "attn_gate": {
+    "escha_vs_iq3": 0.0001,
+    "escha_vs_ud": -0.0,
+    "iq3_vs_ud": 0.9794
+  }
+}

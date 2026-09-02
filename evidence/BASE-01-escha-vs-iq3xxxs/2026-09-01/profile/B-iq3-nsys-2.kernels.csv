@@ -1,0 +1,4 @@
+Generating SQLite file /mnt/d/CODEX WORKSPACE/beellama-escha/evidence/BASE-01-escha-vs-iq3xxxs/2026-09-01/profile/B-iq3-nsys-2.sqlite from /mnt/d/CODEX WORKSPACE/beellama-escha/evidence/BASE-01-escha-vs-iq3xxxs/2026-09-01/profile/B-iq3-nsys-2.nsys-rep
+Processing [/mnt/d/CODEX WORKSPACE/beellama-escha/evidence/BASE-01-escha-vs-iq3xxxs/2026-09-01/profile/B-iq3-nsys-2.sqlite] with [/opt/nvidia/nsight-systems/2025.3.2/host-linux-x64/reports/cuda_gpu_kern_sum.py]... 
+SKIPPED: /mnt/d/CODEX WORKSPACE/beellama-escha/evidence/BASE-01-escha-vs-iq3xxxs/2026-09-01/profile/B-iq3-nsys-2.sqlite does not contain CUDA kernel data.
+
