@@ -248,14 +248,35 @@ named barriers, two-warp owners) serializes vs full-CTA separate finalize.
 Retry only with a full-CTA-parallel epilogue design. Source reverted; evidence:
 `evidence/EXP-08-fusedfinalize/2026-09-01/`.
 
+### EXP-09 result — REJECTED + REVERTED (2026-09-02)
+
+Full mainloop rewrite mirroring the official `escham_code_gemm` warp-local
+two-band structure: 128×128 CTA as two 128×64 bands, direct warp-local `tile_b`
+construction from the codebook payload (no decoded-B shared store, no B
+ldmatrix), two CTA barriers per K tile (vs control's three), 9,728 B smem.
+Sol Gate 1 PLAN=READY (Terra math audit CONFIRMED: geometry, decode formula,
+store seams, split-K, bit-compat); Sol implementation review passed; candidate
+built clean under `ESCHA_MMA_SM120_MAINLOOP_REWRITE_EXPERIMENT`. **Failed the
+pre-timing resource gate: REG fp16 145/150 (K2/K3), fp32 176 vs control 97/128
+→ 1 CTA/SM occupancy loss.** SASS: BAR 3→2 achieved, decoded-B STS eliminated,
+HMMA preserved, but the approved 4-row-warp decode duplication raised LDS
+8→32/16→64 and decode ALU (IMAD+LOP3+IADD3) ~2–2.7×. Sol mechanism-gate
+VERDICT=CONFIRM-REJECT (no bounded revision can recover 48–53 regs without
+shared-B, cross-warp staging, or changing the experiment). Source reverted;
+`escha-moe.cu` matches HEAD `1c193ad4c`. Evidence:
+`evidence/EXP-09-mainloop-rewrite/2026-09-02/`.
+
 ### Series status (2026-09-02)
 
-Both T1 (register-B mainloop) and T2 (finalize fusion) negative at this
-geometry; strengthens BASE-01's structural-mainloop-deficit classification.
-Remaining ranked levers: T3 fused input rotation (~4.6%, below 5% rule unless
-combined), T4 shape-specific ffn_down decode structure, mainloop re-planning
-per EXP-05 official 80-reg/45 KiB structure. Promoted Stage 2 remains the
-default control.
+T1 (register-B mainloop), T2 (finalize fusion), and T3-mainloop-rewrite
+(EXP-09 warp-local two-band) are all negative at this geometry; every removal
+of Bee's shared-B round trip costs more registers than it saves (EXP-07
+124–154, EXP-09 145–176 vs the 97/128 shared-B control). Promoted Stage 2
+remains the default control. Sol's highest-value remaining runtime lever: T4
+shape-specific ffn_down decode structure; T3 fused input rotation (~4.6%)
+remains below the standalone gate. Artifact-side P-ARCH-23I (~3300 tok/s)
+remains the only demonstrated prefill-parity path outside the runtime-only
+plan.
 
 ## Closed work
 
