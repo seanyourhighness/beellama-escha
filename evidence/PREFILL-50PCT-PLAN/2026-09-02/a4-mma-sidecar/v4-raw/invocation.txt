@@ -1,0 +1,1 @@
+/mnt/d/CODEX WORKSPACE/beellama-escha/evidence/PREFILL-50PCT-PLAN/2026-09-02/a4-mma-sidecar/v4-raw/slice1_v4_harness --source /mnt/d/CODEX WORKSPACE/escha-w2-lowgpu/weights/escha-w2-lowgpu-mono-parity.gguf --overlay /mnt/d/CODEX WORKSPACE/beellama-escha/evidence/PREFILL-50PCT-PLAN/2026-09-02/a4-mma-sidecar/v4-raw/blk.0.ffn_gate.escha_mma_code --code-offset 41399744 --reps 5
